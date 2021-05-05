@@ -142,7 +142,7 @@ fn construct(session: ExecutableDeployItem) -> Deploy {
 }
 
 fn print(id: usize, deploy: Deploy) {
-    println!("----- EXAMPLE NR {} BEGINING -----\n", id);
+    println!("----- EXAMPLE NR {} BEGINNING -----\n", id);
     println!("JSON:\n");
     println!("{}\n", serde_json::to_string_pretty(&deploy).unwrap());
     

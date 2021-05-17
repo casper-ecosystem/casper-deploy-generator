@@ -2,8 +2,9 @@ use std::{collections::BTreeMap, fmt::Display};
 
 use casper_execution_engine::core::engine_state::ExecutableDeployItem;
 use casper_node::types::{Deploy, DeployHeader};
-use casper_types::{bytesrepr::ToBytes, CLValue, RuntimeArgs};
+use casper_types::{bytesrepr::ToBytes, CLValue, Key, RuntimeArgs};
 
+use itertools::Itertools;
 use serde::{Deserialize, Serialize};
 
 const LEDGER_VIEW_NAME_COUNT: usize = 11;
@@ -12,6 +13,50 @@ const LEDGER_VIEW_BOTTOM_COUNT: usize = 17;
 
 struct Elements<V>(Vec<Element<V>>);
 
+fn serde_value_to_str(value: &serde_json::Value) -> String {
+    match value {
+        serde_json::Value::Null => "null".to_string(),
+        serde_json::Value::Bool(value) => format!("{}", value),
+        serde_json::Value::Number(num) => format!("{}", num),
+        serde_json::Value::String(string) => shorten_cl_string(string.clone()),
+        serde_json::Value::Array(arr) => {
+            format!("[{}]", arr.iter().map(serde_value_to_str).join(", "))
+        }
+        serde_json::Value::Object(map) => map.values().map(serde_value_to_str).join(" "),
+    }
+}
+
+fn shorten_cl_string(cl_in: String) -> String {
+    let parsed_key = Key::from_formatted_str(&cl_in);
+    match parsed_key {
+        Ok(key) => {
+            let prefix = match key {
+                Key::Account(_) => "account-hash-",
+                Key::Hash(_) => "hash-",
+                Key::URef(_) => {
+                    // format: uref-XXXX-YYY
+                    return cl_in
+                        .chars()
+                        .skip("uref-".len())
+                        .take_while(|c| *c != '-')
+                        .collect();
+                }
+                Key::Transfer(_) => "transfer-",
+                Key::DeployInfo(_) => "deploy-",
+                Key::EraInfo(_) => "era-",
+                Key::Balance(_) => "balance-",
+                Key::Bid(_) => "bid-",
+                Key::Withdraw(_) => "withdraw-",
+            };
+            cl_in.chars().skip(prefix.len()).collect()
+        }
+        Err(_) => {
+            // No idea how to handle that. Return raw.
+            cl_in
+        }
+    }
+}
+
 impl Into<Elements<String>> for &RuntimeArgs {
     fn into(self) -> Elements<String> {
         let mut elements: Vec<Element<String>> = vec![];
@@ -19,9 +64,18 @@ impl Into<Elements<String>> for &RuntimeArgs {
         for (idx, (name, value)) in named_args.iter().enumerate() {
             let name_label = format!("arg-{}-name", idx);
             elements.push(Element::expert(&name_label, name.to_string()));
-            let value_label = format!("arg-{}", idx);
-            let value_str = format!("{:?}", value);
-            elements.push(Element::expert(&value_label, value_str));
+            let value_label = format!("arg-{}-val", idx);
+            match serde_json::to_value(&value) {
+                Ok(value) => {
+                    let parsed = value.get("parsed").unwrap();
+                    let value_str = serde_value_to_str(parsed);
+                    elements.push(Element::expert(&value_label, value_str));
+                }
+                Err(err) => {
+                    eprintln!("error when parsing CLValue to CLValueJson#Object, {}", err);
+                    panic!("{:?}", err)
+                }
+            }
         }
         Elements(elements)
     }

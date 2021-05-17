@@ -57,6 +57,20 @@ fn shorten_cl_string(cl_in: String) -> String {
     }
 }
 
+fn cl_value_to_string(cl_in: &CLValue) -> String {
+    match serde_json::to_value(&cl_in) {
+        Ok(value) => {
+            let parsed = value.get("parsed").unwrap();
+            let value_str = serde_value_to_str(parsed);
+            value_str
+        }
+        Err(err) => {
+            eprintln!("error when parsing CLValue to CLValueJson#Object, {}", err);
+            panic!("{:?}", err)
+        }
+    }
+}
+
 impl Into<Elements<String>> for &RuntimeArgs {
     fn into(self) -> Elements<String> {
         let mut elements: Vec<Element<String>> = vec![];
@@ -65,17 +79,8 @@ impl Into<Elements<String>> for &RuntimeArgs {
             let name_label = format!("arg-{}-name", idx);
             elements.push(Element::expert(&name_label, name.to_string()));
             let value_label = format!("arg-{}-val", idx);
-            match serde_json::to_value(&value) {
-                Ok(value) => {
-                    let parsed = value.get("parsed").unwrap();
-                    let value_str = serde_value_to_str(parsed);
-                    elements.push(Element::expert(&value_label, value_str));
-                }
-                Err(err) => {
-                    eprintln!("error when parsing CLValue to CLValueJson#Object, {}", err);
-                    panic!("{:?}", err)
-                }
-            }
+            let value_str = cl_value_to_string(&value);
+            elements.push(Element::expert(&value_label, value_str));
         }
         Elements(elements)
     }
@@ -85,7 +90,11 @@ impl Into<Elements<String>> for &ExecutableDeployItem {
     fn into(self) -> Elements<String> {
         let mut elements = vec![];
         match self {
-            ExecutableDeployItem::ModuleBytes { module_bytes, args } => {}
+            ExecutableDeployItem::ModuleBytes { module_bytes, args } => {
+                // TODO: add module's hash
+                let args_elements: Elements<String> = args.into();
+                elements.extend(args_elements.0);
+            }
             ExecutableDeployItem::StoredContractByHash {
                 hash,
                 entry_point,
@@ -138,7 +147,23 @@ impl Into<Elements<String>> for &ExecutableDeployItem {
                 let args_elements: Elements<String> = args.into();
                 elements.extend(args_elements.0);
             }
-            ExecutableDeployItem::Transfer { args } => {}
+            ExecutableDeployItem::Transfer { args } => {
+                let maybe_target = args.get("target").map(cl_value_to_string);
+                match maybe_target {
+                    None => {},
+                    Some(target) => elements.push(Element::regular("target", target)),
+                }
+                let maybe_amount = args.get("amount").map(cl_value_to_string);
+                match maybe_amount {
+                    None => {}
+                    Some(amount) => elements.push(Element::regular("amount", amount)),
+                }
+                let maybe_id = args.get("id").map(cl_value_to_string);
+                match maybe_id {
+                    None => {}
+                    Some(id) => elements.push(Element::regular("id", id)),
+                }
+            }
         }
         Elements(elements)
     }

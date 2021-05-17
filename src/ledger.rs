@@ -9,6 +9,36 @@ const LEDGER_VIEW_NAME_COUNT: usize = 11;
 const LEDGER_VIEW_TOP_COUNT: usize = 17;
 const LEDGER_VIEW_BOTTOM_COUNT: usize = 17;
 
+struct Elements<V>(Vec<Element<V>>);
+
+impl Into<Elements<String>> for Deploy {
+    fn into(self) -> Elements<String> {
+        let mut elements = vec![];
+        elements.push(Element::regular(
+            "chainname",
+            format!("{}", self.header().chain_name()),
+        ));
+        elements.push(Element::regular(
+            "from",
+            format!("{}", self.header().account()),
+        ));
+        elements.push(Element::expert(
+            "timestamp",
+            format!("{}", self.header().timestamp()),
+        ));
+        elements.push(Element::expert("ttl", format!("{}", self.header().ttl())));
+        elements.push(Element::expert(
+            "gas price",
+            format!("{}", self.header().gas_price()),
+        ));
+        elements.push(Element::expert(
+            "deps",
+            format!("{:?}", self.header().dependencies()),
+        ));
+        Elements(elements)
+    }
+}
+
 struct Element<V> {
     name: String,
     value: V,

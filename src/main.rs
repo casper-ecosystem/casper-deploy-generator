@@ -149,9 +149,6 @@ fn print(id: usize, deploy: Deploy) {
     println!("JSON:\n");
     println!("{}\n", serde_json::to_string_pretty(&deploy).unwrap());
 
-    println!("BYTES:\n");
-    println!("{}\n", hex::encode(&deploy.to_bytes().unwrap()));
-
     println!("Ledger:\n");
     println!(
         "{}\n",

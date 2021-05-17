@@ -238,7 +238,7 @@ impl LedgerView {
         for (idx, page_str) in self
             .pages
             .iter()
-            .filter(|page| if expert { page.expert } else { true })
+            .filter(|page| if !page.expert { true } else { expert })
             .flat_map(|page| page.to_string())
             .enumerate()
         {

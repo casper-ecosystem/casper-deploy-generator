@@ -1,8 +1,8 @@
-use std::fmt::Display;
+use std::{collections::BTreeMap, fmt::Display};
 
-use casper_execution_engine::core::engine_state::ExecutableDeployItem::{self, *};
+use casper_execution_engine::core::engine_state::ExecutableDeployItem;
 use casper_node::types::{Deploy, DeployHeader};
-use casper_types::bytesrepr::ToBytes;
+use casper_types::{bytesrepr::ToBytes, CLValue, RuntimeArgs};
 
 use serde::{Deserialize, Serialize};
 
@@ -12,35 +12,81 @@ const LEDGER_VIEW_BOTTOM_COUNT: usize = 17;
 
 struct Elements<V>(Vec<Element<V>>);
 
+impl Into<Elements<String>> for &RuntimeArgs {
+    fn into(self) -> Elements<String> {
+        let mut elements: Vec<Element<String>> = vec![];
+        let named_args: BTreeMap<String, CLValue> = self.clone().into();
+        for (idx, (name, value)) in named_args.iter().enumerate() {
+            let name_label = format!("arg-{}-name", idx);
+            elements.push(Element::expert(&name_label, name.to_string()));
+            let value_label = format!("arg-{}", idx);
+            let value_str = format!("{:?}", value);
+            elements.push(Element::expert(&value_label, value_str));
+        }
+        Elements(elements)
+    }
+}
+
 impl Into<Elements<String>> for &ExecutableDeployItem {
     fn into(self) -> Elements<String> {
+        let mut elements = vec![];
         match self {
             ExecutableDeployItem::ModuleBytes { module_bytes, args } => {}
             ExecutableDeployItem::StoredContractByHash {
                 hash,
                 entry_point,
                 args,
-            } => {}
+            } => {
+                elements.push(Element::expert("to-addr", format!("{}", hash)));
+                elements.push(Element::expert("to-entry", format!("{}", entry_point)));
+                let args_elements: Elements<String> = args.into();
+                elements.extend(args_elements.0);
+            }
             ExecutableDeployItem::StoredContractByName {
                 name,
                 entry_point,
                 args,
-            } => {}
+            } => {
+                elements.push(Element::expert("to-name", format!("{}", name)));
+                elements.push(Element::expert("to-entry", format!("{}", entry_point)));
+                let args_elements: Elements<String> = args.into();
+                elements.extend(args_elements.0);
+            }
             ExecutableDeployItem::StoredVersionedContractByHash {
                 hash,
                 version,
                 entry_point,
                 args,
-            } => {}
+            } => {
+                elements.push(Element::expert("to-addr", format!("{}", hash)));
+                elements.push(Element::expert("to-entry", format!("{}", entry_point)));
+                let version = match version {
+                    None => "latest".to_string(),
+                    Some(version) => format!("{}", version),
+                };
+                elements.push(Element::expert("to-version", format!("{}", version)));
+                let args_elements: Elements<String> = args.into();
+                elements.extend(args_elements.0);
+            }
             ExecutableDeployItem::StoredVersionedContractByName {
                 name,
                 version,
                 entry_point,
                 args,
-            } => {}
+            } => {
+                elements.push(Element::expert("to-name", format!("{}", name)));
+                elements.push(Element::expert("to-entry", format!("{}", entry_point)));
+                let version = match version {
+                    None => "latest".to_string(),
+                    Some(version) => format!("{}", version),
+                };
+                elements.push(Element::expert("to-version", format!("{}", version)));
+                let args_elements: Elements<String> = args.into();
+                elements.extend(args_elements.0);
+            }
             ExecutableDeployItem::Transfer { args } => {}
         }
-        Elements(vec![])
+        Elements(elements)
     }
 }
 
@@ -88,6 +134,7 @@ impl Into<Elements<String>> for Deploy {
     }
 }
 
+#[derive(Debug)]
 struct Element<V> {
     name: String,
     value: V,

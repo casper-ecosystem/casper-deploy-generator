@@ -1,6 +1,7 @@
 use std::fmt::Display;
 
-use casper_node::types::Deploy;
+use casper_execution_engine::core::engine_state::ExecutableDeployItem::{self, *};
+use casper_node::types::{Deploy, DeployHeader};
 use casper_types::bytesrepr::ToBytes;
 
 use serde::{Deserialize, Serialize};
@@ -11,30 +12,72 @@ const LEDGER_VIEW_BOTTOM_COUNT: usize = 17;
 
 struct Elements<V>(Vec<Element<V>>);
 
-impl Into<Elements<String>> for Deploy {
+impl Into<Elements<String>> for &ExecutableDeployItem {
+    fn into(self) -> Elements<String> {
+        match self {
+            ExecutableDeployItem::ModuleBytes { module_bytes, args } => {}
+            ExecutableDeployItem::StoredContractByHash {
+                hash,
+                entry_point,
+                args,
+            } => {}
+            ExecutableDeployItem::StoredContractByName {
+                name,
+                entry_point,
+                args,
+            } => {}
+            ExecutableDeployItem::StoredVersionedContractByHash {
+                hash,
+                version,
+                entry_point,
+                args,
+            } => {}
+            ExecutableDeployItem::StoredVersionedContractByName {
+                name,
+                version,
+                entry_point,
+                args,
+            } => {}
+            ExecutableDeployItem::Transfer { args } => {}
+        }
+        Elements(vec![])
+    }
+}
+
+impl Into<Elements<String>> for &DeployHeader {
     fn into(self) -> Elements<String> {
         let mut elements = vec![];
         elements.push(Element::regular(
-            "chainname",
-            format!("{}", self.header().chain_name()),
+            "chain-name",
+            format!("{}", self.chain_name()),
         ));
-        elements.push(Element::regular(
-            "from",
-            format!("{}", self.header().account()),
-        ));
+        elements.push(Element::regular("from", format!("{}", self.account())));
         elements.push(Element::expert(
             "timestamp",
-            format!("{}", self.header().timestamp()),
+            format!("{}", self.timestamp()),
         ));
-        elements.push(Element::expert("ttl", format!("{}", self.header().ttl())));
+        elements.push(Element::expert("ttl", format!("{}", self.ttl())));
         elements.push(Element::expert(
             "gas price",
-            format!("{}", self.header().gas_price()),
+            format!("{}", self.gas_price()),
         ));
         elements.push(Element::expert(
-            "deps",
-            format!("{:?}", self.header().dependencies()),
+            "dependency",
+            format!("{:?}", self.dependencies()),
         ));
+        Elements(elements)
+    }
+}
+
+impl Into<Elements<String>> for Deploy {
+    fn into(self) -> Elements<String> {
+        let mut elements = vec![];
+        let header_elements: Elements<String> = self.header().into();
+        elements.extend(header_elements.0);
+        let payment_elements: Elements<String> = self.payment().into();
+        elements.extend(payment_elements.0);
+        let session_elements: Elements<String> = self.session().into();
+        elements.extend(session_elements.0);
         Elements(elements)
     }
 }

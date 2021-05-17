@@ -22,7 +22,7 @@ fn serde_value_to_str(value: &serde_json::Value) -> String {
         serde_json::Value::Array(arr) => {
             format!("[{}]", arr.iter().map(serde_value_to_str).join(", "))
         }
-        serde_json::Value::Object(map) => map.values().map(serde_value_to_str).join(" "),
+        serde_json::Value::Object(map) => map.values().map(serde_value_to_str).join(":"),
     }
 }
 
@@ -148,7 +148,7 @@ impl Into<Elements<String>> for &DeployHeader {
     fn into(self) -> Elements<String> {
         let mut elements = vec![];
         elements.push(Element::regular(
-            "chain-name",
+            "chain ID",
             format!("{}", self.chain_name()),
         ));
         elements.push(Element::regular("from", format!("{}", self.account())));
@@ -175,7 +175,7 @@ impl Into<Elements<String>> for Deploy {
         let deploy_type = if self.session().is_transfer() {
             "Transfer".to_string()
         } else {
-            "Wasm".to_string()
+            "Execute Contract".to_string()
         };
         elements.push(Element::regular("Type", deploy_type));
         let header_elements: Elements<String> = self.header().into();

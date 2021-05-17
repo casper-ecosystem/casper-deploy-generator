@@ -1,5 +1,10 @@
 use std::fmt::Display;
 
+use casper_node::types::Deploy;
+use casper_types::bytesrepr::ToBytes;
+
+use serde::{Deserialize, Serialize};
+
 const LEDGER_VIEW_NAME_COUNT: usize = 11;
 const LEDGER_VIEW_TOP_COUNT: usize = 17;
 const LEDGER_VIEW_BOTTOM_COUNT: usize = 17;
@@ -32,11 +37,10 @@ impl<V> Element<V> {
 struct Ledger(Vec<Element<String>>);
 
 impl Ledger {
-    fn new(name: String) -> Self {
-        Ledger {
-            name,
-            elements: vec![],
-        }
+    fn from_deploy(deploy: Deploy) -> Self {
+        let elements: Elements<String> = deploy.into();
+        Ledger(elements.0)
+    }
 
     fn new() -> Self {
         Ledger(vec![])
@@ -168,6 +172,30 @@ impl LedgerView {
             output.push(format!("{} | {}", idx, page_str))
         }
         output
+    }
+}
+
+#[derive(Serialize, Deserialize)]
+pub(super) struct JsonRepr {
+    index: usize,
+    name: String,
+    blob: String,
+    output: Vec<String>,
+    output_expert: Vec<String>,
+}
+
+pub(super) fn from_deploy(index: usize, name: &str, deploy: Deploy) -> JsonRepr {
+    let blob = hex::encode(&deploy.to_bytes().unwrap());
+    let ledger = Ledger::from_deploy(deploy);
+    let ledger_view = LedgerView::from_ledger(ledger);
+    let output = ledger_view.to_string(false);
+    let output_expert = ledger_view.to_string(true);
+    JsonRepr {
+        index,
+        name: name.to_string(),
+        blob,
+        output,
+        output_expert,
     }
 }
 

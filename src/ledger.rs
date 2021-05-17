@@ -62,7 +62,7 @@ impl Into<Elements<String>> for &DeployHeader {
             format!("{}", self.gas_price()),
         ));
         elements.push(Element::expert(
-            "dependency",
+            "deps",
             format!("{:?}", self.dependencies()),
         ));
         Elements(elements)
@@ -72,6 +72,12 @@ impl Into<Elements<String>> for &DeployHeader {
 impl Into<Elements<String>> for Deploy {
     fn into(self) -> Elements<String> {
         let mut elements = vec![];
+        let deploy_type = if self.session().is_transfer() {
+            "Transfer".to_string()
+        } else {
+            "Wasm".to_string()
+        };
+        elements.push(Element::regular("Type", deploy_type));
         let header_elements: Elements<String> = self.header().into();
         elements.extend(header_elements.0);
         let payment_elements: Elements<String> = self.payment().into();

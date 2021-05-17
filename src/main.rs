@@ -4,6 +4,8 @@ use casper_node::types::{Deploy, DeployHash, TimeDiff, Timestamp};
 use casper_execution_engine::core::engine_state::executable_deploy_item::ExecutableDeployItem;
 use casper_types::{AccessRights, Key, PublicKey, RuntimeArgs, SecretKey, TransferAddr, U128, U512, URef, bytesrepr::Bytes, bytesrepr::ToBytes, runtime_args};
 
+mod ledger;
+
 fn main() {
     for (id, session) in sessions().into_iter().enumerate() {
         let deploy = construct(session);

@@ -1,4 +1,4 @@
-use std::{collections::BTreeMap, fmt::Display};
+use std::collections::BTreeMap;
 
 use casper_execution_engine::core::engine_state::ExecutableDeployItem;
 use casper_node::types::{Deploy, DeployHeader};
@@ -11,7 +11,7 @@ const LEDGER_VIEW_NAME_COUNT: usize = 11;
 const LEDGER_VIEW_TOP_COUNT: usize = 17;
 const LEDGER_VIEW_BOTTOM_COUNT: usize = 17;
 
-struct Elements<V>(Vec<Element<V>>);
+struct Elements(Vec<Element>);
 
 fn serde_value_to_str(value: &serde_json::Value) -> String {
     match value {
@@ -71,9 +71,9 @@ fn cl_value_to_string(cl_in: &CLValue) -> String {
     }
 }
 
-impl Into<Elements<String>> for &RuntimeArgs {
-    fn into(self) -> Elements<String> {
-        let mut elements: Vec<Element<String>> = vec![];
+impl Into<Elements> for &RuntimeArgs {
+    fn into(self) -> Elements {
+        let mut elements: Vec<Element> = vec![];
         let named_args: BTreeMap<String, CLValue> = self.clone().into();
         for (idx, (name, value)) in named_args.iter().enumerate() {
             let name_label = format!("arg-{}-name", idx);
@@ -86,13 +86,13 @@ impl Into<Elements<String>> for &RuntimeArgs {
     }
 }
 
-impl Into<Elements<String>> for &ExecutableDeployItem {
-    fn into(self) -> Elements<String> {
+impl Into<Elements> for &ExecutableDeployItem {
+    fn into(self) -> Elements {
         let mut elements = vec![];
         match self {
             ExecutableDeployItem::ModuleBytes { module_bytes, args } => {
                 // TODO: add module's hash
-                let args_elements: Elements<String> = args.into();
+                let args_elements: Elements = args.into();
                 elements.extend(args_elements.0);
             }
             ExecutableDeployItem::StoredContractByHash {
@@ -102,7 +102,7 @@ impl Into<Elements<String>> for &ExecutableDeployItem {
             } => {
                 elements.push(Element::expert("to-addr", format!("{}", hash)));
                 elements.push(Element::expert("to-entry", format!("{}", entry_point)));
-                let args_elements: Elements<String> = args.into();
+                let args_elements: Elements = args.into();
                 elements.extend(args_elements.0);
             }
             ExecutableDeployItem::StoredContractByName {
@@ -112,7 +112,7 @@ impl Into<Elements<String>> for &ExecutableDeployItem {
             } => {
                 elements.push(Element::expert("to-name", format!("{}", name)));
                 elements.push(Element::expert("to-entry", format!("{}", entry_point)));
-                let args_elements: Elements<String> = args.into();
+                let args_elements: Elements = args.into();
                 elements.extend(args_elements.0);
             }
             ExecutableDeployItem::StoredVersionedContractByHash {
@@ -128,7 +128,7 @@ impl Into<Elements<String>> for &ExecutableDeployItem {
                     Some(version) => format!("{}", version),
                 };
                 elements.push(Element::expert("to-version", format!("{}", version)));
-                let args_elements: Elements<String> = args.into();
+                let args_elements: Elements = args.into();
                 elements.extend(args_elements.0);
             }
             ExecutableDeployItem::StoredVersionedContractByName {
@@ -144,13 +144,13 @@ impl Into<Elements<String>> for &ExecutableDeployItem {
                     Some(version) => format!("{}", version),
                 };
                 elements.push(Element::expert("to-version", format!("{}", version)));
-                let args_elements: Elements<String> = args.into();
+                let args_elements: Elements = args.into();
                 elements.extend(args_elements.0);
             }
             ExecutableDeployItem::Transfer { args } => {
                 let maybe_target = args.get("target").map(cl_value_to_string);
                 match maybe_target {
-                    None => {},
+                    None => {}
                     Some(target) => elements.push(Element::regular("target", target)),
                 }
                 let maybe_amount = args.get("amount").map(cl_value_to_string);
@@ -169,8 +169,8 @@ impl Into<Elements<String>> for &ExecutableDeployItem {
     }
 }
 
-impl Into<Elements<String>> for &DeployHeader {
-    fn into(self) -> Elements<String> {
+impl Into<Elements> for &DeployHeader {
+    fn into(self) -> Elements {
         let mut elements = vec![];
         elements.push(Element::regular(
             "chain ID",
@@ -194,8 +194,8 @@ impl Into<Elements<String>> for &DeployHeader {
     }
 }
 
-impl Into<Elements<String>> for Deploy {
-    fn into(self) -> Elements<String> {
+impl Into<Elements> for Deploy {
+    fn into(self) -> Elements {
         let mut elements = vec![];
         let deploy_type = if self.session().is_transfer() {
             "Transfer".to_string()
@@ -203,26 +203,26 @@ impl Into<Elements<String>> for Deploy {
             "Execute Contract".to_string()
         };
         elements.push(Element::regular("Type", deploy_type));
-        let header_elements: Elements<String> = self.header().into();
+        let header_elements: Elements = self.header().into();
         elements.extend(header_elements.0);
-        let payment_elements: Elements<String> = self.payment().into();
+        let payment_elements: Elements = self.payment().into();
         elements.extend(payment_elements.0);
-        let session_elements: Elements<String> = self.session().into();
+        let session_elements: Elements = self.session().into();
         elements.extend(session_elements.0);
         Elements(elements)
     }
 }
 
 #[derive(Debug)]
-struct Element<V> {
+struct Element {
     name: String,
-    value: V,
+    value: String,
     // Whether to display in expert mode only.
     expert: bool,
 }
 
-impl<V> Element<V> {
-    fn expert(name: &str, value: V) -> Element<V> {
+impl Element {
+    fn expert(name: &str, value: String) -> Element {
         Element {
             name: name.to_string(),
             value,
@@ -230,7 +230,7 @@ impl<V> Element<V> {
         }
     }
 
-    fn regular(name: &str, value: V) -> Self {
+    fn regular(name: &str, value: String) -> Self {
         Element {
             name: name.to_string(),
             value,
@@ -239,11 +239,11 @@ impl<V> Element<V> {
     }
 }
 
-struct Ledger(Vec<Element<String>>);
+struct Ledger(Vec<Element>);
 
 impl Ledger {
     fn from_deploy(deploy: Deploy) -> Self {
-        let elements: Elements<String> = deploy.into();
+        let elements: Elements = deploy.into();
         Ledger(elements.0)
     }
 
@@ -251,7 +251,7 @@ impl Ledger {
         Ledger(vec![])
     }
 
-    fn add_view(&mut self, view: Element<String>) {
+    fn add_view(&mut self, view: Element) {
         self.0.push(view)
     }
 }
@@ -296,7 +296,7 @@ struct LedgerPageView {
 }
 
 impl LedgerPageView {
-    fn from_element<V: Display>(element: Element<V>) -> Self {
+    fn from_element(element: Element) -> Self {
         if element.name.chars().count() > LEDGER_VIEW_NAME_COUNT {
             panic!(
                 "Name tag can only be {} elements. Tag: {}",

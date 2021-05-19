@@ -148,23 +148,35 @@ fn parse_transfer(args: &RuntimeArgs) -> Vec<Element> {
     elements
 }
 
-fn parse_payment_code(item: &ExecutableDeployItem, _dt: DeployType) -> Vec<Element> {
-    let mut payment_type;
-    let payment_args = match item {
+fn parse_phase(item: &ExecutableDeployItem, phase: TxnPhase) -> Vec<Element> {
+    let item_type;
+    let phase_args = match item {
         ExecutableDeployItem::ModuleBytes { module_bytes, args } => {
-            if module_bytes.inner_bytes().is_empty() {
-                payment_type = "system".to_string();
-                let mut elements = vec![parse_arg(args, ARG_AMOUNT, false)];
-                let args_sans_amount = remove_amount_arg(args.clone());
-                elements.extend(parse_runtime_args(&args_sans_amount));
-                elements
-            } else {
-                payment_type = "contract".to_string();
-                let payment_bytes = "".to_string(); // TODO
-                let mut elements = vec![Element::expert("bytes", payment_bytes)];
-                // TODO: add module's hash
-                elements.extend(parse_runtime_args(args));
-                elements
+            match phase {
+                TxnPhase::Payment => {
+                    if module_bytes.inner_bytes().is_empty() {
+                        item_type = "system".to_string();
+                        let mut elements = vec![parse_arg(args, ARG_AMOUNT, false)];
+                        let args_sans_amount = remove_amount_arg(args.clone());
+                        elements.extend(parse_runtime_args(&args_sans_amount));
+                        elements
+                    } else {
+                        item_type = "contract".to_string();
+                        let payment_bytes = "".to_string(); // TODO
+                        let mut elements = vec![Element::expert("bytes", payment_bytes)];
+                        // TODO: add module's hash
+                        elements.extend(parse_runtime_args(args));
+                        elements
+                    }
+                }
+                TxnPhase::Session => {
+                    item_type = "contract".to_string();
+                    let payment_bytes = "".to_string(); // TODO
+                    let mut elements = vec![Element::expert("bytes", payment_bytes)];
+                    // TODO: add module's hash
+                    elements.extend(parse_runtime_args(args));
+                    elements
+                }
             }
         }
         ExecutableDeployItem::StoredContractByHash {
@@ -172,7 +184,7 @@ fn parse_payment_code(item: &ExecutableDeployItem, _dt: DeployType) -> Vec<Eleme
             entry_point,
             args,
         } => {
-            payment_type = "by-hash".to_string();
+            item_type = "by-hash".to_string();
             let mut elements = vec![Element::expert("hash", format!("{}", hash))];
             elements.push(entrypoint(entry_point));
             elements.extend(parse_runtime_args(args));
@@ -183,7 +195,7 @@ fn parse_payment_code(item: &ExecutableDeployItem, _dt: DeployType) -> Vec<Eleme
             entry_point,
             args,
         } => {
-            payment_type = "by-name".to_string();
+            item_type = "by-name".to_string();
             let mut elements = vec![Element::expert("name", format!("{}", name))];
             elements.push(entrypoint(entry_point));
             elements.extend(parse_runtime_args(args));
@@ -195,7 +207,7 @@ fn parse_payment_code(item: &ExecutableDeployItem, _dt: DeployType) -> Vec<Eleme
             entry_point,
             args,
         } => {
-            payment_type = "by-hash-version".to_string();
+            item_type = "by-hash-versioned".to_string();
             let mut elements = vec![Element::expert("by-addr", format!("{}", hash))];
             elements.push(entrypoint(entry_point));
             elements.push(parse_version(version));
@@ -208,7 +220,7 @@ fn parse_payment_code(item: &ExecutableDeployItem, _dt: DeployType) -> Vec<Eleme
             entry_point,
             args,
         } => {
-            payment_type = "by-name-version".to_string();
+            item_type = "by-name-versioned".to_string();
             let mut elements = vec![Element::expert("name", format!("{}", name))];
             elements.push(entrypoint(entry_point));
             elements.push(parse_version(version));
@@ -216,100 +228,32 @@ fn parse_payment_code(item: &ExecutableDeployItem, _dt: DeployType) -> Vec<Eleme
             elements
         }
         ExecutableDeployItem::Transfer { args } => {
-            payment_type = "native transfer".to_string();
+            item_type = "native transfer".to_string();
             parse_transfer(args)
         }
     };
-    let mut elements = vec![Element::regular("Payment", payment_type)];
-    elements.extend(payment_args);
-    elements
-}
-
-fn parse_session_code(item: &ExecutableDeployItem, _dt: DeployType) -> Vec<Element> {
-    let mut session_type;
-    let session_args = match item {
-        ExecutableDeployItem::ModuleBytes { module_bytes, args } => {
-            session_type = "contract".to_string();
-            let payment_bytes = "".to_string(); // TODO
-            let mut elements = vec![Element::expert("bytes", payment_bytes)];
-            // TODO: add module's hash
-            elements.extend(parse_runtime_args(args));
-            elements
-        }
-        ExecutableDeployItem::StoredContractByHash {
-            hash,
-            entry_point,
-            args,
-        } => {
-            session_type = "by-hash".to_string();
-            let mut elements = vec![Element::expert("hash", format!("{}", hash))];
-            elements.push(entrypoint(entry_point));
-            elements.extend(parse_runtime_args(args));
-            elements
-        }
-        ExecutableDeployItem::StoredContractByName {
-            name,
-            entry_point,
-            args,
-        } => {
-            session_type = "by-name".to_string();
-            let mut elements = vec![Element::expert("name", format!("{}", name))];
-            elements.push(entrypoint(entry_point));
-            elements.extend(parse_runtime_args(args));
-            elements
-        }
-        ExecutableDeployItem::StoredVersionedContractByHash {
-            hash,
-            version,
-            entry_point,
-            args,
-        } => {
-            session_type = "by-hash-version".to_string();
-            let mut elements = vec![Element::expert("by-addr", format!("{}", hash))];
-            elements.push(entrypoint(entry_point));
-            elements.push(parse_version(version));
-            elements.extend(parse_runtime_args(args));
-            elements
-        }
-        ExecutableDeployItem::StoredVersionedContractByName {
-            name,
-            version,
-            entry_point,
-            args,
-        } => {
-            session_type = "by-name-version".to_string();
-            let mut elements = vec![Element::expert("name", format!("{}", name))];
-            elements.push(entrypoint(entry_point));
-            elements.push(parse_version(version));
-            elements.extend(parse_runtime_args(args));
-            elements
-        }
-        ExecutableDeployItem::Transfer { args } => {
-            session_type = "native transfer".to_string();
-            parse_transfer(args)
-        }
-    };
-    let mut elements = vec![Element::regular("Execute", session_type)];
-    elements.extend(session_args);
+    let phase_label = format!("{}", phase);
+    let mut elements = vec![Element::regular(&phase_label, item_type)];
+    elements.extend(phase_args);
     elements
 }
 
 #[derive(Clone, Copy)]
-enum DeployType {
-    Transfer,
-    Wasm,
+enum TxnPhase {
+    Payment,
+    Session,
 }
 
-impl Display for DeployType {
+impl Display for TxnPhase {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            DeployType::Transfer => write!(f, "Transfer"),
-            DeployType::Wasm => write!(f, "Execute Contract"),
+            TxnPhase::Payment => write!(f, "Payment"),
+            TxnPhase::Session => write!(f, "Execution"),
         }
     }
 }
 
-fn parse_deploy_header(dh: &DeployHeader, _dt: DeployType) -> Vec<Element> {
+fn parse_deploy_header(dh: &DeployHeader) -> Vec<Element> {
     let mut elements = vec![];
     elements.push(Element::regular("chain ID", format!("{}", dh.chain_name())));
     elements.push(Element::regular(
@@ -336,14 +280,14 @@ impl Into<Elements> for Deploy {
     fn into(self) -> Elements {
         let mut elements = vec![];
         let deploy_type = if self.session().is_transfer() {
-            DeployType::Transfer
+            "Transfer"
         } else {
-            DeployType::Wasm
+            "Execute Contract"
         };
         elements.push(Element::regular("Type", format!("{}", deploy_type)));
-        elements.extend(parse_deploy_header(self.header(), deploy_type));
-        elements.extend(parse_payment_code(self.payment(), deploy_type));
-        elements.extend(parse_session_code(self.session(), deploy_type));
+        elements.extend(parse_deploy_header(self.header()));
+        elements.extend(parse_phase(self.payment(), TxnPhase::Payment));
+        elements.extend(parse_phase(self.session(), TxnPhase::Session));
         Elements(elements)
     }
 }

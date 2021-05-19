@@ -1,7 +1,10 @@
-use std::{collections::BTreeMap, fmt::Display, ops::Div, str::FromStr};
+use std::{collections::BTreeMap, fmt::Display, str::FromStr};
 
 use casper_execution_engine::core::engine_state::ExecutableDeployItem;
-use casper_node::types::{Deploy, DeployHeader};
+use casper_node::{
+    crypto::hash,
+    types::{Deploy, DeployHeader},
+};
 use casper_types::{
     bytesrepr::ToBytes,
     system::{
@@ -332,14 +335,6 @@ impl Ledger {
         let elements: Elements = deploy.into();
         Ledger(elements.0)
     }
-
-    fn new() -> Self {
-        Ledger(vec![])
-    }
-
-    fn add_view(&mut self, view: Element) {
-        self.0.push(view)
-    }
 }
 
 #[derive(Default, Clone)]
@@ -489,37 +484,5 @@ pub(super) fn from_deploy(index: usize, name: &str, deploy: Deploy) -> JsonRepr 
         blob,
         output,
         output_expert,
-    }
-}
-
-#[cfg(test)]
-mod ledger_view {
-    use super::{Element, Ledger, LedgerView};
-
-    #[test]
-    fn to_string() {
-        let type_element = Element {
-            name: "Type".to_string(),
-            value: "Transfer".to_string(),
-            expert: false,
-        };
-        let to_element = Element {
-            name: "To".to_string(),
-            value: "0101010101010101010101010101010101010101010101010101010101010101".to_string(),
-            expert: false,
-        };
-        let amount_element = Element {
-            name: "Amount".to_string(),
-            value: "CSPR 24.5".to_string(),
-            expert: false,
-        };
-        let mut ledger = Ledger::new();
-        ledger.add_view(type_element);
-        ledger.add_view(to_element);
-        ledger.add_view(amount_element);
-        let ledger = LedgerView::from_ledger(ledger);
-        for ledger_page_view in ledger.to_string(false) {
-            println!("{}", ledger_page_view);
-        }
     }
 }

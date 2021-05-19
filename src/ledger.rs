@@ -125,6 +125,10 @@ fn parse_optional_arg(args: &RuntimeArgs, key: &str, expert: bool) -> Option<Ele
     }
 }
 
+fn entrypoint(entry_point: &str) -> Element {
+    Element::expert("entry-point", format!("{}", entry_point))
+}
+
 fn remove_amount_arg(args: RuntimeArgs) -> RuntimeArgs {
     let mut tree: BTreeMap<String, CLValue> = args.into();
     tree.remove(ARG_AMOUNT);
@@ -170,7 +174,7 @@ fn parse_payment_code(item: &ExecutableDeployItem, _dt: DeployType) -> Vec<Eleme
         } => {
             payment_type = "by-hash".to_string();
             let mut elements = vec![Element::expert("hash", format!("{}", hash))];
-            elements.push(Element::expert("entry-point", format!("{}", entry_point)));
+            elements.push(entrypoint(entry_point));
             elements.extend(parse_runtime_args(args));
             elements
         }
@@ -181,7 +185,7 @@ fn parse_payment_code(item: &ExecutableDeployItem, _dt: DeployType) -> Vec<Eleme
         } => {
             payment_type = "by-name".to_string();
             let mut elements = vec![Element::expert("name", format!("{}", name))];
-            elements.push(Element::expert("entry-point", format!("{}", entry_point)));
+            elements.push(entrypoint(entry_point));
             elements.extend(parse_runtime_args(args));
             elements
         }
@@ -193,7 +197,7 @@ fn parse_payment_code(item: &ExecutableDeployItem, _dt: DeployType) -> Vec<Eleme
         } => {
             payment_type = "by-hash-version".to_string();
             let mut elements = vec![Element::expert("by-addr", format!("{}", hash))];
-            elements.push(Element::expert("entry-point", format!("{}", entry_point)));
+            elements.push(entrypoint(entry_point));
             elements.push(parse_version(version));
             elements.extend(parse_runtime_args(args));
             elements
@@ -206,7 +210,7 @@ fn parse_payment_code(item: &ExecutableDeployItem, _dt: DeployType) -> Vec<Eleme
         } => {
             payment_type = "by-name-version".to_string();
             let mut elements = vec![Element::expert("name", format!("{}", name))];
-            elements.push(Element::expert("entry-point", format!("{}", entry_point)));
+            elements.push(entrypoint(entry_point));
             elements.push(parse_version(version));
             elements.extend(parse_runtime_args(args));
             elements
@@ -222,29 +226,37 @@ fn parse_payment_code(item: &ExecutableDeployItem, _dt: DeployType) -> Vec<Eleme
 }
 
 fn parse_session_code(item: &ExecutableDeployItem, _dt: DeployType) -> Vec<Element> {
-    let mut elements = vec![];
-    match item {
+    let mut session_type;
+    let session_args = match item {
         ExecutableDeployItem::ModuleBytes { module_bytes, args } => {
+            session_type = "contract".to_string();
+            let payment_bytes = "".to_string(); // TODO
+            let mut elements = vec![Element::expert("bytes", payment_bytes)];
             // TODO: add module's hash
             elements.extend(parse_runtime_args(args));
+            elements
         }
         ExecutableDeployItem::StoredContractByHash {
             hash,
             entry_point,
             args,
         } => {
-            elements.push(Element::expert("to-addr", format!("{}", hash)));
-            elements.push(Element::expert("to-entry", format!("{}", entry_point)));
+            session_type = "by-hash".to_string();
+            let mut elements = vec![Element::expert("hash", format!("{}", hash))];
+            elements.push(entrypoint(entry_point));
             elements.extend(parse_runtime_args(args));
+            elements
         }
         ExecutableDeployItem::StoredContractByName {
             name,
             entry_point,
             args,
         } => {
-            elements.push(Element::expert("to-name", format!("{}", name)));
-            elements.push(Element::expert("to-entry", format!("{}", entry_point)));
+            session_type = "by-name".to_string();
+            let mut elements = vec![Element::expert("name", format!("{}", name))];
+            elements.push(entrypoint(entry_point));
             elements.extend(parse_runtime_args(args));
+            elements
         }
         ExecutableDeployItem::StoredVersionedContractByHash {
             hash,
@@ -252,14 +264,12 @@ fn parse_session_code(item: &ExecutableDeployItem, _dt: DeployType) -> Vec<Eleme
             entry_point,
             args,
         } => {
-            elements.push(Element::expert("to-addr", format!("{}", hash)));
-            elements.push(Element::expert("to-entry", format!("{}", entry_point)));
-            let version = match version {
-                None => "latest".to_string(),
-                Some(version) => format!("{}", version),
-            };
-            elements.push(Element::expert("to-version", format!("{}", version)));
+            session_type = "by-hash-version".to_string();
+            let mut elements = vec![Element::expert("by-addr", format!("{}", hash))];
+            elements.push(entrypoint(entry_point));
+            elements.push(parse_version(version));
             elements.extend(parse_runtime_args(args));
+            elements
         }
         ExecutableDeployItem::StoredVersionedContractByName {
             name,
@@ -267,33 +277,20 @@ fn parse_session_code(item: &ExecutableDeployItem, _dt: DeployType) -> Vec<Eleme
             entry_point,
             args,
         } => {
-            elements.push(Element::expert("to-name", format!("{}", name)));
-            elements.push(Element::expert("to-entry", format!("{}", entry_point)));
-            let version = match version {
-                None => "latest".to_string(),
-                Some(version) => format!("{}", version),
-            };
-            elements.push(Element::expert("to-version", format!("{}", version)));
+            session_type = "by-name-version".to_string();
+            let mut elements = vec![Element::expert("name", format!("{}", name))];
+            elements.push(entrypoint(entry_point));
+            elements.push(parse_version(version));
             elements.extend(parse_runtime_args(args));
+            elements
         }
         ExecutableDeployItem::Transfer { args } => {
-            let maybe_target = args.get("target").map(cl_value_to_string);
-            match maybe_target {
-                None => {}
-                Some(target) => elements.push(Element::regular("target", target)),
-            }
-            let maybe_amount = args.get("amount").map(cl_value_to_string);
-            match maybe_amount {
-                None => {}
-                Some(amount) => elements.push(Element::regular("amount", amount)),
-            }
-            let maybe_id = args.get("id").map(cl_value_to_string);
-            match maybe_id {
-                None => {}
-                Some(id) => elements.push(Element::regular("id", id)),
-            }
+            session_type = "native transfer".to_string();
+            parse_transfer(args)
         }
-    }
+    };
+    let mut elements = vec![Element::regular("Execute", session_type)];
+    elements.extend(session_args);
     elements
 }
 

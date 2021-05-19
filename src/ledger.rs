@@ -299,10 +299,18 @@ struct Element {
     expert: bool,
 }
 
+fn capitalize(s: &str) -> String {
+    let mut c = s.chars();
+    match c.next() {
+        None => String::new(),
+        Some(f) => f.to_uppercase().collect::<String>() + c.as_str(),
+    }
+}
+
 impl Element {
     fn expert(name: &str, value: String) -> Element {
         Element {
-            name: name.to_string(),
+            name: capitalize(name),
             value,
             expert: true,
         }
@@ -310,7 +318,7 @@ impl Element {
 
     fn regular(name: &str, value: String) -> Self {
         Element {
-            name: name.to_string(),
+            name: capitalize(name),
             value,
             expert: false,
         }

@@ -166,8 +166,8 @@ fn parse_phase(item: &ExecutableDeployItem, phase: TxnPhase) -> Vec<Element> {
                 elements
             } else {
                 item_type = "contract".to_string();
-                let bytes = "".to_string(); // TODO
-                let mut elements = vec![Element::expert("bytes", bytes)];
+                let bytes = format!("{:?}", hash::hash(module_bytes.as_slice()));
+                let mut elements = vec![Element::expert("Cntrct hash", bytes)];
                 elements.extend(parse_runtime_args(args));
                 elements
             }

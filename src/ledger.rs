@@ -302,7 +302,8 @@ struct Element {
     expert: bool,
 }
 
-fn capitalize(s: &str) -> String {
+// Capitalizes the first character.
+fn capitalize_first(s: &str) -> String {
     let mut c = s.chars();
     match c.next() {
         None => String::new(),
@@ -313,7 +314,7 @@ fn capitalize(s: &str) -> String {
 impl Element {
     fn expert(name: &str, value: String) -> Element {
         Element {
-            name: capitalize(name),
+            name: capitalize_first(name),
             value,
             expert: true,
         }
@@ -321,7 +322,7 @@ impl Element {
 
     fn regular(name: &str, value: String) -> Self {
         Element {
-            name: capitalize(name),
+            name: capitalize_first(name),
             value,
             expert: false,
         }
@@ -344,6 +345,10 @@ struct LedgerValue {
 }
 
 impl LedgerValue {
+    // Adds a char to the ledger value.
+    // Single value is limited by the number of chars that can be 
+    // printed on one ledger view: 34 char total in two lines.
+    // Returns whether adding char was successful.
     fn add_char(&mut self, c: char) -> bool {
         if self.top.chars().count() < LEDGER_VIEW_TOP_COUNT {
             self.top = format!("{}{}", self.top, c);
@@ -408,12 +413,15 @@ impl LedgerPageView {
         }
     }
 
+    // Turn the current element into printable views.
     fn to_string(&self) -> Vec<String> {
         let total_count = self.values.len();
         if total_count == 1 {
+            // The whole value can fit on one screen.
             return vec![format!("{} : {}", self.name, self.values[0])];
         }
         let mut output = vec![];
+        // Split value display into multiple screens.
         for (idx, value) in self.values.iter().enumerate() {
             output.push(format!(
                 "{} [{}/{}] : {}",

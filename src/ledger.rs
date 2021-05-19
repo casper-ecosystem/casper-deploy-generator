@@ -1,15 +1,11 @@
-use std::{collections::BTreeMap, fmt::Display};
+use std::{collections::BTreeMap, fmt::Display, ops::Div, str::FromStr};
 
 use casper_execution_engine::core::engine_state::ExecutableDeployItem;
 use casper_node::types::{Deploy, DeployHeader};
-use casper_types::{
-    bytesrepr::ToBytes,
-    system::{
+use casper_types::{CLValue, Key, RuntimeArgs, U512, bytesrepr::ToBytes, system::{
         mint::{ARG_ID, ARG_SOURCE, ARG_TARGET, ARG_TO},
         standard_payment::ARG_AMOUNT,
-    },
-    CLValue, Key, RuntimeArgs,
-};
+    }};
 
 use itertools::Itertools;
 use serde::{Deserialize, Serialize};
@@ -101,6 +97,12 @@ fn parse_version(version: &Option<u32>) -> Element {
     Element::expert("version", format!("{}", version))
 }
 
+fn parse_amount(args: &RuntimeArgs) -> Element {
+    let amount_str = cl_value_to_string(args.get(ARG_AMOUNT).unwrap());
+    let motes_amount = U512::from_str(&amount_str).unwrap();
+    Element::regular("amount", format!("{:.9} motes", motes_amount))
+}
+
 fn parse_arg(args: &RuntimeArgs, key: &str, expert: bool) -> Element {
     let value = cl_value_to_string(args.get(key).unwrap());
     if expert {
@@ -143,7 +145,7 @@ fn parse_transfer(args: &RuntimeArgs) -> Vec<Element> {
         .unwrap_or_default();
     elements.extend(parse_optional_arg(args, ARG_SOURCE, true).into_iter());
     elements.push(parse_arg(args, ARG_TARGET, true));
-    elements.push(parse_arg(args, ARG_AMOUNT, true));
+    elements.push(parse_amount(args));
     elements.extend(parse_optional_arg(args, ARG_ID, true).into_iter());
     elements
 }
@@ -156,7 +158,7 @@ fn parse_phase(item: &ExecutableDeployItem, phase: TxnPhase) -> Vec<Element> {
                 TxnPhase::Payment => {
                     if module_bytes.inner_bytes().is_empty() {
                         item_type = "system".to_string();
-                        let mut elements = vec![parse_arg(args, ARG_AMOUNT, false)];
+                        let mut elements = vec![parse_amount(args)];
                         let args_sans_amount = remove_amount_arg(args.clone());
                         elements.extend(parse_runtime_args(&args_sans_amount));
                         elements

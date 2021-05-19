@@ -18,7 +18,7 @@ fn serde_value_to_str(value: &serde_json::Value) -> String {
         serde_json::Value::Null => "null".to_string(),
         serde_json::Value::Bool(value) => format!("{}", value),
         serde_json::Value::Number(num) => format!("{}", num),
-        serde_json::Value::String(string) => shorten_cl_string(string.clone()),
+        serde_json::Value::String(string) => drop_key_type_prefix(string.clone()),
         serde_json::Value::Array(arr) => {
             format!("[{}]", arr.iter().map(serde_value_to_str).join(", "))
         }
@@ -26,7 +26,7 @@ fn serde_value_to_str(value: &serde_json::Value) -> String {
     }
 }
 
-fn shorten_cl_string(cl_in: String) -> String {
+fn drop_key_type_prefix(cl_in: String) -> String {
     let parsed_key = Key::from_formatted_str(&cl_in);
     match parsed_key {
         Ok(key) => {
@@ -57,6 +57,8 @@ fn shorten_cl_string(cl_in: String) -> String {
     }
 }
 
+/// Extracts the `parsed` field from the `CLValue`.
+/// It should be human-readable.
 fn cl_value_to_string(cl_in: &CLValue) -> String {
     match serde_json::to_value(&cl_in) {
         Ok(value) => {
@@ -71,127 +73,116 @@ fn cl_value_to_string(cl_in: &CLValue) -> String {
     }
 }
 
-impl Into<Elements> for &RuntimeArgs {
-    fn into(self) -> Elements {
-        let mut elements: Vec<Element> = vec![];
-        let named_args: BTreeMap<String, CLValue> = self.clone().into();
-        for (idx, (name, value)) in named_args.iter().enumerate() {
-            let name_label = format!("arg-{}-name", idx);
-            elements.push(Element::expert(&name_label, name.to_string()));
-            let value_label = format!("arg-{}-val", idx);
-            let value_str = cl_value_to_string(&value);
-            elements.push(Element::expert(&value_label, value_str));
-        }
-        Elements(elements)
+fn parse_runtime_args(ra: &RuntimeArgs) -> Vec<Element> {
+    let mut elements: Vec<Element> = vec![];
+    let named_args: BTreeMap<String, CLValue> = ra.clone().into();
+    for (idx, (name, value)) in named_args.iter().enumerate() {
+        let name_label = format!("arg-{}-name", idx);
+        elements.push(Element::expert(&name_label, name.to_string()));
+        let value_label = format!("arg-{}-val", idx);
+        let value_str = cl_value_to_string(&value);
+        elements.push(Element::expert(&value_label, value_str));
     }
+    elements
 }
 
-impl Into<Elements> for &ExecutableDeployItem {
-    fn into(self) -> Elements {
-        let mut elements = vec![];
-        match self {
-            ExecutableDeployItem::ModuleBytes { module_bytes, args } => {
-                // TODO: add module's hash
-                let args_elements: Elements = args.into();
-                elements.extend(args_elements.0);
+fn parse_executable_item(item: &ExecutableDeployItem) -> Vec<Element> {
+    let mut elements = vec![];
+    match item {
+        ExecutableDeployItem::ModuleBytes { module_bytes, args } => {
+            // TODO: add module's hash
+            elements.extend(parse_runtime_args(args));
+        }
+        ExecutableDeployItem::StoredContractByHash {
+            hash,
+            entry_point,
+            args,
+        } => {
+            elements.push(Element::expert("to-addr", format!("{}", hash)));
+            elements.push(Element::expert("to-entry", format!("{}", entry_point)));
+            elements.extend(parse_runtime_args(args));
+        }
+        ExecutableDeployItem::StoredContractByName {
+            name,
+            entry_point,
+            args,
+        } => {
+            elements.push(Element::expert("to-name", format!("{}", name)));
+            elements.push(Element::expert("to-entry", format!("{}", entry_point)));
+            elements.extend(parse_runtime_args(args));
+        }
+        ExecutableDeployItem::StoredVersionedContractByHash {
+            hash,
+            version,
+            entry_point,
+            args,
+        } => {
+            elements.push(Element::expert("to-addr", format!("{}", hash)));
+            elements.push(Element::expert("to-entry", format!("{}", entry_point)));
+            let version = match version {
+                None => "latest".to_string(),
+                Some(version) => format!("{}", version),
+            };
+            elements.push(Element::expert("to-version", format!("{}", version)));
+            elements.extend(parse_runtime_args(args));
+        }
+        ExecutableDeployItem::StoredVersionedContractByName {
+            name,
+            version,
+            entry_point,
+            args,
+        } => {
+            elements.push(Element::expert("to-name", format!("{}", name)));
+            elements.push(Element::expert("to-entry", format!("{}", entry_point)));
+            let version = match version {
+                None => "latest".to_string(),
+                Some(version) => format!("{}", version),
+            };
+            elements.push(Element::expert("to-version", format!("{}", version)));
+            elements.extend(parse_runtime_args(args));
+        }
+        ExecutableDeployItem::Transfer { args } => {
+            let maybe_target = args.get("target").map(cl_value_to_string);
+            match maybe_target {
+                None => {}
+                Some(target) => elements.push(Element::regular("target", target)),
             }
-            ExecutableDeployItem::StoredContractByHash {
-                hash,
-                entry_point,
-                args,
-            } => {
-                elements.push(Element::expert("to-addr", format!("{}", hash)));
-                elements.push(Element::expert("to-entry", format!("{}", entry_point)));
-                let args_elements: Elements = args.into();
-                elements.extend(args_elements.0);
+            let maybe_amount = args.get("amount").map(cl_value_to_string);
+            match maybe_amount {
+                None => {}
+                Some(amount) => elements.push(Element::regular("amount", amount)),
             }
-            ExecutableDeployItem::StoredContractByName {
-                name,
-                entry_point,
-                args,
-            } => {
-                elements.push(Element::expert("to-name", format!("{}", name)));
-                elements.push(Element::expert("to-entry", format!("{}", entry_point)));
-                let args_elements: Elements = args.into();
-                elements.extend(args_elements.0);
-            }
-            ExecutableDeployItem::StoredVersionedContractByHash {
-                hash,
-                version,
-                entry_point,
-                args,
-            } => {
-                elements.push(Element::expert("to-addr", format!("{}", hash)));
-                elements.push(Element::expert("to-entry", format!("{}", entry_point)));
-                let version = match version {
-                    None => "latest".to_string(),
-                    Some(version) => format!("{}", version),
-                };
-                elements.push(Element::expert("to-version", format!("{}", version)));
-                let args_elements: Elements = args.into();
-                elements.extend(args_elements.0);
-            }
-            ExecutableDeployItem::StoredVersionedContractByName {
-                name,
-                version,
-                entry_point,
-                args,
-            } => {
-                elements.push(Element::expert("to-name", format!("{}", name)));
-                elements.push(Element::expert("to-entry", format!("{}", entry_point)));
-                let version = match version {
-                    None => "latest".to_string(),
-                    Some(version) => format!("{}", version),
-                };
-                elements.push(Element::expert("to-version", format!("{}", version)));
-                let args_elements: Elements = args.into();
-                elements.extend(args_elements.0);
-            }
-            ExecutableDeployItem::Transfer { args } => {
-                let maybe_target = args.get("target").map(cl_value_to_string);
-                match maybe_target {
-                    None => {}
-                    Some(target) => elements.push(Element::regular("target", target)),
-                }
-                let maybe_amount = args.get("amount").map(cl_value_to_string);
-                match maybe_amount {
-                    None => {}
-                    Some(amount) => elements.push(Element::regular("amount", amount)),
-                }
-                let maybe_id = args.get("id").map(cl_value_to_string);
-                match maybe_id {
-                    None => {}
-                    Some(id) => elements.push(Element::regular("id", id)),
-                }
+            let maybe_id = args.get("id").map(cl_value_to_string);
+            match maybe_id {
+                None => {}
+                Some(id) => elements.push(Element::regular("id", id)),
             }
         }
-        Elements(elements)
     }
+    elements
 }
 
-impl Into<Elements> for &DeployHeader {
-    fn into(self) -> Elements {
-        let mut elements = vec![];
-        elements.push(Element::regular(
-            "chain ID",
-            format!("{}", self.chain_name()),
-        ));
-        elements.push(Element::regular("from", format!("{}", self.account())));
-        elements.push(Element::expert(
-            "timestamp",
-            format!("{}", self.timestamp()),
-        ));
-        elements.push(Element::expert("ttl", format!("{}", self.ttl())));
-        elements.push(Element::expert(
-            "gas price",
-            format!("{}", self.gas_price()),
-        ));
-        elements.push(Element::expert(
-            "deps",
-            format!("{:?}", self.dependencies()),
-        ));
-        Elements(elements)
-    }
+fn parse_deploy_header(dh: &DeployHeader) -> Vec<Element> {
+    let mut elements = vec![];
+    elements.push(Element::regular("chain ID", format!("{}", dh.chain_name())));
+    elements.push(Element::regular(
+        "from",
+        format!("{}", dh.account().to_account_hash()),
+    ));
+    elements.push(Element::expert("timestamp", format!("{}", dh.timestamp())));
+    elements.push(Element::expert("ttl", format!("{}", dh.ttl())));
+    elements.push(Element::expert("gas price", format!("{}", dh.gas_price())));
+    elements.push(Element::expert(
+        "deps",
+        format!(
+            "{:?}",
+            dh.dependencies()
+                .iter()
+                .map(|dh| dh.inner())
+                .collect::<Vec<_>>()
+        ),
+    ));
+    elements
 }
 
 impl Into<Elements> for Deploy {
@@ -203,12 +194,9 @@ impl Into<Elements> for Deploy {
             "Execute Contract".to_string()
         };
         elements.push(Element::regular("Type", deploy_type));
-        let header_elements: Elements = self.header().into();
-        elements.extend(header_elements.0);
-        let payment_elements: Elements = self.payment().into();
-        elements.extend(payment_elements.0);
-        let session_elements: Elements = self.session().into();
-        elements.extend(session_elements.0);
+        elements.extend(parse_deploy_header(self.header()));
+        elements.extend(parse_executable_item(self.payment()));
+        elements.extend(parse_executable_item(self.session()));
         Elements(elements)
     }
 }

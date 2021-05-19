@@ -187,7 +187,7 @@ fn parse_phase(item: &ExecutableDeployItem, phase: TxnPhase) -> Vec<Element> {
             args,
         } => {
             item_type = "by-hash".to_string();
-            let mut elements = vec![Element::expert("hash", format!("{}", hash))];
+            let mut elements = vec![Element::expert("address", format!("{}", hash))];
             elements.push(entrypoint(entry_point));
             elements.extend(parse_runtime_args(args));
             elements
@@ -210,7 +210,7 @@ fn parse_phase(item: &ExecutableDeployItem, phase: TxnPhase) -> Vec<Element> {
             args,
         } => {
             item_type = "by-hash-versioned".to_string();
-            let mut elements = vec![Element::expert("by-addr", format!("{}", hash))];
+            let mut elements = vec![Element::expert("address", format!("{}", hash))];
             elements.push(entrypoint(entry_point));
             elements.push(parse_version(version));
             elements.extend(parse_runtime_args(args));

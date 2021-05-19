@@ -43,6 +43,12 @@ fn drop_key_type_prefix(cl_in: String) -> String {
             let prefix = match key {
                 Key::Account(_) => "account-hash-",
                 Key::Hash(_) => "hash-",
+                Key::Transfer(_) => "transfer-",
+                Key::DeployInfo(_) => "deploy-",
+                Key::EraInfo(_) => "era-",
+                Key::Balance(_) => "balance-",
+                Key::Bid(_) => "bid-",
+                Key::Withdraw(_) => "withdraw-",
                 Key::URef(_) => {
                     // format: uref-XXXX-YYY
                     return cl_in
@@ -51,12 +57,6 @@ fn drop_key_type_prefix(cl_in: String) -> String {
                         .take_while(|c| *c != '-')
                         .collect();
                 }
-                Key::Transfer(_) => "transfer-",
-                Key::DeployInfo(_) => "deploy-",
-                Key::EraInfo(_) => "era-",
-                Key::Balance(_) => "balance-",
-                Key::Bid(_) => "bid-",
-                Key::Withdraw(_) => "withdraw-",
             };
             cl_in.chars().skip(prefix.len()).collect()
         }
@@ -83,6 +83,10 @@ fn cl_value_to_string(cl_in: &CLValue) -> String {
     }
 }
 
+/// Parses all contract arguments into a form:
+/// arg-n-name: <name>
+/// arg-n-val: <val>
+/// where n is the ordinal number of the argument.
 fn parse_runtime_args(ra: &RuntimeArgs) -> Vec<Element> {
     let mut elements: Vec<Element> = vec![];
     let named_args: BTreeMap<String, CLValue> = ra.clone().into();
@@ -346,7 +350,7 @@ struct LedgerValue {
 
 impl LedgerValue {
     // Adds a char to the ledger value.
-    // Single value is limited by the number of chars that can be 
+    // Single value is limited by the number of chars that can be
     // printed on one ledger view: 34 char total in two lines.
     // Returns whether adding char was successful.
     fn add_char(&mut self, c: char) -> bool {

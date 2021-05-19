@@ -2,10 +2,14 @@ use std::{collections::BTreeMap, fmt::Display, ops::Div, str::FromStr};
 
 use casper_execution_engine::core::engine_state::ExecutableDeployItem;
 use casper_node::types::{Deploy, DeployHeader};
-use casper_types::{CLValue, Key, RuntimeArgs, U512, bytesrepr::ToBytes, system::{
+use casper_types::{
+    bytesrepr::ToBytes,
+    system::{
         mint::{ARG_ID, ARG_SOURCE, ARG_TARGET, ARG_TO},
         standard_payment::ARG_AMOUNT,
-    }};
+    },
+    CLValue, Key, RuntimeArgs, U512,
+};
 
 use itertools::Itertools;
 use serde::{Deserialize, Serialize};
@@ -154,31 +158,18 @@ fn parse_phase(item: &ExecutableDeployItem, phase: TxnPhase) -> Vec<Element> {
     let item_type;
     let phase_args = match item {
         ExecutableDeployItem::ModuleBytes { module_bytes, args } => {
-            match phase {
-                TxnPhase::Payment => {
-                    if module_bytes.inner_bytes().is_empty() {
-                        item_type = "system".to_string();
-                        let mut elements = vec![parse_amount(args)];
-                        let args_sans_amount = remove_amount_arg(args.clone());
-                        elements.extend(parse_runtime_args(&args_sans_amount));
-                        elements
-                    } else {
-                        item_type = "contract".to_string();
-                        let payment_bytes = "".to_string(); // TODO
-                        let mut elements = vec![Element::expert("bytes", payment_bytes)];
-                        // TODO: add module's hash
-                        elements.extend(parse_runtime_args(args));
-                        elements
-                    }
-                }
-                TxnPhase::Session => {
-                    item_type = "contract".to_string();
-                    let payment_bytes = "".to_string(); // TODO
-                    let mut elements = vec![Element::expert("bytes", payment_bytes)];
-                    // TODO: add module's hash
-                    elements.extend(parse_runtime_args(args));
-                    elements
-                }
+            if phase.is_payment() && module_bytes.inner_bytes().is_empty() {
+                item_type = "system".to_string();
+                let mut elements = vec![parse_amount(args)];
+                let args_sans_amount = remove_amount_arg(args.clone());
+                elements.extend(parse_runtime_args(&args_sans_amount));
+                elements
+            } else {
+                item_type = "contract".to_string();
+                let bytes = "".to_string(); // TODO
+                let mut elements = vec![Element::expert("bytes", bytes)];
+                elements.extend(parse_runtime_args(args));
+                elements
             }
         }
         ExecutableDeployItem::StoredContractByHash {
@@ -244,6 +235,12 @@ fn parse_phase(item: &ExecutableDeployItem, phase: TxnPhase) -> Vec<Element> {
 enum TxnPhase {
     Payment,
     Session,
+}
+
+impl TxnPhase {
+    fn is_payment(&self) -> bool {
+        matches!(self, TxnPhase::Payment)
+    }
 }
 
 impl Display for TxnPhase {

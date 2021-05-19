@@ -1,4 +1,4 @@
-use std::collections::BTreeMap;
+use std::{collections::BTreeMap, fmt::Display};
 
 use casper_execution_engine::core::engine_state::ExecutableDeployItem;
 use casper_node::types::{Deploy, DeployHeader};
@@ -86,7 +86,7 @@ fn parse_runtime_args(ra: &RuntimeArgs) -> Vec<Element> {
     elements
 }
 
-fn parse_executable_item(item: &ExecutableDeployItem) -> Vec<Element> {
+fn parse_executable_item(item: &ExecutableDeployItem, _dt: DeployType) -> Vec<Element> {
     let mut elements = vec![];
     match item {
         ExecutableDeployItem::ModuleBytes { module_bytes, args } => {
@@ -162,7 +162,22 @@ fn parse_executable_item(item: &ExecutableDeployItem) -> Vec<Element> {
     elements
 }
 
-fn parse_deploy_header(dh: &DeployHeader) -> Vec<Element> {
+#[derive(Clone, Copy)]
+enum DeployType {
+    Transfer,
+    Wasm,
+}
+
+impl Display for DeployType {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            DeployType::Transfer => write!(f, "Transfer"),
+            DeployType::Wasm => write!(f, "Execute Contract"),
+        }
+    }
+}
+
+fn parse_deploy_header(dh: &DeployHeader, _dt: DeployType) -> Vec<Element> {
     let mut elements = vec![];
     elements.push(Element::regular("chain ID", format!("{}", dh.chain_name())));
     elements.push(Element::regular(
@@ -189,14 +204,14 @@ impl Into<Elements> for Deploy {
     fn into(self) -> Elements {
         let mut elements = vec![];
         let deploy_type = if self.session().is_transfer() {
-            "Transfer".to_string()
+            DeployType::Transfer
         } else {
-            "Execute Contract".to_string()
+            DeployType::Wasm
         };
-        elements.push(Element::regular("Type", deploy_type));
-        elements.extend(parse_deploy_header(self.header()));
-        elements.extend(parse_executable_item(self.payment()));
-        elements.extend(parse_executable_item(self.session()));
+        elements.push(Element::regular("Type", format!("{}", deploy_type)));
+        elements.extend(parse_deploy_header(self.header(), deploy_type));
+        elements.extend(parse_executable_item(self.payment(), deploy_type));
+        elements.extend(parse_executable_item(self.session(), deploy_type));
         Elements(elements)
     }
 }
@@ -275,6 +290,8 @@ impl std::fmt::Display for LedgerValue {
 // Hash [1/2]
 // 01001010101…
 // 10101010101…
+//
+// When displayed can span multiple pages: 1/n
 struct LedgerPageView {
     // Name of the panel, like hash, chain name, sender, etc.
     name: String,

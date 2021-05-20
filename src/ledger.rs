@@ -23,6 +23,7 @@ const LEDGER_VIEW_BOTTOM_COUNT: usize = 17;
 
 struct Elements(Vec<Element>);
 
+/// Turn JSON representation into a string.
 fn serde_value_to_str(value: &serde_json::Value) -> String {
     match value {
         serde_json::Value::Null => "null".to_string(),
@@ -36,6 +37,7 @@ fn serde_value_to_str(value: &serde_json::Value) -> String {
     }
 }
 
+/// Drop type prefix (if we know how).
 fn drop_key_type_prefix(cl_in: String) -> String {
     let parsed_key = Key::from_formatted_str(&cl_in);
     match parsed_key {
@@ -67,7 +69,8 @@ fn drop_key_type_prefix(cl_in: String) -> String {
     }
 }
 
-/// Extracts the `parsed` field from the `CLValue`.
+/// Extracts the `parsed` field from the `CLValue`
+/// (which is a pair of type identifier and raw bytes).
 /// It should be human-readable.
 fn cl_value_to_string(cl_in: &CLValue) -> String {
     match serde_json::to_value(&cl_in) {
@@ -148,12 +151,17 @@ fn remove_amount_arg(args: RuntimeArgs) -> RuntimeArgs {
     tree.into()
 }
 
+/// Required fields for transfer are:
+/// * target
+/// * amount
+/// * ID
+/// Optional fields:
+/// * to
+/// * source
 fn parse_transfer(args: &RuntimeArgs) -> Vec<Element> {
-    let mut elements = args
-        .get(ARG_TO)
-        .map(cl_value_to_string)
-        .map(|to| vec![Element::regular(ARG_TO, to)])
-        .unwrap_or_default();
+    let mut elements: Vec<Element> = parse_optional_arg(args, ARG_TO, false)
+        .into_iter()
+        .collect();
     elements.extend(parse_optional_arg(args, ARG_SOURCE, true).into_iter());
     elements.push(parse_arg(args, ARG_TARGET, false));
     elements.push(parse_amount(args));

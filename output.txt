@@ -95,7 +95,9 @@ Ledger:
     "4 | Payment : system",
     "5 | Amount : 68719476736 motes",
     "6 | Execution : native transfer",
-    "7 | Amount : 2495375998976 motes"
+    "7 | Target [1/2] : 0101010101010101010101010101010101",
+    "8 | Target [2/2] : 010101010101010101010101010101",
+    "9 | Amount : 2495375998976 motes"
   ],
   "output_expert": [
     "0 | Type : Transfer",

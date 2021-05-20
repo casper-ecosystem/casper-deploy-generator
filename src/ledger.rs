@@ -155,7 +155,7 @@ fn parse_transfer(args: &RuntimeArgs) -> Vec<Element> {
         .map(|to| vec![Element::regular(ARG_TO, to)])
         .unwrap_or_default();
     elements.extend(parse_optional_arg(args, ARG_SOURCE, true).into_iter());
-    elements.push(parse_arg(args, ARG_TARGET, true));
+    elements.push(parse_arg(args, ARG_TARGET, false));
     elements.push(parse_amount(args));
     elements.extend(parse_optional_arg(args, ARG_ID, true).into_iter());
     elements

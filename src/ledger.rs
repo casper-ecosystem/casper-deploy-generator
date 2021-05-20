@@ -174,7 +174,7 @@ fn parse_phase(item: &ExecutableDeployItem, phase: TxnPhase) -> Vec<Element> {
             } else {
                 item_type = "contract".to_string();
                 let bytes = format!("{:?}", hash::hash(module_bytes.as_slice()));
-                let mut elements = vec![Element::expert("Cntrct hash", bytes)];
+                let mut elements = vec![Element::regular("Cntrct hash", bytes)];
                 elements.extend(parse_runtime_args(args));
                 elements
             }
@@ -185,7 +185,7 @@ fn parse_phase(item: &ExecutableDeployItem, phase: TxnPhase) -> Vec<Element> {
             args,
         } => {
             item_type = "by-hash".to_string();
-            let mut elements = vec![Element::expert("address", format!("{}", hash))];
+            let mut elements = vec![Element::regular("address", format!("{}", hash))];
             elements.push(entrypoint(entry_point));
             elements.extend(parse_runtime_args(args));
             elements
@@ -196,7 +196,7 @@ fn parse_phase(item: &ExecutableDeployItem, phase: TxnPhase) -> Vec<Element> {
             args,
         } => {
             item_type = "by-name".to_string();
-            let mut elements = vec![Element::expert("name", format!("{}", name))];
+            let mut elements = vec![Element::regular("name", format!("{}", name))];
             elements.push(entrypoint(entry_point));
             elements.extend(parse_runtime_args(args));
             elements
@@ -208,7 +208,7 @@ fn parse_phase(item: &ExecutableDeployItem, phase: TxnPhase) -> Vec<Element> {
             args,
         } => {
             item_type = "by-hash-versioned".to_string();
-            let mut elements = vec![Element::expert("address", format!("{}", hash))];
+            let mut elements = vec![Element::regular("address", format!("{}", hash))];
             elements.push(entrypoint(entry_point));
             elements.push(parse_version(version));
             elements.extend(parse_runtime_args(args));
@@ -221,7 +221,7 @@ fn parse_phase(item: &ExecutableDeployItem, phase: TxnPhase) -> Vec<Element> {
             args,
         } => {
             item_type = "by-name-versioned".to_string();
-            let mut elements = vec![Element::expert("name", format!("{}", name))];
+            let mut elements = vec![Element::regular("name", format!("{}", name))];
             elements.push(entrypoint(entry_point));
             elements.push(parse_version(version));
             elements.extend(parse_runtime_args(args));
@@ -270,7 +270,7 @@ fn parse_deploy_header(dh: &DeployHeader) -> Vec<Element> {
     elements.push(Element::expert("ttl", format!("{}", dh.ttl())));
     elements.push(Element::expert("gas price", format!("{}", dh.gas_price())));
     elements.push(Element::expert(
-        "deps",
+        "txn deps",
         format!(
             "{:?}",
             dh.dependencies()

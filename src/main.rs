@@ -4,6 +4,8 @@ use casper_node::types::{Deploy, DeployHash, TimeDiff, Timestamp};
 use casper_execution_engine::core::engine_state::executable_deploy_item::ExecutableDeployItem;
 use casper_types::{AccessRights, Key, PublicKey, RuntimeArgs, SecretKey, TransferAddr, U128, U512, URef, bytesrepr::Bytes, bytesrepr::ToBytes, runtime_args};
 
+mod ledger;
+
 fn main() {
     for (id, session) in sessions().into_iter().enumerate() {
         let deploy = construct(session);
@@ -143,10 +145,15 @@ fn construct(session: ExecutableDeployItem) -> Deploy {
 
 fn print(id: usize, deploy: Deploy) {
     println!("----- EXAMPLE NR {} BEGINNING -----\n", id);
+    
     println!("JSON:\n");
     println!("{}\n", serde_json::to_string_pretty(&deploy).unwrap());
-    
-    println!("BYTES:\n");
-    println!("{}\n", hex::encode(&deploy.to_bytes().unwrap()));
+
+    println!("Ledger:\n");
+    println!(
+        "{}\n",
+        serde_json::to_string_pretty(&ledger::from_deploy(id, "test", deploy)).unwrap()
+    );
+
     println!("----- EXAMPLE NR {} END ----------\n", id);
 }

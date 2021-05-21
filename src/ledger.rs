@@ -169,6 +169,17 @@ fn parse_transfer(args: &RuntimeArgs) -> Vec<Element> {
     elements
 }
 
+/// Removes all arguments that are used in the Transfer.
+fn remove_transfer_args(args: RuntimeArgs) -> RuntimeArgs {
+    let mut tree: BTreeMap<String, CLValue> = args.into();
+    tree.remove(ARG_TO);
+    tree.remove(ARG_SOURCE);
+    tree.remove(ARG_TARGET);
+    tree.remove(ARG_AMOUNT);
+    tree.remove(ARG_ID);
+    tree.into()
+}
+
 fn parse_phase(item: &ExecutableDeployItem, phase: TxnPhase) -> Vec<Element> {
     let item_type;
     let phase_args = match item {
@@ -237,7 +248,10 @@ fn parse_phase(item: &ExecutableDeployItem, phase: TxnPhase) -> Vec<Element> {
         }
         ExecutableDeployItem::Transfer { args } => {
             item_type = "native transfer".to_string();
-            parse_transfer(args)
+            let mut elements = parse_transfer(args);
+            let args_sans_transfer = remove_transfer_args(args.clone());
+            elements.extend(parse_runtime_args(&&args_sans_transfer));
+            elements
         }
     };
     let phase_label = format!("{}", phase);

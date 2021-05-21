@@ -117,7 +117,9 @@ Ledger:
     "14 | Target [1/2] : 0101010101010101010101010101010101",
     "15 | Target [2/2] : 010101010101010101010101010101",
     "16 | Amount : 2495375998976 motes",
-    "17 | Id : 999"
+    "17 | Id : 999",
+    "18 | Arg-0-name : additional_info",
+    "19 | Arg-0-val : this is transfer"
   ]
 }
 

@@ -260,6 +260,14 @@ fn parse_phase(item: &ExecutableDeployItem, phase: TxnPhase) -> Vec<Element> {
     elements
 }
 
+fn parse_approvals(d: &Deploy) -> Vec<Element> {
+    let approvals_count = d.approvals().len();
+    vec![Element::regular(
+        "Approvals #",
+        format!("{}", approvals_count),
+    )]
+}
+
 #[derive(Clone, Copy)]
 enum TxnPhase {
     Payment,
@@ -316,6 +324,7 @@ impl Into<Elements> for Deploy {
         elements.extend(parse_deploy_header(self.header()));
         elements.extend(parse_phase(self.payment(), TxnPhase::Payment));
         elements.extend(parse_phase(self.session(), TxnPhase::Session));
+        elements.extend(parse_approvals(&self));
         Elements(elements)
     }
 }

@@ -97,7 +97,8 @@ Ledger:
     "6 | Execution : native transfer",
     "7 | Target [1/2] : 0101010101010101010101010101010101",
     "8 | Target [2/2] : 010101010101010101010101010101",
-    "9 | Amount : 2495375998976 motes"
+    "9 | Amount : 2495375998976 motes",
+    "10 | Approvals # : 1"
   ],
   "output_expert": [
     "0 | Type : Transfer",
@@ -119,7 +120,8 @@ Ledger:
     "16 | Amount : 2495375998976 motes",
     "17 | Id : 999",
     "18 | Arg-0-name : additional_info",
-    "19 | Arg-0-val : this is transfer"
+    "19 | Arg-0-val : this is transfer",
+    "20 | Approvals # : 1"
   ]
 }
 
@@ -261,7 +263,8 @@ Ledger:
     "5 | Amount : 68719476736 motes",
     "6 | Execution : by-hash",
     "7 | Address [1/2] : 0303030303030303030303030303030303",
-    "8 | Address [2/2] : 030303030303030303030303030303"
+    "8 | Address [2/2] : 030303030303030303030303030303",
+    "9 | Approvals # : 1"
   ],
   "output_expert": [
     "0 | Type : Execute Contract",
@@ -298,7 +301,8 @@ Ledger:
     "31 | Arg-7-name : u64_arg",
     "32 | Arg-7-val : 6",
     "33 | Arg-8-name : u8_arg",
-    "34 | Arg-8-val : 4"
+    "34 | Arg-8-val : 4",
+    "35 | Approvals # : 1"
   ]
 }
 
@@ -425,7 +429,8 @@ Ledger:
     "4 | Payment : system",
     "5 | Amount : 68719476736 motes",
     "6 | Execution : by-name",
-    "7 | Name : decentralized_exchange"
+    "7 | Name : decentralized_exchange",
+    "8 | Approvals # : 1"
   ],
   "output_expert": [
     "0 | Type : Execute Contract",
@@ -458,7 +463,8 @@ Ledger:
     "27 | Arg-4-val [1/2] : 0166be7e332c7a453332bd9d0a7f7db055",
     "28 | Arg-4-val [2/2] : f5c5ef1a06ada66d98b39fb6810c473a",
     "29 | Arg-5-name : arg_string",
-    "30 | Arg-5-val : all_in"
+    "30 | Arg-5-val : all_in",
+    "31 | Approvals # : 1"
   ]
 }
 
@@ -658,7 +664,8 @@ Ledger:
     "5 | Amount : 68719476736 motes",
     "6 | Execution : by-hash-versioned",
     "7 | Address [1/2] : 0303030303030303030303030303030303",
-    "8 | Address [2/2] : 030303030303030303030303030303"
+    "8 | Address [2/2] : 030303030303030303030303030303",
+    "9 | Approvals # : 1"
   ],
   "output_expert": [
     "0 | Type : Execute Contract",
@@ -698,7 +705,8 @@ Ledger:
     "34 | Arg-6-name : arg_tuple3",
     "35 | Arg-6-val : [12, second, [30, true]]",
     "36 | Arg-7-name : arg_unit",
-    "37 | Arg-7-val : null"
+    "37 | Arg-7-val : null",
+    "38 | Approvals # : 1"
   ]
 }
 
@@ -807,7 +815,8 @@ Ledger:
     "5 | Amount : 68719476736 motes",
     "6 | Execution : by-hash-versioned",
     "7 | Address [1/2] : 0303030303030303030303030303030303",
-    "8 | Address [2/2] : 030303030303030303030303030303"
+    "8 | Address [2/2] : 030303030303030303030303030303",
+    "9 | Approvals # : 1"
   ],
   "output_expert": [
     "0 | Type : Execute Contract",
@@ -837,7 +846,8 @@ Ledger:
     "24 | Arg-1-val [4/4] : 17c1f2d0a698b1cc48850ea3872d6]",
     "25 | Arg-2-name : arg_uref",
     "26 | Arg-2-val [1/2] : 1616161616161616161616161616161616",
-    "27 | Arg-2-val [2/2] : 161616161616161616161616161616"
+    "27 | Arg-2-val [2/2] : 161616161616161616161616161616",
+    "28 | Approvals # : 1"
   ]
 }
 
@@ -997,7 +1007,8 @@ Ledger:
     "4 | Payment : system",
     "5 | Amount : 68719476736 motes",
     "6 | Execution : by-name-versioned",
-    "7 | Name : black_hole"
+    "7 | Name : black_hole",
+    "8 | Approvals # : 1"
   ],
   "output_expert": [
     "0 | Type : Execute Contract",
@@ -1042,7 +1053,8 @@ Ledger:
     "39 | Arg-7-val [2/2] : 171717171717171717171717171717",
     "40 | Arg-8-name : arg_key_withdraw",
     "41 | Arg-8-val [1/2] : 147f2cc33b4fdb04ab4e9ef2c067137177",
-    "42 | Arg-8-val [2/2] : 097ba50a544a0a343ce636028fcfcf"
+    "42 | Arg-8-val [2/2] : 097ba50a544a0a343ce636028fcfcf",
+    "43 | Approvals # : 1"
   ]
 }
 
@@ -1110,7 +1122,8 @@ Ledger:
     "5 | Amount : 68719476736 motes",
     "6 | Execution : contract",
     "7 | Cntrct hash [1/2] : 70b05eb464d8f9aa7f4926afccda30192f",
-    "8 | Cntrct hash [2/2] : 8eeac0af34429a5127389d8613824e"
+    "8 | Cntrct hash [2/2] : 8eeac0af34429a5127389d8613824e",
+    "9 | Approvals # : 1"
   ],
   "output_expert": [
     "0 | Type : Execute Contract",
@@ -1128,7 +1141,8 @@ Ledger:
     "12 | Amount : 68719476736 motes",
     "13 | Execution : contract",
     "14 | Cntrct hash [1/2] : 70b05eb464d8f9aa7f4926afccda30192f",
-    "15 | Cntrct hash [2/2] : 8eeac0af34429a5127389d8613824e"
+    "15 | Cntrct hash [2/2] : 8eeac0af34429a5127389d8613824e",
+    "16 | Approvals # : 1"
   ]
 }
 

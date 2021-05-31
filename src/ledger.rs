@@ -487,20 +487,24 @@ impl LedgerView {
     // Builds a vector of strings that follows the pattern:
     // "0 | Type : Transfer",
     // "1 | To [1/2] : 0101010101010101010101010101010101",
-    // "2 | To [2/2] : 010101010101010101010101010101",
-    // "3 | Amount : CSPR 24.5",
-    // "4 | Id : 999",
-    // "5 | Payment : "CSPR 1"
+    // "1 | To [2/2] : 010101010101010101010101010101",
+    // "2 | Amount : CSPR 24.5",
+    // "3 | Id : 999",
+    // "4 | Payment : "CSPR 1"
     fn to_string(&self, expert: bool) -> Vec<String> {
         let mut output = vec![];
-        for (idx, page_str) in self
+        for (idx, page) in self
             .pages
             .iter()
             .filter(|page| if !page.expert { true } else { expert })
-            .flat_map(|page| page.to_string())
             .enumerate()
         {
-            output.push(format!("{} | {}", idx, page_str))
+            let pages_str: Vec<String> = page
+                .to_string()
+                .into_iter()
+                .map(|page_str| format!("{} | {}", idx, page_str))
+                .collect();
+            output.extend(pages_str)
         }
         output
     }

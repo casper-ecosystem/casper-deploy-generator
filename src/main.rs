@@ -1,16 +1,27 @@
 use std::{collections::BTreeMap, str::FromStr};
 
-use casper_node::types::{Deploy, DeployHash, TimeDiff, Timestamp};
 use casper_execution_engine::core::engine_state::executable_deploy_item::ExecutableDeployItem;
-use casper_types::{AccessRights, Key, PublicKey, RuntimeArgs, SecretKey, TransferAddr, U128, U512, URef, bytesrepr::Bytes, bytesrepr::ToBytes, runtime_args};
+use casper_node::types::{Deploy, DeployHash, TimeDiff, Timestamp};
+use casper_types::{
+    bytesrepr::Bytes, runtime_args, AccessRights, Key, PublicKey, RuntimeArgs, SecretKey,
+    TransferAddr, URef, U128, U512,
+};
+
+use crate::ledger::JsonRepr;
 
 mod ledger;
 
 fn main() {
-    for (id, session) in sessions().into_iter().enumerate() {
-        let deploy = construct(session);
-        print(id, deploy);
-    }
+    let data: Vec<JsonRepr> = sessions()
+        .into_iter()
+        .enumerate()
+        .map(|(id, session)| {
+            let deploy = construct(session);
+            ledger::from_deploy(id, "test", deploy)
+        })
+        .collect();
+
+    println!("{}", serde_json::to_string_pretty(&data).unwrap());
 }
 
 fn sessions() -> Vec<ExecutableDeployItem> {
@@ -19,12 +30,14 @@ fn sessions() -> Vec<ExecutableDeployItem> {
 
     let mut sessions = vec![];
 
-    let transfer = ExecutableDeployItem::Transfer { args: runtime_args!{
-        "amount" => U512::from(24500000000u64),
-        "target" => [1u8; 32],
-        "id" => Some(999u64),
-        "additional_info" => "this is transfer"
-    }};
+    let transfer = ExecutableDeployItem::Transfer {
+        args: runtime_args! {
+            "amount" => U512::from(24500000000u64),
+            "target" => [1u8; 32],
+            "id" => Some(999u64),
+            "additional_info" => "this is transfer"
+        },
+    };
     sessions.push(transfer);
 
     let contract_call_by_hash = ExecutableDeployItem::StoredContractByHash {
@@ -40,7 +53,7 @@ fn sessions() -> Vec<ExecutableDeployItem> {
             "u128_arg" => U128::from(7),
             "u256_arg" => U128::from(8),
             "u512_arg" => U128::from(9),
-        }
+        },
     };
     sessions.push(contract_call_by_hash);
 
@@ -54,7 +67,7 @@ fn sessions() -> Vec<ExecutableDeployItem> {
             "arg_option_first" => Some(10u32),
             "arg_option_second" => Some(public_key.to_account_hash()),
             "arg_account_hash" => public_key.to_account_hash()
-        }
+        },
     };
     sessions.push(contract_call_by_name);
 
@@ -75,43 +88,45 @@ fn sessions() -> Vec<ExecutableDeployItem> {
             "arg_tuple2" => (11u32, String::from("second")),
             "arg_tuple3" => (12u32, String::from("second"), (30u8, true)),
             "arg_unit" => ()
-        }
+        },
     };
     sessions.push(contract_call_versioned_hash);
 
-    let contract_call_versioned_hash_no_version = ExecutableDeployItem::StoredVersionedContractByHash {
-        hash: [3u8; 32].into(),
-        version: None,
-        entry_point: String::from("vest_tokens"),
-        args: runtime_args! {
-            "arg_list_one" => vec![10u32, 11, 12, 13],
-            "arg_list_two" => vec![public_key.to_account_hash(), public_key2.to_account_hash()],
-            "arg_uref" => URef::new([22u8; 32], AccessRights::READ)
-        }
-    };
+    let contract_call_versioned_hash_no_version =
+        ExecutableDeployItem::StoredVersionedContractByHash {
+            hash: [3u8; 32].into(),
+            version: None,
+            entry_point: String::from("vest_tokens"),
+            args: runtime_args! {
+                "arg_list_one" => vec![10u32, 11, 12, 13],
+                "arg_list_two" => vec![public_key.to_account_hash(), public_key2.to_account_hash()],
+                "arg_uref" => URef::new([22u8; 32], AccessRights::READ)
+            },
+        };
     sessions.push(contract_call_versioned_hash_no_version);
 
-    let contract_call_versioned_hash_no_version = ExecutableDeployItem::StoredVersionedContractByName {
-        name: String::from("black_hole"),
-        version: None,
-        entry_point: String::from("explode"),
-        args: runtime_args! {
-            "arg_key_account" => Key::Account(public_key.to_account_hash()),
-            "arg_key_hash" => Key::Hash([42u8; 32]),
-            "arg_key_uref" => Key::URef(URef::new([23u8; 32], AccessRights::ADD_WRITE)),
-            "arg_key_transfer" => Key::Transfer(TransferAddr::new([124u8; 32])),
-            "arg_key_deploy" => Key::DeployInfo(casper_types::DeployHash::new([45u8; 32].into())),
-            "arg_key_era_id" => Key::EraInfo(15),
-            "arg_key_balance" => Key::Balance([254u8; 32]),
-            "arg_key_bid" => Key::Bid(public_key.to_account_hash()),
-            "arg_key_withdraw" => Key::Withdraw(public_key.to_account_hash())
-        }
-    };
+    let contract_call_versioned_hash_no_version =
+        ExecutableDeployItem::StoredVersionedContractByName {
+            name: String::from("black_hole"),
+            version: None,
+            entry_point: String::from("explode"),
+            args: runtime_args! {
+                "arg_key_account" => Key::Account(public_key.to_account_hash()),
+                "arg_key_hash" => Key::Hash([42u8; 32]),
+                "arg_key_uref" => Key::URef(URef::new([23u8; 32], AccessRights::ADD_WRITE)),
+                "arg_key_transfer" => Key::Transfer(TransferAddr::new([124u8; 32])),
+                "arg_key_deploy" => Key::DeployInfo(casper_types::DeployHash::new([45u8; 32].into())),
+                "arg_key_era_id" => Key::EraInfo(15),
+                "arg_key_balance" => Key::Balance([254u8; 32]),
+                "arg_key_bid" => Key::Bid(public_key.to_account_hash()),
+                "arg_key_withdraw" => Key::Withdraw(public_key.to_account_hash())
+            },
+        };
     sessions.push(contract_call_versioned_hash_no_version);
 
     let deploy_contract = ExecutableDeployItem::ModuleBytes {
         module_bytes: Bytes::from(Vec::from([221u8; 1001])),
-        args: runtime_args! {}
+        args: runtime_args! {},
     };
     sessions.push(deploy_contract);
 
@@ -121,11 +136,11 @@ fn sessions() -> Vec<ExecutableDeployItem> {
 fn construct(session: ExecutableDeployItem) -> Deploy {
     let secret_key = SecretKey::ed25519([123u8; 32]);
 
-    let standard_payment = ExecutableDeployItem::ModuleBytes{
+    let standard_payment = ExecutableDeployItem::ModuleBytes {
         module_bytes: Bytes::new(),
-        args: runtime_args!{
-            "amount" => U512::from(1000000000) 
-        }
+        args: runtime_args! {
+            "amount" => U512::from(1000000000)
+        },
     };
 
     Deploy::new(
@@ -134,18 +149,19 @@ fn construct(session: ExecutableDeployItem) -> Deploy {
         2,
         vec![
             DeployHash::new([15u8; 32].into()),
-            DeployHash::new([16u8; 32].into())
+            DeployHash::new([16u8; 32].into()),
         ],
         String::from("mainnet"),
         standard_payment,
         session,
-        &secret_key
+        &secret_key,
     )
 }
 
+#[allow(unused)]
 fn print(id: usize, deploy: Deploy) {
     println!("----- EXAMPLE NR {} BEGINNING -----\n", id);
-    
+
     println!("JSON:\n");
     println!("{}\n", serde_json::to_string_pretty(&deploy).unwrap());
 

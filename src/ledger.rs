@@ -1,9 +1,14 @@
-use std::{collections::BTreeMap, fmt::Display, str::FromStr};
+use std::{
+    collections::BTreeMap,
+    fmt::Display,
+    str::FromStr,
+    time::{Duration, SystemTime},
+};
 
 use casper_execution_engine::core::engine_state::ExecutableDeployItem;
 use casper_node::{
     crypto::hash,
-    types::{Deploy, DeployHeader},
+    types::{Deploy, DeployHeader, Timestamp},
 };
 use casper_types::{
     bytesrepr::ToBytes,
@@ -14,6 +19,7 @@ use casper_types::{
     CLValue, Key, RuntimeArgs, U512,
 };
 
+use humantime;
 use itertools::Itertools;
 use serde::{Deserialize, Serialize};
 
@@ -268,6 +274,16 @@ fn parse_approvals(d: &Deploy) -> Vec<Element> {
     )]
 }
 
+// Ledger/Zondax supports timestamps only up to seconds resolution.
+// `Display` impl for the `Timestamp` in the casper-node crate uses milliseconds-resolution
+// so we need a custom implementation for the timestamp representation.
+fn timestamp_to_seconds_res(timestamp: Timestamp) -> String {
+    let system_time = SystemTime::UNIX_EPOCH
+        .checked_add(Duration::from_millis(timestamp.millis()))
+        .expect("should be within system time limits");
+    format!("{}", humantime::format_rfc3339_seconds(system_time))
+}
+
 #[derive(Clone, Copy)]
 enum TxnPhase {
     Payment,
@@ -296,7 +312,10 @@ fn parse_deploy_header(dh: &DeployHeader) -> Vec<Element> {
         "from",
         format!("{}", dh.account().to_account_hash()),
     ));
-    elements.push(Element::expert("timestamp", format!("{}", dh.timestamp())));
+    elements.push(Element::expert(
+        "timestamp",
+        timestamp_to_seconds_res(dh.timestamp()),
+    ));
     elements.push(Element::expert("ttl", format!("{}", dh.ttl())));
     elements.push(Element::expert("gas price", format!("{}", dh.gas_price())));
     elements.push(Element::expert(

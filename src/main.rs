@@ -10,6 +10,8 @@ use casper_types::{
 use crate::ledger::JsonRepr;
 
 mod ledger;
+mod parser;
+mod utils;
 
 fn main() {
     let data: Vec<JsonRepr> = sessions()

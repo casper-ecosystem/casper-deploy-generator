@@ -13,7 +13,7 @@ use casper_types::{
 
 use crate::{
     ledger::{Element, TxnPhase},
-    utils::{cl_value_to_string, timestamp_to_seconds_res},
+    utils::{cl_value_to_string, drop_public_key_prefix, timestamp_to_seconds_res},
 };
 
 /// Parses all contract arguments into a form:
@@ -76,7 +76,6 @@ fn parse_optional_arg(args: &RuntimeArgs, key: &str, expert: bool) -> Option<Ele
 /// * amount
 /// * ID
 /// Optional fields:
-/// * to
 /// * source
 fn parse_transfer(args: &RuntimeArgs) -> Vec<Element> {
     let mut elements: Vec<Element> = parse_optional_arg(args, ARG_TO, false)
@@ -99,7 +98,7 @@ pub(crate) fn parse_deploy_header(dh: &DeployHeader) -> Vec<Element> {
     elements.push(Element::regular("chain ID", format!("{}", dh.chain_name())));
     elements.push(Element::regular(
         "from",
-        format!("{}", dh.account().to_account_hash()),
+        drop_public_key_prefix(dh.account()),
     ));
     elements.push(Element::expert(
         "timestamp",

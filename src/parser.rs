@@ -14,7 +14,7 @@ use thousands::Separable;
 
 use crate::{
     ledger::{Element, TxnPhase},
-    utils::{cl_value_to_string, drop_public_key_prefix, timestamp_to_seconds_res},
+    utils::{cl_value_to_string, parse_public_key, timestamp_to_seconds_res},
 };
 
 /// Parses all contract arguments into a form:
@@ -124,10 +124,7 @@ fn is_system_payment(phase: TxnPhase, module_bytes: &Bytes) -> bool {
 pub(crate) fn parse_deploy_header(dh: &DeployHeader) -> Vec<Element> {
     let mut elements = vec![];
     elements.push(Element::regular("chain ID", format!("{}", dh.chain_name())));
-    elements.push(Element::regular(
-        "from",
-        drop_public_key_prefix(dh.account()),
-    ));
+    elements.push(Element::regular("from", parse_public_key(dh.account())));
     elements.push(Element::expert(
         "timestamp",
         timestamp_to_seconds_res(dh.timestamp()),

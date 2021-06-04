@@ -1,7 +1,7 @@
 use std::time::{Duration, SystemTime};
 
 use casper_node::types::Timestamp;
-use casper_types::{CLValue, Key, PublicKey};
+use casper_types::{CLValue, Key, PublicKey, ED25519_TAG, SECP256K1_TAG};
 use itertools::Itertools;
 
 /// Turn JSON representation into a string.
@@ -79,7 +79,13 @@ pub(crate) fn timestamp_to_seconds_res(timestamp: Timestamp) -> String {
 
 // `PublicKey`'s `String` representation includes a `PublicKey::<variant>` prefix.
 // This method drops that prefix (and the closing ')') from the `String` representation for the Ledger.
-pub(crate) fn drop_public_key_prefix(key: &PublicKey) -> String {
+pub(crate) fn parse_public_key(key: &PublicKey) -> String {
+    let key_tag = match key {
+        PublicKey::System => panic!("Did not expect system key"),
+        PublicKey::Ed25519(_) => format!("0{}", ED25519_TAG),
+        PublicKey::Secp256k1(_) => format!("0{}", SECP256K1_TAG),
+    };
+
     let variant = match key {
         PublicKey::System => todo!(),
         PublicKey::Ed25519(_) => "Ed25519",
@@ -87,8 +93,11 @@ pub(crate) fn drop_public_key_prefix(key: &PublicKey) -> String {
     };
     let prefix = format!("PublicKey::{}(", variant);
     let str = format!("{:?}", key);
-    str.chars()
+    let key_str: String = str
+        .chars()
         .skip(prefix.len())
         .take_while(|c| *c != ')')
-        .collect()
+        .collect();
+        
+    format!("{}{}", key_tag, key_str)
 }

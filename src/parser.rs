@@ -48,7 +48,7 @@ fn format_amount(motes: U512) -> String {
 
 fn parse_amount(args: &RuntimeArgs) -> Element {
     let amount_str = cl_value_to_string(args.get(mint::ARG_AMOUNT).unwrap());
-    let motes_amount = U512::from_str(&amount_str).unwrap();
+    let motes_amount = U512::from_dec_str(&amount_str).unwrap();
     Element::regular("amount", format_amount(motes_amount))
 }
 

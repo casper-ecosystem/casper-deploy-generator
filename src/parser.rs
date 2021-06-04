@@ -10,6 +10,7 @@ use casper_types::{
     system::mint::{self, ARG_ID, ARG_SOURCE, ARG_TARGET, ARG_TO},
     CLValue, RuntimeArgs, U512,
 };
+use thousands::Separable;
 
 use crate::{
     ledger::{Element, TxnPhase},
@@ -41,10 +42,37 @@ fn parse_version(version: &Option<u32>) -> Element {
     Element::expert("version", format!("{}", version))
 }
 
+fn format_amount(motes: U512) -> String {
+    format!("{} motes", motes.separate_with_spaces())
+}
+
 fn parse_amount(args: &RuntimeArgs) -> Element {
     let amount_str = cl_value_to_string(args.get(mint::ARG_AMOUNT).unwrap());
     let motes_amount = U512::from_str(&amount_str).unwrap();
-    Element::regular("amount", format!("{:.9} motes", motes_amount))
+    Element::regular("amount", format_amount(motes_amount))
+}
+
+#[cfg(test)]
+mod amount {
+    use casper_types::U512;
+
+    use crate::parser::format_amount;
+
+    #[test]
+    fn amount_space_separated() {
+        let one: U512 = 1u8.into();
+        let expected = "1 motes".to_string();
+        assert_eq!(expected, format_amount(one));
+        let thousand: U512 = 1_000u32.into();
+        let expected = "1 000 motes".to_string();
+        assert_eq!(expected, format_amount(thousand));
+        let ten_thousand: U512 = 10_000u64.into();
+        let expected = "10 000 motes".to_string();
+        assert_eq!(expected, format_amount(ten_thousand));
+        let ten_billion: U512 = U512::from(10000000000u64);
+        let expected = "10 000 000 000 motes".to_string();
+        assert_eq!(expected, format_amount(ten_billion));
+    }
 }
 
 fn parse_arg(args: &RuntimeArgs, key: &str, expert: bool) -> Element {

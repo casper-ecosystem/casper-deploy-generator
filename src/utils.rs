@@ -98,6 +98,6 @@ pub(crate) fn parse_public_key(key: &PublicKey) -> String {
         .skip(prefix.len())
         .take_while(|c| *c != ')')
         .collect();
-        
+
     format!("{}{}", key_tag, key_str)
 }

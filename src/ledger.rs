@@ -236,6 +236,8 @@ impl LedgerView {
 pub(super) struct JsonRepr {
     index: usize,
     name: String,
+    valid: bool,
+    testnet: bool,
     blob: String,
     output: Vec<String>,
     output_expert: Vec<String>,
@@ -250,6 +252,8 @@ pub(super) fn from_deploy(index: usize, name: &str, deploy: Deploy) -> JsonRepr 
     JsonRepr {
         index,
         name: name.to_string(),
+        valid: true,
+        testnet: true,
         blob,
         output,
         output_expert,

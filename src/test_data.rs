@@ -53,11 +53,11 @@ impl TransferTarget {
     }
 
     fn bytes() -> TransferTarget {
-        TransferTarget::Bytes([1u8; 32])
+        TransferTarget::Bytes([255u8; 32])
     }
 
     fn uref() -> TransferTarget {
-        let uref = URef::new([33u8; 32], AccessRights::READ_ADD_WRITE);
+        let uref = URef::new([0u8; 32], AccessRights::READ_ADD_WRITE);
         TransferTarget::URef(uref)
     }
 
@@ -122,7 +122,21 @@ pub(crate) mod native_transfer {
             TransferTarget::uref(),
             TransferTarget::key(),
         ];
-        let sources = vec![Some(URef::new([2u8; 32], AccessRights::READ)), None];
+
+        let access_rights = vec![
+            AccessRights::READ,
+            AccessRights::WRITE,
+            AccessRights::ADD,
+            AccessRights::READ_ADD,
+            AccessRights::READ_WRITE,
+            AccessRights::READ_ADD_WRITE,
+        ];
+
+        let sources: Vec<Option<URef>> = access_rights
+            .into_iter()
+            .map(|ar| Some(URef::new([2u8; 32], ar)))
+            .chain(vec![None])
+            .collect();
 
         let mut samples: Vec<Sample<NativeTransfer>> = vec![];
 

@@ -1,7 +1,4 @@
-use casper_types::{
-    account::AccountHash, bytesrepr::ToBytes, runtime_args, AccessRights, CLType, CLTyped, CLValue,
-    Key, RuntimeArgs, Transfer, URef, U512,
-};
+use casper_types::{account::AccountHash, AccessRights, CLValue, Key, RuntimeArgs, URef, U512};
 
 #[derive(Clone, Copy, Debug)]
 pub(crate) struct NativeTransfer {
@@ -68,19 +65,51 @@ impl TransferTarget {
         let account_key = Key::Account(AccountHash::new([33u8; 32]));
         TransferTarget::Key(account_key)
     }
+
+    fn label(&self) -> &str {
+        match self {
+            TransferTarget::Bytes(_) => "target:bytes",
+            TransferTarget::URef(_) => "target:uref",
+            TransferTarget::Key(_) => "target:key-account",
+        }
+    }
+}
+
+pub(crate) struct Sample<V> {
+    label: String,
+    sample: V,
+}
+
+impl<V> Sample<V> {
+    pub(crate) fn new(label: String, sample: V) -> Sample<V> {
+        Sample { label, sample }
+    }
+
+    pub(crate) fn destructure(self) -> (String, V) {
+        (self.label, self.sample)
+    }
+
+    pub(crate) fn map_sample<VV, F: FnOnce(V) -> VV>(self, f: F) -> Sample<VV> {
+        Sample {
+            label: self.label,
+            sample: f(self.sample),
+        }
+    }
+
+    pub(crate) fn add_label(&mut self, label: String) {
+        self.label = format!("{}-{}", self.label, label);
+    }
 }
 
 pub(crate) mod native_transfer {
-    use std::ops::Div;
-
     use casper_execution_engine::core::engine_state::ExecutableDeployItem;
-    use casper_types::{account::AccountHash, AccessRights, Key, URef, U512};
+    use casper_types::{AccessRights, URef, U512};
 
-    use crate::test_data::TransferTarget;
+    use crate::test_data::{Sample, TransferTarget};
 
     use super::NativeTransfer;
 
-    fn native_transfer_samples() -> Vec<NativeTransfer> {
+    fn native_transfer_samples() -> Vec<Sample<NativeTransfer>> {
         let amount_min = U512::from(0u8);
         let amount_mid = U512::from(100000000);
         let amount_max = U512::MAX;
@@ -95,14 +124,21 @@ pub(crate) mod native_transfer {
         ];
         let sources = vec![Some(URef::new([2u8; 32], AccessRights::READ)), None];
 
-        let mut samples: Vec<NativeTransfer> = vec![];
+        let mut samples: Vec<Sample<NativeTransfer>> = vec![];
 
         for amount in &amounts {
             for id in &ids {
                 for target in &targets {
                     for source in &sources {
+                        let source_label = if source.is_none() {
+                            "source:none"
+                        } else {
+                            "source:uref"
+                        };
+                        let label = format!("native_transfer-{}-{}", target.label(), source_label);
                         let nt = NativeTransfer::new(*target, *amount, *id, *source);
-                        samples.push(nt);
+                        let sample = Sample::new(label, nt);
+                        samples.push(sample);
                     }
                 }
             }
@@ -111,10 +147,13 @@ pub(crate) mod native_transfer {
         samples
     }
 
-    pub(crate) fn samples() -> Vec<ExecutableDeployItem> {
+    pub(crate) fn samples() -> Vec<Sample<ExecutableDeployItem>> {
         native_transfer_samples()
             .into_iter()
-            .map(|nt| ExecutableDeployItem::Transfer { args: nt.into() })
+            .map(|s| {
+                let f = |nt: NativeTransfer| ExecutableDeployItem::Transfer { args: nt.into() };
+                s.map_sample(f)
+            })
             .collect()
     }
 }

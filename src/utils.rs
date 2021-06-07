@@ -1,7 +1,7 @@
 use std::time::{Duration, SystemTime};
 
 use casper_node::types::Timestamp;
-use casper_types::{CLValue, Key, PublicKey, ED25519_TAG, SECP256K1_TAG};
+use casper_types::{CLValue, Key, PublicKey, Tagged, ED25519_TAG, SECP256K1_TAG};
 use itertools::Itertools;
 
 /// Turn JSON representation into a string.
@@ -23,6 +23,7 @@ fn drop_key_type_prefix(cl_in: String) -> String {
     let parsed_key = Key::from_formatted_str(&cl_in);
     match parsed_key {
         Ok(key) => {
+            let tag: u8 = key.tag();
             let prefix = match key {
                 Key::Account(_) => "account-hash-",
                 Key::Hash(_) => "hash-",
@@ -41,7 +42,11 @@ fn drop_key_type_prefix(cl_in: String) -> String {
                         .collect();
                 }
             };
-            cl_in.chars().skip(prefix.len()).collect()
+            format!(
+                "0{}{}",
+                tag,
+                cl_in.chars().skip(prefix.len()).collect::<String>()
+            )
         }
         Err(_) => {
             // No idea how to handle that. Return raw.
@@ -98,6 +103,6 @@ pub(crate) fn parse_public_key(key: &PublicKey) -> String {
         .skip(prefix.len())
         .take_while(|c| *c != ')')
         .collect();
-        
+
     format!("{}{}", key_tag, key_str)
 }

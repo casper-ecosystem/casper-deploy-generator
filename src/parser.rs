@@ -1,4 +1,4 @@
-use std::{collections::BTreeMap, str::FromStr};
+use std::collections::BTreeMap;
 
 use casper_execution_engine::core::engine_state::ExecutableDeployItem;
 use casper_node::{

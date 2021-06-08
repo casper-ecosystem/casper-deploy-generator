@@ -10,6 +10,7 @@ use rand::prelude::*;
 
 use crate::sample::Sample;
 
+// From the chainspec.
 // 1 minute.
 const MIN_TTL: TimeDiff = TimeDiff::from_seconds(60);
 // 1 day.
@@ -17,8 +18,13 @@ const MAX_TTL: TimeDiff = TimeDiff::from_seconds(60 * 60 * 24);
 // 1 hour.
 const TTL_HOUR: TimeDiff = TimeDiff::from_seconds(60 * 60);
 
+// From the chainspec.
 const MIN_DEPS_COUNT: u8 = 0;
 const MAX_DEPS_COUNT: u8 = 10;
+
+// From the chainspec.
+const MIN_APPROVALS_COUNT: u8 = 1;
+const MAX_APPROVALS_COUNT: u8 = 10;
 
 #[derive(Clone, Copy, Debug)]
 struct NativeTransfer {
@@ -190,8 +196,9 @@ fn make_deploy(
     payment: ExecutableDeployItem,
     ttl: TimeDiff,
     dependencies: Vec<DeployHash>,
+    signing_keys: &[SecretKey],
 ) -> Sample<Deploy> {
-    let secret_key = SecretKey::ed25519([123u8; 32]);
+    let (main_key, secondary_keys) = signing_keys.split_at(1);
 
     let deploy = |session| {
         Deploy::new(
@@ -202,11 +209,18 @@ fn make_deploy(
             String::from("mainnet"),
             payment,
             session,
-            &secret_key,
+            &main_key[0],
         )
     };
 
-    session.map_sample(deploy)
+    // Sign deploy with possibly multiple keys.
+    let mut sample_deploy = session.map_sample(deploy);
+    for key in secondary_keys {
+        let (label, mut deploy) = sample_deploy.destructure();
+        deploy.sign(key);
+        sample_deploy = Sample::new(label, deploy);
+    }
+    sample_deploy
 }
 
 fn make_dependencies(count: u8) -> Vec<DeployHash> {
@@ -215,10 +229,23 @@ fn make_dependencies(count: u8) -> Vec<DeployHash> {
     }
 
     let mut dependencies = vec![];
-    for i in 0..=count {
+    for i in 0..count {
         dependencies.push(DeployHash::new([i; 32].into()));
     }
     dependencies
+}
+
+fn random_keys(key_count: u8) -> Vec<SecretKey> {
+    let mut out = vec![];
+    for i in 0..key_count {
+        let key = if i % 2 == 0 {
+            SecretKey::ed25519([i; 32].into())
+        } else {
+            SecretKey::secp256k1([i; 32].into())
+        };
+        out.push(key);
+    }
+    out
 }
 
 pub(crate) fn valid_samples() -> Vec<Sample<Deploy>> {
@@ -231,8 +258,17 @@ pub(crate) fn valid_samples() -> Vec<Sample<Deploy>> {
 
     let mut deps_count = vec![MIN_DEPS_COUNT, 3, MAX_DEPS_COUNT];
 
+    let mut key_count = vec![MIN_APPROVALS_COUNT, 3, MAX_APPROVALS_COUNT];
+
     let mut samples = vec![];
+
     for session in session_samples {
+        key_count.shuffle(&mut rng);
+        // Random signing keys count.
+        let mut keys: Vec<SecretKey> = random_keys(*key_count.first().unwrap());
+        // Randomize order of keys, so that both alg have chance to be the main one.
+        keys.shuffle(&mut rng);
+
         // Random dependencies within correct limits.
         deps_count.shuffle(&mut rng);
         let dependencies = make_dependencies(deps_count.first().cloned().unwrap());
@@ -241,7 +277,8 @@ pub(crate) fn valid_samples() -> Vec<Sample<Deploy>> {
         ttls.shuffle(&mut rng);
         let ttl = ttls.first().cloned().unwrap();
 
-        let mut sample_deploy = make_deploy(session, standard_payment.clone(), ttl, dependencies);
+        let mut sample_deploy =
+            make_deploy(session, standard_payment.clone(), ttl, dependencies, &keys);
         sample_deploy.add_label("payment:system".to_string());
         samples.push(sample_deploy);
     }

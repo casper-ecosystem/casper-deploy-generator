@@ -5,9 +5,9 @@ pub(crate) struct Sample<V> {
 }
 
 impl<V> Sample<V> {
-    pub(crate) fn new(label: String, sample: V, valid: bool) -> Sample<V> {
+    pub(crate) fn new<S: Into<String>>(label: S, sample: V, valid: bool) -> Sample<V> {
         Sample {
-            label,
+            label: label.into(),
             sample,
             valid,
         }

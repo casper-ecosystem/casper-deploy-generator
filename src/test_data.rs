@@ -102,7 +102,7 @@ impl TransferTarget {
 
 mod native_transfer {
     use casper_execution_engine::core::engine_state::ExecutableDeployItem;
-    use casper_types::{AccessRights, URef, U512};
+    use casper_types::{runtime_args, AccessRights, RuntimeArgs, URef, U512};
 
     use crate::{sample::Sample, test_data::TransferTarget};
 
@@ -137,7 +137,7 @@ mod native_transfer {
         samples
     }
 
-    pub(super) fn samples() -> Vec<Sample<ExecutableDeployItem>> {
+    pub(super) fn valid() -> Vec<Sample<ExecutableDeployItem>> {
         let amount_min = U512::from(0u8);
         let amount_mid = U512::from(100000000);
         let amount_max = U512::MAX;
@@ -174,17 +174,63 @@ mod native_transfer {
             })
             .collect()
     }
+
+    pub(super) fn invalid() -> Vec<Sample<ExecutableDeployItem>> {
+        let missing_required_amount: RuntimeArgs = runtime_args! {
+            "id" => 1u64,
+            "target" => URef::new([1u8; 32], AccessRights::READ),
+        };
+        let missing_required_id: RuntimeArgs = runtime_args! {
+            "amount" => U512::from(100000000u64),
+            "target" => URef::new([1u8; 32], AccessRights::READ),
+        };
+        let missing_required_target: RuntimeArgs = runtime_args! {
+            "amount" => U512::from(100000000u64),
+            "id" => 1u64,
+        };
+        let invalid_amount_type: RuntimeArgs = runtime_args! {
+            "amount" => 10000u64,
+            "target" => URef::new([1u8; 32], AccessRights::READ),
+            "id" => 1u64,
+        };
+
+        let invalid_transfer_args: Vec<Sample<RuntimeArgs>> = vec![
+            Sample::new("missing:amount", missing_required_amount, false),
+            Sample::new("missing:id", missing_required_id, false),
+            Sample::new("missing:target", missing_required_target, false),
+            Sample::new("invalid_type:amount", invalid_amount_type, false),
+        ];
+
+        invalid_transfer_args
+            .into_iter()
+            .map(|sample_ra| {
+                let (label, ra, _valid) = sample_ra.destructure();
+                let sample_invalid_transfer = ExecutableDeployItem::Transfer { args: ra.into() };
+                let new_label = format!("native_transfer-{}", label);
+                Sample::new(new_label, sample_invalid_transfer, false)
+            })
+            .collect()
+    }
 }
 
 mod system_payment {
     use casper_execution_engine::core::engine_state::ExecutableDeployItem;
     use casper_types::{bytesrepr::Bytes, runtime_args, RuntimeArgs, U512};
 
-    pub(super) fn sample() -> ExecutableDeployItem {
+    pub(super) fn valid() -> ExecutableDeployItem {
         ExecutableDeployItem::ModuleBytes {
             module_bytes: Bytes::new(),
             args: runtime_args! {
                 "amount" => U512::from(1000000000)
+            },
+        }
+    }
+
+    pub(super) fn invalid() -> ExecutableDeployItem {
+        ExecutableDeployItem::ModuleBytes {
+            module_bytes: Bytes::new(),
+            args: runtime_args! {
+                "paying" => U512::from(1000000000)
             },
         }
     }
@@ -282,22 +328,37 @@ pub(crate) fn valid_samples<R: Rng>(rng: &mut R) -> Vec<Sample<Deploy>> {
     samples
 }
 
+pub(crate) fn invalid_samples<R: Rng>(rng: &mut R) -> Vec<Sample<Deploy>> {
+    let session_samples = native_transfer::invalid();
+    let standard_payment = system_payment::invalid();
+
+    // Invalid values.
+    let mut ttls: Vec<TimeDiff> = vec![MAX_TTL + 1.into()];
+
+    let mut deps_count = vec![MAX_DEPS_COUNT + 1];
+
+    let mut key_count = vec![MAX_APPROVALS_COUNT + 1];
+
+    let mut samples = vec![];
+
+    for session in session_samples {
+        key_count.shuffle(rng);
         // Random signing keys count.
         let mut keys: Vec<SecretKey> = random_keys(*key_count.first().unwrap());
         // Randomize order of keys, so that both alg have chance to be the main one.
-        keys.shuffle(&mut rng);
+        keys.shuffle(rng);
 
         // Random dependencies within correct limits.
-        deps_count.shuffle(&mut rng);
+        deps_count.shuffle(rng);
         let dependencies = make_dependencies(deps_count.first().cloned().unwrap());
 
         // Pick a random TTL value.
-        ttls.shuffle(&mut rng);
+        ttls.shuffle(rng);
         let ttl = ttls.first().cloned().unwrap();
 
         let mut sample_deploy =
             make_deploy(session, standard_payment.clone(), ttl, dependencies, &keys);
-        sample_deploy.add_label("payment:system".to_string());
+        sample_deploy.add_label("payment:system-missing:amount".to_string());
         samples.push(sample_deploy);
     }
     samples

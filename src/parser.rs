@@ -46,10 +46,12 @@ fn format_amount(motes: U512) -> String {
     format!("{} motes", motes.separate_with_spaces())
 }
 
-fn parse_amount(args: &RuntimeArgs) -> Element {
-    let amount_str = cl_value_to_string(args.get(mint::ARG_AMOUNT).unwrap());
-    let motes_amount = U512::from_dec_str(&amount_str).unwrap();
-    Element::regular("amount", format_amount(motes_amount))
+fn parse_amount(args: &RuntimeArgs) -> Option<Element> {
+    let f = |amount_str: String| {
+        let motes_amount = U512::from_dec_str(&amount_str).unwrap();
+        format_amount(motes_amount)
+    };
+    parse_optional_arg(args, mint::ARG_AMOUNT, false, f)
 }
 
 #[cfg(test)]
@@ -75,19 +77,15 @@ mod amount {
     }
 }
 
-fn parse_arg(args: &RuntimeArgs, key: &str, expert: bool) -> Element {
-    let value = cl_value_to_string(args.get(key).unwrap());
-    if expert {
-        Element::expert(key, value)
-    } else {
-        Element::regular(key, value)
-    }
-}
-
-fn parse_optional_arg(args: &RuntimeArgs, key: &str, expert: bool) -> Option<Element> {
+fn parse_optional_arg<F: Fn(String) -> String>(
+    args: &RuntimeArgs,
+    key: &str,
+    expert: bool,
+    f: F,
+) -> Option<Element> {
     match args.get(key) {
         Some(cl_value) => {
-            let value = cl_value_to_string(cl_value);
+            let value = f(cl_value_to_string(cl_value));
             let element = if expert {
                 Element::expert(key, value)
             } else {
@@ -99,6 +97,10 @@ fn parse_optional_arg(args: &RuntimeArgs, key: &str, expert: bool) -> Option<Ele
     }
 }
 
+fn identity<T>(el: T) -> T {
+    el
+}
+
 /// Required fields for transfer are:
 /// * target
 /// * amount
@@ -106,13 +108,13 @@ fn parse_optional_arg(args: &RuntimeArgs, key: &str, expert: bool) -> Option<Ele
 /// Optional fields:
 /// * source
 fn parse_transfer(args: &RuntimeArgs) -> Vec<Element> {
-    let mut elements: Vec<Element> = parse_optional_arg(args, ARG_TO, false)
+    let mut elements: Vec<Element> = parse_optional_arg(args, ARG_TO, false, identity)
         .into_iter()
         .collect();
-    elements.extend(parse_optional_arg(args, ARG_SOURCE, true).into_iter());
-    elements.push(parse_arg(args, ARG_TARGET, false));
-    elements.push(parse_amount(args));
-    elements.extend(parse_optional_arg(args, ARG_ID, true).into_iter());
+    elements.extend(parse_optional_arg(args, ARG_SOURCE, true, identity).into_iter());
+    elements.extend(parse_optional_arg(args, ARG_TARGET, false, identity));
+    elements.extend(parse_amount(args));
+    elements.extend(parse_optional_arg(args, ARG_ID, true, identity).into_iter());
     elements
 }
 
@@ -151,7 +153,7 @@ pub(crate) fn parse_phase(item: &ExecutableDeployItem, phase: TxnPhase) -> Vec<E
             if is_system_payment(phase, module_bytes) {
                 item_type = "system".to_string();
                 // The only required argument for the system payment is `amount`.
-                let mut elements = vec![parse_amount(args)];
+                let mut elements: Vec<Element> = parse_amount(args).into_iter().collect();
                 let args_sans_amount = remove_amount_arg(args.clone());
                 elements.extend(parse_runtime_args(&args_sans_amount));
                 elements

@@ -1,5 +1,5 @@
 use ledger::JsonRepr;
-use test_data::valid_samples;
+use test_data::{invalid_samples, valid_samples};
 
 mod ledger;
 mod parser;
@@ -12,6 +12,7 @@ fn main() {
 
     let data: Vec<JsonRepr> = valid_samples(&mut rng)
         .into_iter()
+        .chain(invalid_samples(&mut rng).into_iter())
         .enumerate()
         .map(|(id, sample_deploy)| {
             let (label, deploy, valid) = sample_deploy.destructure();
@@ -19,5 +20,5 @@ fn main() {
         })
         .collect();
 
-    println!("{}", serde_json::to_string_pretty(&valid_data).unwrap());
+    println!("{}", serde_json::to_string_pretty(&data).unwrap());
 }

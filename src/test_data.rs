@@ -1,7 +1,15 @@
-use casper_types::{account::AccountHash, AccessRights, CLValue, Key, RuntimeArgs, URef, U512};
+use std::str::FromStr;
+
+use casper_execution_engine::core::engine_state::ExecutableDeployItem;
+use casper_node::types::{Deploy, DeployHash, TimeDiff, Timestamp};
+use casper_types::{
+    account::AccountHash, AccessRights, CLValue, Key, RuntimeArgs, SecretKey, URef, U512,
+};
+
+use crate::sample::Sample;
 
 #[derive(Clone, Copy, Debug)]
-pub(crate) struct NativeTransfer {
+struct NativeTransfer {
     target: TransferTarget,
     amount: U512,
     id: u64,
@@ -33,7 +41,7 @@ impl From<NativeTransfer> for RuntimeArgs {
 }
 
 #[derive(Clone, Copy, Debug)]
-pub(crate) enum TransferTarget {
+enum TransferTarget {
     // raw bytes representing account hash
     Bytes([u8; 32]),
     // transfer to a specific purse
@@ -75,7 +83,7 @@ impl TransferTarget {
     }
 }
 
-pub(crate) mod native_transfer {
+mod native_transfer {
     use casper_execution_engine::core::engine_state::ExecutableDeployItem;
     use casper_types::{AccessRights, URef, U512};
 
@@ -112,7 +120,7 @@ pub(crate) mod native_transfer {
         samples
     }
 
-    pub(crate) fn samples() -> Vec<Sample<ExecutableDeployItem>> {
+    pub(super) fn samples() -> Vec<Sample<ExecutableDeployItem>> {
         let amount_min = U512::from(0u8);
         let amount_mid = U512::from(100000000);
         let amount_max = U512::MAX;
@@ -151,11 +159,11 @@ pub(crate) mod native_transfer {
     }
 }
 
-pub(crate) mod system_payment {
+mod system_payment {
     use casper_execution_engine::core::engine_state::ExecutableDeployItem;
     use casper_types::{bytesrepr::Bytes, runtime_args, RuntimeArgs, U512};
 
-    pub(crate) fn sample() -> ExecutableDeployItem {
+    pub(super) fn sample() -> ExecutableDeployItem {
         ExecutableDeployItem::ModuleBytes {
             module_bytes: Bytes::new(),
             args: runtime_args! {
@@ -163,4 +171,42 @@ pub(crate) mod system_payment {
             },
         }
     }
+}
+
+fn make_deploy(
+    session: Sample<ExecutableDeployItem>,
+    payment: ExecutableDeployItem,
+) -> Sample<Deploy> {
+    let secret_key = SecretKey::ed25519([123u8; 32]);
+
+    let deploy = |session| {
+        Deploy::new(
+            Timestamp::from_str("2021-05-04T14:20:35.104Z").unwrap(),
+            TimeDiff::from_seconds(60 * 30),
+            2,
+            vec![
+                DeployHash::new([15u8; 32].into()),
+                DeployHash::new([16u8; 32].into()),
+            ],
+            String::from("mainnet"),
+            payment,
+            session,
+            &secret_key,
+        )
+    };
+
+    session.map_sample(deploy)
+}
+
+pub(crate) fn valid_samples() -> Vec<Sample<Deploy>> {
+    let session_samples = native_transfer::samples();
+    let standard_payment = system_payment::sample();
+
+    let mut samples = vec![];
+    for session in session_samples {
+        let mut sample_deploy = make_deploy(session, standard_payment.clone());
+        sample_deploy.add_label("payment:system".to_string());
+        samples.push(sample_deploy);
+    }
+    samples
 }

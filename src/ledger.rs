@@ -243,7 +243,7 @@ pub(super) struct JsonRepr {
     output_expert: Vec<String>,
 }
 
-pub(super) fn from_deploy(index: usize, name: &str, deploy: Deploy) -> JsonRepr {
+pub(super) fn from_deploy(index: usize, valid: bool, name: &str, deploy: Deploy) -> JsonRepr {
     let blob = hex::encode(&deploy.to_bytes().unwrap());
     let ledger = Ledger::from_deploy(deploy);
     let ledger_view = LedgerView::from_ledger(ledger);
@@ -252,7 +252,7 @@ pub(super) fn from_deploy(index: usize, name: &str, deploy: Deploy) -> JsonRepr 
     JsonRepr {
         index,
         name: name.to_string(),
-        valid: true,
+        valid,
         testnet: true,
         blob,
         output,

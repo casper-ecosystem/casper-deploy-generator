@@ -3,12 +3,13 @@ use std::str::FromStr;
 use casper_execution_engine::core::engine_state::executable_deploy_item::ExecutableDeployItem;
 use casper_node::types::{Deploy, DeployHash, TimeDiff, Timestamp};
 use casper_types::SecretKey;
-use test_data::Sample;
 
-use crate::ledger::JsonRepr;
+use ledger::JsonRepr;
+use sample::Sample;
 
 mod ledger;
 mod parser;
+mod sample;
 mod test_data;
 mod utils;
 

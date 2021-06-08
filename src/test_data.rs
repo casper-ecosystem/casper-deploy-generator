@@ -6,7 +6,19 @@ use casper_types::{
     account::AccountHash, AccessRights, CLValue, Key, RuntimeArgs, SecretKey, URef, U512,
 };
 
+use rand::prelude::*;
+
 use crate::sample::Sample;
+
+// 1 minute.
+const MIN_TTL: TimeDiff = TimeDiff::from_seconds(60);
+// 1 day.
+const MAX_TTL: TimeDiff = TimeDiff::from_seconds(60 * 60 * 24);
+// 1 hour.
+const TTL_HOUR: TimeDiff = TimeDiff::from_seconds(60 * 60);
+
+const MIN_DEPS_COUNT: u8 = 0;
+const MAX_DEPS_COUNT: u8 = 10;
 
 #[derive(Clone, Copy, Debug)]
 struct NativeTransfer {
@@ -176,18 +188,17 @@ mod system_payment {
 fn make_deploy(
     session: Sample<ExecutableDeployItem>,
     payment: ExecutableDeployItem,
+    ttl: TimeDiff,
+    dependencies: Vec<DeployHash>,
 ) -> Sample<Deploy> {
     let secret_key = SecretKey::ed25519([123u8; 32]);
 
     let deploy = |session| {
         Deploy::new(
             Timestamp::from_str("2021-05-04T14:20:35.104Z").unwrap(),
-            TimeDiff::from_seconds(60 * 30),
+            ttl,
             2,
-            vec![
-                DeployHash::new([15u8; 32].into()),
-                DeployHash::new([16u8; 32].into()),
-            ],
+            dependencies,
             String::from("mainnet"),
             payment,
             session,
@@ -198,13 +209,39 @@ fn make_deploy(
     session.map_sample(deploy)
 }
 
+fn make_dependencies(count: u8) -> Vec<DeployHash> {
+    if count == 0 {
+        return vec![];
+    }
+
+    let mut dependencies = vec![];
+    for i in 0..=count {
+        dependencies.push(DeployHash::new([i; 32].into()));
+    }
+    dependencies
+}
+
 pub(crate) fn valid_samples() -> Vec<Sample<Deploy>> {
+    let mut rng = rand::thread_rng();
+
     let session_samples = native_transfer::samples();
     let standard_payment = system_payment::sample();
 
+    let mut ttls = vec![MIN_TTL, TTL_HOUR, MAX_TTL];
+
+    let mut deps_count = vec![MIN_DEPS_COUNT, 3, MAX_DEPS_COUNT];
+
     let mut samples = vec![];
     for session in session_samples {
-        let mut sample_deploy = make_deploy(session, standard_payment.clone());
+        // Random dependencies within correct limits.
+        deps_count.shuffle(&mut rng);
+        let dependencies = make_dependencies(deps_count.first().cloned().unwrap());
+
+        // Pick a random TTL value.
+        ttls.shuffle(&mut rng);
+        let ttl = ttls.first().cloned().unwrap();
+
+        let mut sample_deploy = make_deploy(session, standard_payment.clone(), ttl, dependencies);
         sample_deploy.add_label("payment:system".to_string());
         samples.push(sample_deploy);
     }

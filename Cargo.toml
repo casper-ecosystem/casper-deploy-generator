@@ -16,3 +16,4 @@ serde = { version = "1", features = ["derive"] }
 itertools = "0.10.0"
 humantime = "2.1.0"
 thousands = "0.2.0"
+rand = "0.8.3"

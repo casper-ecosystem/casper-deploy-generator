@@ -8,7 +8,9 @@ mod test_data;
 mod utils;
 
 fn main() {
-    let valid_data: Vec<JsonRepr> = valid_samples()
+    let mut rng = rand::thread_rng();
+
+    let data: Vec<JsonRepr> = valid_samples(&mut rng)
         .into_iter()
         .enumerate()
         .map(|(id, sample_deploy)| {

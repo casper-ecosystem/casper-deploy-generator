@@ -5,8 +5,7 @@ use casper_node::types::{Deploy, DeployHash, TimeDiff, Timestamp};
 use casper_types::{
     account::AccountHash, AccessRights, CLValue, Key, RuntimeArgs, SecretKey, URef, U512,
 };
-
-use rand::prelude::*;
+use rand::{prelude::*, Rng};
 
 use crate::sample::Sample;
 
@@ -248,11 +247,9 @@ fn random_keys(key_count: u8) -> Vec<SecretKey> {
     out
 }
 
-pub(crate) fn valid_samples() -> Vec<Sample<Deploy>> {
-    let mut rng = rand::thread_rng();
-
-    let session_samples = native_transfer::samples();
-    let standard_payment = system_payment::sample();
+pub(crate) fn valid_samples<R: Rng>(rng: &mut R) -> Vec<Sample<Deploy>> {
+    let session_samples = native_transfer::valid();
+    let standard_payment = system_payment::valid();
 
     let mut ttls = vec![MIN_TTL, TTL_HOUR, MAX_TTL];
 
@@ -263,7 +260,28 @@ pub(crate) fn valid_samples() -> Vec<Sample<Deploy>> {
     let mut samples = vec![];
 
     for session in session_samples {
-        key_count.shuffle(&mut rng);
+        key_count.shuffle(rng);
+        // Random signing keys count.
+        let mut keys: Vec<SecretKey> = random_keys(*key_count.first().unwrap());
+        // Randomize order of keys, so that both alg have chance to be the main one.
+        keys.shuffle(rng);
+
+        // Random dependencies within correct limits.
+        deps_count.shuffle(rng);
+        let dependencies = make_dependencies(deps_count.first().cloned().unwrap());
+
+        // Pick a random TTL value.
+        ttls.shuffle(rng);
+        let ttl = ttls.first().cloned().unwrap();
+
+        let mut sample_deploy =
+            make_deploy(session, standard_payment.clone(), ttl, dependencies, &keys);
+        sample_deploy.add_label("payment:system".to_string());
+        samples.push(sample_deploy);
+    }
+    samples
+}
+
         // Random signing keys count.
         let mut keys: Vec<SecretKey> = random_keys(*key_count.first().unwrap());
         // Randomize order of keys, so that both alg have chance to be the main one.

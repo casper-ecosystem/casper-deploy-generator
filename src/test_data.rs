@@ -83,7 +83,36 @@ pub(crate) mod native_transfer {
 
     use super::NativeTransfer;
 
-    fn native_transfer_samples() -> Vec<Sample<NativeTransfer>> {
+    fn native_transfer_samples(
+        amounts: &[U512],
+        ids: &[u64],
+        targets: &[TransferTarget],
+        sources: &[Option<URef>],
+    ) -> Vec<Sample<NativeTransfer>> {
+        let mut samples: Vec<Sample<NativeTransfer>> = vec![];
+
+        for amount in amounts {
+            for id in ids {
+                for target in targets {
+                    for source in sources {
+                        let source_label = if source.is_none() {
+                            "source:none"
+                        } else {
+                            "source:uref"
+                        };
+                        let label = format!("native_transfer-{}-{}", target.label(), source_label);
+                        let nt = NativeTransfer::new(*target, *amount, *id, *source);
+                        let sample = Sample::new(label, nt);
+                        samples.push(sample);
+                    }
+                }
+            }
+        }
+
+        samples
+    }
+
+    pub(crate) fn samples() -> Vec<Sample<ExecutableDeployItem>> {
         let amount_min = U512::from(0u8);
         let amount_mid = U512::from(100000000);
         let amount_max = U512::MAX;
@@ -112,31 +141,7 @@ pub(crate) mod native_transfer {
             .chain(vec![None])
             .collect();
 
-        let mut samples: Vec<Sample<NativeTransfer>> = vec![];
-
-        for amount in &amounts {
-            for id in &ids {
-                for target in &targets {
-                    for source in &sources {
-                        let source_label = if source.is_none() {
-                            "source:none"
-                        } else {
-                            "source:uref"
-                        };
-                        let label = format!("native_transfer-{}-{}", target.label(), source_label);
-                        let nt = NativeTransfer::new(*target, *amount, *id, *source);
-                        let sample = Sample::new(label, nt);
-                        samples.push(sample);
-                    }
-                }
-            }
-        }
-
-        samples
-    }
-
-    pub(crate) fn samples() -> Vec<Sample<ExecutableDeployItem>> {
-        native_transfer_samples()
+        native_transfer_samples(&amounts, &ids, &targets, &sources)
             .into_iter()
             .map(|s| {
                 let f = |nt: NativeTransfer| ExecutableDeployItem::Transfer { args: nt.into() };

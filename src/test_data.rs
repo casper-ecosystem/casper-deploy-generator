@@ -128,7 +128,7 @@ mod native_transfer {
                         };
                         let label = format!("native_transfer-{}-{}", target.label(), source_label);
                         let nt = NativeTransfer::new(*target, *amount, *id, *source);
-                        let sample = Sample::new(label, nt);
+                        let sample = Sample::new(label, nt, true);
                         samples.push(sample);
                     }
                 }
@@ -216,9 +216,9 @@ fn make_deploy(
     // Sign deploy with possibly multiple keys.
     let mut sample_deploy = session.map_sample(deploy);
     for key in secondary_keys {
-        let (label, mut deploy) = sample_deploy.destructure();
+        let (label, mut deploy, valid) = sample_deploy.destructure();
         deploy.sign(key);
-        sample_deploy = Sample::new(label, deploy);
+        sample_deploy = Sample::new(label, deploy, valid);
     }
     sample_deploy
 }

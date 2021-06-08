@@ -12,8 +12,8 @@ fn main() {
         .into_iter()
         .enumerate()
         .map(|(id, sample_deploy)| {
-            let (label, deploy) = sample_deploy.destructure();
-            ledger::from_deploy(id, true, &label, deploy)
+            let (label, deploy, valid) = sample_deploy.destructure();
+            ledger::from_deploy(id, valid, &label, deploy)
         })
         .collect();
 

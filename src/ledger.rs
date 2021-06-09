@@ -1,6 +1,6 @@
 use std::fmt::Display;
 
-use casper_node::types::Deploy;
+use casper_node::{types::{Deploy, DeployHash}};
 use casper_types::bytesrepr::ToBytes;
 
 use serde::{Deserialize, Serialize};
@@ -236,6 +236,7 @@ impl LedgerView {
 pub(super) struct JsonRepr {
     index: usize,
     name: String,
+    hash: DeployHash,
     valid: bool,
     testnet: bool,
     blob: String,
@@ -244,6 +245,7 @@ pub(super) struct JsonRepr {
 }
 
 pub(super) fn from_deploy(index: usize, valid: bool, name: &str, deploy: Deploy) -> JsonRepr {
+    let hash = *deploy.id();
     let blob = hex::encode(&deploy.to_bytes().unwrap());
     let ledger = Ledger::from_deploy(deploy);
     let ledger_view = LedgerView::from_ledger(ledger);
@@ -252,6 +254,7 @@ pub(super) fn from_deploy(index: usize, valid: bool, name: &str, deploy: Deploy)
     JsonRepr {
         index,
         name: name.to_string(),
+        hash: hash.clone(),
         valid,
         testnet: true,
         blob,

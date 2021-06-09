@@ -1,3 +1,4 @@
+#[derive(Debug, Clone)]
 pub(crate) struct Sample<V> {
     label: String,
     sample: V,

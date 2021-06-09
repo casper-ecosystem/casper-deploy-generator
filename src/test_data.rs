@@ -302,39 +302,44 @@ fn random_keys(key_count: u8) -> Vec<SecretKey> {
 fn construct_samples<R: Rng>(
     rng: &mut R,
     session_samples: Vec<Sample<ExecutableDeployItem>>,
-    payment_sample: Sample<ExecutableDeployItem>,
+    payment_samples: Vec<Sample<ExecutableDeployItem>>,
     mut ttls: Vec<TimeDiff>,
     mut deps_count: Vec<u8>,
     mut key_count: Vec<u8>,
 ) -> Vec<Sample<Deploy>> {
     let mut samples = vec![];
-    let (payment_label, payment, _valid) = payment_sample.destructure();
 
     for session in session_samples {
-        key_count.shuffle(rng);
-        // Random signing keys count.
-        let mut keys: Vec<SecretKey> = random_keys(*key_count.first().unwrap());
-        // Randomize order of keys, so that both alg have chance to be the main one.
-        keys.shuffle(rng);
+        for payment in &payment_samples {
+            let (payment_label, payment, _valid) = payment.clone().destructure();
 
-        // Random dependencies within correct limits.
-        deps_count.shuffle(rng);
-        let dependencies = make_dependencies(deps_count.first().cloned().unwrap());
+            // Random number of keys.
+            key_count.shuffle(rng);
+            // Random signing keys count.
+            let mut keys: Vec<SecretKey> = random_keys(*key_count.first().unwrap());
+            // Randomize order of keys, so that both alg have chance to be the main one.
+            keys.shuffle(rng);
 
-        // Pick a random TTL value.
-        ttls.shuffle(rng);
-        let ttl = ttls.first().cloned().unwrap();
+            // Random dependencies within correct limits.
+            deps_count.shuffle(rng);
+            let dependencies = make_dependencies(deps_count.first().cloned().unwrap());
 
-        let mut sample_deploy = make_deploy(session, payment.clone(), ttl, dependencies, &keys);
-        sample_deploy.add_label(payment_label.clone());
-        samples.push(sample_deploy);
+            // Pick a random TTL value.
+            ttls.shuffle(rng);
+            let ttl = ttls.first().cloned().unwrap();
+
+            let mut sample_deploy =
+                make_deploy(session.clone(), payment.clone(), ttl, dependencies, &keys);
+            sample_deploy.add_label(payment_label.clone());
+            samples.push(sample_deploy);
+        }
     }
     samples
 }
 
 pub(crate) fn valid_samples<R: Rng>(rng: &mut R) -> Vec<Sample<Deploy>> {
     let session_samples = native_transfer::valid();
-    let standard_payment = system_payment::valid();
+    let payment_samples = vec![system_payment::valid()];
 
     let ttls = vec![MIN_TTL, TTL_HOUR, MAX_TTL];
 
@@ -345,7 +350,7 @@ pub(crate) fn valid_samples<R: Rng>(rng: &mut R) -> Vec<Sample<Deploy>> {
     construct_samples(
         rng,
         session_samples,
-        standard_payment,
+        payment_samples,
         ttls,
         deps_count,
         key_count,
@@ -354,7 +359,7 @@ pub(crate) fn valid_samples<R: Rng>(rng: &mut R) -> Vec<Sample<Deploy>> {
 
 pub(crate) fn invalid_samples<R: Rng>(rng: &mut R) -> Vec<Sample<Deploy>> {
     let session_samples = native_transfer::invalid();
-    let standard_payment = system_payment::invalid();
+    let payment_samples = vec![system_payment::invalid(), system_payment::valid()];
 
     // These parameters do not change validity of the sample.
     let ttls = vec![MIN_TTL, TTL_HOUR, MAX_TTL];
@@ -364,7 +369,7 @@ pub(crate) fn invalid_samples<R: Rng>(rng: &mut R) -> Vec<Sample<Deploy>> {
     construct_samples(
         rng,
         session_samples,
-        standard_payment,
+        payment_samples,
         ttls,
         deps_count,
         key_count,

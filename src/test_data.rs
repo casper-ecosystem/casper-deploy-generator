@@ -217,22 +217,28 @@ mod system_payment {
     use casper_execution_engine::core::engine_state::ExecutableDeployItem;
     use casper_types::{bytesrepr::Bytes, runtime_args, RuntimeArgs, U512};
 
-    pub(super) fn valid() -> ExecutableDeployItem {
-        ExecutableDeployItem::ModuleBytes {
+    use crate::sample::Sample;
+
+    pub(super) fn valid() -> Sample<ExecutableDeployItem> {
+        let payment = ExecutableDeployItem::ModuleBytes {
             module_bytes: Bytes::new(),
             args: runtime_args! {
                 "amount" => U512::from(1000000000)
             },
-        }
+        };
+
+        Sample::new("payment:system", payment, true)
     }
 
-    pub(super) fn invalid() -> ExecutableDeployItem {
-        ExecutableDeployItem::ModuleBytes {
+    pub(super) fn invalid() -> Sample<ExecutableDeployItem> {
+        let payment = ExecutableDeployItem::ModuleBytes {
             module_bytes: Bytes::new(),
             args: runtime_args! {
                 "paying" => U512::from(1000000000)
             },
-        }
+        };
+
+        Sample::new("payment:system-missing:amount", payment, false)
     }
 }
 
@@ -293,17 +299,16 @@ fn random_keys(key_count: u8) -> Vec<SecretKey> {
     out
 }
 
-pub(crate) fn valid_samples<R: Rng>(rng: &mut R) -> Vec<Sample<Deploy>> {
-    let session_samples = native_transfer::valid();
-    let standard_payment = system_payment::valid();
-
-    let mut ttls = vec![MIN_TTL, TTL_HOUR, MAX_TTL];
-
-    let mut deps_count = vec![MIN_DEPS_COUNT, 3, MAX_DEPS_COUNT];
-
-    let mut key_count = vec![MIN_APPROVALS_COUNT, 3, MAX_APPROVALS_COUNT];
-
+fn construct_samples<R: Rng>(
+    rng: &mut R,
+    session_samples: Vec<Sample<ExecutableDeployItem>>,
+    payment_sample: Sample<ExecutableDeployItem>,
+    mut ttls: Vec<TimeDiff>,
+    mut deps_count: Vec<u8>,
+    mut key_count: Vec<u8>,
+) -> Vec<Sample<Deploy>> {
     let mut samples = vec![];
+    let (payment_label, payment, _valid) = payment_sample.destructure();
 
     for session in session_samples {
         key_count.shuffle(rng);
@@ -320,46 +325,48 @@ pub(crate) fn valid_samples<R: Rng>(rng: &mut R) -> Vec<Sample<Deploy>> {
         ttls.shuffle(rng);
         let ttl = ttls.first().cloned().unwrap();
 
-        let mut sample_deploy =
-            make_deploy(session, standard_payment.clone(), ttl, dependencies, &keys);
-        sample_deploy.add_label("payment:system".to_string());
+        let mut sample_deploy = make_deploy(session, payment.clone(), ttl, dependencies, &keys);
+        sample_deploy.add_label(payment_label.clone());
         samples.push(sample_deploy);
     }
     samples
+}
+
+pub(crate) fn valid_samples<R: Rng>(rng: &mut R) -> Vec<Sample<Deploy>> {
+    let session_samples = native_transfer::valid();
+    let standard_payment = system_payment::valid();
+
+    let ttls = vec![MIN_TTL, TTL_HOUR, MAX_TTL];
+
+    let deps_count = vec![MIN_DEPS_COUNT, 3, MAX_DEPS_COUNT];
+
+    let key_count = vec![MIN_APPROVALS_COUNT, 3, MAX_APPROVALS_COUNT];
+
+    construct_samples(
+        rng,
+        session_samples,
+        standard_payment,
+        ttls,
+        deps_count,
+        key_count,
+    )
 }
 
 pub(crate) fn invalid_samples<R: Rng>(rng: &mut R) -> Vec<Sample<Deploy>> {
     let session_samples = native_transfer::invalid();
     let standard_payment = system_payment::invalid();
 
-    // Invalid values.
-    let mut ttls: Vec<TimeDiff> = vec![MAX_TTL + 1.into()];
+    // These parameters do not change validity of the sample.
+    let ttls = vec![MIN_TTL, TTL_HOUR, MAX_TTL];
+    let deps_count = vec![MIN_DEPS_COUNT, 3, MAX_DEPS_COUNT];
+    let key_count = vec![MIN_APPROVALS_COUNT, 3, MAX_APPROVALS_COUNT];
 
-    let mut deps_count = vec![MAX_DEPS_COUNT + 1];
-
-    let mut key_count = vec![MAX_APPROVALS_COUNT + 1];
-
-    let mut samples = vec![];
-
-    for session in session_samples {
-        key_count.shuffle(rng);
-        // Random signing keys count.
-        let mut keys: Vec<SecretKey> = random_keys(*key_count.first().unwrap());
-        // Randomize order of keys, so that both alg have chance to be the main one.
-        keys.shuffle(rng);
-
-        // Random dependencies within correct limits.
-        deps_count.shuffle(rng);
-        let dependencies = make_dependencies(deps_count.first().cloned().unwrap());
-
-        // Pick a random TTL value.
-        ttls.shuffle(rng);
-        let ttl = ttls.first().cloned().unwrap();
-
-        let mut sample_deploy =
-            make_deploy(session, standard_payment.clone(), ttl, dependencies, &keys);
-        sample_deploy.add_label("payment:system-missing:amount".to_string());
-        samples.push(sample_deploy);
-    }
-    samples
+    construct_samples(
+        rng,
+        session_samples,
+        standard_payment,
+        ttls,
+        deps_count,
+        key_count,
+    )
 }

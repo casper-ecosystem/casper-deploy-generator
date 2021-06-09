@@ -134,14 +134,8 @@ pub(crate) fn parse_deploy_header(dh: &DeployHeader) -> Vec<Element> {
     elements.push(Element::expert("ttl", format!("{}", dh.ttl())));
     elements.push(Element::expert("gas price", format!("{}", dh.gas_price())));
     elements.push(Element::expert(
-        "txn deps",
-        format!(
-            "{:?}",
-            dh.dependencies()
-                .iter()
-                .map(|dh| dh.inner())
-                .collect::<Vec<_>>()
-        ),
+        "Deps #",
+        format!("{:?}", dh.dependencies().len()),
     ));
     elements
 }

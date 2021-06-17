@@ -164,11 +164,13 @@ fn construct_samples<R: Rng>(
     rng: &mut R,
     session_samples: Vec<Sample<ExecutableDeployItem>>,
     payment_samples: Vec<Sample<ExecutableDeployItem>>,
-    mut ttls: Vec<TimeDiff>,
-    mut deps_count: Vec<u8>,
-    mut key_count: Vec<u8>,
 ) -> Vec<Sample<Deploy>> {
     let mut samples = vec![];
+
+    // These params do not change validity of a sample.
+    let mut ttls = vec![MIN_TTL, TTL_HOUR, MAX_TTL];
+    let mut deps_count = vec![MIN_DEPS_COUNT, 3, MAX_DEPS_COUNT];
+    let mut key_count = vec![MIN_APPROVALS_COUNT, 3, MAX_APPROVALS_COUNT];
 
     for session in session_samples {
         for payment in &payment_samples {
@@ -202,30 +204,16 @@ pub(crate) fn valid_samples<R: Rng>(rng: &mut R) -> Vec<Sample<Deploy>> {
     let session_samples = native_transfer::valid();
     let payment_samples = vec![system_payment::valid()];
 
-    let ttls = vec![MIN_TTL, TTL_HOUR, MAX_TTL];
-
-    let deps_count = vec![MIN_DEPS_COUNT, 3, MAX_DEPS_COUNT];
-
-    let key_count = vec![MIN_APPROVALS_COUNT, 3, MAX_APPROVALS_COUNT];
-
     construct_samples(
         rng,
         session_samples,
         payment_samples,
-        ttls,
-        deps_count,
-        key_count,
     )
 }
 
 pub(crate) fn invalid_samples<R: Rng>(rng: &mut R) -> Vec<Sample<Deploy>> {
     let session_samples = native_transfer::invalid();
     let payment_samples = vec![system_payment::invalid(), system_payment::valid()];
-
-    // These parameters do not change validity of the sample.
-    let ttls = vec![MIN_TTL, TTL_HOUR, MAX_TTL];
-    let deps_count = vec![MIN_DEPS_COUNT, 3, MAX_DEPS_COUNT];
-    let key_count = vec![MIN_APPROVALS_COUNT, 3, MAX_APPROVALS_COUNT];
 
     construct_samples(
         rng,

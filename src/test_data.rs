@@ -9,6 +9,7 @@ use rand::{prelude::*, Rng};
 
 use crate::sample::Sample;
 
+mod delegate;
 mod native_transfer;
 mod system_payment;
 
@@ -201,26 +202,15 @@ fn construct_samples<R: Rng>(
 }
 
 pub(crate) fn valid_samples<R: Rng>(rng: &mut R) -> Vec<Sample<Deploy>> {
-    let session_samples = native_transfer::valid();
+    let session_samples = delegate::valid(rng);
     let payment_samples = vec![system_payment::valid()];
 
-    construct_samples(
-        rng,
-        session_samples,
-        payment_samples,
-    )
+    construct_samples(rng, session_samples, payment_samples)
 }
 
 pub(crate) fn invalid_samples<R: Rng>(rng: &mut R) -> Vec<Sample<Deploy>> {
     let session_samples = native_transfer::invalid();
     let payment_samples = vec![system_payment::invalid(), system_payment::valid()];
 
-    construct_samples(
-        rng,
-        session_samples,
-        payment_samples,
-        ttls,
-        deps_count,
-        key_count,
-    )
+    construct_samples(rng, session_samples, payment_samples)
 }

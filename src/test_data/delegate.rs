@@ -21,7 +21,6 @@ use casper_types::{
 use rand::Rng;
 
 const ENTRY_POINT_NAME: &str = "delegate";
-const VERSION: Option<ContractVersion> = None;
 
 #[derive(Clone, Copy, Debug)]
 struct Delegate {

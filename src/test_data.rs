@@ -202,7 +202,7 @@ fn construct_samples<R: Rng>(
 }
 
 pub(crate) fn valid_samples<R: Rng>(rng: &mut R) -> Vec<Sample<Deploy>> {
-    let session_samples = delegate::valid(rng);
+    let session_samples = native_transfer::valid();
     let payment_samples = vec![system_payment::valid()];
 
     construct_samples(rng, session_samples, payment_samples)

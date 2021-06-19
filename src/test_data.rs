@@ -12,6 +12,7 @@ use crate::sample::Sample;
 mod delegate;
 mod native_transfer;
 mod system_payment;
+mod undelegate;
 
 // From the chainspec.
 // 1 minute.
@@ -204,6 +205,7 @@ fn construct_samples<R: Rng>(
 pub(crate) fn valid_samples<R: Rng>(rng: &mut R) -> Vec<Sample<Deploy>> {
     let mut session_samples = native_transfer::valid();
     session_samples.extend(delegate::valid(rng));
+    session_samples.extend(undelegate::valid(rng));
     let payment_samples = vec![system_payment::valid()];
 
     construct_samples(rng, session_samples, payment_samples)

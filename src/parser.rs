@@ -208,17 +208,26 @@ fn deploy_type(phase: TxnPhase, item: &ExecutableDeployItem) -> Vec<Element> {
     }
 }
 
-/// Returns `true` when the deploy's entry point is *literally* _delegate_
-fn is_delegate(item: &ExecutableDeployItem) -> bool {
+fn is_entrypoint(item: &ExecutableDeployItem, expected: &str) -> bool {
     match item {
         ExecutableDeployItem::ModuleBytes { .. } | ExecutableDeployItem::Transfer { .. } => false,
         ExecutableDeployItem::StoredContractByHash { entry_point, .. }
         | ExecutableDeployItem::StoredContractByName { entry_point, .. }
         | ExecutableDeployItem::StoredVersionedContractByHash { entry_point, .. }
         | ExecutableDeployItem::StoredVersionedContractByName { entry_point, .. } => {
-            entry_point == "delegate"
+            entry_point == expected
         }
     }
+}
+
+/// Returns `true` when the deploy's entry point is *literally* _delegate_
+fn is_delegate(item: &ExecutableDeployItem) -> bool {
+    is_entrypoint(item, "delegate")
+}
+
+/// Returns `true` when the deploy's entry point is *literally* _undelegate_
+fn is_undelegate(item: &ExecutableDeployItem) -> bool {
+    is_entrypoint(item, "undelegate")
 }
 
 fn parse_delegation(item: &ExecutableDeployItem) -> Vec<Element> {
@@ -253,9 +262,43 @@ fn parse_delegation(item: &ExecutableDeployItem) -> Vec<Element> {
     elements
 }
 
+fn parse_undelegation(item: &ExecutableDeployItem) -> Vec<Element> {
+    let mut elements = vec![Element::regular("Auction", "undelegate".to_string())];
+    elements.extend(
+        deploy_type(TxnPhase::Session, item)
+            .into_iter()
+            .map(|mut e| {
+                // For now, we choose to not display deploy's details for delegation.
+                e.as_expert();
+                e
+            }),
+    );
+    match item {
+        ExecutableDeployItem::ModuleBytes { .. } | ExecutableDeployItem::Transfer { .. } => {
+            panic!("unexpected type for undelegation")
+        }
+        ExecutableDeployItem::StoredContractByHash { args, .. }
+        | ExecutableDeployItem::StoredContractByName { args, .. }
+        | ExecutableDeployItem::StoredVersionedContractByHash { args, .. }
+        | ExecutableDeployItem::StoredVersionedContractByName { args, .. } => {
+            // Public key of the account we're delegating from.
+            let delegator_pk = parse_optional_arg(args, "delegator", false, identity);
+            elements.extend(delegator_pk.into_iter());
+            // Public key of the validator we're delegating to.
+            let validator_pk = parse_optional_arg(args, "validator", false, identity);
+            elements.extend(validator_pk.into_iter());
+            // Amount we're delegating.
+            elements.extend(parse_amount(args).into_iter());
+        }
+    };
+    elements
+}
+
 pub(crate) fn parse_phase(item: &ExecutableDeployItem, phase: TxnPhase) -> Vec<Element> {
     if is_delegate(item) {
         parse_delegation(item)
+    } else if is_undelegate(item) {
+        parse_undelegation(item)
     } else {
         let mut elements: Vec<Element> = deploy_type(phase, item);
         match item {

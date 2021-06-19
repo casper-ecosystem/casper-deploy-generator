@@ -84,6 +84,10 @@ impl Element {
             expert: false,
         }
     }
+
+    pub(crate) fn as_expert(&mut self) {
+        self.expert = true;
+    }
 }
 
 struct Ledger(Vec<Element>);

@@ -107,7 +107,7 @@ fn identity<T>(el: T) -> T {
 /// * ID
 /// Optional fields:
 /// * source
-fn parse_transfer(args: &RuntimeArgs) -> Vec<Element> {
+fn parse_transfer_args(args: &RuntimeArgs) -> Vec<Element> {
     let mut elements: Vec<Element> = parse_optional_arg(args, ARG_TO, false, identity)
         .into_iter()
         .collect();
@@ -140,85 +140,167 @@ pub(crate) fn parse_deploy_header(dh: &DeployHeader) -> Vec<Element> {
     elements
 }
 
-pub(crate) fn parse_phase(item: &ExecutableDeployItem, phase: TxnPhase) -> Vec<Element> {
-    let item_type;
-    let phase_args = match item {
-        ExecutableDeployItem::ModuleBytes { module_bytes, args } => {
+/// Returns the main elements describing the deploy:
+/// – is it a payment or session code,
+/// – is it a raw contract bytes, call by name, by hash, versioned, etc.?
+///
+/// Does NOT parse the arguments or entry points.
+fn deploy_type(phase: TxnPhase, item: &ExecutableDeployItem) -> Vec<Element> {
+    // Session|Payment :
+    let phase_label = format!("{}", phase);
+    match item {
+        ExecutableDeployItem::ModuleBytes { module_bytes, .. } => {
             if is_system_payment(phase, module_bytes) {
-                item_type = "system".to_string();
-                // The only required argument for the system payment is `amount`.
-                let mut elements: Vec<Element> = parse_amount(args).into_iter().collect();
-                let args_sans_amount = remove_amount_arg(args.clone());
-                elements.extend(parse_runtime_args(&args_sans_amount));
-                elements
+                // Payment: system
+                vec![Element::regular(&phase_label, "system".to_string())]
             } else {
-                item_type = "contract".to_string();
-                let bytes = format!("{:?}", hash::hash(module_bytes.as_slice()));
-                let mut elements = vec![Element::regular("Cntrct hash", bytes)];
-                elements.extend(parse_runtime_args(args));
-                elements
+                let contract_hash = format!("{:?}", hash::hash(module_bytes.as_slice()));
+                vec![
+                    // Session|Payment: contract
+                    Element::regular(&phase_label, "contract".to_string()),
+                    // Cntrct hash: <hash of contract bytes>
+                    Element::regular("Cntrct hash", contract_hash),
+                ]
             }
         }
-        ExecutableDeployItem::StoredContractByHash {
-            hash,
-            entry_point,
-            args,
-        } => {
-            item_type = "by-hash".to_string();
-            let mut elements = vec![Element::regular("address", format!("{}", hash))];
-            elements.push(entrypoint(entry_point));
-            elements.extend(parse_runtime_args(args));
-            elements
+        ExecutableDeployItem::StoredContractByHash { hash, .. } => {
+            vec![
+                // Session|Payment: by-hash
+                Element::regular(&phase_label, "by-hash".to_string()),
+                // Address: <contract address>
+                Element::regular("address", format!("{}", hash)),
+            ]
         }
-        ExecutableDeployItem::StoredContractByName {
-            name,
-            entry_point,
-            args,
-        } => {
-            item_type = "by-name".to_string();
-            let mut elements = vec![Element::regular("name", format!("{}", name))];
-            elements.push(entrypoint(entry_point));
-            elements.extend(parse_runtime_args(args));
-            elements
+        ExecutableDeployItem::StoredContractByName { name, .. } => {
+            vec![
+                // Session|Payment: by-name
+                Element::regular(&phase_label, "by-name".to_string()),
+                // Name: <name of the contract>
+                Element::regular("name", name.clone()),
+            ]
         }
-        ExecutableDeployItem::StoredVersionedContractByHash {
-            hash,
-            version,
-            entry_point,
-            args,
-        } => {
-            item_type = "by-hash-versioned".to_string();
-            let mut elements = vec![Element::regular("address", format!("{}", hash))];
-            elements.push(entrypoint(entry_point));
-            elements.push(parse_version(version));
-            elements.extend(parse_runtime_args(args));
-            elements
+        ExecutableDeployItem::StoredVersionedContractByHash { hash, version, .. } => {
+            vec![
+                // Session|Payment: by-hash-versioned
+                Element::regular(&phase_label, "by-hash-versioned".to_string()),
+                // Address: <contract address>
+                Element::regular("address", hash.to_string()),
+                // Version: <version>
+                parse_version(version),
+            ]
         }
-        ExecutableDeployItem::StoredVersionedContractByName {
-            name,
-            version,
-            entry_point,
-            args,
-        } => {
-            item_type = "by-name-versioned".to_string();
-            let mut elements = vec![Element::regular("name", format!("{}", name))];
-            elements.push(entrypoint(entry_point));
-            elements.push(parse_version(version));
-            elements.extend(parse_runtime_args(args));
-            elements
+        ExecutableDeployItem::StoredVersionedContractByName { name, version, .. } => {
+            vec![
+                // Session|Payment: by-name-versioned
+                Element::regular(&phase_label, "by-name-versioned".to_string()),
+                // Name: <name of the contract>
+                Element::regular("name", name.to_string()),
+                // Version: <version>
+                parse_version(version),
+            ]
         }
-        ExecutableDeployItem::Transfer { args } => {
-            item_type = "native transfer".to_string();
-            let mut elements = parse_transfer(args);
-            let args_sans_transfer = remove_transfer_args(args.clone());
-            elements.extend(parse_runtime_args(&&args_sans_transfer));
-            elements
+        ExecutableDeployItem::Transfer { .. } => {
+            vec![
+                // Session|Payment: native transfer
+                Element::regular(&phase_label, "native transfer".to_string()),
+            ]
+        }
+    }
+}
+
+/// Returns `true` when the deploy's entry point is *literally* _delegate_
+fn is_delegate(item: &ExecutableDeployItem) -> bool {
+    match item {
+        ExecutableDeployItem::ModuleBytes { .. } | ExecutableDeployItem::Transfer { .. } => false,
+        ExecutableDeployItem::StoredContractByHash { entry_point, .. }
+        | ExecutableDeployItem::StoredContractByName { entry_point, .. }
+        | ExecutableDeployItem::StoredVersionedContractByHash { entry_point, .. }
+        | ExecutableDeployItem::StoredVersionedContractByName { entry_point, .. } => {
+            entry_point == "delegate"
+        }
+    }
+}
+
+fn parse_delegation(item: &ExecutableDeployItem) -> Vec<Element> {
+    let mut elements = vec![Element::regular("Auction", "delegate".to_string())];
+    elements.extend(
+        deploy_type(TxnPhase::Session, item)
+            .into_iter()
+            .map(|mut e| {
+                // For now, we choose to not display deploy's details for delegation.
+                e.as_expert();
+                e
+            }),
+    );
+    match item {
+        ExecutableDeployItem::ModuleBytes { .. } | ExecutableDeployItem::Transfer { .. } => {
+            panic!("unexpected type for delegation")
+        }
+        ExecutableDeployItem::StoredContractByHash { args, .. }
+        | ExecutableDeployItem::StoredContractByName { args, .. }
+        | ExecutableDeployItem::StoredVersionedContractByHash { args, .. }
+        | ExecutableDeployItem::StoredVersionedContractByName { args, .. } => {
+            // Public key of the account we're delegating from.
+            let delegator_pk = parse_optional_arg(args, "delegator", false, identity);
+            elements.extend(delegator_pk.into_iter());
+            // Public key of the validator we're delegating to.
+            let validator_pk = parse_optional_arg(args, "validator", false, identity);
+            elements.extend(validator_pk.into_iter());
+            // Amount we're delegating.
+            elements.extend(parse_amount(args).into_iter());
         }
     };
-    let phase_label = format!("{}", phase);
-    let mut elements = vec![Element::regular(&phase_label, item_type)];
-    elements.extend(phase_args);
     elements
+}
+
+pub(crate) fn parse_phase(item: &ExecutableDeployItem, phase: TxnPhase) -> Vec<Element> {
+    if is_delegate(item) {
+        parse_delegation(item)
+    } else {
+        let mut elements: Vec<Element> = deploy_type(phase, item);
+        match item {
+            ExecutableDeployItem::ModuleBytes { module_bytes, args } => {
+                if is_system_payment(phase, module_bytes) {
+                    // The only required argument for the system payment is `amount`.
+                    elements.extend(parse_amount(args).into_iter());
+                    let args_sans_amount = remove_amount_arg(args.clone());
+                    elements.extend(parse_runtime_args(&args_sans_amount));
+                } else {
+                    elements.extend(parse_runtime_args(args));
+                }
+            }
+            ExecutableDeployItem::StoredContractByHash {
+                entry_point, args, ..
+            } => {
+                elements.push(entrypoint(entry_point));
+                elements.extend(parse_runtime_args(args));
+            }
+            ExecutableDeployItem::StoredContractByName {
+                entry_point, args, ..
+            } => {
+                elements.push(entrypoint(entry_point));
+                elements.extend(parse_runtime_args(args));
+            }
+            ExecutableDeployItem::StoredVersionedContractByHash {
+                entry_point, args, ..
+            } => {
+                elements.push(entrypoint(entry_point));
+                elements.extend(parse_runtime_args(args));
+            }
+            ExecutableDeployItem::StoredVersionedContractByName {
+                entry_point, args, ..
+            } => {
+                elements.push(entrypoint(entry_point));
+                elements.extend(parse_runtime_args(args));
+            }
+            ExecutableDeployItem::Transfer { args } => {
+                let mut elements = parse_transfer_args(args);
+                let args_sans_transfer = remove_transfer_args(args.clone());
+                elements.extend(parse_runtime_args(&&args_sans_transfer));
+            }
+        }
+        elements
+    }
 }
 
 pub(crate) fn parse_approvals(d: &Deploy) -> Vec<Element> {

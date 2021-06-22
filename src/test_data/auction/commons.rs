@@ -22,7 +22,6 @@ pub(crate) fn sample_executables<R: Rng>(
             StoredContractByHash {
                 hash: contract_hash.clone(),
                 entry_point: entry_point.to_string(),
-
                 args: ra.clone(),
             },
             true,
@@ -32,7 +31,6 @@ pub(crate) fn sample_executables<R: Rng>(
             StoredContractByName {
                 name: contract_name.to_string(),
                 entry_point: entry_point.to_string(),
-
                 args: ra.clone(),
             },
             true,
@@ -43,7 +41,6 @@ pub(crate) fn sample_executables<R: Rng>(
                 hash: contract_package_hash.clone(),
                 version: Some(contract_version),
                 entry_point: entry_point.to_string(),
-
                 args: ra.clone(),
             },
             true,

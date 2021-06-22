@@ -7,12 +7,13 @@ use casper_types::{
 };
 use rand::{prelude::*, Rng};
 
+use auction::{delegate, undelegate};
+
 use crate::sample::Sample;
 
-mod delegate;
+mod auction;
 mod native_transfer;
 mod system_payment;
-mod undelegate;
 
 // From the chainspec.
 // 1 minute.

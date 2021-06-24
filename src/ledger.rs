@@ -5,13 +5,11 @@ use casper_types::bytesrepr::ToBytes;
 
 use serde::{Deserialize, Serialize};
 
-use crate::parser::{parse_approvals, parse_deploy_header, parse_phase};
+use crate::parser;
 
 const LEDGER_VIEW_NAME_COUNT: usize = 11;
 const LEDGER_VIEW_TOP_COUNT: usize = 17;
 const LEDGER_VIEW_BOTTOM_COUNT: usize = 17;
-
-pub(crate) struct Elements(Vec<Element>);
 
 #[derive(Clone, Copy)]
 pub(crate) enum TxnPhase {
@@ -31,23 +29,6 @@ impl Display for TxnPhase {
             TxnPhase::Payment => write!(f, "Payment"),
             TxnPhase::Session => write!(f, "Execution"),
         }
-    }
-}
-
-impl Into<Elements> for Deploy {
-    fn into(self) -> Elements {
-        let mut elements = vec![];
-        let deploy_type = if self.session().is_transfer() {
-            "Transfer"
-        } else {
-            "Execute Contract"
-        };
-        elements.push(Element::regular("Type", format!("{}", deploy_type)));
-        elements.extend(parse_deploy_header(self.header()));
-        elements.extend(parse_phase(self.payment(), TxnPhase::Payment));
-        elements.extend(parse_phase(self.session(), TxnPhase::Session));
-        elements.extend(parse_approvals(&self));
-        Elements(elements)
     }
 }
 
@@ -94,8 +75,7 @@ struct Ledger(Vec<Element>);
 
 impl Ledger {
     fn from_deploy(deploy: Deploy) -> Self {
-        let elements: Elements = deploy.into();
-        Ledger(elements.0)
+        Ledger(parser::parse_deploy(deploy))
     }
 }
 

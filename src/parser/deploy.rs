@@ -217,7 +217,7 @@ pub(crate) fn parse_amount(args: &RuntimeArgs) -> Option<Element> {
 mod amount {
     use casper_types::U512;
 
-    use crate::parser::format_amount;
+    use crate::parser::deploy::format_amount;
 
     #[test]
     fn amount_space_separated() {

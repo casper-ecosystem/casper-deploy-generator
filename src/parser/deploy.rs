@@ -17,7 +17,10 @@ use casper_types::{
 };
 use thousands::Separable;
 
-use super::runtime_args::{parse_runtime_args, parse_transfer_args};
+use super::{
+    auction::{is_delegate, is_undelegate, parse_delegation, parse_undelegation},
+    runtime_args::{parse_runtime_args, parse_transfer_args},
+};
 
 pub(crate) fn parse_deploy_header(dh: &DeployHeader) -> Vec<Element> {
     let mut elements = vec![];
@@ -36,12 +39,64 @@ pub(crate) fn parse_deploy_header(dh: &DeployHeader) -> Vec<Element> {
     elements
 }
 
+pub(crate) fn parse_phase(item: &ExecutableDeployItem, phase: TxnPhase) -> Vec<Element> {
+    if is_delegate(item) {
+        parse_delegation(item)
+    } else if is_undelegate(item) {
+        parse_undelegation(item)
+    } else {
+        let mut elements: Vec<Element> = deploy_type(phase, item);
+        match item {
+            ExecutableDeployItem::ModuleBytes { module_bytes, args } => {
+                if is_system_payment(phase, module_bytes) {
+                    // The only required argument for the system payment is `amount`.
+                    elements.extend(parse_amount(args).into_iter());
+                    let args_sans_amount = remove_amount_arg(args.clone());
+                    elements.extend(parse_runtime_args(&args_sans_amount));
+                } else {
+                    elements.extend(parse_runtime_args(args));
+                }
+            }
+            ExecutableDeployItem::StoredContractByHash {
+                entry_point, args, ..
+            } => {
+                elements.push(entrypoint(entry_point));
+                elements.extend(parse_runtime_args(args));
+            }
+            ExecutableDeployItem::StoredContractByName {
+                entry_point, args, ..
+            } => {
+                elements.push(entrypoint(entry_point));
+                elements.extend(parse_runtime_args(args));
+            }
+            ExecutableDeployItem::StoredVersionedContractByHash {
+                entry_point, args, ..
+            } => {
+                elements.push(entrypoint(entry_point));
+                elements.extend(parse_runtime_args(args));
+            }
+            ExecutableDeployItem::StoredVersionedContractByName {
+                entry_point, args, ..
+            } => {
+                elements.push(entrypoint(entry_point));
+                elements.extend(parse_runtime_args(args));
+            }
+            ExecutableDeployItem::Transfer { args } => {
+                let mut elements = parse_transfer_args(args);
+                let args_sans_transfer = remove_transfer_args(args.clone());
+                elements.extend(parse_runtime_args(&&args_sans_transfer));
+            }
+        }
+        elements
+    }
+}
+
 /// Returns the main elements describing the deploy:
 /// – is it a payment or session code,
 /// – is it a raw contract bytes, call by name, by hash, versioned, etc.?
 ///
 /// Does NOT parse the arguments or entry points.
-fn deploy_type(phase: TxnPhase, item: &ExecutableDeployItem) -> Vec<Element> {
+pub(crate) fn deploy_type(phase: TxnPhase, item: &ExecutableDeployItem) -> Vec<Element> {
     // Session|Payment :
     let phase_label = format!("{}", phase);
     match item {
@@ -112,64 +167,12 @@ fn parse_version(version: &Option<u32>) -> Element {
     Element::expert("version", format!("{}", version))
 }
 
-pub(crate) fn parse_phase(item: &ExecutableDeployItem, phase: TxnPhase) -> Vec<Element> {
-    if is_delegate(item) {
-        parse_delegation(item)
-    } else if is_undelegate(item) {
-        parse_undelegation(item)
-    } else {
-        let mut elements: Vec<Element> = deploy_type(phase, item);
-        match item {
-            ExecutableDeployItem::ModuleBytes { module_bytes, args } => {
-                if is_system_payment(phase, module_bytes) {
-                    // The only required argument for the system payment is `amount`.
-                    elements.extend(parse_amount(args).into_iter());
-                    let args_sans_amount = remove_amount_arg(args.clone());
-                    elements.extend(parse_runtime_args(&args_sans_amount));
-                } else {
-                    elements.extend(parse_runtime_args(args));
-                }
-            }
-            ExecutableDeployItem::StoredContractByHash {
-                entry_point, args, ..
-            } => {
-                elements.push(entrypoint(entry_point));
-                elements.extend(parse_runtime_args(args));
-            }
-            ExecutableDeployItem::StoredContractByName {
-                entry_point, args, ..
-            } => {
-                elements.push(entrypoint(entry_point));
-                elements.extend(parse_runtime_args(args));
-            }
-            ExecutableDeployItem::StoredVersionedContractByHash {
-                entry_point, args, ..
-            } => {
-                elements.push(entrypoint(entry_point));
-                elements.extend(parse_runtime_args(args));
-            }
-            ExecutableDeployItem::StoredVersionedContractByName {
-                entry_point, args, ..
-            } => {
-                elements.push(entrypoint(entry_point));
-                elements.extend(parse_runtime_args(args));
-            }
-            ExecutableDeployItem::Transfer { args } => {
-                let mut elements = parse_transfer_args(args);
-                let args_sans_transfer = remove_transfer_args(args.clone());
-                elements.extend(parse_runtime_args(&&args_sans_transfer));
-            }
-        }
-        elements
-    }
-}
-
 // Payment is a system type of payment when the `module_bytes` are empty.
 fn is_system_payment(phase: TxnPhase, module_bytes: &Bytes) -> bool {
     phase.is_payment() && module_bytes.inner_bytes().is_empty()
 }
 
-fn is_entrypoint(item: &ExecutableDeployItem, expected: &str) -> bool {
+pub(crate) fn is_entrypoint(item: &ExecutableDeployItem, expected: &str) -> bool {
     match item {
         ExecutableDeployItem::ModuleBytes { .. } | ExecutableDeployItem::Transfer { .. } => false,
         ExecutableDeployItem::StoredContractByHash { entry_point, .. }
@@ -179,80 +182,6 @@ fn is_entrypoint(item: &ExecutableDeployItem, expected: &str) -> bool {
             entry_point == expected
         }
     }
-}
-
-/// Returns `true` when the deploy's entry point is *literally* _delegate_
-fn is_delegate(item: &ExecutableDeployItem) -> bool {
-    is_entrypoint(item, "delegate")
-}
-
-/// Returns `true` when the deploy's entry point is *literally* _undelegate_
-fn is_undelegate(item: &ExecutableDeployItem) -> bool {
-    is_entrypoint(item, "undelegate")
-}
-
-fn parse_delegation(item: &ExecutableDeployItem) -> Vec<Element> {
-    let mut elements = vec![Element::regular("Auction", "delegate".to_string())];
-    elements.extend(
-        deploy_type(TxnPhase::Session, item)
-            .into_iter()
-            .map(|mut e| {
-                // For now, we choose to not display deploy's details for delegation.
-                e.as_expert();
-                e
-            }),
-    );
-    match item {
-        ExecutableDeployItem::ModuleBytes { .. } | ExecutableDeployItem::Transfer { .. } => {
-            panic!("unexpected type for delegation")
-        }
-        ExecutableDeployItem::StoredContractByHash { args, .. }
-        | ExecutableDeployItem::StoredContractByName { args, .. }
-        | ExecutableDeployItem::StoredVersionedContractByHash { args, .. }
-        | ExecutableDeployItem::StoredVersionedContractByName { args, .. } => {
-            // Public key of the account we're delegating from.
-            let delegator_pk = parse_optional_arg(args, "delegator", false, identity);
-            elements.extend(delegator_pk.into_iter());
-            // Public key of the validator we're delegating to.
-            let validator_pk = parse_optional_arg(args, "validator", false, identity);
-            elements.extend(validator_pk.into_iter());
-            // Amount we're delegating.
-            elements.extend(parse_amount(args).into_iter());
-        }
-    };
-    elements
-}
-
-fn parse_undelegation(item: &ExecutableDeployItem) -> Vec<Element> {
-    let mut elements = vec![Element::regular("Auction", "undelegate".to_string())];
-    elements.extend(
-        deploy_type(TxnPhase::Session, item)
-            .into_iter()
-            .map(|mut e| {
-                // For now, we choose to not display deploy's details for delegation.
-                e.as_expert();
-                e
-            }),
-    );
-    match item {
-        ExecutableDeployItem::ModuleBytes { .. } | ExecutableDeployItem::Transfer { .. } => {
-            panic!("unexpected type for undelegation")
-        }
-        ExecutableDeployItem::StoredContractByHash { args, .. }
-        | ExecutableDeployItem::StoredContractByName { args, .. }
-        | ExecutableDeployItem::StoredVersionedContractByHash { args, .. }
-        | ExecutableDeployItem::StoredVersionedContractByName { args, .. } => {
-            // Public key of the account we're delegating from.
-            let delegator_pk = parse_optional_arg(args, "delegator", false, identity);
-            elements.extend(delegator_pk.into_iter());
-            // Public key of the validator we're delegating to.
-            let validator_pk = parse_optional_arg(args, "validator", false, identity);
-            elements.extend(validator_pk.into_iter());
-            // Amount we're delegating.
-            elements.extend(parse_amount(args).into_iter());
-        }
-    };
-    elements
 }
 
 fn remove_amount_arg(args: RuntimeArgs) -> RuntimeArgs {

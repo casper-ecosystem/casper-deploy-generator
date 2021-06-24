@@ -1,3 +1,4 @@
+mod auction;
 mod deploy;
 mod runtime_args;
 mod utils;

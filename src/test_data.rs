@@ -7,9 +7,11 @@ use casper_types::{
 };
 use rand::{prelude::*, Rng};
 
+use auction::{delegate, undelegate};
+
 use crate::sample::Sample;
 
-mod delegate;
+mod auction;
 mod native_transfer;
 mod system_payment;
 
@@ -204,6 +206,7 @@ fn construct_samples<R: Rng>(
 pub(crate) fn valid_samples<R: Rng>(rng: &mut R) -> Vec<Sample<Deploy>> {
     let mut session_samples = native_transfer::valid();
     session_samples.extend(delegate::valid(rng));
+    session_samples.extend(undelegate::valid(rng));
     let payment_samples = vec![system_payment::valid()];
 
     construct_samples(rng, session_samples, payment_samples)

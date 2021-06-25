@@ -16,6 +16,8 @@ use casper_execution_engine::core::engine_state::ExecutableDeployItem;
 use casper_types::{PublicKey, RuntimeArgs, U512};
 use rand::Rng;
 
+use super::commons::invalid_delegation;
+
 const ENTRY_POINT_NAME: &str = "undelegate";
 
 #[derive(Clone, Copy, Debug)]
@@ -64,7 +66,8 @@ pub(crate) fn valid<R: Rng>(rng: &mut R) -> Vec<Sample<ExecutableDeployItem>> {
     let mut output = vec![];
 
     for delegation in sample_undelegations(rng) {
-        for sample_executable in sample_executables(rng, ENTRY_POINT_NAME, delegation.into()) {
+        for sample_executable in sample_executables(rng, ENTRY_POINT_NAME, delegation.into(), None)
+        {
             let (executable_label, executable, _) = sample_executable.destructure();
             let label = format!("undelegation-{}", executable_label.clone());
             let sample = Sample::new(label, executable, true);
@@ -73,4 +76,8 @@ pub(crate) fn valid<R: Rng>(rng: &mut R) -> Vec<Sample<ExecutableDeployItem>> {
     }
 
     output
+}
+
+pub(crate) fn invalid<R: Rng>(rng: &mut R) -> Vec<Sample<ExecutableDeployItem>> {
+    invalid_delegation(rng, ENTRY_POINT_NAME)
 }

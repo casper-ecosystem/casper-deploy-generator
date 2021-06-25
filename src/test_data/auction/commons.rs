@@ -11,6 +11,7 @@ pub(crate) fn sample_executables<R: Rng>(
     _rng: &mut R,
     entry_point: &str,
     ra: RuntimeArgs,
+    base_label: Option<String>,
 ) -> Vec<Sample<ExecutableDeployItem>> {
     let contract_hash = ContractHash::new([1u8; 32]);
     let contract_package_hash = ContractPackageHash::new([1u8; 32]);
@@ -58,4 +59,12 @@ pub(crate) fn sample_executables<R: Rng>(
     ];
 
     deploy_items
+        .into_iter()
+        .map(|mut sample| {
+            if let Some(label) = &base_label {
+                sample.add_label(label.clone());
+            }
+            sample
+        })
+        .collect()
 }

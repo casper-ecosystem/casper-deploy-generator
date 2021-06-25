@@ -64,7 +64,8 @@ pub(crate) fn valid<R: Rng>(rng: &mut R) -> Vec<Sample<ExecutableDeployItem>> {
     let mut output = vec![];
 
     for delegation in sample_undelegations(rng) {
-        for sample_executable in sample_executables(rng, ENTRY_POINT_NAME, delegation.into()) {
+        for sample_executable in sample_executables(rng, ENTRY_POINT_NAME, delegation.into(), None)
+        {
             let (executable_label, executable, _) = sample_executable.destructure();
             let label = format!("undelegation-{}", executable_label.clone());
             let sample = Sample::new(label, executable, true);
@@ -73,4 +74,8 @@ pub(crate) fn valid<R: Rng>(rng: &mut R) -> Vec<Sample<ExecutableDeployItem>> {
     }
 
     output
+}
+
+pub(crate) fn invalid<R: Rng>(_rng: &mut R) -> Vec<Sample<ExecutableDeployItem>> {
+    vec![]
 }

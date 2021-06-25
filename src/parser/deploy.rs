@@ -82,7 +82,7 @@ pub(crate) fn parse_phase(item: &ExecutableDeployItem, phase: TxnPhase) -> Vec<E
                 elements.extend(parse_runtime_args(args));
             }
             ExecutableDeployItem::Transfer { args } => {
-                let mut elements = parse_transfer_args(args);
+                elements.extend(parse_transfer_args(args));
                 let args_sans_transfer = remove_transfer_args(args.clone());
                 elements.extend(parse_runtime_args(&&args_sans_transfer));
             }

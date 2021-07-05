@@ -4,7 +4,7 @@ use casper_types::system::mint::{ARG_ID, ARG_SOURCE, ARG_TARGET, ARG_TO};
 use casper_types::{CLValue, RuntimeArgs};
 use std::collections::BTreeMap;
 
-use super::deploy::{identity, parse_amount};
+use super::deploy::identity;
 
 /// Parses all contract arguments into a form:
 /// arg-n-name: <name>
@@ -26,6 +26,7 @@ pub(crate) fn parse_runtime_args(ra: &RuntimeArgs) -> Vec<Element> {
 pub(crate) fn parse_optional_arg<F: Fn(String) -> String>(
     args: &RuntimeArgs,
     key: &str,
+    label: &str,
     expert: bool,
     f: F,
 ) -> Option<Element> {
@@ -33,9 +34,9 @@ pub(crate) fn parse_optional_arg<F: Fn(String) -> String>(
         Some(cl_value) => {
             let value = f(cl_value_to_string(cl_value));
             let element = if expert {
-                Element::expert(key, value)
+                Element::expert(label, value)
             } else {
-                Element::regular(key, value)
+                Element::regular(label, value)
             };
             Some(element)
         }
@@ -50,12 +51,13 @@ pub(crate) fn parse_optional_arg<F: Fn(String) -> String>(
 /// Optional fields:
 /// * source
 pub(crate) fn parse_transfer_args(args: &RuntimeArgs) -> Vec<Element> {
-    let mut elements: Vec<Element> = parse_optional_arg(args, ARG_TO, false, identity)
+    let mut elements: Vec<Element> = parse_optional_arg(args, ARG_TO, "recipient", false, identity)
         .into_iter()
         .collect();
-    elements.extend(parse_optional_arg(args, ARG_SOURCE, true, identity).into_iter());
-    elements.extend(parse_optional_arg(args, ARG_TARGET, false, identity));
-    elements.extend(parse_amount(args));
-    elements.extend(parse_optional_arg(args, ARG_ID, true, identity).into_iter());
+    elements.extend(parse_optional_arg(args, ARG_SOURCE, "from", true, identity).into_iter());
+    elements.extend(parse_optional_arg(
+        args, ARG_TARGET, "target", false, identity,
+    ));
+    elements.extend(parse_optional_arg(args, ARG_ID, "ID", true, identity).into_iter());
     elements
 }

@@ -50,7 +50,7 @@ pub(crate) fn parse_phase(item: &ExecutableDeployItem, phase: TxnPhase) -> Vec<E
             ExecutableDeployItem::ModuleBytes { module_bytes, args } => {
                 if is_system_payment(phase, module_bytes) {
                     // The only required argument for the system payment is `amount`.
-                    elements.extend(parse_amount(args).into_iter());
+                    elements.extend(parse_fee(args).into_iter());
                     let args_sans_amount = remove_amount_arg(args.clone());
                     elements.extend(parse_runtime_args(&args_sans_amount));
                 } else {
@@ -205,12 +205,20 @@ fn format_amount(motes: U512) -> String {
     format!("{} motes", motes.separate_with_spaces())
 }
 
-pub(crate) fn parse_amount(args: &RuntimeArgs) -> Option<Element> {
+pub(crate) fn parse_fee(args: &RuntimeArgs) -> Option<Element> {
+    parse_motes(args, "fee")
+}
+
+pub(crate) fn parse_transfer_amount(args: &RuntimeArgs) -> Option<Element> {
+    parse_motes(args, "amount")
+}
+
+fn parse_motes(args: &RuntimeArgs, ledger_label: &str) -> Option<Element> {
     let f = |amount_str: String| {
         let motes_amount = U512::from_dec_str(&amount_str).unwrap();
         format_amount(motes_amount)
     };
-    parse_optional_arg(args, mint::ARG_AMOUNT, false, f)
+    parse_optional_arg(args, mint::ARG_AMOUNT, ledger_label, false, f)
 }
 
 #[cfg(test)]

@@ -103,7 +103,9 @@ pub(crate) fn deploy_type(phase: TxnPhase, item: &ExecutableDeployItem) -> Vec<E
         ExecutableDeployItem::ModuleBytes { module_bytes, .. } => {
             if is_system_payment(phase, module_bytes) {
                 // Payment: system
-                vec![Element::regular(&phase_label, "system".to_string())]
+                // Do nothing. For the sake of familiarity with othe system we don't diplay this for native payments,
+                // as this is equivalent to the built-in payment on Ethereum and alike.
+                vec![]
             } else {
                 let contract_hash = format!("{:?}", hash::hash(module_bytes.as_slice()));
                 vec![

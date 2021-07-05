@@ -17,6 +17,10 @@ pub(crate) fn parse_deploy(d: Deploy) -> Vec<Element> {
     } else {
         "Execute Contract"
     };
+    elements.push(Element::regular(
+        "Txn hash",
+        format!("{:?}", d.id().inner()),
+    ));
     elements.push(Element::regular("Type", format!("{}", deploy_type)));
     elements.extend(parse_deploy_header(d.header()));
     elements.extend(parse_phase(d.payment(), TxnPhase::Payment));

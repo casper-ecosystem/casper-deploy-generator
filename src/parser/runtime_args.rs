@@ -4,7 +4,7 @@ use casper_types::system::mint::{ARG_ID, ARG_SOURCE, ARG_TARGET, ARG_TO};
 use casper_types::{CLValue, RuntimeArgs};
 use std::collections::BTreeMap;
 
-use super::deploy::identity;
+use super::deploy::{identity, parse_transfer_amount};
 
 /// Parses all contract arguments into a form:
 /// arg-n-name: <name>
@@ -58,6 +58,7 @@ pub(crate) fn parse_transfer_args(args: &RuntimeArgs) -> Vec<Element> {
     elements.extend(parse_optional_arg(
         args, ARG_TARGET, "target", false, identity,
     ));
+    elements.extend(parse_transfer_amount(args).into_iter());
     elements.extend(parse_optional_arg(args, ARG_ID, "ID", true, identity).into_iter());
     elements
 }

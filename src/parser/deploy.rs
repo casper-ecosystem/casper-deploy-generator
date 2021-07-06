@@ -25,7 +25,7 @@ use super::{
 pub(crate) fn parse_deploy_header(dh: &DeployHeader) -> Vec<Element> {
     let mut elements = vec![];
     elements.push(Element::regular("chain ID", format!("{}", dh.chain_name())));
-    elements.push(Element::regular("from", parse_public_key(dh.account())));
+    elements.push(Element::regular("account", parse_public_key(dh.account())));
     elements.push(Element::expert(
         "timestamp",
         timestamp_to_seconds_res(dh.timestamp()),

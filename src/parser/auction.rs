@@ -11,7 +11,7 @@ use crate::{
 use super::deploy::is_entrypoint;
 
 fn parse_auction_item(method: &str, item: &ExecutableDeployItem) -> Vec<Element> {
-    let mut elements = vec![Element::regular("Auction", method.to_string())];
+    let mut elements = vec![];
     elements.extend(
         deploy_type(TxnPhase::Session, item)
             .into_iter()

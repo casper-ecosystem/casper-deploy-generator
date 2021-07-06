@@ -3,7 +3,7 @@ use casper_execution_engine::core::engine_state::ExecutableDeployItem;
 use crate::{
     ledger::{Element, TxnPhase},
     parser::{
-        deploy::{deploy_type, identity, parse_amount},
+        deploy::{deploy_type, identity, parse_transfer_amount},
         runtime_args::parse_optional_arg,
     },
 };
@@ -11,7 +11,7 @@ use crate::{
 use super::deploy::is_entrypoint;
 
 fn parse_auction_item(method: &str, item: &ExecutableDeployItem) -> Vec<Element> {
-    let mut elements = vec![Element::regular("Auction", method.to_string())];
+    let mut elements = vec![];
     elements.extend(
         deploy_type(TxnPhase::Session, item)
             .into_iter()
@@ -30,13 +30,13 @@ fn parse_auction_item(method: &str, item: &ExecutableDeployItem) -> Vec<Element>
         | ExecutableDeployItem::StoredVersionedContractByHash { args, .. }
         | ExecutableDeployItem::StoredVersionedContractByName { args, .. } => {
             // Public key of the account we're delegating from.
-            let delegator_pk = parse_optional_arg(args, "delegator", false, identity);
+            let delegator_pk = parse_optional_arg(args, "delegator", "delegator", false, identity);
             elements.extend(delegator_pk.into_iter());
             // Public key of the validator we're delegating to.
-            let validator_pk = parse_optional_arg(args, "validator", false, identity);
+            let validator_pk = parse_optional_arg(args, "validator", "validator", false, identity);
             elements.extend(validator_pk.into_iter());
             // Amount we're delegating.
-            elements.extend(parse_amount(args).into_iter());
+            elements.extend(parse_transfer_amount(args).into_iter());
         }
     };
     elements

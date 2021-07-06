@@ -25,7 +25,7 @@ use super::{
 pub(crate) fn parse_deploy_header(dh: &DeployHeader) -> Vec<Element> {
     let mut elements = vec![];
     elements.push(Element::regular("chain ID", format!("{}", dh.chain_name())));
-    elements.push(Element::regular("from", parse_public_key(dh.account())));
+    elements.push(Element::regular("account", parse_public_key(dh.account())));
     elements.push(Element::expert(
         "timestamp",
         timestamp_to_seconds_res(dh.timestamp()),
@@ -50,7 +50,7 @@ pub(crate) fn parse_phase(item: &ExecutableDeployItem, phase: TxnPhase) -> Vec<E
             ExecutableDeployItem::ModuleBytes { module_bytes, args } => {
                 if is_system_payment(phase, module_bytes) {
                     // The only required argument for the system payment is `amount`.
-                    elements.extend(parse_amount(args).into_iter());
+                    elements.extend(parse_fee(args).into_iter());
                     let args_sans_amount = remove_amount_arg(args.clone());
                     elements.extend(parse_runtime_args(&args_sans_amount));
                 } else {
@@ -103,7 +103,9 @@ pub(crate) fn deploy_type(phase: TxnPhase, item: &ExecutableDeployItem) -> Vec<E
         ExecutableDeployItem::ModuleBytes { module_bytes, .. } => {
             if is_system_payment(phase, module_bytes) {
                 // Payment: system
-                vec![Element::regular(&phase_label, "system".to_string())]
+                // Do nothing. For the sake of familiarity with othe system we don't diplay this for native payments,
+                // as this is equivalent to the built-in payment on Ethereum and alike.
+                vec![]
             } else {
                 let contract_hash = format!("{:?}", hash::hash(module_bytes.as_slice()));
                 vec![
@@ -151,10 +153,10 @@ pub(crate) fn deploy_type(phase: TxnPhase, item: &ExecutableDeployItem) -> Vec<E
             ]
         }
         ExecutableDeployItem::Transfer { .. } => {
-            vec![
-                // Session|Payment: native transfer
-                Element::regular(&phase_label, "native transfer".to_string()),
-            ]
+            // Session|Payment: native transfer
+            // Do not add yet another element to Ledger panes – it's already been taken care of in `parse_deploy`,
+            // where we add `Type: *` pane.
+            vec![]
         }
     }
 }
@@ -205,12 +207,20 @@ fn format_amount(motes: U512) -> String {
     format!("{} motes", motes.separate_with_spaces())
 }
 
-pub(crate) fn parse_amount(args: &RuntimeArgs) -> Option<Element> {
+pub(crate) fn parse_fee(args: &RuntimeArgs) -> Option<Element> {
+    parse_motes(args, "fee")
+}
+
+pub(crate) fn parse_transfer_amount(args: &RuntimeArgs) -> Option<Element> {
+    parse_motes(args, "amount")
+}
+
+fn parse_motes(args: &RuntimeArgs, ledger_label: &str) -> Option<Element> {
     let f = |amount_str: String| {
         let motes_amount = U512::from_dec_str(&amount_str).unwrap();
         format_amount(motes_amount)
     };
-    parse_optional_arg(args, mint::ARG_AMOUNT, false, f)
+    parse_optional_arg(args, mint::ARG_AMOUNT, ledger_label, false, f)
 }
 
 #[cfg(test)]

@@ -12,15 +12,27 @@ use crate::{
 
 pub(crate) fn parse_deploy(d: Deploy) -> Vec<Element> {
     let mut elements = vec![];
-    let deploy_type = if d.session().is_transfer() {
-        "Transfer"
-    } else {
-        "Execute Contract"
-    };
-    elements.push(Element::regular("Type", format!("{}", deploy_type)));
+    elements.push(Element::regular(
+        "Txn hash",
+        format!("{:?}", d.id().inner()),
+    ));
+    elements.push(deploy_type(&d));
     elements.extend(parse_deploy_header(d.header()));
     elements.extend(parse_phase(d.payment(), TxnPhase::Payment));
     elements.extend(parse_phase(d.session(), TxnPhase::Session));
     elements.extend(parse_approvals(&d));
     elements
+}
+
+fn deploy_type(d: &Deploy) -> Element {
+    let dtype = if auction::is_delegate(d.session()) {
+        "Delegate"
+    } else if auction::is_undelegate(d.session()) {
+        "Undelegate"
+    } else if d.session().is_transfer() {
+        "Token transfer"
+    } else {
+        "Contract execution"
+    };
+    Element::regular("Type", dtype.to_string())
 }

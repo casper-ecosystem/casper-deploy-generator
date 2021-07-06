@@ -153,10 +153,10 @@ pub(crate) fn deploy_type(phase: TxnPhase, item: &ExecutableDeployItem) -> Vec<E
             ]
         }
         ExecutableDeployItem::Transfer { .. } => {
-            vec![
-                // Session|Payment: native transfer
-                Element::regular(&phase_label, "native transfer".to_string()),
-            ]
+            // Session|Payment: native transfer
+            // Do not add yet another element to Ledger panes – it's already been taken care of in `parse_deploy`,
+            // where we add `Type: *` pane.
+            vec![]
         }
     }
 }

@@ -12,6 +12,10 @@ use crate::{
 
 pub(crate) fn parse_deploy(d: Deploy) -> Vec<Element> {
     let mut elements = vec![];
+    elements.push(Element::regular(
+        "Txn hash",
+        format!("{:?}", d.id().inner()),
+    ));
     elements.push(deploy_type(&d));
     elements.extend(parse_deploy_header(d.header()));
     elements.extend(parse_phase(d.payment(), TxnPhase::Payment));

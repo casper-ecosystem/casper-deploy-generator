@@ -1,9 +1,10 @@
 use crate::sample::Sample;
 use casper_execution_engine::core::engine_state::executable_deploy_item::ExecutableDeployItem::{
-    StoredContractByHash, StoredContractByName, StoredVersionedContractByHash,
+    ModuleBytes, StoredContractByHash, StoredContractByName, StoredVersionedContractByHash,
     StoredVersionedContractByName,
 };
 use casper_execution_engine::core::engine_state::ExecutableDeployItem;
+use casper_types::bytesrepr::Bytes;
 use casper_types::{
     runtime_args, ContractHash, ContractPackageHash, ContractVersion, PublicKey, RuntimeArgs, U512,
 };
@@ -71,6 +72,47 @@ pub(crate) fn sample_executables<R: Rng>(
         .collect()
 }
 
+// ModuleBytes action calls are too different from other deploy variants to be included in the same generic logic.
+pub(crate) fn sample_module_bytes(ra: RuntimeArgs) -> Sample<ExecutableDeployItem> {
+    Sample::new(
+        "type:module-bytes",
+        ModuleBytes {
+            module_bytes: Bytes::new(),
+            args: ra,
+        },
+        true,
+    )
+}
+
+pub(crate) fn valid<R: Rng>(
+    rng: &mut R,
+    entrypoint: &str,
+    ra: Vec<RuntimeArgs>,
+) -> Vec<Sample<ExecutableDeployItem>> {
+    let mut output = vec![];
+
+    for args in ra {
+        for sample in sample_executables(rng, entrypoint, args.clone(), None) {
+            output.push(enrich_label(sample, entrypoint));
+        }
+
+        let mut ra: RuntimeArgs = args;
+        ra.insert("auction", entrypoint).unwrap();
+        output.push(enrich_label(sample_module_bytes(ra), entrypoint));
+    }
+
+    output
+}
+
+fn enrich_label(
+    sample: Sample<ExecutableDeployItem>,
+    entrypoint: &str,
+) -> Sample<ExecutableDeployItem> {
+    let (executable_label, executable, valid) = sample.destructure();
+    let label = format!("{}-{}", entrypoint, executable_label.clone());
+    Sample::new(label, executable, valid)
+}
+
 pub(crate) fn invalid_delegation<R: Rng>(
     rng: &mut R,
     entry_point: &str,
@@ -128,9 +170,7 @@ pub(crate) fn invalid_delegation<R: Rng>(
             invalid_args_executables
                 .into_iter()
                 .map(|sample_invalid_executable| {
-                    let (label, sample, _valid) = sample_invalid_executable.destructure();
-                    let new_label = format!("{}-{}", entry_point, label);
-                    Sample::new(new_label, sample, false)
+                    enrich_label(sample_invalid_executable, entry_point)
                 })
         })
         .collect()

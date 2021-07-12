@@ -11,7 +11,6 @@
 //! | `amount` | `U512` |
 
 use crate::sample::Sample;
-use crate::test_data::auction::commons::sample_executables;
 use casper_execution_engine::core::engine_state::ExecutableDeployItem;
 use casper_types::{PublicKey, RuntimeArgs, U512};
 use rand::Rng;
@@ -63,19 +62,12 @@ fn sample_undelegations<R: Rng>(_rng: &mut R) -> Vec<Undelegate> {
 }
 
 pub(crate) fn valid<R: Rng>(rng: &mut R) -> Vec<Sample<ExecutableDeployItem>> {
-    let mut output = vec![];
+    let delegate_rargs = sample_undelegations(rng)
+        .into_iter()
+        .map(Into::into)
+        .collect();
 
-    for delegation in sample_undelegations(rng) {
-        for sample_executable in sample_executables(rng, ENTRY_POINT_NAME, delegation.into(), None)
-        {
-            let (executable_label, executable, _) = sample_executable.destructure();
-            let label = format!("undelegate-{}", executable_label.clone());
-            let sample = Sample::new(label, executable, true);
-            output.push(sample);
-        }
-    }
-
-    output
+    super::commons::valid(rng, ENTRY_POINT_NAME, delegate_rargs)
 }
 
 pub(crate) fn invalid<R: Rng>(rng: &mut R) -> Vec<Sample<ExecutableDeployItem>> {

@@ -15,6 +15,7 @@ pub(crate) fn sample_executables<R: Rng>(
     entry_point: &str,
     ra: RuntimeArgs,
     base_label: Option<String>,
+    valid: bool,
 ) -> Vec<Sample<ExecutableDeployItem>> {
     let contract_hash = ContractHash::new([1u8; 32]);
     let contract_package_hash = ContractPackageHash::new([1u8; 32]);
@@ -28,7 +29,7 @@ pub(crate) fn sample_executables<R: Rng>(
                 entry_point: entry_point.to_string(),
                 args: ra.clone(),
             },
-            true,
+            valid,
         ),
         Sample::new(
             "type:by-name",
@@ -37,7 +38,7 @@ pub(crate) fn sample_executables<R: Rng>(
                 entry_point: entry_point.to_string(),
                 args: ra.clone(),
             },
-            true,
+            valid,
         ),
         Sample::new(
             "type:versioned-by-hash",
@@ -47,7 +48,7 @@ pub(crate) fn sample_executables<R: Rng>(
                 entry_point: entry_point.to_string(),
                 args: ra.clone(),
             },
-            true,
+            valid,
         ),
         Sample::new(
             "type:versioned-by-name",
@@ -57,7 +58,7 @@ pub(crate) fn sample_executables<R: Rng>(
                 entry_point: entry_point.to_string(),
                 args: ra.clone(),
             },
-            true,
+            valid,
         ),
     ];
 
@@ -92,7 +93,7 @@ pub(crate) fn valid<R: Rng>(
     let mut output = vec![];
 
     for args in ra {
-        for sample in sample_executables(rng, entrypoint, args.clone(), None) {
+        for sample in sample_executables(rng, entrypoint, args.clone(), None, true) {
             output.push(enrich_label(sample, entrypoint));
         }
 
@@ -160,12 +161,13 @@ pub(crate) fn invalid_delegation<R: Rng>(
         .flat_map(|sample_ra| {
             let (label, ra, _valid) = sample_ra.destructure();
             let mut invalid_args_executables =
-                sample_executables(rng, entry_point, ra, Some(label.clone()));
+                sample_executables(rng, entry_point, ra, Some(label.clone()), false);
             invalid_args_executables.extend(sample_executables(
                 rng,
                 "invalid",
                 valid_args.clone(),
                 Some("invalid:entrypoint".to_string()),
+                false,
             ));
             invalid_args_executables
                 .into_iter()

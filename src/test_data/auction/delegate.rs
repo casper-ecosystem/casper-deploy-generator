@@ -13,14 +13,14 @@
 use crate::sample::Sample;
 use crate::test_data::auction::commons::{self};
 use casper_execution_engine::core::engine_state::ExecutableDeployItem;
-use casper_types::{PublicKey, RuntimeArgs, U512};
+use casper_types::{AsymmetricType, PublicKey, RuntimeArgs, U512};
 use rand::Rng;
 
 use super::commons::invalid_delegation;
 
 const ENTRY_POINT_NAME: &str = "delegate";
 
-#[derive(Clone, Copy, Debug)]
+#[derive(Clone, Debug)]
 struct Delegate {
     delegator: PublicKey,
     validator: PublicKey,
@@ -53,12 +53,12 @@ fn sample_delegations<R: Rng>(_rng: &mut R) -> Vec<Delegate> {
     let amount_max = U512::MAX;
     let amounts = vec![amount_min, amount_mid, amount_max];
 
-    let delegator: PublicKey = PublicKey::ed25519([1u8; 32]).unwrap();
-    let validator: PublicKey = PublicKey::ed25519([3u8; 32]).unwrap();
+    let delegator: PublicKey = PublicKey::ed25519_from_bytes([1u8; 32]).unwrap();
+    let validator: PublicKey = PublicKey::ed25519_from_bytes([3u8; 32]).unwrap();
 
     amounts
         .into_iter()
-        .map(|amount| Delegate::new(delegator, validator, amount))
+        .map(|amount| Delegate::new(delegator.clone(), validator.clone(), amount))
         .collect()
 }
 

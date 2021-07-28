@@ -6,7 +6,8 @@ use casper_execution_engine::core::engine_state::executable_deploy_item::Executa
 use casper_execution_engine::core::engine_state::ExecutableDeployItem;
 use casper_types::bytesrepr::Bytes;
 use casper_types::{
-    runtime_args, ContractHash, ContractPackageHash, ContractVersion, PublicKey, RuntimeArgs, U512,
+    runtime_args, AsymmetricType, ContractHash, ContractPackageHash, ContractVersion, PublicKey,
+    RuntimeArgs, U512,
 };
 use rand::Rng;
 
@@ -118,28 +119,28 @@ pub(crate) fn invalid_delegation<R: Rng>(
     rng: &mut R,
     entry_point: &str,
 ) -> Vec<Sample<ExecutableDeployItem>> {
-    let delegator: PublicKey = PublicKey::ed25519([1u8; 32]).unwrap();
-    let validator: PublicKey = PublicKey::ed25519([3u8; 32]).unwrap();
+    let delegator: PublicKey = PublicKey::ed25519_from_bytes([1u8; 32]).unwrap();
+    let validator: PublicKey = PublicKey::ed25519_from_bytes([3u8; 32]).unwrap();
     let amount = U512::from(100000000);
 
     let valid_args = runtime_args! {
-        "delegator" => delegator,
-        "validator" => validator,
+        "delegator" => delegator.clone(),
+        "validator" => validator.clone(),
         "amount" => amount,
     };
 
     let missing_required_amount = runtime_args! {
-        "delegator" => delegator,
-        "validator" => validator,
+        "delegator" => delegator.clone(),
+        "validator" => validator.clone(),
     };
 
     let missing_required_delegator = runtime_args! {
-        "validator" => validator,
+        "validator" => validator.clone(),
         "amount" => amount,
     };
 
     let missing_required_validator = runtime_args! {
-        "delegator" => delegator,
+        "delegator" => delegator.clone(),
         "amount" => amount
     };
 

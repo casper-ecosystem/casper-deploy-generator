@@ -252,7 +252,7 @@ pub(crate) fn identity<T>(el: T) -> T {
 
 pub(crate) fn parse_approvals(d: &Deploy) -> Vec<Element> {
     let approvals_count = d.approvals().len();
-    vec![Element::regular(
+    vec![Element::expert(
         "Approvals #",
         format!("{}", approvals_count),
     )]

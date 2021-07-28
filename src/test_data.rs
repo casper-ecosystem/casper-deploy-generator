@@ -154,9 +154,9 @@ fn random_keys(key_count: u8) -> Vec<SecretKey> {
     let mut out = vec![];
     for i in 0..key_count {
         let key = if i % 2 == 0 {
-            SecretKey::ed25519([i; 32].into())
+            SecretKey::ed25519_from_bytes(&[i; 32]).expect("successful key construction")
         } else {
-            SecretKey::secp256k1([i; 32].into())
+            SecretKey::secp256k1_from_bytes(&[i; 32]).expect("successful key construction")
         };
         out.push(key);
     }

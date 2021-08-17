@@ -2,7 +2,10 @@ use std::str::FromStr;
 
 use casper_execution_engine::core::engine_state::ExecutableDeployItem;
 use casper_node::types::{Deploy, DeployHash, TimeDiff, Timestamp};
-use casper_types::{AsymmetricType, AccessRights, CLValue, Key, PublicKey, RuntimeArgs, SecretKey, U512, URef, account::AccountHash};
+use casper_types::{
+    account::AccountHash, AccessRights, AsymmetricType, CLValue, Key, PublicKey, RuntimeArgs,
+    SecretKey, URef, U512,
+};
 use rand::{prelude::*, Rng};
 
 use auction::{delegate, undelegate};
@@ -70,7 +73,7 @@ enum TransferTarget {
     // transfer to an account.
     Key(Key),
     // transfer to public key
-    PublicKey(PublicKey)
+    PublicKey(PublicKey),
 }
 
 impl TransferTarget {

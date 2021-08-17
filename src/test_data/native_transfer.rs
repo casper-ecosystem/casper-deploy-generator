@@ -46,7 +46,8 @@ pub(super) fn valid() -> Vec<Sample<ExecutableDeployItem>> {
         TransferTarget::bytes(),
         TransferTarget::uref(),
         TransferTarget::key(),
-        TransferTarget::public_key(),
+        TransferTarget::public_key_secp256k1(),
+        TransferTarget::public_key_ed25519(),
     ];
 
     let access_rights = vec![

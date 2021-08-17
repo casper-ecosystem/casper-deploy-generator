@@ -23,7 +23,7 @@ fn native_transfer_samples(
                         "source:uref"
                     };
                     let label = format!("native_transfer-{}-{}", target.label(), source_label);
-                    let nt = NativeTransfer::new(*target, *amount, *id, *source);
+                    let nt = NativeTransfer::new(target.clone(), *amount, *id, *source);
                     let sample = Sample::new(label, nt, true);
                     samples.push(sample);
                 }
@@ -46,6 +46,8 @@ pub(super) fn valid() -> Vec<Sample<ExecutableDeployItem>> {
         TransferTarget::bytes(),
         TransferTarget::uref(),
         TransferTarget::key(),
+        TransferTarget::public_key_secp256k1(),
+        TransferTarget::public_key_ed25519(),
     ];
 
     let access_rights = vec![

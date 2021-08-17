@@ -3,7 +3,8 @@ use std::str::FromStr;
 use casper_execution_engine::core::engine_state::ExecutableDeployItem;
 use casper_node::types::{Deploy, DeployHash, TimeDiff, Timestamp};
 use casper_types::{
-    account::AccountHash, AccessRights, CLValue, Key, RuntimeArgs, SecretKey, URef, U512,
+    account::AccountHash, AccessRights, AsymmetricType, CLValue, Key, PublicKey, RuntimeArgs,
+    SecretKey, URef, U512,
 };
 use rand::{prelude::*, Rng};
 
@@ -31,7 +32,7 @@ const MAX_DEPS_COUNT: u8 = 10;
 const MIN_APPROVALS_COUNT: u8 = 1;
 const MAX_APPROVALS_COUNT: u8 = 10;
 
-#[derive(Clone, Copy, Debug)]
+#[derive(Clone, Debug)]
 struct NativeTransfer {
     target: TransferTarget,
     amount: U512,
@@ -63,7 +64,7 @@ impl From<NativeTransfer> for RuntimeArgs {
     }
 }
 
-#[derive(Clone, Copy, Debug)]
+#[derive(Clone, Debug)]
 enum TransferTarget {
     // raw bytes representing account hash
     Bytes([u8; 32]),
@@ -71,6 +72,8 @@ enum TransferTarget {
     URef(URef),
     // transfer to an account.
     Key(Key),
+    // transfer to public key
+    PublicKey(PublicKey),
 }
 
 impl TransferTarget {
@@ -79,6 +82,7 @@ impl TransferTarget {
             TransferTarget::Bytes(bytes) => CLValue::from_t(bytes),
             TransferTarget::URef(uref) => CLValue::from_t(uref),
             TransferTarget::Key(key) => CLValue::from_t(key),
+            TransferTarget::PublicKey(pk) => CLValue::from_t(pk),
         };
         cl_value_res.unwrap()
     }
@@ -97,11 +101,33 @@ impl TransferTarget {
         TransferTarget::Key(account_key)
     }
 
-    fn label(&self) -> &str {
+    fn public_key_ed25519() -> TransferTarget {
+        let public_key = PublicKey::ed25519_from_bytes([1u8; 32]).unwrap();
+        TransferTarget::PublicKey(public_key)
+    }
+
+    fn public_key_secp256k1() -> TransferTarget {
+        let public_key = PublicKey::secp256k1_from_bytes(
+            hex::decode(b"026e1b7a8e3243f5ff14e825b0fde15103588bb61e6ae99084968b017118e0504f")
+                .unwrap(),
+        )
+        .unwrap();
+        TransferTarget::PublicKey(public_key)
+    }
+
+    fn label(&self) -> String {
         match self {
-            TransferTarget::Bytes(_) => "target:bytes",
-            TransferTarget::URef(_) => "target:uref",
-            TransferTarget::Key(_) => "target:key-account",
+            TransferTarget::Bytes(_) => "target:bytes".to_string(),
+            TransferTarget::URef(_) => "target:uref".to_string(),
+            TransferTarget::Key(_) => "target:key_account".to_string(),
+            TransferTarget::PublicKey(pk) => {
+                let variant = match pk {
+                    PublicKey::Ed25519(_) => "ed25519",
+                    PublicKey::Secp256k1(_) => "secp256k1",
+                    PublicKey::System => panic!("unexpected key type variant"),
+                };
+                format!("target:{}_public_key", variant)
+            }
         }
     }
 }

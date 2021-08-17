@@ -2,9 +2,7 @@ use std::str::FromStr;
 
 use casper_execution_engine::core::engine_state::ExecutableDeployItem;
 use casper_node::types::{Deploy, DeployHash, TimeDiff, Timestamp};
-use casper_types::{
-    account::AccountHash, AccessRights, CLValue, Key, RuntimeArgs, SecretKey, URef, U512,
-};
+use casper_types::{AsymmetricType, AccessRights, CLValue, Key, PublicKey, RuntimeArgs, SecretKey, U512, URef, account::AccountHash};
 use rand::{prelude::*, Rng};
 
 use auction::{delegate, undelegate};
@@ -31,7 +29,7 @@ const MAX_DEPS_COUNT: u8 = 10;
 const MIN_APPROVALS_COUNT: u8 = 1;
 const MAX_APPROVALS_COUNT: u8 = 10;
 
-#[derive(Clone, Copy, Debug)]
+#[derive(Clone, Debug)]
 struct NativeTransfer {
     target: TransferTarget,
     amount: U512,
@@ -63,7 +61,7 @@ impl From<NativeTransfer> for RuntimeArgs {
     }
 }
 
-#[derive(Clone, Copy, Debug)]
+#[derive(Clone, Debug)]
 enum TransferTarget {
     // raw bytes representing account hash
     Bytes([u8; 32]),
@@ -71,6 +69,8 @@ enum TransferTarget {
     URef(URef),
     // transfer to an account.
     Key(Key),
+    // transfer to public key
+    PublicKey(PublicKey)
 }
 
 impl TransferTarget {
@@ -79,6 +79,7 @@ impl TransferTarget {
             TransferTarget::Bytes(bytes) => CLValue::from_t(bytes),
             TransferTarget::URef(uref) => CLValue::from_t(uref),
             TransferTarget::Key(key) => CLValue::from_t(key),
+            TransferTarget::PublicKey(pk) => CLValue::from_t(pk),
         };
         cl_value_res.unwrap()
     }
@@ -97,11 +98,17 @@ impl TransferTarget {
         TransferTarget::Key(account_key)
     }
 
+    fn public_key() -> TransferTarget {
+        let public_key = PublicKey::ed25519_from_bytes([1u8; 32]).unwrap();
+        TransferTarget::PublicKey(public_key)
+    }
+
     fn label(&self) -> &str {
         match self {
             TransferTarget::Bytes(_) => "target:bytes",
             TransferTarget::URef(_) => "target:uref",
             TransferTarget::Key(_) => "target:key-account",
+            TransferTarget::PublicKey(_) => "target:public-key",
         }
     }
 }

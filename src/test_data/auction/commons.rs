@@ -5,6 +5,7 @@ use casper_execution_engine::core::engine_state::executable_deploy_item::Executa
 };
 use casper_execution_engine::core::engine_state::ExecutableDeployItem;
 use casper_types::bytesrepr::Bytes;
+use casper_types::AsymmetricType;
 use casper_types::{
     runtime_args, AsymmetricType, ContractHash, ContractPackageHash, ContractVersion, PublicKey,
     RuntimeArgs, U512,

@@ -5,6 +5,7 @@ mod ledger;
 mod parser;
 mod sample;
 mod test_data;
+mod test_rng;
 mod utils;
 
 fn main() {

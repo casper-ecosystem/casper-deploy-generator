@@ -1,5 +1,6 @@
 use ledger::JsonRepr;
 use test_data::{invalid_samples, valid_samples};
+use test_rng::TestRng;
 
 mod ledger;
 mod parser;
@@ -9,7 +10,7 @@ mod test_rng;
 mod utils;
 
 fn main() {
-    let mut rng = rand::thread_rng();
+    let mut rng = TestRng::new();
 
     let data: Vec<JsonRepr> = valid_samples(&mut rng)
         .into_iter()

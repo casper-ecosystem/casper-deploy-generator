@@ -5,7 +5,7 @@ use casper_types::bytesrepr::ToBytes;
 
 use serde::{Deserialize, Serialize};
 
-use crate::parser;
+use crate::{parser, sample::Sample};
 
 const LEDGER_VIEW_NAME_COUNT: usize = 11;
 const LEDGER_VIEW_TOP_COUNT: usize = 17;
@@ -125,6 +125,8 @@ struct LedgerPageView {
 }
 
 impl LedgerPageView {
+    /// Parses an `Element` object (which represents a single piece of a transaction) into a Ledger representation -
+    /// including chopping up the string representation of the `Element` so that they can fit on a single Ledger screen.
     fn from_element(element: Element) -> Self {
         if element.name.chars().count() > LEDGER_VIEW_NAME_COUNT {
             panic!(
@@ -154,7 +156,8 @@ impl LedgerPageView {
         }
     }
 
-    // Turn the current element into printable views.
+    /// Turn the current element into printable Ledger views.
+    /// Adds indexes and labels.
     fn to_string(&self) -> Vec<String> {
         let total_count = self.values.len();
         if total_count == 1 {
@@ -228,12 +231,8 @@ pub(super) struct JsonRepr {
     output_expert: Vec<String>,
 }
 
-pub(super) fn from_deploy(
-    index: usize,
-    valid_regular: bool,
-    name: &str,
-    deploy: Deploy,
-) -> JsonRepr {
+pub(super) fn from_deploy(index: usize, sample_deploy: Sample<Deploy>) -> JsonRepr {
+    let (name, deploy, valid) = sample_deploy.destructure();
     let blob = hex::encode(&deploy.to_bytes().unwrap());
     let ledger = Ledger::from_deploy(deploy);
     let ledger_view = LedgerView::from_ledger(ledger);
@@ -242,8 +241,8 @@ pub(super) fn from_deploy(
     JsonRepr {
         index,
         name: name.to_string(),
-        valid_regular,
-        valid_expert: valid_regular,
+        valid_regular: valid,
+        valid_expert: valid,
         testnet: true,
         blob,
         output,

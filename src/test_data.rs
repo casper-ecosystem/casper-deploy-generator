@@ -37,11 +37,11 @@ struct NativeTransfer {
     target: TransferTarget,
     amount: U512,
     id: u64,
-    source: Option<URef>,
+    source: TransferSource,
 }
 
 impl NativeTransfer {
-    fn new(target: TransferTarget, amount: U512, id: u64, source: Option<URef>) -> Self {
+    fn new(target: TransferTarget, amount: U512, id: u64, source: TransferSource) -> Self {
         NativeTransfer {
             target,
             amount,
@@ -56,11 +56,34 @@ impl From<NativeTransfer> for RuntimeArgs {
         let mut ra = RuntimeArgs::new();
         ra.insert("amount", nt.amount).unwrap();
         ra.insert("id", Some(nt.id)).unwrap();
-        if nt.source.is_some() {
-            ra.insert("source", nt.source).unwrap();
+        if let TransferSource::URef(uref) = nt.source {
+            ra.insert("source", uref).unwrap();
         }
         ra.insert_cl_value("target", nt.target.into_cl());
         ra
+    }
+}
+
+#[derive(Clone, Debug)]
+enum TransferSource {
+    None,
+    URef(URef),
+}
+
+impl TransferSource {
+    pub fn uref(uref: URef) -> Self {
+        TransferSource::URef(uref)
+    }
+
+    pub fn none() -> Self {
+        TransferSource::None
+    }
+
+    pub fn label(&self) -> &str {
+        match self {
+            TransferSource::None => "source:none",
+            TransferSource::URef(_) => "source:uref",
+        }
     }
 }
 

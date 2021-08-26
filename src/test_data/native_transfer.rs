@@ -3,13 +3,13 @@ use casper_types::{runtime_args, AccessRights, RuntimeArgs, URef, U512};
 
 use crate::{sample::Sample, test_data::TransferTarget};
 
-use super::NativeTransfer;
+use super::{NativeTransfer, TransferSource};
 
 fn native_transfer_samples(
     amounts: &[U512],
     ids: &[u64],
     targets: &[TransferTarget],
-    sources: &[Option<URef>],
+    sources: &[TransferSource],
 ) -> Vec<Sample<NativeTransfer>> {
     let mut samples: Vec<Sample<NativeTransfer>> = vec![];
 
@@ -17,13 +17,8 @@ fn native_transfer_samples(
         for id in ids {
             for target in targets {
                 for source in sources {
-                    let source_label = if source.is_none() {
-                        "source:none"
-                    } else {
-                        "source:uref"
-                    };
-                    let label = format!("native_transfer-{}-{}", target.label(), source_label);
-                    let nt = NativeTransfer::new(target.clone(), *amount, *id, *source);
+                    let label = format!("native_transfer-{}-{}", target.label(), source.label());
+                    let nt = NativeTransfer::new(target.clone(), *amount, *id, source.clone());
                     let sample = Sample::new(label, nt, true);
                     samples.push(sample);
                 }
@@ -59,10 +54,10 @@ pub(super) fn valid() -> Vec<Sample<ExecutableDeployItem>> {
         AccessRights::READ_ADD_WRITE,
     ];
 
-    let sources: Vec<Option<URef>> = access_rights
+    let sources: Vec<TransferSource> = access_rights
         .into_iter()
-        .map(|ar| Some(URef::new([2u8; 32], ar)))
-        .chain(vec![None])
+        .map(|ar| TransferSource::uref(URef::new([2u8; 32], ar)))
+        .chain(vec![TransferSource::none()])
         .collect();
 
     native_transfer_samples(&amounts, &ids, &targets, &sources)

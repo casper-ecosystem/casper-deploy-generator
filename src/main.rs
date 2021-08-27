@@ -16,10 +16,7 @@ fn main() {
         .into_iter()
         .chain(invalid_samples(&mut rng).into_iter())
         .enumerate()
-        .map(|(id, sample_deploy)| {
-            let (label, deploy, valid) = sample_deploy.destructure();
-            ledger::from_deploy(id, valid, &label, deploy)
-        })
+        .map(|(id, sample_deploy)| ledger::from_deploy(id, sample_deploy))
         .collect();
 
     println!("{}", serde_json::to_string_pretty(&data).unwrap());

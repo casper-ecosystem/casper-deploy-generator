@@ -1,4 +1,4 @@
-use std::fmt::Display;
+use std::{fmt::Display, rc::Rc};
 
 use casper_node::types::Deploy;
 use casper_types::bytesrepr::ToBytes;
@@ -32,7 +32,7 @@ impl Display for TxnPhase {
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub(crate) struct Element {
     name: String,
     value: String,
@@ -71,6 +71,7 @@ impl Element {
     }
 }
 
+#[derive(Clone)]
 struct Ledger(Vec<Element>);
 
 impl Ledger {
@@ -116,6 +117,7 @@ impl std::fmt::Display for LedgerValue {
 // 10101010101…
 //
 // When displayed can span multiple pages: 1/n
+#[derive(Default, Clone)]
 struct LedgerPageView {
     // Name of the panel, like hash, chain name, sender, etc.
     name: String,
@@ -179,6 +181,7 @@ impl LedgerPageView {
     }
 }
 
+///
 struct LedgerView {
     pages: Vec<LedgerPageView>,
 }
@@ -219,6 +222,51 @@ impl LedgerView {
     }
 }
 
+#[derive(Clone)]
+
+pub(crate) struct LimitedLedgerConfig {
+    page_limit: u8,
+    on_regular: Rc<dyn Fn(&Ledger) -> Vec<String>>,
+    on_expert: Rc<dyn Fn(&Ledger) -> Vec<String>>,
+}
+
+impl LimitedLedgerConfig {
+    pub(crate) fn new(page_limit: u8) -> Self {
+        Self {
+            page_limit,
+            on_regular: Rc::new(Self::deploy_complexity_notice),
+            on_expert: Rc::new(Self::deploy_basic_info),
+        }
+    }
+
+    fn deploy_complexity_notice(_ledger: &Ledger) -> Vec<String> {
+        todo!()
+    }
+
+    fn deploy_basic_info(_ledger: &Ledger) -> Vec<String> {
+        todo!()
+    }
+}
+
+struct LimitedLedgerView<'a> {
+    config: &'a LimitedLedgerConfig,
+    ledger: Ledger,
+}
+
+impl<'a> LimitedLedgerView<'a> {
+    fn new(config: &'a LimitedLedgerConfig, ledger: Ledger) -> Self {
+        Self { config, ledger }
+    }
+
+    fn regular(&self) -> Vec<String> {
+        LedgerView::from_ledger(self.ledger.clone()).to_string(false)
+    }
+
+    fn expert(&self) -> Vec<String> {
+        LedgerView::from_ledger(self.ledger.clone()).to_string(true)
+    }
+}
+
 #[derive(Serialize, Deserialize)]
 pub(super) struct JsonRepr {
     index: usize,
@@ -231,13 +279,17 @@ pub(super) struct JsonRepr {
     output_expert: Vec<String>,
 }
 
-pub(super) fn from_deploy(index: usize, sample_deploy: Sample<Deploy>) -> JsonRepr {
+pub(super) fn from_deploy(
+    index: usize,
+    sample_deploy: Sample<Deploy>,
+    config: &LimitedLedgerConfig,
+) -> JsonRepr {
     let (name, deploy, valid) = sample_deploy.destructure();
     let blob = hex::encode(&deploy.to_bytes().unwrap());
     let ledger = Ledger::from_deploy(deploy);
-    let ledger_view = LedgerView::from_ledger(ledger);
-    let output = ledger_view.to_string(false);
-    let output_expert = ledger_view.to_string(true);
+    let ledger_view = LimitedLedgerView::new(&config, ledger);
+    let output = ledger_view.regular();
+    let output_expert = ledger_view.expert();
     JsonRepr {
         index,
         name: name.to_string(),
@@ -247,5 +299,13 @@ pub(super) fn from_deploy(index: usize, sample_deploy: Sample<Deploy>) -> JsonRe
         blob,
         output,
         output_expert,
+    }
+}
+
+#[cfg(test)]
+mod ledger_tests {
+    #[test]
+    fn limit_ledger_pages() {
+        assert!(true)
     }
 }

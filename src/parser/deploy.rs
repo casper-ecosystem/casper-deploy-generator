@@ -6,10 +6,8 @@ use crate::{
     utils::parse_public_key,
 };
 use casper_execution_engine::core::engine_state::ExecutableDeployItem;
-use casper_node::{
-    crypto::hash,
-    types::{Deploy, DeployHeader},
-};
+use casper_hashing::Digest;
+use casper_node::types::{Deploy, DeployHeader};
 use casper_types::{
     bytesrepr::Bytes,
     system::mint::{self, ARG_ID, ARG_SOURCE, ARG_TARGET, ARG_TO},
@@ -107,7 +105,7 @@ pub(crate) fn deploy_type(phase: TxnPhase, item: &ExecutableDeployItem) -> Vec<E
                 // as this is equivalent to the built-in payment on Ethereum and alike.
                 vec![]
             } else {
-                let contract_hash = format!("{:?}", hash::hash(module_bytes.as_slice()));
+                let contract_hash = format!("{:?}", Digest::hash(module_bytes.as_slice()));
                 vec![
                     // Session|Payment: contract
                     Element::regular(&phase_label, "contract".to_string()),

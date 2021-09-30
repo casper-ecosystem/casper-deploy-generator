@@ -36,10 +36,9 @@ fn drop_key_type_prefix(cl_in: String) -> String {
                         .skip("uref-".len())
                         .take_while(|c| *c != '-')
                         .collect();
-                },
+                }
                 Key::Dictionary(_) => "dictionary-",
                 Key::SystemContractRegistry => "system-contract-registry-",
-                
             };
             cl_in.chars().skip(prefix.len()).collect()
         }

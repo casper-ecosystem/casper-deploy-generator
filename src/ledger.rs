@@ -249,13 +249,16 @@ impl LimitedLedgerConfig {
 }
 
 struct LimitedLedgerView<'a> {
-    config: &'a LimitedLedgerConfig,
+    _config: &'a LimitedLedgerConfig,
     ledger: Ledger,
 }
 
 impl<'a> LimitedLedgerView<'a> {
     fn new(config: &'a LimitedLedgerConfig, ledger: Ledger) -> Self {
-        Self { config, ledger }
+        Self {
+            _config: config,
+            ledger,
+        }
     }
 
     fn regular(&self) -> Vec<String> {

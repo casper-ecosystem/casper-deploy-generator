@@ -56,8 +56,7 @@ pub(crate) fn cl_value_to_string(cl_in: &CLValue) -> String {
     match serde_json::to_value(&cl_in) {
         Ok(value) => {
             let parsed = value.get("parsed").unwrap();
-            let value_str = serde_value_to_str(parsed);
-            value_str
+            serde_value_to_str(parsed)
         }
         Err(err) => {
             eprintln!("error when parsing CLValue to CLValueJson#Object, {}", err);

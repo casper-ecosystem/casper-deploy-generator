@@ -22,7 +22,7 @@ use super::{
 
 pub(crate) fn parse_deploy_header(dh: &DeployHeader) -> Vec<Element> {
     let mut elements = vec![];
-    elements.push(Element::regular("chain ID", format!("{}", dh.chain_name())));
+    elements.push(Element::regular("chain ID", dh.chain_name().to_string()));
     elements.push(Element::regular("account", parse_public_key(dh.account())));
     elements.push(Element::expert(
         "timestamp",
@@ -82,7 +82,7 @@ pub(crate) fn parse_phase(item: &ExecutableDeployItem, phase: TxnPhase) -> Vec<E
             ExecutableDeployItem::Transfer { args } => {
                 elements.extend(parse_transfer_args(args));
                 let args_sans_transfer = remove_transfer_args(args.clone());
-                elements.extend(parse_runtime_args(&&args_sans_transfer));
+                elements.extend(parse_runtime_args(&args_sans_transfer));
             }
         }
         elements
@@ -164,7 +164,7 @@ fn parse_version(version: &Option<u32>) -> Element {
         None => "latest".to_string(),
         Some(version) => format!("{}", version),
     };
-    Element::expert("version", format!("{}", version))
+    Element::expert("version", version)
 }
 
 // Payment is a system type of payment when the `module_bytes` are empty.
@@ -257,5 +257,5 @@ pub(crate) fn parse_approvals(d: &Deploy) -> Vec<Element> {
 }
 
 fn entrypoint(entry_point: &str) -> Element {
-    Element::expert("entry-point", format!("{}", entry_point))
+    Element::expert("entry-point", entry_point.to_string())
 }

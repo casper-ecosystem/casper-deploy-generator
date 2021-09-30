@@ -136,10 +136,9 @@ impl LedgerPageView {
                 LEDGER_VIEW_NAME_COUNT, element.name
             )
         }
-        let value_str = format!("{}", element.value);
         let mut values = vec![];
         let mut curr_value = LedgerValue::default();
-        for c in value_str.chars() {
+        for c in element.value.chars() {
             let added = curr_value.add_char(c);
             if !added {
                 // Single ledger page can't contain more characters.
@@ -290,12 +289,12 @@ pub(super) fn from_deploy(
     let (name, deploy, valid) = sample_deploy.destructure();
     let blob = hex::encode(&deploy.to_bytes().unwrap());
     let ledger = Ledger::from_deploy(deploy);
-    let ledger_view = LimitedLedgerView::new(&config, ledger);
+    let ledger_view = LimitedLedgerView::new(config, ledger);
     let output = ledger_view.regular();
     let output_expert = ledger_view.expert();
     JsonRepr {
         index,
-        name: name.to_string(),
+        name,
         valid_regular: valid,
         valid_expert: valid,
         testnet: true,

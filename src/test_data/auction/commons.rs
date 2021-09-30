@@ -26,7 +26,7 @@ pub(crate) fn sample_executables<R: Rng>(
         Sample::new(
             "type:by-hash",
             StoredContractByHash {
-                hash: contract_hash.clone(),
+                hash: contract_hash,
                 entry_point: entry_point.to_string(),
                 args: ra.clone(),
             },
@@ -44,7 +44,7 @@ pub(crate) fn sample_executables<R: Rng>(
         Sample::new(
             "type:versioned-by-hash",
             StoredVersionedContractByHash {
-                hash: contract_package_hash.clone(),
+                hash: contract_package_hash,
                 version: Some(contract_version),
                 entry_point: entry_point.to_string(),
                 args: ra.clone(),
@@ -54,10 +54,10 @@ pub(crate) fn sample_executables<R: Rng>(
         Sample::new(
             "type:versioned-by-name",
             StoredVersionedContractByName {
-                name: contract_name.to_string(),
+                name: contract_name,
                 version: Some(contract_version),
                 entry_point: entry_point.to_string(),
-                args: ra.clone(),
+                args: ra,
             },
             valid,
         ),
@@ -111,7 +111,7 @@ fn enrich_label(
     entrypoint: &str,
 ) -> Sample<ExecutableDeployItem> {
     let (executable_label, executable, valid) = sample.destructure();
-    let label = format!("{}-{}", entrypoint, executable_label.clone());
+    let label = format!("{}-{}", entrypoint, executable_label);
     Sample::new(label, executable, valid)
 }
 
@@ -162,7 +162,7 @@ pub(crate) fn invalid_delegation<R: Rng>(
         .flat_map(|sample_ra| {
             let (label, ra, _valid) = sample_ra.destructure();
             let mut invalid_args_executables =
-                sample_executables(rng, entry_point, ra, Some(label.clone()), false);
+                sample_executables(rng, entry_point, ra, Some(label), false);
             invalid_args_executables.extend(sample_executables(
                 rng,
                 "invalid",

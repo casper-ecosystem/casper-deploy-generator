@@ -99,7 +99,7 @@ pub(super) fn invalid() -> Vec<Sample<ExecutableDeployItem>> {
         .into_iter()
         .map(|sample_ra| {
             let (label, ra, _valid) = sample_ra.destructure();
-            let sample_invalid_transfer = ExecutableDeployItem::Transfer { args: ra.into() };
+            let sample_invalid_transfer = ExecutableDeployItem::Transfer { args: ra };
             let new_label = format!("native_transfer-{}", label);
             Sample::new(new_label, sample_invalid_transfer, false)
         })

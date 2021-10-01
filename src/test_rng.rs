@@ -149,8 +149,6 @@ impl RngCore for TestRng {
 impl CryptoRng for TestRng {}
 
 mod tests {
-    use super::TestRng;
-
     #[test]
     #[should_panic(expected = "cannot create multiple TestRngs on the same thread")]
     fn second_test_rng_in_thread_should_panic() {

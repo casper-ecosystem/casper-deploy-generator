@@ -6,10 +6,8 @@ use crate::{
     utils::parse_public_key,
 };
 use casper_execution_engine::core::engine_state::ExecutableDeployItem;
-use casper_node::{
-    crypto::hash,
-    types::{Deploy, DeployHeader},
-};
+use casper_hashing::Digest;
+use casper_node::types::{Deploy, DeployHeader};
 use casper_types::{
     bytesrepr::Bytes,
     system::mint::{self, ARG_ID, ARG_SOURCE, ARG_TARGET, ARG_TO},
@@ -24,7 +22,7 @@ use super::{
 
 pub(crate) fn parse_deploy_header(dh: &DeployHeader) -> Vec<Element> {
     let mut elements = vec![];
-    elements.push(Element::regular("chain ID", format!("{}", dh.chain_name())));
+    elements.push(Element::regular("chain ID", dh.chain_name().to_string()));
     elements.push(Element::regular("account", parse_public_key(dh.account())));
     elements.push(Element::expert(
         "timestamp",
@@ -84,7 +82,7 @@ pub(crate) fn parse_phase(item: &ExecutableDeployItem, phase: TxnPhase) -> Vec<E
             ExecutableDeployItem::Transfer { args } => {
                 elements.extend(parse_transfer_args(args));
                 let args_sans_transfer = remove_transfer_args(args.clone());
-                elements.extend(parse_runtime_args(&&args_sans_transfer));
+                elements.extend(parse_runtime_args(&args_sans_transfer));
             }
         }
         elements
@@ -107,7 +105,7 @@ pub(crate) fn deploy_type(phase: TxnPhase, item: &ExecutableDeployItem) -> Vec<E
                 // as this is equivalent to the built-in payment on Ethereum and alike.
                 vec![]
             } else {
-                let contract_hash = format!("{:?}", hash::hash(module_bytes.as_slice()));
+                let contract_hash = format!("{:?}", Digest::hash(module_bytes.as_slice()));
                 vec![
                     // Session|Payment: contract
                     Element::regular(&phase_label, "contract".to_string()),
@@ -166,7 +164,7 @@ fn parse_version(version: &Option<u32>) -> Element {
         None => "latest".to_string(),
         Some(version) => format!("{}", version),
     };
-    Element::expert("version", format!("{}", version))
+    Element::expert("version", version)
 }
 
 // Payment is a system type of payment when the `module_bytes` are empty.
@@ -259,5 +257,5 @@ pub(crate) fn parse_approvals(d: &Deploy) -> Vec<Element> {
 }
 
 fn entrypoint(entry_point: &str) -> Element {
-    Element::expert("entry-point", format!("{}", entry_point))
+    Element::expert("entry-point", entry_point.to_string())
 }

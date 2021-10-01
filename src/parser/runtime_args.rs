@@ -17,7 +17,7 @@ pub(crate) fn parse_runtime_args(ra: &RuntimeArgs) -> Vec<Element> {
         let name_label = format!("arg-{}-name", idx);
         elements.push(Element::expert(&name_label, name.to_string()));
         let value_label = format!("arg-{}-val", idx);
-        let value_str = cl_value_to_string(&value);
+        let value_str = cl_value_to_string(value);
         elements.push(Element::expert(&value_label, value_str));
     }
     elements

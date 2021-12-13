@@ -1,14 +1,23 @@
+# This supports environments where $HOME/.cargo/env has not been sourced (CI, CLion Makefile runner)
+CARGO  = $(or $(shell which cargo),  $(HOME)/.cargo/bin/cargo)
+
+PINNED_NIGHTLY := $(shell cat rust-toolchain)
+
+CARGO_OPTS := --locked
+CARGO_PINNED_NIGHTLY := $(CARGO) +$(PINNED_NIGHTLY) $(CARGO_OPTS)
+CARGO := $(CARGO) $(CARGO_OPTS)
+
 test-vectors:
-	CL_TEST_SEED=c954046e102bdfb7c954046e102bdfb7 cargo +nightly run > output.txt
+	CL_TEST_SEED=c954046e102bdfb7c954046e102bdfb7 $(CARGO) run > output.txt
 
 check: 
-	cargo +nightly check
+	$(CARGO) check
 
 format:
-	cargo +nightly fmt
+	$(CARGO) fmt
 
 clippy:
-	cargo +nightly clippy
+	$(CARGO) clippy
 
 clean:
-	cargo clean
+	$(CARGO) clean

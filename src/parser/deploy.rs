@@ -16,7 +16,10 @@ use casper_types::{
 use thousands::Separable;
 
 use super::{
-    auction::{is_delegate, is_undelegate, parse_delegation, parse_undelegation},
+    auction::{
+        is_delegate, is_redelegate, is_undelegate, parse_delegation, parse_redelegation,
+        parse_undelegation,
+    },
     runtime_args::{parse_runtime_args, parse_transfer_args},
 };
 
@@ -42,6 +45,8 @@ pub(crate) fn parse_phase(item: &ExecutableDeployItem, phase: TxnPhase) -> Vec<E
         parse_delegation(item)
     } else if is_undelegate(item) {
         parse_undelegation(item)
+    } else if is_redelegate(item) {
+        parse_redelegation(item)
     } else {
         let mut elements: Vec<Element> = deploy_type(phase, item);
         match item {
@@ -211,6 +216,22 @@ pub(crate) fn parse_fee(args: &RuntimeArgs) -> Option<Element> {
 
 pub(crate) fn parse_transfer_amount(args: &RuntimeArgs) -> Option<Element> {
     parse_motes(args, "amount")
+}
+
+pub(crate) fn parse_delegator(args: &RuntimeArgs) -> Option<Element> {
+    parse_optional_arg(args, "delegator", "delegator", false, identity)
+}
+
+pub(crate) fn parse_validator(args: &RuntimeArgs) -> Option<Element> {
+    parse_optional_arg(args, "validator", "validator", false, identity)
+}
+
+pub(crate) fn parse_old_validator(args: &RuntimeArgs) -> Option<Element> {
+    parse_optional_arg(args, "validator", "old", false, identity)
+}
+
+pub(crate) fn parse_new_validator(args: &RuntimeArgs) -> Option<Element> {
+    parse_optional_arg(args, "new_validator", "new", false, identity)
 }
 
 fn parse_motes(args: &RuntimeArgs, ledger_label: &str) -> Option<Element> {

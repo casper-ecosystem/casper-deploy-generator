@@ -152,8 +152,8 @@ mod tests {
     #[test]
     #[should_panic(expected = "cannot create multiple TestRngs on the same thread")]
     fn second_test_rng_in_thread_should_panic() {
-        let _test_rng1 = TestRng::new();
+        let _test_rng1 = crate::TestRng::new();
         let seed = [1; 16];
-        let _test_rng2 = TestRng::from_seed(seed);
+        let _test_rng2 = crate::TestRng::from_seed(seed);
     }
 }

@@ -148,7 +148,7 @@ impl LedgerPageView {
             }
         }
         // Add the last view to the collection.
-        values.push(curr_value.clone());
+        values.push(curr_value);
 
         LedgerPageView {
             name: element.name.clone(),

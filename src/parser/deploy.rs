@@ -54,35 +54,43 @@ pub(crate) fn parse_phase(item: &ExecutableDeployItem, phase: TxnPhase) -> Vec<E
                 if is_system_payment(phase, module_bytes) {
                     // The only required argument for the system payment is `amount`.
                     elements.extend(parse_fee(args).into_iter());
-                    let args_sans_amount = remove_amount_arg(args.clone());
-                    elements.extend(parse_runtime_args(&args_sans_amount));
                 } else {
-                    elements.extend(parse_runtime_args(args));
+                    elements.extend(parse_amount(args));
                 }
+                let args_sans_amount = remove_amount_arg(args.clone());
+                elements.extend(parse_runtime_args(&args_sans_amount));
             }
             ExecutableDeployItem::StoredContractByHash {
                 entry_point, args, ..
             } => {
                 elements.push(entrypoint(entry_point));
-                elements.extend(parse_runtime_args(args));
+                elements.extend(parse_amount(args));
+                let args_sans_amount = remove_amount_arg(args.clone());
+                elements.extend(parse_runtime_args(&args_sans_amount));
             }
             ExecutableDeployItem::StoredContractByName {
                 entry_point, args, ..
             } => {
                 elements.push(entrypoint(entry_point));
-                elements.extend(parse_runtime_args(args));
+                elements.extend(parse_amount(args));
+                let args_sans_amount = remove_amount_arg(args.clone());
+                elements.extend(parse_runtime_args(&args_sans_amount));
             }
             ExecutableDeployItem::StoredVersionedContractByHash {
                 entry_point, args, ..
             } => {
                 elements.push(entrypoint(entry_point));
-                elements.extend(parse_runtime_args(args));
+                elements.extend(parse_amount(args));
+                let args_sans_amount = remove_amount_arg(args.clone());
+                elements.extend(parse_runtime_args(&args_sans_amount));
             }
             ExecutableDeployItem::StoredVersionedContractByName {
                 entry_point, args, ..
             } => {
                 elements.push(entrypoint(entry_point));
-                elements.extend(parse_runtime_args(args));
+                elements.extend(parse_amount(args));
+                let args_sans_amount = remove_amount_arg(args.clone());
+                elements.extend(parse_runtime_args(&args_sans_amount));
             }
             ExecutableDeployItem::Transfer { args } => {
                 elements.extend(parse_transfer_args(args));

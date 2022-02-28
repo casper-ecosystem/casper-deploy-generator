@@ -29,6 +29,8 @@ fn deploy_type(d: &Deploy) -> Element {
         "Delegate"
     } else if auction::is_undelegate(d.session()) {
         "Undelegate"
+    } else if auction::is_redelegate(d.session()) {
+        "Redelegate"
     } else if d.session().is_transfer() {
         "Token transfer"
     } else {

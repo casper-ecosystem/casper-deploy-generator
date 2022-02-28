@@ -95,18 +95,19 @@ pub(crate) fn valid<R: Rng>(
 
     for args in ra {
         for sample in sample_executables(rng, entrypoint, args.clone(), None, true) {
-            output.push(enrich_label(sample, entrypoint));
+            output.push(prepend_label(sample, entrypoint));
         }
 
         let mut ra: RuntimeArgs = args;
         ra.insert("auction", entrypoint).unwrap();
-        output.push(enrich_label(sample_module_bytes(ra), entrypoint));
+        output.push(prepend_label(sample_module_bytes(ra), entrypoint));
     }
 
     output
 }
 
-fn enrich_label(
+// Prepends `entrypoint` to the current label of `sample`.
+pub(crate) fn prepend_label(
     sample: Sample<ExecutableDeployItem>,
     entrypoint: &str,
 ) -> Sample<ExecutableDeployItem> {
@@ -173,7 +174,7 @@ pub(crate) fn invalid_delegation<R: Rng>(
             invalid_args_executables
                 .into_iter()
                 .map(|sample_invalid_executable| {
-                    enrich_label(sample_invalid_executable, entry_point)
+                    prepend_label(sample_invalid_executable, entry_point)
                 })
         })
         .collect()

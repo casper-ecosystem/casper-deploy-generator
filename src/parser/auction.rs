@@ -3,7 +3,7 @@ use casper_types::RuntimeArgs;
 
 use crate::{
     ledger::{Element, TxnPhase},
-    parser::deploy::{deploy_type, parse_transfer_amount},
+    parser::deploy::{deploy_type, parse_amount},
 };
 
 use super::deploy::{
@@ -51,7 +51,7 @@ pub(crate) fn parse_delegation(item: &ExecutableDeployItem) -> Vec<Element> {
         // Public key of the validator we're delegating to.
         elements.extend(parse_validator(args).into_iter());
         // Amount we're delegating.
-        elements.extend(parse_transfer_amount(args).into_iter());
+        elements.extend(parse_amount(args).into_iter());
         elements
     };
     parse_auction_item("delegate", item, arg_parser)
@@ -65,7 +65,7 @@ pub(crate) fn parse_undelegation(item: &ExecutableDeployItem) -> Vec<Element> {
         // Public key of the validator we're delegating to.
         elements.extend(parse_validator(args).into_iter());
         // Amount we're delegating.
-        elements.extend(parse_transfer_amount(args).into_iter());
+        elements.extend(parse_amount(args).into_iter());
         elements
     };
     parse_auction_item("undelegate", item, arg_parser)
@@ -81,7 +81,7 @@ pub(crate) fn parse_redelegation(item: &ExecutableDeployItem) -> Vec<Element> {
         // New validator we're redelegating to.
         elements.extend(parse_new_validator(args).into_iter());
         // Amount we're delegating.
-        elements.extend(parse_transfer_amount(args).into_iter());
+        elements.extend(parse_amount(args).into_iter());
         elements
     };
     parse_auction_item("redelegate", item, arg_parser)

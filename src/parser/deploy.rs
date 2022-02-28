@@ -214,7 +214,7 @@ pub(crate) fn parse_fee(args: &RuntimeArgs) -> Option<Element> {
     parse_motes(args, "fee")
 }
 
-pub(crate) fn parse_transfer_amount(args: &RuntimeArgs) -> Option<Element> {
+pub(crate) fn parse_amount(args: &RuntimeArgs) -> Option<Element> {
     parse_motes(args, "amount")
 }
 

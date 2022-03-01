@@ -58,7 +58,7 @@ pub(crate) fn parse_phase(item: &ExecutableDeployItem, phase: TxnPhase) -> Vec<E
                     elements.extend(parse_amount(args));
                 }
                 let args_sans_amount = remove_amount_arg(args.clone());
-                elements.extend(parse_runtime_args(&args_sans_amount));
+                elements.extend(parse_runtime_args(&phase, &args_sans_amount));
             }
             ExecutableDeployItem::StoredContractByHash {
                 entry_point, args, ..
@@ -66,7 +66,7 @@ pub(crate) fn parse_phase(item: &ExecutableDeployItem, phase: TxnPhase) -> Vec<E
                 elements.push(entrypoint(entry_point));
                 elements.extend(parse_amount(args));
                 let args_sans_amount = remove_amount_arg(args.clone());
-                elements.extend(parse_runtime_args(&args_sans_amount));
+                elements.extend(parse_runtime_args(&phase, &args_sans_amount));
             }
             ExecutableDeployItem::StoredContractByName {
                 entry_point, args, ..
@@ -74,7 +74,7 @@ pub(crate) fn parse_phase(item: &ExecutableDeployItem, phase: TxnPhase) -> Vec<E
                 elements.push(entrypoint(entry_point));
                 elements.extend(parse_amount(args));
                 let args_sans_amount = remove_amount_arg(args.clone());
-                elements.extend(parse_runtime_args(&args_sans_amount));
+                elements.extend(parse_runtime_args(&phase, &args_sans_amount));
             }
             ExecutableDeployItem::StoredVersionedContractByHash {
                 entry_point, args, ..
@@ -82,7 +82,7 @@ pub(crate) fn parse_phase(item: &ExecutableDeployItem, phase: TxnPhase) -> Vec<E
                 elements.push(entrypoint(entry_point));
                 elements.extend(parse_amount(args));
                 let args_sans_amount = remove_amount_arg(args.clone());
-                elements.extend(parse_runtime_args(&args_sans_amount));
+                elements.extend(parse_runtime_args(&phase, &args_sans_amount));
             }
             ExecutableDeployItem::StoredVersionedContractByName {
                 entry_point, args, ..
@@ -90,12 +90,12 @@ pub(crate) fn parse_phase(item: &ExecutableDeployItem, phase: TxnPhase) -> Vec<E
                 elements.push(entrypoint(entry_point));
                 elements.extend(parse_amount(args));
                 let args_sans_amount = remove_amount_arg(args.clone());
-                elements.extend(parse_runtime_args(&args_sans_amount));
+                elements.extend(parse_runtime_args(&phase, &args_sans_amount));
             }
             ExecutableDeployItem::Transfer { args } => {
                 elements.extend(parse_transfer_args(args));
                 let args_sans_transfer = remove_transfer_args(args.clone());
-                elements.extend(parse_runtime_args(&args_sans_transfer));
+                elements.extend(parse_runtime_args(&phase, &args_sans_transfer));
             }
         }
         elements

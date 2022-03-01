@@ -1,5 +1,6 @@
-use crate::ledger::Element;
+use crate::ledger::{Element, TxnPhase};
 use crate::utils::cl_value_to_string;
+use casper_types::bytesrepr::ToBytes;
 use casper_types::system::mint::{ARG_ID, ARG_SOURCE, ARG_TARGET, ARG_TO};
 use casper_types::{CLValue, RuntimeArgs};
 use std::collections::BTreeMap;
@@ -10,8 +11,17 @@ use super::deploy::{identity, parse_amount};
 /// arg-n-name: <name>
 /// arg-n-val: <val>
 /// where n is the ordinal number of the argument.
-pub(crate) fn parse_runtime_args(ra: &RuntimeArgs) -> Vec<Element> {
+pub(crate) fn parse_runtime_args(phase: &TxnPhase, ra: &RuntimeArgs) -> Vec<Element> {
     let mut elements: Vec<Element> = vec![];
+    if !ra.is_empty() {
+        let args_digest =
+            casper_hashing::Digest::hash(ToBytes::to_bytes(ra).expect("ToBytes to work."));
+        let args_hash = base16::encode_lower(&args_digest);
+        elements.push(Element::regular(
+            "args hash",
+            format!("{}-{}", phase.to_string().to_lowercase(), args_hash),
+        ));
+    }
     let named_args: BTreeMap<String, CLValue> = ra.clone().into();
     for (idx, (name, value)) in named_args.iter().enumerate() {
         let name_label = format!("arg-{}-name", idx);

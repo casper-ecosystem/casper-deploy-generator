@@ -1,5 +1,5 @@
 use ledger::JsonRepr;
-use test_data::{invalid_samples, valid_samples};
+use test_data::{generic_samples, invalid_samples, valid_samples};
 use test_rng::TestRng;
 
 use crate::{ledger::LimitedLedgerConfig, test_data::redelegate_samples};
@@ -22,6 +22,7 @@ fn main() {
         .into_iter()
         .chain(invalid_samples(&mut rng).into_iter())
         .chain(redelegate_samples(&mut rng).into_iter())
+        .chain(generic_samples(&mut rng).into_iter())
         .enumerate()
         .map(|(id, sample_deploy)| ledger::from_deploy(id, sample_deploy, &limited_ledger_config))
         .collect();

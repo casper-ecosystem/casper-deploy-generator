@@ -13,11 +13,10 @@
 
 use crate::sample::Sample;
 use crate::test_data::auction::commons::{self};
+use crate::test_data::commons::{prepend_label, sample_executables};
 use casper_execution_engine::core::engine_state::ExecutableDeployItem;
 use casper_types::{runtime_args, AsymmetricType, PublicKey, RuntimeArgs, U512};
 use rand::Rng;
-
-use super::commons::{prepend_label, sample_executables};
 
 const ENTRY_POINT_NAME: &str = "redelegate";
 

@@ -15,6 +15,7 @@ use crate::sample::Sample;
 use self::auction::redelegate;
 
 mod auction;
+mod commons;
 mod native_transfer;
 mod system_payment;
 
@@ -285,5 +286,20 @@ pub(crate) fn redelegate_samples<R: Rng>(rng: &mut R) -> Vec<Sample<Deploy>> {
         invalid_samples,
         invalid_payment_samples,
     ));
+    samples
+}
+
+pub(crate) fn generic_samples<R: Rng>(rng: &mut R) -> Vec<Sample<Deploy>> {
+    let valid_samples = generic::valid(rng);
+    let valid_payment_samples = vec![system_payment::valid()];
+
+    let samples = construct_samples(rng, valid_samples, valid_payment_samples);
+    // let invalid_samples = redelegate::invalid(rng);
+    // let invalid_payment_samples = vec![system_payment::invalid(), system_payment::valid()];
+    // samples.extend(construct_samples(
+    //     rng,
+    //     invalid_samples,
+    //     invalid_payment_samples,
+    // ));
     samples
 }

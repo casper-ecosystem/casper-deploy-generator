@@ -16,6 +16,7 @@ use self::auction::redelegate;
 
 mod auction;
 mod commons;
+mod generic;
 mod native_transfer;
 mod system_payment;
 

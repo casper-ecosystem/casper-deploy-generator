@@ -22,14 +22,14 @@ pub(crate) fn parse_runtime_args(phase: &TxnPhase, ra: &RuntimeArgs) -> Vec<Elem
             format!("{}-{}", phase.to_string().to_lowercase(), args_hash),
         ));
     }
-    let named_args: BTreeMap<String, CLValue> = ra.clone().into();
-    for (idx, (name, value)) in named_args.iter().enumerate() {
-        let name_label = format!("arg-{}-name", idx);
-        elements.push(Element::expert(&name_label, name.to_string()));
-        let value_label = format!("arg-{}-val", idx);
-        let value_str = cl_value_to_string(value);
-        elements.push(Element::expert(&value_label, value_str));
-    }
+    // let named_args: BTreeMap<String, CLValue> = ra.clone().into();
+    // for (idx, (name, value)) in named_args.iter().enumerate() {
+    //     let name_label = format!("arg-{}-name", idx);
+    //     elements.push(Element::expert(&name_label, name.to_string()));
+    //     let value_label = format!("arg-{}-val", idx);
+    //     let value_str = cl_value_to_string(value);
+    //     elements.push(Element::expert(&value_label, value_str));
+    // }
     elements
 }
 

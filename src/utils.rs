@@ -39,6 +39,7 @@ fn drop_key_type_prefix(cl_in: String) -> String {
                 }
                 Key::Dictionary(_) => "dictionary-",
                 Key::SystemContractRegistry => "system-contract-registry-",
+                Key::Unbond(_) => "ubond-",
             };
             cl_in.chars().skip(prefix.len()).collect()
         }

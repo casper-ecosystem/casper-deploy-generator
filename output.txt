@@ -1,7 +1,7 @@
 [
   {
     "index": 0,
-    "name": "native_transfer-target:bytes-source:uref-payment:system",
+    "name": "native_transfer-target:bytes-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -41,7 +41,7 @@
   },
   {
     "index": 1,
-    "name": "native_transfer-target:bytes-source:uref-payment:system",
+    "name": "native_transfer-target:bytes-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -81,7 +81,7 @@
   },
   {
     "index": 2,
-    "name": "native_transfer-target:bytes-source:uref-payment:system",
+    "name": "native_transfer-target:bytes-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -121,7 +121,7 @@
   },
   {
     "index": 3,
-    "name": "native_transfer-target:bytes-source:uref-payment:system",
+    "name": "native_transfer-target:bytes-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -161,7 +161,7 @@
   },
   {
     "index": 4,
-    "name": "native_transfer-target:bytes-source:uref-payment:system",
+    "name": "native_transfer-target:bytes-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -201,7 +201,7 @@
   },
   {
     "index": 5,
-    "name": "native_transfer-target:bytes-source:uref-payment:system",
+    "name": "native_transfer-target:bytes-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -241,7 +241,7 @@
   },
   {
     "index": 6,
-    "name": "native_transfer-target:bytes-source:none-payment:system",
+    "name": "native_transfer-target:bytes-source:none_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -279,7 +279,7 @@
   },
   {
     "index": 7,
-    "name": "native_transfer-target:uref-source:uref-payment:system",
+    "name": "native_transfer-target:uref-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -319,7 +319,7 @@
   },
   {
     "index": 8,
-    "name": "native_transfer-target:uref-source:uref-payment:system",
+    "name": "native_transfer-target:uref-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -359,7 +359,7 @@
   },
   {
     "index": 9,
-    "name": "native_transfer-target:uref-source:uref-payment:system",
+    "name": "native_transfer-target:uref-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -399,7 +399,7 @@
   },
   {
     "index": 10,
-    "name": "native_transfer-target:uref-source:uref-payment:system",
+    "name": "native_transfer-target:uref-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -439,7 +439,7 @@
   },
   {
     "index": 11,
-    "name": "native_transfer-target:uref-source:uref-payment:system",
+    "name": "native_transfer-target:uref-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -479,7 +479,7 @@
   },
   {
     "index": 12,
-    "name": "native_transfer-target:uref-source:uref-payment:system",
+    "name": "native_transfer-target:uref-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -519,7 +519,7 @@
   },
   {
     "index": 13,
-    "name": "native_transfer-target:uref-source:none-payment:system",
+    "name": "native_transfer-target:uref-source:none_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -557,7 +557,7 @@
   },
   {
     "index": 14,
-    "name": "native_transfer-target:key_account-source:uref-payment:system",
+    "name": "native_transfer-target:key_account-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -597,7 +597,7 @@
   },
   {
     "index": 15,
-    "name": "native_transfer-target:key_account-source:uref-payment:system",
+    "name": "native_transfer-target:key_account-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -637,7 +637,7 @@
   },
   {
     "index": 16,
-    "name": "native_transfer-target:key_account-source:uref-payment:system",
+    "name": "native_transfer-target:key_account-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -677,7 +677,7 @@
   },
   {
     "index": 17,
-    "name": "native_transfer-target:key_account-source:uref-payment:system",
+    "name": "native_transfer-target:key_account-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -717,7 +717,7 @@
   },
   {
     "index": 18,
-    "name": "native_transfer-target:key_account-source:uref-payment:system",
+    "name": "native_transfer-target:key_account-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -757,7 +757,7 @@
   },
   {
     "index": 19,
-    "name": "native_transfer-target:key_account-source:uref-payment:system",
+    "name": "native_transfer-target:key_account-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -797,7 +797,7 @@
   },
   {
     "index": 20,
-    "name": "native_transfer-target:key_account-source:none-payment:system",
+    "name": "native_transfer-target:key_account-source:none_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -835,7 +835,7 @@
   },
   {
     "index": 21,
-    "name": "native_transfer-target:secp256k1_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:secp256k1_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -875,7 +875,7 @@
   },
   {
     "index": 22,
-    "name": "native_transfer-target:secp256k1_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:secp256k1_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -915,7 +915,7 @@
   },
   {
     "index": 23,
-    "name": "native_transfer-target:secp256k1_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:secp256k1_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -955,7 +955,7 @@
   },
   {
     "index": 24,
-    "name": "native_transfer-target:secp256k1_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:secp256k1_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -995,7 +995,7 @@
   },
   {
     "index": 25,
-    "name": "native_transfer-target:secp256k1_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:secp256k1_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -1035,7 +1035,7 @@
   },
   {
     "index": 26,
-    "name": "native_transfer-target:secp256k1_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:secp256k1_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -1075,7 +1075,7 @@
   },
   {
     "index": 27,
-    "name": "native_transfer-target:secp256k1_public_key-source:none-payment:system",
+    "name": "native_transfer-target:secp256k1_public_key-source:none_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -1113,7 +1113,7 @@
   },
   {
     "index": 28,
-    "name": "native_transfer-target:ed25519_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:ed25519_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -1153,7 +1153,7 @@
   },
   {
     "index": 29,
-    "name": "native_transfer-target:ed25519_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:ed25519_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -1193,7 +1193,7 @@
   },
   {
     "index": 30,
-    "name": "native_transfer-target:ed25519_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:ed25519_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -1233,7 +1233,7 @@
   },
   {
     "index": 31,
-    "name": "native_transfer-target:ed25519_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:ed25519_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -1273,7 +1273,7 @@
   },
   {
     "index": 32,
-    "name": "native_transfer-target:ed25519_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:ed25519_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -1313,7 +1313,7 @@
   },
   {
     "index": 33,
-    "name": "native_transfer-target:ed25519_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:ed25519_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -1353,7 +1353,7 @@
   },
   {
     "index": 34,
-    "name": "native_transfer-target:ed25519_public_key-source:none-payment:system",
+    "name": "native_transfer-target:ed25519_public_key-source:none_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -1391,7 +1391,7 @@
   },
   {
     "index": 35,
-    "name": "native_transfer-target:bytes-source:uref-payment:system",
+    "name": "native_transfer-target:bytes-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -1431,7 +1431,7 @@
   },
   {
     "index": 36,
-    "name": "native_transfer-target:bytes-source:uref-payment:system",
+    "name": "native_transfer-target:bytes-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -1471,7 +1471,7 @@
   },
   {
     "index": 37,
-    "name": "native_transfer-target:bytes-source:uref-payment:system",
+    "name": "native_transfer-target:bytes-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -1511,7 +1511,7 @@
   },
   {
     "index": 38,
-    "name": "native_transfer-target:bytes-source:uref-payment:system",
+    "name": "native_transfer-target:bytes-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -1551,7 +1551,7 @@
   },
   {
     "index": 39,
-    "name": "native_transfer-target:bytes-source:uref-payment:system",
+    "name": "native_transfer-target:bytes-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -1591,7 +1591,7 @@
   },
   {
     "index": 40,
-    "name": "native_transfer-target:bytes-source:uref-payment:system",
+    "name": "native_transfer-target:bytes-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -1631,7 +1631,7 @@
   },
   {
     "index": 41,
-    "name": "native_transfer-target:bytes-source:none-payment:system",
+    "name": "native_transfer-target:bytes-source:none_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -1669,7 +1669,7 @@
   },
   {
     "index": 42,
-    "name": "native_transfer-target:uref-source:uref-payment:system",
+    "name": "native_transfer-target:uref-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -1709,7 +1709,7 @@
   },
   {
     "index": 43,
-    "name": "native_transfer-target:uref-source:uref-payment:system",
+    "name": "native_transfer-target:uref-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -1749,7 +1749,7 @@
   },
   {
     "index": 44,
-    "name": "native_transfer-target:uref-source:uref-payment:system",
+    "name": "native_transfer-target:uref-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -1789,7 +1789,7 @@
   },
   {
     "index": 45,
-    "name": "native_transfer-target:uref-source:uref-payment:system",
+    "name": "native_transfer-target:uref-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -1829,7 +1829,7 @@
   },
   {
     "index": 46,
-    "name": "native_transfer-target:uref-source:uref-payment:system",
+    "name": "native_transfer-target:uref-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -1869,7 +1869,7 @@
   },
   {
     "index": 47,
-    "name": "native_transfer-target:uref-source:uref-payment:system",
+    "name": "native_transfer-target:uref-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -1909,7 +1909,7 @@
   },
   {
     "index": 48,
-    "name": "native_transfer-target:uref-source:none-payment:system",
+    "name": "native_transfer-target:uref-source:none_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -1947,7 +1947,7 @@
   },
   {
     "index": 49,
-    "name": "native_transfer-target:key_account-source:uref-payment:system",
+    "name": "native_transfer-target:key_account-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -1987,7 +1987,7 @@
   },
   {
     "index": 50,
-    "name": "native_transfer-target:key_account-source:uref-payment:system",
+    "name": "native_transfer-target:key_account-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -2027,7 +2027,7 @@
   },
   {
     "index": 51,
-    "name": "native_transfer-target:key_account-source:uref-payment:system",
+    "name": "native_transfer-target:key_account-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -2067,7 +2067,7 @@
   },
   {
     "index": 52,
-    "name": "native_transfer-target:key_account-source:uref-payment:system",
+    "name": "native_transfer-target:key_account-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -2107,7 +2107,7 @@
   },
   {
     "index": 53,
-    "name": "native_transfer-target:key_account-source:uref-payment:system",
+    "name": "native_transfer-target:key_account-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -2147,7 +2147,7 @@
   },
   {
     "index": 54,
-    "name": "native_transfer-target:key_account-source:uref-payment:system",
+    "name": "native_transfer-target:key_account-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -2187,7 +2187,7 @@
   },
   {
     "index": 55,
-    "name": "native_transfer-target:key_account-source:none-payment:system",
+    "name": "native_transfer-target:key_account-source:none_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -2225,7 +2225,7 @@
   },
   {
     "index": 56,
-    "name": "native_transfer-target:secp256k1_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:secp256k1_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -2265,7 +2265,7 @@
   },
   {
     "index": 57,
-    "name": "native_transfer-target:secp256k1_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:secp256k1_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -2305,7 +2305,7 @@
   },
   {
     "index": 58,
-    "name": "native_transfer-target:secp256k1_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:secp256k1_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -2345,7 +2345,7 @@
   },
   {
     "index": 59,
-    "name": "native_transfer-target:secp256k1_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:secp256k1_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -2385,7 +2385,7 @@
   },
   {
     "index": 60,
-    "name": "native_transfer-target:secp256k1_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:secp256k1_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -2425,7 +2425,7 @@
   },
   {
     "index": 61,
-    "name": "native_transfer-target:secp256k1_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:secp256k1_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -2465,7 +2465,7 @@
   },
   {
     "index": 62,
-    "name": "native_transfer-target:secp256k1_public_key-source:none-payment:system",
+    "name": "native_transfer-target:secp256k1_public_key-source:none_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -2503,7 +2503,7 @@
   },
   {
     "index": 63,
-    "name": "native_transfer-target:ed25519_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:ed25519_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -2543,7 +2543,7 @@
   },
   {
     "index": 64,
-    "name": "native_transfer-target:ed25519_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:ed25519_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -2583,7 +2583,7 @@
   },
   {
     "index": 65,
-    "name": "native_transfer-target:ed25519_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:ed25519_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -2623,7 +2623,7 @@
   },
   {
     "index": 66,
-    "name": "native_transfer-target:ed25519_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:ed25519_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -2663,7 +2663,7 @@
   },
   {
     "index": 67,
-    "name": "native_transfer-target:ed25519_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:ed25519_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -2703,7 +2703,7 @@
   },
   {
     "index": 68,
-    "name": "native_transfer-target:ed25519_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:ed25519_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -2743,7 +2743,7 @@
   },
   {
     "index": 69,
-    "name": "native_transfer-target:ed25519_public_key-source:none-payment:system",
+    "name": "native_transfer-target:ed25519_public_key-source:none_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -2781,7 +2781,7 @@
   },
   {
     "index": 70,
-    "name": "native_transfer-target:bytes-source:uref-payment:system",
+    "name": "native_transfer-target:bytes-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -2821,7 +2821,7 @@
   },
   {
     "index": 71,
-    "name": "native_transfer-target:bytes-source:uref-payment:system",
+    "name": "native_transfer-target:bytes-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -2861,7 +2861,7 @@
   },
   {
     "index": 72,
-    "name": "native_transfer-target:bytes-source:uref-payment:system",
+    "name": "native_transfer-target:bytes-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -2901,7 +2901,7 @@
   },
   {
     "index": 73,
-    "name": "native_transfer-target:bytes-source:uref-payment:system",
+    "name": "native_transfer-target:bytes-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -2941,7 +2941,7 @@
   },
   {
     "index": 74,
-    "name": "native_transfer-target:bytes-source:uref-payment:system",
+    "name": "native_transfer-target:bytes-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -2981,7 +2981,7 @@
   },
   {
     "index": 75,
-    "name": "native_transfer-target:bytes-source:uref-payment:system",
+    "name": "native_transfer-target:bytes-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -3021,7 +3021,7 @@
   },
   {
     "index": 76,
-    "name": "native_transfer-target:bytes-source:none-payment:system",
+    "name": "native_transfer-target:bytes-source:none_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -3059,7 +3059,7 @@
   },
   {
     "index": 77,
-    "name": "native_transfer-target:uref-source:uref-payment:system",
+    "name": "native_transfer-target:uref-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -3099,7 +3099,7 @@
   },
   {
     "index": 78,
-    "name": "native_transfer-target:uref-source:uref-payment:system",
+    "name": "native_transfer-target:uref-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -3139,7 +3139,7 @@
   },
   {
     "index": 79,
-    "name": "native_transfer-target:uref-source:uref-payment:system",
+    "name": "native_transfer-target:uref-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -3179,7 +3179,7 @@
   },
   {
     "index": 80,
-    "name": "native_transfer-target:uref-source:uref-payment:system",
+    "name": "native_transfer-target:uref-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -3219,7 +3219,7 @@
   },
   {
     "index": 81,
-    "name": "native_transfer-target:uref-source:uref-payment:system",
+    "name": "native_transfer-target:uref-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -3259,7 +3259,7 @@
   },
   {
     "index": 82,
-    "name": "native_transfer-target:uref-source:uref-payment:system",
+    "name": "native_transfer-target:uref-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -3299,7 +3299,7 @@
   },
   {
     "index": 83,
-    "name": "native_transfer-target:uref-source:none-payment:system",
+    "name": "native_transfer-target:uref-source:none_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -3337,7 +3337,7 @@
   },
   {
     "index": 84,
-    "name": "native_transfer-target:key_account-source:uref-payment:system",
+    "name": "native_transfer-target:key_account-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -3377,7 +3377,7 @@
   },
   {
     "index": 85,
-    "name": "native_transfer-target:key_account-source:uref-payment:system",
+    "name": "native_transfer-target:key_account-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -3417,7 +3417,7 @@
   },
   {
     "index": 86,
-    "name": "native_transfer-target:key_account-source:uref-payment:system",
+    "name": "native_transfer-target:key_account-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -3457,7 +3457,7 @@
   },
   {
     "index": 87,
-    "name": "native_transfer-target:key_account-source:uref-payment:system",
+    "name": "native_transfer-target:key_account-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -3497,7 +3497,7 @@
   },
   {
     "index": 88,
-    "name": "native_transfer-target:key_account-source:uref-payment:system",
+    "name": "native_transfer-target:key_account-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -3537,7 +3537,7 @@
   },
   {
     "index": 89,
-    "name": "native_transfer-target:key_account-source:uref-payment:system",
+    "name": "native_transfer-target:key_account-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -3577,7 +3577,7 @@
   },
   {
     "index": 90,
-    "name": "native_transfer-target:key_account-source:none-payment:system",
+    "name": "native_transfer-target:key_account-source:none_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -3615,7 +3615,7 @@
   },
   {
     "index": 91,
-    "name": "native_transfer-target:secp256k1_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:secp256k1_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -3655,7 +3655,7 @@
   },
   {
     "index": 92,
-    "name": "native_transfer-target:secp256k1_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:secp256k1_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -3695,7 +3695,7 @@
   },
   {
     "index": 93,
-    "name": "native_transfer-target:secp256k1_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:secp256k1_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -3735,7 +3735,7 @@
   },
   {
     "index": 94,
-    "name": "native_transfer-target:secp256k1_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:secp256k1_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -3775,7 +3775,7 @@
   },
   {
     "index": 95,
-    "name": "native_transfer-target:secp256k1_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:secp256k1_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -3815,7 +3815,7 @@
   },
   {
     "index": 96,
-    "name": "native_transfer-target:secp256k1_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:secp256k1_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -3855,7 +3855,7 @@
   },
   {
     "index": 97,
-    "name": "native_transfer-target:secp256k1_public_key-source:none-payment:system",
+    "name": "native_transfer-target:secp256k1_public_key-source:none_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -3893,7 +3893,7 @@
   },
   {
     "index": 98,
-    "name": "native_transfer-target:ed25519_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:ed25519_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -3933,7 +3933,7 @@
   },
   {
     "index": 99,
-    "name": "native_transfer-target:ed25519_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:ed25519_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -3973,7 +3973,7 @@
   },
   {
     "index": 100,
-    "name": "native_transfer-target:ed25519_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:ed25519_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -4013,7 +4013,7 @@
   },
   {
     "index": 101,
-    "name": "native_transfer-target:ed25519_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:ed25519_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -4053,7 +4053,7 @@
   },
   {
     "index": 102,
-    "name": "native_transfer-target:ed25519_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:ed25519_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -4093,7 +4093,7 @@
   },
   {
     "index": 103,
-    "name": "native_transfer-target:ed25519_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:ed25519_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -4133,7 +4133,7 @@
   },
   {
     "index": 104,
-    "name": "native_transfer-target:ed25519_public_key-source:none-payment:system",
+    "name": "native_transfer-target:ed25519_public_key-source:none_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -4171,7 +4171,7 @@
   },
   {
     "index": 105,
-    "name": "native_transfer-target:bytes-source:uref-payment:system",
+    "name": "native_transfer-target:bytes-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -4211,7 +4211,7 @@
   },
   {
     "index": 106,
-    "name": "native_transfer-target:bytes-source:uref-payment:system",
+    "name": "native_transfer-target:bytes-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -4251,7 +4251,7 @@
   },
   {
     "index": 107,
-    "name": "native_transfer-target:bytes-source:uref-payment:system",
+    "name": "native_transfer-target:bytes-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -4291,7 +4291,7 @@
   },
   {
     "index": 108,
-    "name": "native_transfer-target:bytes-source:uref-payment:system",
+    "name": "native_transfer-target:bytes-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -4331,7 +4331,7 @@
   },
   {
     "index": 109,
-    "name": "native_transfer-target:bytes-source:uref-payment:system",
+    "name": "native_transfer-target:bytes-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -4371,7 +4371,7 @@
   },
   {
     "index": 110,
-    "name": "native_transfer-target:bytes-source:uref-payment:system",
+    "name": "native_transfer-target:bytes-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -4411,7 +4411,7 @@
   },
   {
     "index": 111,
-    "name": "native_transfer-target:bytes-source:none-payment:system",
+    "name": "native_transfer-target:bytes-source:none_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -4449,7 +4449,7 @@
   },
   {
     "index": 112,
-    "name": "native_transfer-target:uref-source:uref-payment:system",
+    "name": "native_transfer-target:uref-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -4489,7 +4489,7 @@
   },
   {
     "index": 113,
-    "name": "native_transfer-target:uref-source:uref-payment:system",
+    "name": "native_transfer-target:uref-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -4529,7 +4529,7 @@
   },
   {
     "index": 114,
-    "name": "native_transfer-target:uref-source:uref-payment:system",
+    "name": "native_transfer-target:uref-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -4569,7 +4569,7 @@
   },
   {
     "index": 115,
-    "name": "native_transfer-target:uref-source:uref-payment:system",
+    "name": "native_transfer-target:uref-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -4609,7 +4609,7 @@
   },
   {
     "index": 116,
-    "name": "native_transfer-target:uref-source:uref-payment:system",
+    "name": "native_transfer-target:uref-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -4649,7 +4649,7 @@
   },
   {
     "index": 117,
-    "name": "native_transfer-target:uref-source:uref-payment:system",
+    "name": "native_transfer-target:uref-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -4689,7 +4689,7 @@
   },
   {
     "index": 118,
-    "name": "native_transfer-target:uref-source:none-payment:system",
+    "name": "native_transfer-target:uref-source:none_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -4727,7 +4727,7 @@
   },
   {
     "index": 119,
-    "name": "native_transfer-target:key_account-source:uref-payment:system",
+    "name": "native_transfer-target:key_account-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -4767,7 +4767,7 @@
   },
   {
     "index": 120,
-    "name": "native_transfer-target:key_account-source:uref-payment:system",
+    "name": "native_transfer-target:key_account-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -4807,7 +4807,7 @@
   },
   {
     "index": 121,
-    "name": "native_transfer-target:key_account-source:uref-payment:system",
+    "name": "native_transfer-target:key_account-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -4847,7 +4847,7 @@
   },
   {
     "index": 122,
-    "name": "native_transfer-target:key_account-source:uref-payment:system",
+    "name": "native_transfer-target:key_account-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -4887,7 +4887,7 @@
   },
   {
     "index": 123,
-    "name": "native_transfer-target:key_account-source:uref-payment:system",
+    "name": "native_transfer-target:key_account-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -4927,7 +4927,7 @@
   },
   {
     "index": 124,
-    "name": "native_transfer-target:key_account-source:uref-payment:system",
+    "name": "native_transfer-target:key_account-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -4967,7 +4967,7 @@
   },
   {
     "index": 125,
-    "name": "native_transfer-target:key_account-source:none-payment:system",
+    "name": "native_transfer-target:key_account-source:none_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -5005,7 +5005,7 @@
   },
   {
     "index": 126,
-    "name": "native_transfer-target:secp256k1_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:secp256k1_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -5045,7 +5045,7 @@
   },
   {
     "index": 127,
-    "name": "native_transfer-target:secp256k1_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:secp256k1_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -5085,7 +5085,7 @@
   },
   {
     "index": 128,
-    "name": "native_transfer-target:secp256k1_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:secp256k1_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -5125,7 +5125,7 @@
   },
   {
     "index": 129,
-    "name": "native_transfer-target:secp256k1_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:secp256k1_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -5165,7 +5165,7 @@
   },
   {
     "index": 130,
-    "name": "native_transfer-target:secp256k1_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:secp256k1_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -5205,7 +5205,7 @@
   },
   {
     "index": 131,
-    "name": "native_transfer-target:secp256k1_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:secp256k1_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -5245,7 +5245,7 @@
   },
   {
     "index": 132,
-    "name": "native_transfer-target:secp256k1_public_key-source:none-payment:system",
+    "name": "native_transfer-target:secp256k1_public_key-source:none_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -5283,7 +5283,7 @@
   },
   {
     "index": 133,
-    "name": "native_transfer-target:ed25519_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:ed25519_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -5323,7 +5323,7 @@
   },
   {
     "index": 134,
-    "name": "native_transfer-target:ed25519_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:ed25519_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -5363,7 +5363,7 @@
   },
   {
     "index": 135,
-    "name": "native_transfer-target:ed25519_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:ed25519_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -5403,7 +5403,7 @@
   },
   {
     "index": 136,
-    "name": "native_transfer-target:ed25519_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:ed25519_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -5443,7 +5443,7 @@
   },
   {
     "index": 137,
-    "name": "native_transfer-target:ed25519_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:ed25519_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -5483,7 +5483,7 @@
   },
   {
     "index": 138,
-    "name": "native_transfer-target:ed25519_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:ed25519_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -5523,7 +5523,7 @@
   },
   {
     "index": 139,
-    "name": "native_transfer-target:ed25519_public_key-source:none-payment:system",
+    "name": "native_transfer-target:ed25519_public_key-source:none_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -5561,7 +5561,7 @@
   },
   {
     "index": 140,
-    "name": "native_transfer-target:bytes-source:uref-payment:system",
+    "name": "native_transfer-target:bytes-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -5613,7 +5613,7 @@
   },
   {
     "index": 141,
-    "name": "native_transfer-target:bytes-source:uref-payment:system",
+    "name": "native_transfer-target:bytes-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -5665,7 +5665,7 @@
   },
   {
     "index": 142,
-    "name": "native_transfer-target:bytes-source:uref-payment:system",
+    "name": "native_transfer-target:bytes-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -5717,7 +5717,7 @@
   },
   {
     "index": 143,
-    "name": "native_transfer-target:bytes-source:uref-payment:system",
+    "name": "native_transfer-target:bytes-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -5769,7 +5769,7 @@
   },
   {
     "index": 144,
-    "name": "native_transfer-target:bytes-source:uref-payment:system",
+    "name": "native_transfer-target:bytes-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -5821,7 +5821,7 @@
   },
   {
     "index": 145,
-    "name": "native_transfer-target:bytes-source:uref-payment:system",
+    "name": "native_transfer-target:bytes-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -5873,7 +5873,7 @@
   },
   {
     "index": 146,
-    "name": "native_transfer-target:bytes-source:none-payment:system",
+    "name": "native_transfer-target:bytes-source:none_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -5923,7 +5923,7 @@
   },
   {
     "index": 147,
-    "name": "native_transfer-target:uref-source:uref-payment:system",
+    "name": "native_transfer-target:uref-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -5975,7 +5975,7 @@
   },
   {
     "index": 148,
-    "name": "native_transfer-target:uref-source:uref-payment:system",
+    "name": "native_transfer-target:uref-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -6027,7 +6027,7 @@
   },
   {
     "index": 149,
-    "name": "native_transfer-target:uref-source:uref-payment:system",
+    "name": "native_transfer-target:uref-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -6079,7 +6079,7 @@
   },
   {
     "index": 150,
-    "name": "native_transfer-target:uref-source:uref-payment:system",
+    "name": "native_transfer-target:uref-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -6131,7 +6131,7 @@
   },
   {
     "index": 151,
-    "name": "native_transfer-target:uref-source:uref-payment:system",
+    "name": "native_transfer-target:uref-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -6183,7 +6183,7 @@
   },
   {
     "index": 152,
-    "name": "native_transfer-target:uref-source:uref-payment:system",
+    "name": "native_transfer-target:uref-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -6235,7 +6235,7 @@
   },
   {
     "index": 153,
-    "name": "native_transfer-target:uref-source:none-payment:system",
+    "name": "native_transfer-target:uref-source:none_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -6285,7 +6285,7 @@
   },
   {
     "index": 154,
-    "name": "native_transfer-target:key_account-source:uref-payment:system",
+    "name": "native_transfer-target:key_account-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -6337,7 +6337,7 @@
   },
   {
     "index": 155,
-    "name": "native_transfer-target:key_account-source:uref-payment:system",
+    "name": "native_transfer-target:key_account-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -6389,7 +6389,7 @@
   },
   {
     "index": 156,
-    "name": "native_transfer-target:key_account-source:uref-payment:system",
+    "name": "native_transfer-target:key_account-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -6441,7 +6441,7 @@
   },
   {
     "index": 157,
-    "name": "native_transfer-target:key_account-source:uref-payment:system",
+    "name": "native_transfer-target:key_account-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -6493,7 +6493,7 @@
   },
   {
     "index": 158,
-    "name": "native_transfer-target:key_account-source:uref-payment:system",
+    "name": "native_transfer-target:key_account-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -6545,7 +6545,7 @@
   },
   {
     "index": 159,
-    "name": "native_transfer-target:key_account-source:uref-payment:system",
+    "name": "native_transfer-target:key_account-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -6597,7 +6597,7 @@
   },
   {
     "index": 160,
-    "name": "native_transfer-target:key_account-source:none-payment:system",
+    "name": "native_transfer-target:key_account-source:none_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -6647,7 +6647,7 @@
   },
   {
     "index": 161,
-    "name": "native_transfer-target:secp256k1_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:secp256k1_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -6699,7 +6699,7 @@
   },
   {
     "index": 162,
-    "name": "native_transfer-target:secp256k1_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:secp256k1_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -6751,7 +6751,7 @@
   },
   {
     "index": 163,
-    "name": "native_transfer-target:secp256k1_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:secp256k1_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -6803,7 +6803,7 @@
   },
   {
     "index": 164,
-    "name": "native_transfer-target:secp256k1_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:secp256k1_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -6855,7 +6855,7 @@
   },
   {
     "index": 165,
-    "name": "native_transfer-target:secp256k1_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:secp256k1_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -6907,7 +6907,7 @@
   },
   {
     "index": 166,
-    "name": "native_transfer-target:secp256k1_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:secp256k1_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -6959,7 +6959,7 @@
   },
   {
     "index": 167,
-    "name": "native_transfer-target:secp256k1_public_key-source:none-payment:system",
+    "name": "native_transfer-target:secp256k1_public_key-source:none_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -7009,7 +7009,7 @@
   },
   {
     "index": 168,
-    "name": "native_transfer-target:ed25519_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:ed25519_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -7061,7 +7061,7 @@
   },
   {
     "index": 169,
-    "name": "native_transfer-target:ed25519_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:ed25519_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -7113,7 +7113,7 @@
   },
   {
     "index": 170,
-    "name": "native_transfer-target:ed25519_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:ed25519_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -7165,7 +7165,7 @@
   },
   {
     "index": 171,
-    "name": "native_transfer-target:ed25519_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:ed25519_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -7217,7 +7217,7 @@
   },
   {
     "index": 172,
-    "name": "native_transfer-target:ed25519_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:ed25519_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -7269,7 +7269,7 @@
   },
   {
     "index": 173,
-    "name": "native_transfer-target:ed25519_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:ed25519_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -7321,7 +7321,7 @@
   },
   {
     "index": 174,
-    "name": "native_transfer-target:ed25519_public_key-source:none-payment:system",
+    "name": "native_transfer-target:ed25519_public_key-source:none_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -7371,7 +7371,7 @@
   },
   {
     "index": 175,
-    "name": "native_transfer-target:bytes-source:uref-payment:system",
+    "name": "native_transfer-target:bytes-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -7423,7 +7423,7 @@
   },
   {
     "index": 176,
-    "name": "native_transfer-target:bytes-source:uref-payment:system",
+    "name": "native_transfer-target:bytes-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -7475,7 +7475,7 @@
   },
   {
     "index": 177,
-    "name": "native_transfer-target:bytes-source:uref-payment:system",
+    "name": "native_transfer-target:bytes-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -7527,7 +7527,7 @@
   },
   {
     "index": 178,
-    "name": "native_transfer-target:bytes-source:uref-payment:system",
+    "name": "native_transfer-target:bytes-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -7579,7 +7579,7 @@
   },
   {
     "index": 179,
-    "name": "native_transfer-target:bytes-source:uref-payment:system",
+    "name": "native_transfer-target:bytes-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -7631,7 +7631,7 @@
   },
   {
     "index": 180,
-    "name": "native_transfer-target:bytes-source:uref-payment:system",
+    "name": "native_transfer-target:bytes-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -7683,7 +7683,7 @@
   },
   {
     "index": 181,
-    "name": "native_transfer-target:bytes-source:none-payment:system",
+    "name": "native_transfer-target:bytes-source:none_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -7733,7 +7733,7 @@
   },
   {
     "index": 182,
-    "name": "native_transfer-target:uref-source:uref-payment:system",
+    "name": "native_transfer-target:uref-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -7785,7 +7785,7 @@
   },
   {
     "index": 183,
-    "name": "native_transfer-target:uref-source:uref-payment:system",
+    "name": "native_transfer-target:uref-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -7837,7 +7837,7 @@
   },
   {
     "index": 184,
-    "name": "native_transfer-target:uref-source:uref-payment:system",
+    "name": "native_transfer-target:uref-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -7889,7 +7889,7 @@
   },
   {
     "index": 185,
-    "name": "native_transfer-target:uref-source:uref-payment:system",
+    "name": "native_transfer-target:uref-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -7941,7 +7941,7 @@
   },
   {
     "index": 186,
-    "name": "native_transfer-target:uref-source:uref-payment:system",
+    "name": "native_transfer-target:uref-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -7993,7 +7993,7 @@
   },
   {
     "index": 187,
-    "name": "native_transfer-target:uref-source:uref-payment:system",
+    "name": "native_transfer-target:uref-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -8045,7 +8045,7 @@
   },
   {
     "index": 188,
-    "name": "native_transfer-target:uref-source:none-payment:system",
+    "name": "native_transfer-target:uref-source:none_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -8095,7 +8095,7 @@
   },
   {
     "index": 189,
-    "name": "native_transfer-target:key_account-source:uref-payment:system",
+    "name": "native_transfer-target:key_account-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -8147,7 +8147,7 @@
   },
   {
     "index": 190,
-    "name": "native_transfer-target:key_account-source:uref-payment:system",
+    "name": "native_transfer-target:key_account-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -8199,7 +8199,7 @@
   },
   {
     "index": 191,
-    "name": "native_transfer-target:key_account-source:uref-payment:system",
+    "name": "native_transfer-target:key_account-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -8251,7 +8251,7 @@
   },
   {
     "index": 192,
-    "name": "native_transfer-target:key_account-source:uref-payment:system",
+    "name": "native_transfer-target:key_account-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -8303,7 +8303,7 @@
   },
   {
     "index": 193,
-    "name": "native_transfer-target:key_account-source:uref-payment:system",
+    "name": "native_transfer-target:key_account-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -8355,7 +8355,7 @@
   },
   {
     "index": 194,
-    "name": "native_transfer-target:key_account-source:uref-payment:system",
+    "name": "native_transfer-target:key_account-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -8407,7 +8407,7 @@
   },
   {
     "index": 195,
-    "name": "native_transfer-target:key_account-source:none-payment:system",
+    "name": "native_transfer-target:key_account-source:none_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -8457,7 +8457,7 @@
   },
   {
     "index": 196,
-    "name": "native_transfer-target:secp256k1_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:secp256k1_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -8509,7 +8509,7 @@
   },
   {
     "index": 197,
-    "name": "native_transfer-target:secp256k1_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:secp256k1_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -8561,7 +8561,7 @@
   },
   {
     "index": 198,
-    "name": "native_transfer-target:secp256k1_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:secp256k1_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -8613,7 +8613,7 @@
   },
   {
     "index": 199,
-    "name": "native_transfer-target:secp256k1_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:secp256k1_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -8665,7 +8665,7 @@
   },
   {
     "index": 200,
-    "name": "native_transfer-target:secp256k1_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:secp256k1_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -8717,7 +8717,7 @@
   },
   {
     "index": 201,
-    "name": "native_transfer-target:secp256k1_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:secp256k1_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -8769,7 +8769,7 @@
   },
   {
     "index": 202,
-    "name": "native_transfer-target:secp256k1_public_key-source:none-payment:system",
+    "name": "native_transfer-target:secp256k1_public_key-source:none_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -8819,7 +8819,7 @@
   },
   {
     "index": 203,
-    "name": "native_transfer-target:ed25519_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:ed25519_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -8871,7 +8871,7 @@
   },
   {
     "index": 204,
-    "name": "native_transfer-target:ed25519_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:ed25519_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -8923,7 +8923,7 @@
   },
   {
     "index": 205,
-    "name": "native_transfer-target:ed25519_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:ed25519_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -8975,7 +8975,7 @@
   },
   {
     "index": 206,
-    "name": "native_transfer-target:ed25519_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:ed25519_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -9027,7 +9027,7 @@
   },
   {
     "index": 207,
-    "name": "native_transfer-target:ed25519_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:ed25519_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -9079,7 +9079,7 @@
   },
   {
     "index": 208,
-    "name": "native_transfer-target:ed25519_public_key-source:uref-payment:system",
+    "name": "native_transfer-target:ed25519_public_key-source:uref_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -9131,7 +9131,7 @@
   },
   {
     "index": 209,
-    "name": "native_transfer-target:ed25519_public_key-source:none-payment:system",
+    "name": "native_transfer-target:ed25519_public_key-source:none_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -9181,7 +9181,7 @@
   },
   {
     "index": 210,
-    "name": "delegate-type:by-hash-payment:system",
+    "name": "delegate-type:by-hash_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -9225,7 +9225,7 @@
   },
   {
     "index": 211,
-    "name": "delegate-type:by-name-payment:system",
+    "name": "delegate-type:by-name_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -9268,7 +9268,7 @@
   },
   {
     "index": 212,
-    "name": "delegate-type:versioned-by-hash-payment:system",
+    "name": "delegate-type:versioned-by-hash_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -9313,7 +9313,7 @@
   },
   {
     "index": 213,
-    "name": "delegate-type:versioned-by-name-payment:system",
+    "name": "delegate-type:versioned-by-name_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -9357,7 +9357,7 @@
   },
   {
     "index": 214,
-    "name": "delegate-type:module-bytes-payment:system",
+    "name": "delegate-type:module-bytes_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -9401,7 +9401,7 @@
   },
   {
     "index": 215,
-    "name": "delegate-type:by-hash-payment:system",
+    "name": "delegate-type:by-hash_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -9445,7 +9445,7 @@
   },
   {
     "index": 216,
-    "name": "delegate-type:by-name-payment:system",
+    "name": "delegate-type:by-name_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -9488,7 +9488,7 @@
   },
   {
     "index": 217,
-    "name": "delegate-type:versioned-by-hash-payment:system",
+    "name": "delegate-type:versioned-by-hash_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -9533,7 +9533,7 @@
   },
   {
     "index": 218,
-    "name": "delegate-type:versioned-by-name-payment:system",
+    "name": "delegate-type:versioned-by-name_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -9577,7 +9577,7 @@
   },
   {
     "index": 219,
-    "name": "delegate-type:module-bytes-payment:system",
+    "name": "delegate-type:module-bytes_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -9621,7 +9621,7 @@
   },
   {
     "index": 220,
-    "name": "delegate-type:by-hash-payment:system",
+    "name": "delegate-type:by-hash_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -9677,7 +9677,7 @@
   },
   {
     "index": 221,
-    "name": "delegate-type:by-name-payment:system",
+    "name": "delegate-type:by-name_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -9732,7 +9732,7 @@
   },
   {
     "index": 222,
-    "name": "delegate-type:versioned-by-hash-payment:system",
+    "name": "delegate-type:versioned-by-hash_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -9789,7 +9789,7 @@
   },
   {
     "index": 223,
-    "name": "delegate-type:versioned-by-name-payment:system",
+    "name": "delegate-type:versioned-by-name_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -9845,7 +9845,7 @@
   },
   {
     "index": 224,
-    "name": "delegate-type:module-bytes-payment:system",
+    "name": "delegate-type:module-bytes_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -9901,7 +9901,7 @@
   },
   {
     "index": 225,
-    "name": "undelegate-type:by-hash-payment:system",
+    "name": "undelegate-type:by-hash_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -9945,7 +9945,7 @@
   },
   {
     "index": 226,
-    "name": "undelegate-type:by-name-payment:system",
+    "name": "undelegate-type:by-name_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -9988,7 +9988,7 @@
   },
   {
     "index": 227,
-    "name": "undelegate-type:versioned-by-hash-payment:system",
+    "name": "undelegate-type:versioned-by-hash_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -10033,7 +10033,7 @@
   },
   {
     "index": 228,
-    "name": "undelegate-type:versioned-by-name-payment:system",
+    "name": "undelegate-type:versioned-by-name_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -10077,7 +10077,7 @@
   },
   {
     "index": 229,
-    "name": "undelegate-type:module-bytes-payment:system",
+    "name": "undelegate-type:module-bytes_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -10121,7 +10121,7 @@
   },
   {
     "index": 230,
-    "name": "undelegate-type:by-hash-payment:system",
+    "name": "undelegate-type:by-hash_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -10165,7 +10165,7 @@
   },
   {
     "index": 231,
-    "name": "undelegate-type:by-name-payment:system",
+    "name": "undelegate-type:by-name_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -10208,7 +10208,7 @@
   },
   {
     "index": 232,
-    "name": "undelegate-type:versioned-by-hash-payment:system",
+    "name": "undelegate-type:versioned-by-hash_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -10253,7 +10253,7 @@
   },
   {
     "index": 233,
-    "name": "undelegate-type:versioned-by-name-payment:system",
+    "name": "undelegate-type:versioned-by-name_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -10297,7 +10297,7 @@
   },
   {
     "index": 234,
-    "name": "undelegate-type:module-bytes-payment:system",
+    "name": "undelegate-type:module-bytes_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -10341,7 +10341,7 @@
   },
   {
     "index": 235,
-    "name": "undelegate-type:by-hash-payment:system",
+    "name": "undelegate-type:by-hash_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -10397,7 +10397,7 @@
   },
   {
     "index": 236,
-    "name": "undelegate-type:by-name-payment:system",
+    "name": "undelegate-type:by-name_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -10452,7 +10452,7 @@
   },
   {
     "index": 237,
-    "name": "undelegate-type:versioned-by-hash-payment:system",
+    "name": "undelegate-type:versioned-by-hash_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -10509,7 +10509,7 @@
   },
   {
     "index": 238,
-    "name": "undelegate-type:versioned-by-name-payment:system",
+    "name": "undelegate-type:versioned-by-name_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -10565,7 +10565,7 @@
   },
   {
     "index": 239,
-    "name": "undelegate-type:module-bytes-payment:system",
+    "name": "undelegate-type:module-bytes_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -10621,7 +10621,7 @@
   },
   {
     "index": 240,
-    "name": "native_transfer-missing:amount-payment:system-missing:amount",
+    "name": "native_transfer-missing:amount_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -10657,7 +10657,7 @@
   },
   {
     "index": 241,
-    "name": "native_transfer-missing:amount-payment:system",
+    "name": "native_transfer-missing:amount_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -10693,7 +10693,7 @@
   },
   {
     "index": 242,
-    "name": "native_transfer-missing:id-payment:system-missing:amount",
+    "name": "native_transfer-missing:id_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -10730,7 +10730,7 @@
   },
   {
     "index": 243,
-    "name": "native_transfer-missing:id-payment:system",
+    "name": "native_transfer-missing:id_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -10767,7 +10767,7 @@
   },
   {
     "index": 244,
-    "name": "native_transfer-missing:target-payment:system-missing:amount",
+    "name": "native_transfer-missing:target_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -10801,7 +10801,7 @@
   },
   {
     "index": 245,
-    "name": "native_transfer-missing:target-payment:system",
+    "name": "native_transfer-missing:target_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -10835,7 +10835,7 @@
   },
   {
     "index": 246,
-    "name": "native_transfer-invalid_type:amount-payment:system-missing:amount",
+    "name": "native_transfer-invalid_type:amount_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -10873,7 +10873,7 @@
   },
   {
     "index": 247,
-    "name": "native_transfer-invalid_type:amount-payment:system",
+    "name": "native_transfer-invalid_type:amount_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -10911,7 +10911,7 @@
   },
   {
     "index": 248,
-    "name": "delegate-type:by-hash-missing:amount-payment:system-missing:amount",
+    "name": "delegate-type:by-hash_missing:amount_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -10953,7 +10953,7 @@
   },
   {
     "index": 249,
-    "name": "delegate-type:by-hash-missing:amount-payment:system",
+    "name": "delegate-type:by-hash_missing:amount_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -10995,7 +10995,7 @@
   },
   {
     "index": 250,
-    "name": "delegate-type:by-name-missing:amount-payment:system-missing:amount",
+    "name": "delegate-type:by-name_missing:amount_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -11036,7 +11036,7 @@
   },
   {
     "index": 251,
-    "name": "delegate-type:by-name-missing:amount-payment:system",
+    "name": "delegate-type:by-name_missing:amount_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -11077,7 +11077,7 @@
   },
   {
     "index": 252,
-    "name": "delegate-type:versioned-by-hash-missing:amount-payment:system-missing:amount",
+    "name": "delegate-type:versioned-by-hash_missing:amount_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -11120,7 +11120,7 @@
   },
   {
     "index": 253,
-    "name": "delegate-type:versioned-by-hash-missing:amount-payment:system",
+    "name": "delegate-type:versioned-by-hash_missing:amount_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -11163,7 +11163,7 @@
   },
   {
     "index": 254,
-    "name": "delegate-type:versioned-by-name-missing:amount-payment:system-missing:amount",
+    "name": "delegate-type:versioned-by-name_missing:amount_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -11205,7 +11205,7 @@
   },
   {
     "index": 255,
-    "name": "delegate-type:versioned-by-name-missing:amount-payment:system",
+    "name": "delegate-type:versioned-by-name_missing:amount_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -11247,7 +11247,7 @@
   },
   {
     "index": 256,
-    "name": "delegate-type:by-hash-invalid:entrypoint-payment:system-missing:amount",
+    "name": "delegate-type:by-hash_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -11293,7 +11293,7 @@
   },
   {
     "index": 257,
-    "name": "delegate-type:by-hash-invalid:entrypoint-payment:system",
+    "name": "delegate-type:by-hash_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -11339,7 +11339,7 @@
   },
   {
     "index": 258,
-    "name": "delegate-type:by-name-invalid:entrypoint-payment:system-missing:amount",
+    "name": "delegate-type:by-name_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -11383,7 +11383,7 @@
   },
   {
     "index": 259,
-    "name": "delegate-type:by-name-invalid:entrypoint-payment:system",
+    "name": "delegate-type:by-name_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -11427,7 +11427,7 @@
   },
   {
     "index": 260,
-    "name": "delegate-type:versioned-by-hash-invalid:entrypoint-payment:system-missing:amount",
+    "name": "delegate-type:versioned-by-hash_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -11474,7 +11474,7 @@
   },
   {
     "index": 261,
-    "name": "delegate-type:versioned-by-hash-invalid:entrypoint-payment:system",
+    "name": "delegate-type:versioned-by-hash_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -11521,7 +11521,7 @@
   },
   {
     "index": 262,
-    "name": "delegate-type:versioned-by-name-invalid:entrypoint-payment:system-missing:amount",
+    "name": "delegate-type:versioned-by-name_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -11566,7 +11566,7 @@
   },
   {
     "index": 263,
-    "name": "delegate-type:versioned-by-name-invalid:entrypoint-payment:system",
+    "name": "delegate-type:versioned-by-name_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -11611,7 +11611,7 @@
   },
   {
     "index": 264,
-    "name": "delegate-type:by-hash-missing:delegator-payment:system-missing:amount",
+    "name": "delegate-type:by-hash_missing:delegator_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -11651,7 +11651,7 @@
   },
   {
     "index": 265,
-    "name": "delegate-type:by-hash-missing:delegator-payment:system",
+    "name": "delegate-type:by-hash_missing:delegator_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -11691,7 +11691,7 @@
   },
   {
     "index": 266,
-    "name": "delegate-type:by-name-missing:delegator-payment:system-missing:amount",
+    "name": "delegate-type:by-name_missing:delegator_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -11730,7 +11730,7 @@
   },
   {
     "index": 267,
-    "name": "delegate-type:by-name-missing:delegator-payment:system",
+    "name": "delegate-type:by-name_missing:delegator_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -11769,7 +11769,7 @@
   },
   {
     "index": 268,
-    "name": "delegate-type:versioned-by-hash-missing:delegator-payment:system-missing:amount",
+    "name": "delegate-type:versioned-by-hash_missing:delegator_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -11810,7 +11810,7 @@
   },
   {
     "index": 269,
-    "name": "delegate-type:versioned-by-hash-missing:delegator-payment:system",
+    "name": "delegate-type:versioned-by-hash_missing:delegator_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -11851,7 +11851,7 @@
   },
   {
     "index": 270,
-    "name": "delegate-type:versioned-by-name-missing:delegator-payment:system-missing:amount",
+    "name": "delegate-type:versioned-by-name_missing:delegator_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -11891,7 +11891,7 @@
   },
   {
     "index": 271,
-    "name": "delegate-type:versioned-by-name-missing:delegator-payment:system",
+    "name": "delegate-type:versioned-by-name_missing:delegator_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -11931,7 +11931,7 @@
   },
   {
     "index": 272,
-    "name": "delegate-type:by-hash-invalid:entrypoint-payment:system-missing:amount",
+    "name": "delegate-type:by-hash_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -11977,7 +11977,7 @@
   },
   {
     "index": 273,
-    "name": "delegate-type:by-hash-invalid:entrypoint-payment:system",
+    "name": "delegate-type:by-hash_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -12023,7 +12023,7 @@
   },
   {
     "index": 274,
-    "name": "delegate-type:by-name-invalid:entrypoint-payment:system-missing:amount",
+    "name": "delegate-type:by-name_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -12067,7 +12067,7 @@
   },
   {
     "index": 275,
-    "name": "delegate-type:by-name-invalid:entrypoint-payment:system",
+    "name": "delegate-type:by-name_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -12111,7 +12111,7 @@
   },
   {
     "index": 276,
-    "name": "delegate-type:versioned-by-hash-invalid:entrypoint-payment:system-missing:amount",
+    "name": "delegate-type:versioned-by-hash_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -12158,7 +12158,7 @@
   },
   {
     "index": 277,
-    "name": "delegate-type:versioned-by-hash-invalid:entrypoint-payment:system",
+    "name": "delegate-type:versioned-by-hash_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -12205,7 +12205,7 @@
   },
   {
     "index": 278,
-    "name": "delegate-type:versioned-by-name-invalid:entrypoint-payment:system-missing:amount",
+    "name": "delegate-type:versioned-by-name_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -12250,7 +12250,7 @@
   },
   {
     "index": 279,
-    "name": "delegate-type:versioned-by-name-invalid:entrypoint-payment:system",
+    "name": "delegate-type:versioned-by-name_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -12295,7 +12295,7 @@
   },
   {
     "index": 280,
-    "name": "delegate-type:by-hash-missing:validator-payment:system-missing:amount",
+    "name": "delegate-type:by-hash_missing:validator_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -12335,7 +12335,7 @@
   },
   {
     "index": 281,
-    "name": "delegate-type:by-hash-missing:validator-payment:system",
+    "name": "delegate-type:by-hash_missing:validator_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -12375,7 +12375,7 @@
   },
   {
     "index": 282,
-    "name": "delegate-type:by-name-missing:validator-payment:system-missing:amount",
+    "name": "delegate-type:by-name_missing:validator_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -12414,7 +12414,7 @@
   },
   {
     "index": 283,
-    "name": "delegate-type:by-name-missing:validator-payment:system",
+    "name": "delegate-type:by-name_missing:validator_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -12453,7 +12453,7 @@
   },
   {
     "index": 284,
-    "name": "delegate-type:versioned-by-hash-missing:validator-payment:system-missing:amount",
+    "name": "delegate-type:versioned-by-hash_missing:validator_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -12494,7 +12494,7 @@
   },
   {
     "index": 285,
-    "name": "delegate-type:versioned-by-hash-missing:validator-payment:system",
+    "name": "delegate-type:versioned-by-hash_missing:validator_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -12535,7 +12535,7 @@
   },
   {
     "index": 286,
-    "name": "delegate-type:versioned-by-name-missing:validator-payment:system-missing:amount",
+    "name": "delegate-type:versioned-by-name_missing:validator_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -12575,7 +12575,7 @@
   },
   {
     "index": 287,
-    "name": "delegate-type:versioned-by-name-missing:validator-payment:system",
+    "name": "delegate-type:versioned-by-name_missing:validator_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -12615,7 +12615,7 @@
   },
   {
     "index": 288,
-    "name": "delegate-type:by-hash-invalid:entrypoint-payment:system-missing:amount",
+    "name": "delegate-type:by-hash_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -12661,7 +12661,7 @@
   },
   {
     "index": 289,
-    "name": "delegate-type:by-hash-invalid:entrypoint-payment:system",
+    "name": "delegate-type:by-hash_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -12707,7 +12707,7 @@
   },
   {
     "index": 290,
-    "name": "delegate-type:by-name-invalid:entrypoint-payment:system-missing:amount",
+    "name": "delegate-type:by-name_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -12751,7 +12751,7 @@
   },
   {
     "index": 291,
-    "name": "delegate-type:by-name-invalid:entrypoint-payment:system",
+    "name": "delegate-type:by-name_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -12795,7 +12795,7 @@
   },
   {
     "index": 292,
-    "name": "delegate-type:versioned-by-hash-invalid:entrypoint-payment:system-missing:amount",
+    "name": "delegate-type:versioned-by-hash_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -12842,7 +12842,7 @@
   },
   {
     "index": 293,
-    "name": "delegate-type:versioned-by-hash-invalid:entrypoint-payment:system",
+    "name": "delegate-type:versioned-by-hash_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -12889,7 +12889,7 @@
   },
   {
     "index": 294,
-    "name": "delegate-type:versioned-by-name-invalid:entrypoint-payment:system-missing:amount",
+    "name": "delegate-type:versioned-by-name_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -12934,7 +12934,7 @@
   },
   {
     "index": 295,
-    "name": "delegate-type:versioned-by-name-invalid:entrypoint-payment:system",
+    "name": "delegate-type:versioned-by-name_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -12979,7 +12979,7 @@
   },
   {
     "index": 296,
-    "name": "delegate-type:by-hash-invalid_type:amount-payment:system-missing:amount",
+    "name": "delegate-type:by-hash_invalid_type:amount_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -13023,7 +13023,7 @@
   },
   {
     "index": 297,
-    "name": "delegate-type:by-hash-invalid_type:amount-payment:system",
+    "name": "delegate-type:by-hash_invalid_type:amount_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -13067,7 +13067,7 @@
   },
   {
     "index": 298,
-    "name": "delegate-type:by-name-invalid_type:amount-payment:system-missing:amount",
+    "name": "delegate-type:by-name_invalid_type:amount_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -13110,7 +13110,7 @@
   },
   {
     "index": 299,
-    "name": "delegate-type:by-name-invalid_type:amount-payment:system",
+    "name": "delegate-type:by-name_invalid_type:amount_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -13153,7 +13153,7 @@
   },
   {
     "index": 300,
-    "name": "delegate-type:versioned-by-hash-invalid_type:amount-payment:system-missing:amount",
+    "name": "delegate-type:versioned-by-hash_invalid_type:amount_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -13198,7 +13198,7 @@
   },
   {
     "index": 301,
-    "name": "delegate-type:versioned-by-hash-invalid_type:amount-payment:system",
+    "name": "delegate-type:versioned-by-hash_invalid_type:amount_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -13243,7 +13243,7 @@
   },
   {
     "index": 302,
-    "name": "delegate-type:versioned-by-name-invalid_type:amount-payment:system-missing:amount",
+    "name": "delegate-type:versioned-by-name_invalid_type:amount_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -13287,7 +13287,7 @@
   },
   {
     "index": 303,
-    "name": "delegate-type:versioned-by-name-invalid_type:amount-payment:system",
+    "name": "delegate-type:versioned-by-name_invalid_type:amount_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -13331,7 +13331,7 @@
   },
   {
     "index": 304,
-    "name": "delegate-type:by-hash-invalid:entrypoint-payment:system-missing:amount",
+    "name": "delegate-type:by-hash_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -13377,7 +13377,7 @@
   },
   {
     "index": 305,
-    "name": "delegate-type:by-hash-invalid:entrypoint-payment:system",
+    "name": "delegate-type:by-hash_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -13423,7 +13423,7 @@
   },
   {
     "index": 306,
-    "name": "delegate-type:by-name-invalid:entrypoint-payment:system-missing:amount",
+    "name": "delegate-type:by-name_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -13467,7 +13467,7 @@
   },
   {
     "index": 307,
-    "name": "delegate-type:by-name-invalid:entrypoint-payment:system",
+    "name": "delegate-type:by-name_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -13511,7 +13511,7 @@
   },
   {
     "index": 308,
-    "name": "delegate-type:versioned-by-hash-invalid:entrypoint-payment:system-missing:amount",
+    "name": "delegate-type:versioned-by-hash_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -13558,7 +13558,7 @@
   },
   {
     "index": 309,
-    "name": "delegate-type:versioned-by-hash-invalid:entrypoint-payment:system",
+    "name": "delegate-type:versioned-by-hash_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -13605,7 +13605,7 @@
   },
   {
     "index": 310,
-    "name": "delegate-type:versioned-by-name-invalid:entrypoint-payment:system-missing:amount",
+    "name": "delegate-type:versioned-by-name_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -13650,7 +13650,7 @@
   },
   {
     "index": 311,
-    "name": "delegate-type:versioned-by-name-invalid:entrypoint-payment:system",
+    "name": "delegate-type:versioned-by-name_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -13695,7 +13695,7 @@
   },
   {
     "index": 312,
-    "name": "undelegate-type:by-hash-missing:amount-payment:system-missing:amount",
+    "name": "undelegate-type:by-hash_missing:amount_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -13737,7 +13737,7 @@
   },
   {
     "index": 313,
-    "name": "undelegate-type:by-hash-missing:amount-payment:system",
+    "name": "undelegate-type:by-hash_missing:amount_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -13779,7 +13779,7 @@
   },
   {
     "index": 314,
-    "name": "undelegate-type:by-name-missing:amount-payment:system-missing:amount",
+    "name": "undelegate-type:by-name_missing:amount_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -13820,7 +13820,7 @@
   },
   {
     "index": 315,
-    "name": "undelegate-type:by-name-missing:amount-payment:system",
+    "name": "undelegate-type:by-name_missing:amount_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -13861,7 +13861,7 @@
   },
   {
     "index": 316,
-    "name": "undelegate-type:versioned-by-hash-missing:amount-payment:system-missing:amount",
+    "name": "undelegate-type:versioned-by-hash_missing:amount_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -13904,7 +13904,7 @@
   },
   {
     "index": 317,
-    "name": "undelegate-type:versioned-by-hash-missing:amount-payment:system",
+    "name": "undelegate-type:versioned-by-hash_missing:amount_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -13947,7 +13947,7 @@
   },
   {
     "index": 318,
-    "name": "undelegate-type:versioned-by-name-missing:amount-payment:system-missing:amount",
+    "name": "undelegate-type:versioned-by-name_missing:amount_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -13989,7 +13989,7 @@
   },
   {
     "index": 319,
-    "name": "undelegate-type:versioned-by-name-missing:amount-payment:system",
+    "name": "undelegate-type:versioned-by-name_missing:amount_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -14031,7 +14031,7 @@
   },
   {
     "index": 320,
-    "name": "undelegate-type:by-hash-invalid:entrypoint-payment:system-missing:amount",
+    "name": "undelegate-type:by-hash_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -14077,7 +14077,7 @@
   },
   {
     "index": 321,
-    "name": "undelegate-type:by-hash-invalid:entrypoint-payment:system",
+    "name": "undelegate-type:by-hash_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -14123,7 +14123,7 @@
   },
   {
     "index": 322,
-    "name": "undelegate-type:by-name-invalid:entrypoint-payment:system-missing:amount",
+    "name": "undelegate-type:by-name_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -14167,7 +14167,7 @@
   },
   {
     "index": 323,
-    "name": "undelegate-type:by-name-invalid:entrypoint-payment:system",
+    "name": "undelegate-type:by-name_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -14211,7 +14211,7 @@
   },
   {
     "index": 324,
-    "name": "undelegate-type:versioned-by-hash-invalid:entrypoint-payment:system-missing:amount",
+    "name": "undelegate-type:versioned-by-hash_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -14258,7 +14258,7 @@
   },
   {
     "index": 325,
-    "name": "undelegate-type:versioned-by-hash-invalid:entrypoint-payment:system",
+    "name": "undelegate-type:versioned-by-hash_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -14305,7 +14305,7 @@
   },
   {
     "index": 326,
-    "name": "undelegate-type:versioned-by-name-invalid:entrypoint-payment:system-missing:amount",
+    "name": "undelegate-type:versioned-by-name_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -14350,7 +14350,7 @@
   },
   {
     "index": 327,
-    "name": "undelegate-type:versioned-by-name-invalid:entrypoint-payment:system",
+    "name": "undelegate-type:versioned-by-name_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -14395,7 +14395,7 @@
   },
   {
     "index": 328,
-    "name": "undelegate-type:by-hash-missing:delegator-payment:system-missing:amount",
+    "name": "undelegate-type:by-hash_missing:delegator_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -14435,7 +14435,7 @@
   },
   {
     "index": 329,
-    "name": "undelegate-type:by-hash-missing:delegator-payment:system",
+    "name": "undelegate-type:by-hash_missing:delegator_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -14475,7 +14475,7 @@
   },
   {
     "index": 330,
-    "name": "undelegate-type:by-name-missing:delegator-payment:system-missing:amount",
+    "name": "undelegate-type:by-name_missing:delegator_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -14514,7 +14514,7 @@
   },
   {
     "index": 331,
-    "name": "undelegate-type:by-name-missing:delegator-payment:system",
+    "name": "undelegate-type:by-name_missing:delegator_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -14553,7 +14553,7 @@
   },
   {
     "index": 332,
-    "name": "undelegate-type:versioned-by-hash-missing:delegator-payment:system-missing:amount",
+    "name": "undelegate-type:versioned-by-hash_missing:delegator_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -14594,7 +14594,7 @@
   },
   {
     "index": 333,
-    "name": "undelegate-type:versioned-by-hash-missing:delegator-payment:system",
+    "name": "undelegate-type:versioned-by-hash_missing:delegator_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -14635,7 +14635,7 @@
   },
   {
     "index": 334,
-    "name": "undelegate-type:versioned-by-name-missing:delegator-payment:system-missing:amount",
+    "name": "undelegate-type:versioned-by-name_missing:delegator_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -14675,7 +14675,7 @@
   },
   {
     "index": 335,
-    "name": "undelegate-type:versioned-by-name-missing:delegator-payment:system",
+    "name": "undelegate-type:versioned-by-name_missing:delegator_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -14715,7 +14715,7 @@
   },
   {
     "index": 336,
-    "name": "undelegate-type:by-hash-invalid:entrypoint-payment:system-missing:amount",
+    "name": "undelegate-type:by-hash_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -14761,7 +14761,7 @@
   },
   {
     "index": 337,
-    "name": "undelegate-type:by-hash-invalid:entrypoint-payment:system",
+    "name": "undelegate-type:by-hash_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -14807,7 +14807,7 @@
   },
   {
     "index": 338,
-    "name": "undelegate-type:by-name-invalid:entrypoint-payment:system-missing:amount",
+    "name": "undelegate-type:by-name_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -14851,7 +14851,7 @@
   },
   {
     "index": 339,
-    "name": "undelegate-type:by-name-invalid:entrypoint-payment:system",
+    "name": "undelegate-type:by-name_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -14895,7 +14895,7 @@
   },
   {
     "index": 340,
-    "name": "undelegate-type:versioned-by-hash-invalid:entrypoint-payment:system-missing:amount",
+    "name": "undelegate-type:versioned-by-hash_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -14942,7 +14942,7 @@
   },
   {
     "index": 341,
-    "name": "undelegate-type:versioned-by-hash-invalid:entrypoint-payment:system",
+    "name": "undelegate-type:versioned-by-hash_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -14989,7 +14989,7 @@
   },
   {
     "index": 342,
-    "name": "undelegate-type:versioned-by-name-invalid:entrypoint-payment:system-missing:amount",
+    "name": "undelegate-type:versioned-by-name_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -15034,7 +15034,7 @@
   },
   {
     "index": 343,
-    "name": "undelegate-type:versioned-by-name-invalid:entrypoint-payment:system",
+    "name": "undelegate-type:versioned-by-name_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -15079,7 +15079,7 @@
   },
   {
     "index": 344,
-    "name": "undelegate-type:by-hash-missing:validator-payment:system-missing:amount",
+    "name": "undelegate-type:by-hash_missing:validator_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -15119,7 +15119,7 @@
   },
   {
     "index": 345,
-    "name": "undelegate-type:by-hash-missing:validator-payment:system",
+    "name": "undelegate-type:by-hash_missing:validator_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -15159,7 +15159,7 @@
   },
   {
     "index": 346,
-    "name": "undelegate-type:by-name-missing:validator-payment:system-missing:amount",
+    "name": "undelegate-type:by-name_missing:validator_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -15198,7 +15198,7 @@
   },
   {
     "index": 347,
-    "name": "undelegate-type:by-name-missing:validator-payment:system",
+    "name": "undelegate-type:by-name_missing:validator_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -15237,7 +15237,7 @@
   },
   {
     "index": 348,
-    "name": "undelegate-type:versioned-by-hash-missing:validator-payment:system-missing:amount",
+    "name": "undelegate-type:versioned-by-hash_missing:validator_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -15278,7 +15278,7 @@
   },
   {
     "index": 349,
-    "name": "undelegate-type:versioned-by-hash-missing:validator-payment:system",
+    "name": "undelegate-type:versioned-by-hash_missing:validator_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -15319,7 +15319,7 @@
   },
   {
     "index": 350,
-    "name": "undelegate-type:versioned-by-name-missing:validator-payment:system-missing:amount",
+    "name": "undelegate-type:versioned-by-name_missing:validator_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -15359,7 +15359,7 @@
   },
   {
     "index": 351,
-    "name": "undelegate-type:versioned-by-name-missing:validator-payment:system",
+    "name": "undelegate-type:versioned-by-name_missing:validator_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -15399,7 +15399,7 @@
   },
   {
     "index": 352,
-    "name": "undelegate-type:by-hash-invalid:entrypoint-payment:system-missing:amount",
+    "name": "undelegate-type:by-hash_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -15445,7 +15445,7 @@
   },
   {
     "index": 353,
-    "name": "undelegate-type:by-hash-invalid:entrypoint-payment:system",
+    "name": "undelegate-type:by-hash_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -15491,7 +15491,7 @@
   },
   {
     "index": 354,
-    "name": "undelegate-type:by-name-invalid:entrypoint-payment:system-missing:amount",
+    "name": "undelegate-type:by-name_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -15535,7 +15535,7 @@
   },
   {
     "index": 355,
-    "name": "undelegate-type:by-name-invalid:entrypoint-payment:system",
+    "name": "undelegate-type:by-name_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -15579,7 +15579,7 @@
   },
   {
     "index": 356,
-    "name": "undelegate-type:versioned-by-hash-invalid:entrypoint-payment:system-missing:amount",
+    "name": "undelegate-type:versioned-by-hash_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -15626,7 +15626,7 @@
   },
   {
     "index": 357,
-    "name": "undelegate-type:versioned-by-hash-invalid:entrypoint-payment:system",
+    "name": "undelegate-type:versioned-by-hash_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -15673,7 +15673,7 @@
   },
   {
     "index": 358,
-    "name": "undelegate-type:versioned-by-name-invalid:entrypoint-payment:system-missing:amount",
+    "name": "undelegate-type:versioned-by-name_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -15718,7 +15718,7 @@
   },
   {
     "index": 359,
-    "name": "undelegate-type:versioned-by-name-invalid:entrypoint-payment:system",
+    "name": "undelegate-type:versioned-by-name_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -15763,7 +15763,7 @@
   },
   {
     "index": 360,
-    "name": "undelegate-type:by-hash-invalid_type:amount-payment:system-missing:amount",
+    "name": "undelegate-type:by-hash_invalid_type:amount_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -15807,7 +15807,7 @@
   },
   {
     "index": 361,
-    "name": "undelegate-type:by-hash-invalid_type:amount-payment:system",
+    "name": "undelegate-type:by-hash_invalid_type:amount_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -15851,7 +15851,7 @@
   },
   {
     "index": 362,
-    "name": "undelegate-type:by-name-invalid_type:amount-payment:system-missing:amount",
+    "name": "undelegate-type:by-name_invalid_type:amount_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -15894,7 +15894,7 @@
   },
   {
     "index": 363,
-    "name": "undelegate-type:by-name-invalid_type:amount-payment:system",
+    "name": "undelegate-type:by-name_invalid_type:amount_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -15937,7 +15937,7 @@
   },
   {
     "index": 364,
-    "name": "undelegate-type:versioned-by-hash-invalid_type:amount-payment:system-missing:amount",
+    "name": "undelegate-type:versioned-by-hash_invalid_type:amount_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -15982,7 +15982,7 @@
   },
   {
     "index": 365,
-    "name": "undelegate-type:versioned-by-hash-invalid_type:amount-payment:system",
+    "name": "undelegate-type:versioned-by-hash_invalid_type:amount_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -16027,7 +16027,7 @@
   },
   {
     "index": 366,
-    "name": "undelegate-type:versioned-by-name-invalid_type:amount-payment:system-missing:amount",
+    "name": "undelegate-type:versioned-by-name_invalid_type:amount_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -16071,7 +16071,7 @@
   },
   {
     "index": 367,
-    "name": "undelegate-type:versioned-by-name-invalid_type:amount-payment:system",
+    "name": "undelegate-type:versioned-by-name_invalid_type:amount_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -16115,7 +16115,7 @@
   },
   {
     "index": 368,
-    "name": "undelegate-type:by-hash-invalid:entrypoint-payment:system-missing:amount",
+    "name": "undelegate-type:by-hash_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -16161,7 +16161,7 @@
   },
   {
     "index": 369,
-    "name": "undelegate-type:by-hash-invalid:entrypoint-payment:system",
+    "name": "undelegate-type:by-hash_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -16207,7 +16207,7 @@
   },
   {
     "index": 370,
-    "name": "undelegate-type:by-name-invalid:entrypoint-payment:system-missing:amount",
+    "name": "undelegate-type:by-name_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -16251,7 +16251,7 @@
   },
   {
     "index": 371,
-    "name": "undelegate-type:by-name-invalid:entrypoint-payment:system",
+    "name": "undelegate-type:by-name_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -16295,7 +16295,7 @@
   },
   {
     "index": 372,
-    "name": "undelegate-type:versioned-by-hash-invalid:entrypoint-payment:system-missing:amount",
+    "name": "undelegate-type:versioned-by-hash_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -16342,7 +16342,7 @@
   },
   {
     "index": 373,
-    "name": "undelegate-type:versioned-by-hash-invalid:entrypoint-payment:system",
+    "name": "undelegate-type:versioned-by-hash_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -16389,7 +16389,7 @@
   },
   {
     "index": 374,
-    "name": "undelegate-type:versioned-by-name-invalid:entrypoint-payment:system-missing:amount",
+    "name": "undelegate-type:versioned-by-name_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -16434,7 +16434,7 @@
   },
   {
     "index": 375,
-    "name": "undelegate-type:versioned-by-name-invalid:entrypoint-payment:system",
+    "name": "undelegate-type:versioned-by-name_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -16479,7 +16479,7 @@
   },
   {
     "index": 376,
-    "name": "redelegate-type:by-hash-payment:system",
+    "name": "redelegate-type:by-hash_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -16527,7 +16527,7 @@
   },
   {
     "index": 377,
-    "name": "redelegate-type:by-name-payment:system",
+    "name": "redelegate-type:by-name_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -16574,7 +16574,7 @@
   },
   {
     "index": 378,
-    "name": "redelegate-type:versioned-by-hash-payment:system",
+    "name": "redelegate-type:versioned-by-hash_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -16623,7 +16623,7 @@
   },
   {
     "index": 379,
-    "name": "redelegate-type:versioned-by-name-payment:system",
+    "name": "redelegate-type:versioned-by-name_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -16671,7 +16671,7 @@
   },
   {
     "index": 380,
-    "name": "redelegate-type:module-bytes-payment:system",
+    "name": "redelegate-type:module-bytes_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -16719,7 +16719,7 @@
   },
   {
     "index": 381,
-    "name": "redelegate-type:by-hash-payment:system",
+    "name": "redelegate-type:by-hash_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -16767,7 +16767,7 @@
   },
   {
     "index": 382,
-    "name": "redelegate-type:by-name-payment:system",
+    "name": "redelegate-type:by-name_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -16814,7 +16814,7 @@
   },
   {
     "index": 383,
-    "name": "redelegate-type:versioned-by-hash-payment:system",
+    "name": "redelegate-type:versioned-by-hash_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -16863,7 +16863,7 @@
   },
   {
     "index": 384,
-    "name": "redelegate-type:versioned-by-name-payment:system",
+    "name": "redelegate-type:versioned-by-name_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -16911,7 +16911,7 @@
   },
   {
     "index": 385,
-    "name": "redelegate-type:module-bytes-payment:system",
+    "name": "redelegate-type:module-bytes_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -16959,7 +16959,7 @@
   },
   {
     "index": 386,
-    "name": "redelegate-type:by-hash-payment:system",
+    "name": "redelegate-type:by-hash_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -17019,7 +17019,7 @@
   },
   {
     "index": 387,
-    "name": "redelegate-type:by-name-payment:system",
+    "name": "redelegate-type:by-name_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -17078,7 +17078,7 @@
   },
   {
     "index": 388,
-    "name": "redelegate-type:versioned-by-hash-payment:system",
+    "name": "redelegate-type:versioned-by-hash_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -17139,7 +17139,7 @@
   },
   {
     "index": 389,
-    "name": "redelegate-type:versioned-by-name-payment:system",
+    "name": "redelegate-type:versioned-by-name_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -17199,7 +17199,7 @@
   },
   {
     "index": 390,
-    "name": "redelegate-type:module-bytes-payment:system",
+    "name": "redelegate-type:module-bytes_payment:system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
@@ -17259,7 +17259,7 @@
   },
   {
     "index": 391,
-    "name": "redelegate-type:by-hash-missing:amount-payment:system-missing:amount",
+    "name": "redelegate-type:by-hash_missing:amount_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -17305,7 +17305,7 @@
   },
   {
     "index": 392,
-    "name": "redelegate-type:by-hash-missing:amount-payment:system",
+    "name": "redelegate-type:by-hash_missing:amount_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -17351,7 +17351,7 @@
   },
   {
     "index": 393,
-    "name": "redelegate-type:by-name-missing:amount-payment:system-missing:amount",
+    "name": "redelegate-type:by-name_missing:amount_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -17396,7 +17396,7 @@
   },
   {
     "index": 394,
-    "name": "redelegate-type:by-name-missing:amount-payment:system",
+    "name": "redelegate-type:by-name_missing:amount_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -17441,7 +17441,7 @@
   },
   {
     "index": 395,
-    "name": "redelegate-type:versioned-by-hash-missing:amount-payment:system-missing:amount",
+    "name": "redelegate-type:versioned-by-hash_missing:amount_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -17488,7 +17488,7 @@
   },
   {
     "index": 396,
-    "name": "redelegate-type:versioned-by-hash-missing:amount-payment:system",
+    "name": "redelegate-type:versioned-by-hash_missing:amount_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -17535,7 +17535,7 @@
   },
   {
     "index": 397,
-    "name": "redelegate-type:versioned-by-name-missing:amount-payment:system-missing:amount",
+    "name": "redelegate-type:versioned-by-name_missing:amount_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -17581,7 +17581,7 @@
   },
   {
     "index": 398,
-    "name": "redelegate-type:versioned-by-name-missing:amount-payment:system",
+    "name": "redelegate-type:versioned-by-name_missing:amount_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -17627,7 +17627,7 @@
   },
   {
     "index": 399,
-    "name": "redelegate-type:by-hash-invalid:entrypoint-payment:system-missing:amount",
+    "name": "redelegate-type:by-hash_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -17676,7 +17676,7 @@
   },
   {
     "index": 400,
-    "name": "redelegate-type:by-hash-invalid:entrypoint-payment:system",
+    "name": "redelegate-type:by-hash_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -17725,7 +17725,7 @@
   },
   {
     "index": 401,
-    "name": "redelegate-type:by-name-invalid:entrypoint-payment:system-missing:amount",
+    "name": "redelegate-type:by-name_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -17772,7 +17772,7 @@
   },
   {
     "index": 402,
-    "name": "redelegate-type:by-name-invalid:entrypoint-payment:system",
+    "name": "redelegate-type:by-name_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -17819,7 +17819,7 @@
   },
   {
     "index": 403,
-    "name": "redelegate-type:versioned-by-hash-invalid:entrypoint-payment:system-missing:amount",
+    "name": "redelegate-type:versioned-by-hash_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -17869,7 +17869,7 @@
   },
   {
     "index": 404,
-    "name": "redelegate-type:versioned-by-hash-invalid:entrypoint-payment:system",
+    "name": "redelegate-type:versioned-by-hash_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -17919,7 +17919,7 @@
   },
   {
     "index": 405,
-    "name": "redelegate-type:versioned-by-name-invalid:entrypoint-payment:system-missing:amount",
+    "name": "redelegate-type:versioned-by-name_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -17967,7 +17967,7 @@
   },
   {
     "index": 406,
-    "name": "redelegate-type:versioned-by-name-invalid:entrypoint-payment:system",
+    "name": "redelegate-type:versioned-by-name_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -18015,7 +18015,7 @@
   },
   {
     "index": 407,
-    "name": "redelegate-type:by-hash-missing:delegator-payment:system-missing:amount",
+    "name": "redelegate-type:by-hash_missing:delegator_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -18059,7 +18059,7 @@
   },
   {
     "index": 408,
-    "name": "redelegate-type:by-hash-missing:delegator-payment:system",
+    "name": "redelegate-type:by-hash_missing:delegator_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -18103,7 +18103,7 @@
   },
   {
     "index": 409,
-    "name": "redelegate-type:by-name-missing:delegator-payment:system-missing:amount",
+    "name": "redelegate-type:by-name_missing:delegator_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -18146,7 +18146,7 @@
   },
   {
     "index": 410,
-    "name": "redelegate-type:by-name-missing:delegator-payment:system",
+    "name": "redelegate-type:by-name_missing:delegator_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -18189,7 +18189,7 @@
   },
   {
     "index": 411,
-    "name": "redelegate-type:versioned-by-hash-missing:delegator-payment:system-missing:amount",
+    "name": "redelegate-type:versioned-by-hash_missing:delegator_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -18234,7 +18234,7 @@
   },
   {
     "index": 412,
-    "name": "redelegate-type:versioned-by-hash-missing:delegator-payment:system",
+    "name": "redelegate-type:versioned-by-hash_missing:delegator_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -18279,7 +18279,7 @@
   },
   {
     "index": 413,
-    "name": "redelegate-type:versioned-by-name-missing:delegator-payment:system-missing:amount",
+    "name": "redelegate-type:versioned-by-name_missing:delegator_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -18323,7 +18323,7 @@
   },
   {
     "index": 414,
-    "name": "redelegate-type:versioned-by-name-missing:delegator-payment:system",
+    "name": "redelegate-type:versioned-by-name_missing:delegator_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -18367,7 +18367,7 @@
   },
   {
     "index": 415,
-    "name": "redelegate-type:by-hash-invalid:entrypoint-payment:system-missing:amount",
+    "name": "redelegate-type:by-hash_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -18416,7 +18416,7 @@
   },
   {
     "index": 416,
-    "name": "redelegate-type:by-hash-invalid:entrypoint-payment:system",
+    "name": "redelegate-type:by-hash_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -18465,7 +18465,7 @@
   },
   {
     "index": 417,
-    "name": "redelegate-type:by-name-invalid:entrypoint-payment:system-missing:amount",
+    "name": "redelegate-type:by-name_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -18512,7 +18512,7 @@
   },
   {
     "index": 418,
-    "name": "redelegate-type:by-name-invalid:entrypoint-payment:system",
+    "name": "redelegate-type:by-name_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -18559,7 +18559,7 @@
   },
   {
     "index": 419,
-    "name": "redelegate-type:versioned-by-hash-invalid:entrypoint-payment:system-missing:amount",
+    "name": "redelegate-type:versioned-by-hash_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -18609,7 +18609,7 @@
   },
   {
     "index": 420,
-    "name": "redelegate-type:versioned-by-hash-invalid:entrypoint-payment:system",
+    "name": "redelegate-type:versioned-by-hash_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -18659,7 +18659,7 @@
   },
   {
     "index": 421,
-    "name": "redelegate-type:versioned-by-name-invalid:entrypoint-payment:system-missing:amount",
+    "name": "redelegate-type:versioned-by-name_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -18707,7 +18707,7 @@
   },
   {
     "index": 422,
-    "name": "redelegate-type:versioned-by-name-invalid:entrypoint-payment:system",
+    "name": "redelegate-type:versioned-by-name_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -18755,7 +18755,7 @@
   },
   {
     "index": 423,
-    "name": "redelegate-type:by-hash-missing:validator-payment:system-missing:amount",
+    "name": "redelegate-type:by-hash_missing:validator_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -18799,7 +18799,7 @@
   },
   {
     "index": 424,
-    "name": "redelegate-type:by-hash-missing:validator-payment:system",
+    "name": "redelegate-type:by-hash_missing:validator_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -18843,7 +18843,7 @@
   },
   {
     "index": 425,
-    "name": "redelegate-type:by-name-missing:validator-payment:system-missing:amount",
+    "name": "redelegate-type:by-name_missing:validator_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -18886,7 +18886,7 @@
   },
   {
     "index": 426,
-    "name": "redelegate-type:by-name-missing:validator-payment:system",
+    "name": "redelegate-type:by-name_missing:validator_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -18929,7 +18929,7 @@
   },
   {
     "index": 427,
-    "name": "redelegate-type:versioned-by-hash-missing:validator-payment:system-missing:amount",
+    "name": "redelegate-type:versioned-by-hash_missing:validator_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -18974,7 +18974,7 @@
   },
   {
     "index": 428,
-    "name": "redelegate-type:versioned-by-hash-missing:validator-payment:system",
+    "name": "redelegate-type:versioned-by-hash_missing:validator_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -19019,7 +19019,7 @@
   },
   {
     "index": 429,
-    "name": "redelegate-type:versioned-by-name-missing:validator-payment:system-missing:amount",
+    "name": "redelegate-type:versioned-by-name_missing:validator_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -19063,7 +19063,7 @@
   },
   {
     "index": 430,
-    "name": "redelegate-type:versioned-by-name-missing:validator-payment:system",
+    "name": "redelegate-type:versioned-by-name_missing:validator_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -19107,7 +19107,7 @@
   },
   {
     "index": 431,
-    "name": "redelegate-type:by-hash-invalid:entrypoint-payment:system-missing:amount",
+    "name": "redelegate-type:by-hash_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -19156,7 +19156,7 @@
   },
   {
     "index": 432,
-    "name": "redelegate-type:by-hash-invalid:entrypoint-payment:system",
+    "name": "redelegate-type:by-hash_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -19205,7 +19205,7 @@
   },
   {
     "index": 433,
-    "name": "redelegate-type:by-name-invalid:entrypoint-payment:system-missing:amount",
+    "name": "redelegate-type:by-name_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -19252,7 +19252,7 @@
   },
   {
     "index": 434,
-    "name": "redelegate-type:by-name-invalid:entrypoint-payment:system",
+    "name": "redelegate-type:by-name_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -19299,7 +19299,7 @@
   },
   {
     "index": 435,
-    "name": "redelegate-type:versioned-by-hash-invalid:entrypoint-payment:system-missing:amount",
+    "name": "redelegate-type:versioned-by-hash_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -19349,7 +19349,7 @@
   },
   {
     "index": 436,
-    "name": "redelegate-type:versioned-by-hash-invalid:entrypoint-payment:system",
+    "name": "redelegate-type:versioned-by-hash_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -19399,7 +19399,7 @@
   },
   {
     "index": 437,
-    "name": "redelegate-type:versioned-by-name-invalid:entrypoint-payment:system-missing:amount",
+    "name": "redelegate-type:versioned-by-name_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -19447,7 +19447,7 @@
   },
   {
     "index": 438,
-    "name": "redelegate-type:versioned-by-name-invalid:entrypoint-payment:system",
+    "name": "redelegate-type:versioned-by-name_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -19495,7 +19495,7 @@
   },
   {
     "index": 439,
-    "name": "redelegate-type:by-hash-missing:new_validator-payment:system-missing:amount",
+    "name": "redelegate-type:by-hash_missing:new_validator_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -19539,7 +19539,7 @@
   },
   {
     "index": 440,
-    "name": "redelegate-type:by-hash-missing:new_validator-payment:system",
+    "name": "redelegate-type:by-hash_missing:new_validator_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -19583,7 +19583,7 @@
   },
   {
     "index": 441,
-    "name": "redelegate-type:by-name-missing:new_validator-payment:system-missing:amount",
+    "name": "redelegate-type:by-name_missing:new_validator_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -19626,7 +19626,7 @@
   },
   {
     "index": 442,
-    "name": "redelegate-type:by-name-missing:new_validator-payment:system",
+    "name": "redelegate-type:by-name_missing:new_validator_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -19669,7 +19669,7 @@
   },
   {
     "index": 443,
-    "name": "redelegate-type:versioned-by-hash-missing:new_validator-payment:system-missing:amount",
+    "name": "redelegate-type:versioned-by-hash_missing:new_validator_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -19714,7 +19714,7 @@
   },
   {
     "index": 444,
-    "name": "redelegate-type:versioned-by-hash-missing:new_validator-payment:system",
+    "name": "redelegate-type:versioned-by-hash_missing:new_validator_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -19759,7 +19759,7 @@
   },
   {
     "index": 445,
-    "name": "redelegate-type:versioned-by-name-missing:new_validator-payment:system-missing:amount",
+    "name": "redelegate-type:versioned-by-name_missing:new_validator_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -19803,7 +19803,7 @@
   },
   {
     "index": 446,
-    "name": "redelegate-type:versioned-by-name-missing:new_validator-payment:system",
+    "name": "redelegate-type:versioned-by-name_missing:new_validator_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -19847,7 +19847,7 @@
   },
   {
     "index": 447,
-    "name": "redelegate-type:by-hash-invalid:entrypoint-payment:system-missing:amount",
+    "name": "redelegate-type:by-hash_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -19896,7 +19896,7 @@
   },
   {
     "index": 448,
-    "name": "redelegate-type:by-hash-invalid:entrypoint-payment:system",
+    "name": "redelegate-type:by-hash_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -19945,7 +19945,7 @@
   },
   {
     "index": 449,
-    "name": "redelegate-type:by-name-invalid:entrypoint-payment:system-missing:amount",
+    "name": "redelegate-type:by-name_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -19992,7 +19992,7 @@
   },
   {
     "index": 450,
-    "name": "redelegate-type:by-name-invalid:entrypoint-payment:system",
+    "name": "redelegate-type:by-name_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -20039,7 +20039,7 @@
   },
   {
     "index": 451,
-    "name": "redelegate-type:versioned-by-hash-invalid:entrypoint-payment:system-missing:amount",
+    "name": "redelegate-type:versioned-by-hash_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -20089,7 +20089,7 @@
   },
   {
     "index": 452,
-    "name": "redelegate-type:versioned-by-hash-invalid:entrypoint-payment:system",
+    "name": "redelegate-type:versioned-by-hash_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -20139,7 +20139,7 @@
   },
   {
     "index": 453,
-    "name": "redelegate-type:versioned-by-name-invalid:entrypoint-payment:system-missing:amount",
+    "name": "redelegate-type:versioned-by-name_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -20187,7 +20187,7 @@
   },
   {
     "index": 454,
-    "name": "redelegate-type:versioned-by-name-invalid:entrypoint-payment:system",
+    "name": "redelegate-type:versioned-by-name_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -20235,7 +20235,7 @@
   },
   {
     "index": 455,
-    "name": "redelegate-type:by-hash-invalid_type:amount-payment:system-missing:amount",
+    "name": "redelegate-type:by-hash_invalid_type:amount_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -20283,7 +20283,7 @@
   },
   {
     "index": 456,
-    "name": "redelegate-type:by-hash-invalid_type:amount-payment:system",
+    "name": "redelegate-type:by-hash_invalid_type:amount_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -20331,7 +20331,7 @@
   },
   {
     "index": 457,
-    "name": "redelegate-type:by-name-invalid_type:amount-payment:system-missing:amount",
+    "name": "redelegate-type:by-name_invalid_type:amount_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -20378,7 +20378,7 @@
   },
   {
     "index": 458,
-    "name": "redelegate-type:by-name-invalid_type:amount-payment:system",
+    "name": "redelegate-type:by-name_invalid_type:amount_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -20425,7 +20425,7 @@
   },
   {
     "index": 459,
-    "name": "redelegate-type:versioned-by-hash-invalid_type:amount-payment:system-missing:amount",
+    "name": "redelegate-type:versioned-by-hash_invalid_type:amount_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -20474,7 +20474,7 @@
   },
   {
     "index": 460,
-    "name": "redelegate-type:versioned-by-hash-invalid_type:amount-payment:system",
+    "name": "redelegate-type:versioned-by-hash_invalid_type:amount_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -20523,7 +20523,7 @@
   },
   {
     "index": 461,
-    "name": "redelegate-type:versioned-by-name-invalid_type:amount-payment:system-missing:amount",
+    "name": "redelegate-type:versioned-by-name_invalid_type:amount_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -20571,7 +20571,7 @@
   },
   {
     "index": 462,
-    "name": "redelegate-type:versioned-by-name-invalid_type:amount-payment:system",
+    "name": "redelegate-type:versioned-by-name_invalid_type:amount_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -20619,7 +20619,7 @@
   },
   {
     "index": 463,
-    "name": "redelegate-type:by-hash-invalid:entrypoint-payment:system-missing:amount",
+    "name": "redelegate-type:by-hash_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -20668,7 +20668,7 @@
   },
   {
     "index": 464,
-    "name": "redelegate-type:by-hash-invalid:entrypoint-payment:system",
+    "name": "redelegate-type:by-hash_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -20717,7 +20717,7 @@
   },
   {
     "index": 465,
-    "name": "redelegate-type:by-name-invalid:entrypoint-payment:system-missing:amount",
+    "name": "redelegate-type:by-name_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -20764,7 +20764,7 @@
   },
   {
     "index": 466,
-    "name": "redelegate-type:by-name-invalid:entrypoint-payment:system",
+    "name": "redelegate-type:by-name_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -20811,7 +20811,7 @@
   },
   {
     "index": 467,
-    "name": "redelegate-type:versioned-by-hash-invalid:entrypoint-payment:system-missing:amount",
+    "name": "redelegate-type:versioned-by-hash_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -20861,7 +20861,7 @@
   },
   {
     "index": 468,
-    "name": "redelegate-type:versioned-by-hash-invalid:entrypoint-payment:system",
+    "name": "redelegate-type:versioned-by-hash_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -20911,7 +20911,7 @@
   },
   {
     "index": 469,
-    "name": "redelegate-type:versioned-by-name-invalid:entrypoint-payment:system-missing:amount",
+    "name": "redelegate-type:versioned-by-name_invalid:entrypoint_payment:system-missing:amount",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,
@@ -20959,7 +20959,7 @@
   },
   {
     "index": 470,
-    "name": "redelegate-type:versioned-by-name-invalid:entrypoint-payment:system",
+    "name": "redelegate-type:versioned-by-name_invalid:entrypoint_payment:system",
     "valid_regular": false,
     "valid_expert": false,
     "testnet": true,

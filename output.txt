@@ -10919,19 +10919,18 @@
     "output": [
       "0 | Txn hash [1/2] : 3bcacd42c232c3be6fd4463b1268be89a1",
       "0 | Txn hash [2/2] : cd5ee40a41502119c9d80e579cd307",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 018139770ea87d175f56a35466c34c7ecc",
       "3 | Account [2/2] : cb8d8a91b4ee37a25df60f5b8fc9b394",
-      "4 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "4 | Delegator [2/2] : 01010101010101010101010101010101",
-      "5 | Validator [1/2] : 0103030303030303030303030303030303",
-      "5 | Validator [2/2] : 03030303030303030303030303030303"
+      "4 | Execution : by-hash",
+      "5 | Address [1/2] : 0101010101010101010101010101010101",
+      "5 | Address [2/2] : 010101010101010101010101010101"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 3bcacd42c232c3be6fd4463b1268be89a1",
       "0 | Txn hash [2/2] : cd5ee40a41502119c9d80e579cd307",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 018139770ea87d175f56a35466c34c7ecc",
       "3 | Account [2/2] : cb8d8a91b4ee37a25df60f5b8fc9b394",
@@ -10944,11 +10943,14 @@
       "10 | Execution : by-hash",
       "11 | Address [1/2] : 0101010101010101010101010101010101",
       "11 | Address [2/2] : 010101010101010101010101010101",
-      "12 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "12 | Delegator [2/2] : 01010101010101010101010101010101",
-      "13 | Validator [1/2] : 0103030303030303030303030303030303",
-      "13 | Validator [2/2] : 03030303030303030303030303030303",
-      "14 | Approvals # : 3"
+      "12 | Entry-point : delegate",
+      "13 | Arg-0-name : delegator",
+      "14 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "14 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "15 | Arg-1-name : validator",
+      "16 | Arg-1-val [1/2] : 0103030303030303030303030303030303",
+      "16 | Arg-1-val [2/2] : 03030303030303030303030303030303",
+      "17 | Approvals # : 3"
     ]
   },
   {
@@ -10961,20 +10963,19 @@
     "output": [
       "0 | Txn hash [1/2] : 99619ed851e18d3c4d4f35c179f17c35c2",
       "0 | Txn hash [2/2] : 8998f74caac8fe4304f9ec52bf368d",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
       "4 | Fee : 1 000 000 000 motes",
-      "5 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "5 | Delegator [2/2] : 01010101010101010101010101010101",
-      "6 | Validator [1/2] : 0103030303030303030303030303030303",
-      "6 | Validator [2/2] : 03030303030303030303030303030303"
+      "5 | Execution : by-hash",
+      "6 | Address [1/2] : 0101010101010101010101010101010101",
+      "6 | Address [2/2] : 010101010101010101010101010101"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 99619ed851e18d3c4d4f35c179f17c35c2",
       "0 | Txn hash [2/2] : 8998f74caac8fe4304f9ec52bf368d",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -10986,11 +10987,14 @@
       "9 | Execution : by-hash",
       "10 | Address [1/2] : 0101010101010101010101010101010101",
       "10 | Address [2/2] : 010101010101010101010101010101",
-      "11 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "11 | Delegator [2/2] : 01010101010101010101010101010101",
-      "12 | Validator [1/2] : 0103030303030303030303030303030303",
-      "12 | Validator [2/2] : 03030303030303030303030303030303",
-      "13 | Approvals # : 1"
+      "11 | Entry-point : delegate",
+      "12 | Arg-0-name : delegator",
+      "13 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "13 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "14 | Arg-1-name : validator",
+      "15 | Arg-1-val [1/2] : 0103030303030303030303030303030303",
+      "15 | Arg-1-val [2/2] : 03030303030303030303030303030303",
+      "16 | Approvals # : 1"
     ]
   },
   {
@@ -11003,19 +11007,17 @@
     "output": [
       "0 | Txn hash [1/2] : 0de8c8ad2688dc25d0fa27f670789a49e6",
       "0 | Txn hash [2/2] : 374e3fb614adf420a89929b7213331",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
-      "4 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "4 | Delegator [2/2] : 01010101010101010101010101010101",
-      "5 | Validator [1/2] : 0103030303030303030303030303030303",
-      "5 | Validator [2/2] : 03030303030303030303030303030303"
+      "4 | Execution : by-name",
+      "5 | Name : delegate-contract"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 0de8c8ad2688dc25d0fa27f670789a49e6",
       "0 | Txn hash [2/2] : 374e3fb614adf420a89929b7213331",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -11027,11 +11029,14 @@
       "9 | Arg-0-val : 1000000000",
       "10 | Execution : by-name",
       "11 | Name : delegate-contract",
-      "12 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "12 | Delegator [2/2] : 01010101010101010101010101010101",
-      "13 | Validator [1/2] : 0103030303030303030303030303030303",
-      "13 | Validator [2/2] : 03030303030303030303030303030303",
-      "14 | Approvals # : 1"
+      "12 | Entry-point : delegate",
+      "13 | Arg-0-name : delegator",
+      "14 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "14 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "15 | Arg-1-name : validator",
+      "16 | Arg-1-val [1/2] : 0103030303030303030303030303030303",
+      "16 | Arg-1-val [2/2] : 03030303030303030303030303030303",
+      "17 | Approvals # : 1"
     ]
   },
   {
@@ -11044,20 +11049,18 @@
     "output": [
       "0 | Txn hash [1/2] : 45fbb8cbb42f53adafc7992f54fbb25688",
       "0 | Txn hash [2/2] : bfbb501cb13bf9e08bb6653714b8e3",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
       "4 | Fee : 1 000 000 000 motes",
-      "5 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "5 | Delegator [2/2] : 01010101010101010101010101010101",
-      "6 | Validator [1/2] : 0103030303030303030303030303030303",
-      "6 | Validator [2/2] : 03030303030303030303030303030303"
+      "5 | Execution : by-name",
+      "6 | Name : delegate-contract"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 45fbb8cbb42f53adafc7992f54fbb25688",
       "0 | Txn hash [2/2] : bfbb501cb13bf9e08bb6653714b8e3",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -11068,11 +11071,14 @@
       "8 | Fee : 1 000 000 000 motes",
       "9 | Execution : by-name",
       "10 | Name : delegate-contract",
-      "11 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "11 | Delegator [2/2] : 01010101010101010101010101010101",
-      "12 | Validator [1/2] : 0103030303030303030303030303030303",
-      "12 | Validator [2/2] : 03030303030303030303030303030303",
-      "13 | Approvals # : 1"
+      "11 | Entry-point : delegate",
+      "12 | Arg-0-name : delegator",
+      "13 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "13 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "14 | Arg-1-name : validator",
+      "15 | Arg-1-val [1/2] : 0103030303030303030303030303030303",
+      "15 | Arg-1-val [2/2] : 03030303030303030303030303030303",
+      "16 | Approvals # : 1"
     ]
   },
   {
@@ -11085,19 +11091,18 @@
     "output": [
       "0 | Txn hash [1/2] : cf8ccedb49f221118647423cdcd25375a0",
       "0 | Txn hash [2/2] : e382ef1beb220a6a002e1f3f51fed2",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
-      "4 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "4 | Delegator [2/2] : 01010101010101010101010101010101",
-      "5 | Validator [1/2] : 0103030303030303030303030303030303",
-      "5 | Validator [2/2] : 03030303030303030303030303030303"
+      "4 | Execution : by-hash-versioned",
+      "5 | Address [1/2] : 0101010101010101010101010101010101",
+      "5 | Address [2/2] : 010101010101010101010101010101"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : cf8ccedb49f221118647423cdcd25375a0",
       "0 | Txn hash [2/2] : e382ef1beb220a6a002e1f3f51fed2",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -11111,11 +11116,14 @@
       "11 | Address [1/2] : 0101010101010101010101010101010101",
       "11 | Address [2/2] : 010101010101010101010101010101",
       "12 | Version : 1",
-      "13 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "13 | Delegator [2/2] : 01010101010101010101010101010101",
-      "14 | Validator [1/2] : 0103030303030303030303030303030303",
-      "14 | Validator [2/2] : 03030303030303030303030303030303",
-      "15 | Approvals # : 10"
+      "13 | Entry-point : delegate",
+      "14 | Arg-0-name : delegator",
+      "15 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "15 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "16 | Arg-1-name : validator",
+      "17 | Arg-1-val [1/2] : 0103030303030303030303030303030303",
+      "17 | Arg-1-val [2/2] : 03030303030303030303030303030303",
+      "18 | Approvals # : 10"
     ]
   },
   {
@@ -11128,20 +11136,19 @@
     "output": [
       "0 | Txn hash [1/2] : 40d462e4169f868b27ba7644ef04d38fa1",
       "0 | Txn hash [2/2] : 3055eedb615803c8a0f6b0a8155631",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 020362c0a046dacce86ddd0343c6d3c7c7",
       "3 | Account [2/2] : 9c2208ba0d9c9cf24a6d046d21d21f90f7",
       "4 | Fee : 1 000 000 000 motes",
-      "5 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "5 | Delegator [2/2] : 01010101010101010101010101010101",
-      "6 | Validator [1/2] : 0103030303030303030303030303030303",
-      "6 | Validator [2/2] : 03030303030303030303030303030303"
+      "5 | Execution : by-hash-versioned",
+      "6 | Address [1/2] : 0101010101010101010101010101010101",
+      "6 | Address [2/2] : 010101010101010101010101010101"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 40d462e4169f868b27ba7644ef04d38fa1",
       "0 | Txn hash [2/2] : 3055eedb615803c8a0f6b0a8155631",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 020362c0a046dacce86ddd0343c6d3c7c7",
       "3 | Account [2/2] : 9c2208ba0d9c9cf24a6d046d21d21f90f7",
@@ -11154,11 +11161,14 @@
       "10 | Address [1/2] : 0101010101010101010101010101010101",
       "10 | Address [2/2] : 010101010101010101010101010101",
       "11 | Version : 1",
-      "12 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "12 | Delegator [2/2] : 01010101010101010101010101010101",
-      "13 | Validator [1/2] : 0103030303030303030303030303030303",
-      "13 | Validator [2/2] : 03030303030303030303030303030303",
-      "14 | Approvals # : 10"
+      "12 | Entry-point : delegate",
+      "13 | Arg-0-name : delegator",
+      "14 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "14 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "15 | Arg-1-name : validator",
+      "16 | Arg-1-val [1/2] : 0103030303030303030303030303030303",
+      "16 | Arg-1-val [2/2] : 03030303030303030303030303030303",
+      "17 | Approvals # : 10"
     ]
   },
   {
@@ -11171,19 +11181,17 @@
     "output": [
       "0 | Txn hash [1/2] : d3de93e4cd84f0316b2f871f43d36a192c",
       "0 | Txn hash [2/2] : f58f16e7486f150f25faae6a6589b8",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 018a875fff1eb38451577acd5afee40545",
       "3 | Account [2/2] : 6568dd7c89e090863a0557bc7af49f17",
-      "4 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "4 | Delegator [2/2] : 01010101010101010101010101010101",
-      "5 | Validator [1/2] : 0103030303030303030303030303030303",
-      "5 | Validator [2/2] : 03030303030303030303030303030303"
+      "4 | Execution : by-name-versioned",
+      "5 | Name : delegate-contract"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : d3de93e4cd84f0316b2f871f43d36a192c",
       "0 | Txn hash [2/2] : f58f16e7486f150f25faae6a6589b8",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 018a875fff1eb38451577acd5afee40545",
       "3 | Account [2/2] : 6568dd7c89e090863a0557bc7af49f17",
@@ -11196,11 +11204,14 @@
       "10 | Execution : by-name-versioned",
       "11 | Name : delegate-contract",
       "12 | Version : 1",
-      "13 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "13 | Delegator [2/2] : 01010101010101010101010101010101",
-      "14 | Validator [1/2] : 0103030303030303030303030303030303",
-      "14 | Validator [2/2] : 03030303030303030303030303030303",
-      "15 | Approvals # : 10"
+      "13 | Entry-point : delegate",
+      "14 | Arg-0-name : delegator",
+      "15 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "15 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "16 | Arg-1-name : validator",
+      "17 | Arg-1-val [1/2] : 0103030303030303030303030303030303",
+      "17 | Arg-1-val [2/2] : 03030303030303030303030303030303",
+      "18 | Approvals # : 10"
     ]
   },
   {
@@ -11213,20 +11224,18 @@
     "output": [
       "0 | Txn hash [1/2] : 0e3ae24ba8711076f6af335a7e6fea63cf",
       "0 | Txn hash [2/2] : 8212cf90400450395a514e56250286",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 011398f62c6d1a457c51ba6a4b5f3dbd2f",
       "3 | Account [2/2] : 69fca93216218dc8997e416bd17d93ca",
       "4 | Fee : 1 000 000 000 motes",
-      "5 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "5 | Delegator [2/2] : 01010101010101010101010101010101",
-      "6 | Validator [1/2] : 0103030303030303030303030303030303",
-      "6 | Validator [2/2] : 03030303030303030303030303030303"
+      "5 | Execution : by-name-versioned",
+      "6 | Name : delegate-contract"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 0e3ae24ba8711076f6af335a7e6fea63cf",
       "0 | Txn hash [2/2] : 8212cf90400450395a514e56250286",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 011398f62c6d1a457c51ba6a4b5f3dbd2f",
       "3 | Account [2/2] : 69fca93216218dc8997e416bd17d93ca",
@@ -11238,11 +11247,14 @@
       "9 | Execution : by-name-versioned",
       "10 | Name : delegate-contract",
       "11 | Version : 1",
-      "12 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "12 | Delegator [2/2] : 01010101010101010101010101010101",
-      "13 | Validator [1/2] : 0103030303030303030303030303030303",
-      "13 | Validator [2/2] : 03030303030303030303030303030303",
-      "14 | Approvals # : 10"
+      "12 | Entry-point : delegate",
+      "13 | Arg-0-name : delegator",
+      "14 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "14 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "15 | Arg-1-name : validator",
+      "16 | Arg-1-val [1/2] : 0103030303030303030303030303030303",
+      "16 | Arg-1-val [2/2] : 03030303030303030303030303030303",
+      "17 | Approvals # : 10"
     ]
   },
   {
@@ -11619,18 +11631,19 @@
     "output": [
       "0 | Txn hash [1/2] : 62a015ba868277d5e413cffbf51fea12c6",
       "0 | Txn hash [2/2] : 1eeb5ee24fdcf9a934f5d5b7c62f4a",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 020362c0a046dacce86ddd0343c6d3c7c7",
       "3 | Account [2/2] : 9c2208ba0d9c9cf24a6d046d21d21f90f7",
-      "4 | Validator [1/2] : 0103030303030303030303030303030303",
-      "4 | Validator [2/2] : 03030303030303030303030303030303",
-      "5 | Amount : 100 000 000 motes"
+      "4 | Execution : by-hash",
+      "5 | Address [1/2] : 0101010101010101010101010101010101",
+      "5 | Address [2/2] : 010101010101010101010101010101",
+      "6 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 62a015ba868277d5e413cffbf51fea12c6",
       "0 | Txn hash [2/2] : 1eeb5ee24fdcf9a934f5d5b7c62f4a",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 020362c0a046dacce86ddd0343c6d3c7c7",
       "3 | Account [2/2] : 9c2208ba0d9c9cf24a6d046d21d21f90f7",
@@ -11643,10 +11656,12 @@
       "10 | Execution : by-hash",
       "11 | Address [1/2] : 0101010101010101010101010101010101",
       "11 | Address [2/2] : 010101010101010101010101010101",
-      "12 | Validator [1/2] : 0103030303030303030303030303030303",
-      "12 | Validator [2/2] : 03030303030303030303030303030303",
+      "12 | Entry-point : delegate",
       "13 | Amount : 100 000 000 motes",
-      "14 | Approvals # : 10"
+      "14 | Arg-0-name : validator",
+      "15 | Arg-0-val [1/2] : 0103030303030303030303030303030303",
+      "15 | Arg-0-val [2/2] : 03030303030303030303030303030303",
+      "16 | Approvals # : 10"
     ]
   },
   {
@@ -11659,19 +11674,20 @@
     "output": [
       "0 | Txn hash [1/2] : 7990c32be8b171341f1bf6359170dd9042",
       "0 | Txn hash [2/2] : 85c7f9be126eb99cbf62c1cdff989c",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
       "4 | Fee : 1 000 000 000 motes",
-      "5 | Validator [1/2] : 0103030303030303030303030303030303",
-      "5 | Validator [2/2] : 03030303030303030303030303030303",
-      "6 | Amount : 100 000 000 motes"
+      "5 | Execution : by-hash",
+      "6 | Address [1/2] : 0101010101010101010101010101010101",
+      "6 | Address [2/2] : 010101010101010101010101010101",
+      "7 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 7990c32be8b171341f1bf6359170dd9042",
       "0 | Txn hash [2/2] : 85c7f9be126eb99cbf62c1cdff989c",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -11683,10 +11699,12 @@
       "9 | Execution : by-hash",
       "10 | Address [1/2] : 0101010101010101010101010101010101",
       "10 | Address [2/2] : 010101010101010101010101010101",
-      "11 | Validator [1/2] : 0103030303030303030303030303030303",
-      "11 | Validator [2/2] : 03030303030303030303030303030303",
+      "11 | Entry-point : delegate",
       "12 | Amount : 100 000 000 motes",
-      "13 | Approvals # : 1"
+      "13 | Arg-0-name : validator",
+      "14 | Arg-0-val [1/2] : 0103030303030303030303030303030303",
+      "14 | Arg-0-val [2/2] : 03030303030303030303030303030303",
+      "15 | Approvals # : 1"
     ]
   },
   {
@@ -11699,18 +11717,18 @@
     "output": [
       "0 | Txn hash [1/2] : 4dcff4cb296549f2a3a59e6318ad6ae620",
       "0 | Txn hash [2/2] : 7283eea9ae198212bb5086db8877c6",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
-      "4 | Validator [1/2] : 0103030303030303030303030303030303",
-      "4 | Validator [2/2] : 03030303030303030303030303030303",
-      "5 | Amount : 100 000 000 motes"
+      "4 | Execution : by-name",
+      "5 | Name : delegate-contract",
+      "6 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 4dcff4cb296549f2a3a59e6318ad6ae620",
       "0 | Txn hash [2/2] : 7283eea9ae198212bb5086db8877c6",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -11722,10 +11740,12 @@
       "9 | Arg-0-val : 1000000000",
       "10 | Execution : by-name",
       "11 | Name : delegate-contract",
-      "12 | Validator [1/2] : 0103030303030303030303030303030303",
-      "12 | Validator [2/2] : 03030303030303030303030303030303",
+      "12 | Entry-point : delegate",
       "13 | Amount : 100 000 000 motes",
-      "14 | Approvals # : 3"
+      "14 | Arg-0-name : validator",
+      "15 | Arg-0-val [1/2] : 0103030303030303030303030303030303",
+      "15 | Arg-0-val [2/2] : 03030303030303030303030303030303",
+      "16 | Approvals # : 3"
     ]
   },
   {
@@ -11738,19 +11758,19 @@
     "output": [
       "0 | Txn hash [1/2] : de87c64431b294dba1d4c899186deda4dc",
       "0 | Txn hash [2/2] : f5985f1bcdc08612d2731d45c0d644",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 0202989c0b76cb563971fdc9bef31ec06c",
       "3 | Account [2/2] : 3560f3249d6ee9e5d83c57625596e05f6f",
       "4 | Fee : 1 000 000 000 motes",
-      "5 | Validator [1/2] : 0103030303030303030303030303030303",
-      "5 | Validator [2/2] : 03030303030303030303030303030303",
-      "6 | Amount : 100 000 000 motes"
+      "5 | Execution : by-name",
+      "6 | Name : delegate-contract",
+      "7 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : de87c64431b294dba1d4c899186deda4dc",
       "0 | Txn hash [2/2] : f5985f1bcdc08612d2731d45c0d644",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 0202989c0b76cb563971fdc9bef31ec06c",
       "3 | Account [2/2] : 3560f3249d6ee9e5d83c57625596e05f6f",
@@ -11761,10 +11781,12 @@
       "8 | Fee : 1 000 000 000 motes",
       "9 | Execution : by-name",
       "10 | Name : delegate-contract",
-      "11 | Validator [1/2] : 0103030303030303030303030303030303",
-      "11 | Validator [2/2] : 03030303030303030303030303030303",
+      "11 | Entry-point : delegate",
       "12 | Amount : 100 000 000 motes",
-      "13 | Approvals # : 10"
+      "13 | Arg-0-name : validator",
+      "14 | Arg-0-val [1/2] : 0103030303030303030303030303030303",
+      "14 | Arg-0-val [2/2] : 03030303030303030303030303030303",
+      "15 | Approvals # : 10"
     ]
   },
   {
@@ -11777,18 +11799,19 @@
     "output": [
       "0 | Txn hash [1/2] : c18a6c52b8b16419df7e2031d23c82afaf",
       "0 | Txn hash [2/2] : 4563fdddb7d7ea47f0cccddde35a0e",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 02031b84c5567b126440995d3ed5aaba05",
       "3 | Account [2/2] : 65d71e1834604819ff9c17f5e9d5dd078f",
-      "4 | Validator [1/2] : 0103030303030303030303030303030303",
-      "4 | Validator [2/2] : 03030303030303030303030303030303",
-      "5 | Amount : 100 000 000 motes"
+      "4 | Execution : by-hash-versioned",
+      "5 | Address [1/2] : 0101010101010101010101010101010101",
+      "5 | Address [2/2] : 010101010101010101010101010101",
+      "6 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : c18a6c52b8b16419df7e2031d23c82afaf",
       "0 | Txn hash [2/2] : 4563fdddb7d7ea47f0cccddde35a0e",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 02031b84c5567b126440995d3ed5aaba05",
       "3 | Account [2/2] : 65d71e1834604819ff9c17f5e9d5dd078f",
@@ -11802,10 +11825,12 @@
       "11 | Address [1/2] : 0101010101010101010101010101010101",
       "11 | Address [2/2] : 010101010101010101010101010101",
       "12 | Version : 1",
-      "13 | Validator [1/2] : 0103030303030303030303030303030303",
-      "13 | Validator [2/2] : 03030303030303030303030303030303",
+      "13 | Entry-point : delegate",
       "14 | Amount : 100 000 000 motes",
-      "15 | Approvals # : 3"
+      "15 | Arg-0-name : validator",
+      "16 | Arg-0-val [1/2] : 0103030303030303030303030303030303",
+      "16 | Arg-0-val [2/2] : 03030303030303030303030303030303",
+      "17 | Approvals # : 3"
     ]
   },
   {
@@ -11818,19 +11843,20 @@
     "output": [
       "0 | Txn hash [1/2] : 1dc355901d2e01b50fe4a4d11de168321b",
       "0 | Txn hash [2/2] : 5507636e2a31c249ffba146d802c76",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 02031b84c5567b126440995d3ed5aaba05",
       "3 | Account [2/2] : 65d71e1834604819ff9c17f5e9d5dd078f",
       "4 | Fee : 1 000 000 000 motes",
-      "5 | Validator [1/2] : 0103030303030303030303030303030303",
-      "5 | Validator [2/2] : 03030303030303030303030303030303",
-      "6 | Amount : 100 000 000 motes"
+      "5 | Execution : by-hash-versioned",
+      "6 | Address [1/2] : 0101010101010101010101010101010101",
+      "6 | Address [2/2] : 010101010101010101010101010101",
+      "7 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 1dc355901d2e01b50fe4a4d11de168321b",
       "0 | Txn hash [2/2] : 5507636e2a31c249ffba146d802c76",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 02031b84c5567b126440995d3ed5aaba05",
       "3 | Account [2/2] : 65d71e1834604819ff9c17f5e9d5dd078f",
@@ -11843,10 +11869,12 @@
       "10 | Address [1/2] : 0101010101010101010101010101010101",
       "10 | Address [2/2] : 010101010101010101010101010101",
       "11 | Version : 1",
-      "12 | Validator [1/2] : 0103030303030303030303030303030303",
-      "12 | Validator [2/2] : 03030303030303030303030303030303",
+      "12 | Entry-point : delegate",
       "13 | Amount : 100 000 000 motes",
-      "14 | Approvals # : 10"
+      "14 | Arg-0-name : validator",
+      "15 | Arg-0-val [1/2] : 0103030303030303030303030303030303",
+      "15 | Arg-0-val [2/2] : 03030303030303030303030303030303",
+      "16 | Approvals # : 10"
     ]
   },
   {
@@ -11859,18 +11887,18 @@
     "output": [
       "0 | Txn hash [1/2] : 8d78711117f530dc28dfaf57de584aae62",
       "0 | Txn hash [2/2] : 2b3291c89a086635e013735be648fa",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
-      "4 | Validator [1/2] : 0103030303030303030303030303030303",
-      "4 | Validator [2/2] : 03030303030303030303030303030303",
-      "5 | Amount : 100 000 000 motes"
+      "4 | Execution : by-name-versioned",
+      "5 | Name : delegate-contract",
+      "6 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 8d78711117f530dc28dfaf57de584aae62",
       "0 | Txn hash [2/2] : 2b3291c89a086635e013735be648fa",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -11883,10 +11911,12 @@
       "10 | Execution : by-name-versioned",
       "11 | Name : delegate-contract",
       "12 | Version : 1",
-      "13 | Validator [1/2] : 0103030303030303030303030303030303",
-      "13 | Validator [2/2] : 03030303030303030303030303030303",
+      "13 | Entry-point : delegate",
       "14 | Amount : 100 000 000 motes",
-      "15 | Approvals # : 1"
+      "15 | Arg-0-name : validator",
+      "16 | Arg-0-val [1/2] : 0103030303030303030303030303030303",
+      "16 | Arg-0-val [2/2] : 03030303030303030303030303030303",
+      "17 | Approvals # : 1"
     ]
   },
   {
@@ -11899,19 +11929,19 @@
     "output": [
       "0 | Txn hash [1/2] : c805ab8cfabb957b2b11ef299e1c3fde31",
       "0 | Txn hash [2/2] : 032b6868ec7017211cbcb42ec9dfcf",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
       "4 | Fee : 1 000 000 000 motes",
-      "5 | Validator [1/2] : 0103030303030303030303030303030303",
-      "5 | Validator [2/2] : 03030303030303030303030303030303",
-      "6 | Amount : 100 000 000 motes"
+      "5 | Execution : by-name-versioned",
+      "6 | Name : delegate-contract",
+      "7 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : c805ab8cfabb957b2b11ef299e1c3fde31",
       "0 | Txn hash [2/2] : 032b6868ec7017211cbcb42ec9dfcf",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -11923,10 +11953,12 @@
       "9 | Execution : by-name-versioned",
       "10 | Name : delegate-contract",
       "11 | Version : 1",
-      "12 | Validator [1/2] : 0103030303030303030303030303030303",
-      "12 | Validator [2/2] : 03030303030303030303030303030303",
+      "12 | Entry-point : delegate",
       "13 | Amount : 100 000 000 motes",
-      "14 | Approvals # : 1"
+      "14 | Arg-0-name : validator",
+      "15 | Arg-0-val [1/2] : 0103030303030303030303030303030303",
+      "15 | Arg-0-val [2/2] : 03030303030303030303030303030303",
+      "16 | Approvals # : 1"
     ]
   },
   {
@@ -12303,18 +12335,19 @@
     "output": [
       "0 | Txn hash [1/2] : 1e6fd6272a21bfb1379277e4f54c8e6e10",
       "0 | Txn hash [2/2] : 326c252be0b3b8a0a7246eca88a936",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
-      "4 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "4 | Delegator [2/2] : 01010101010101010101010101010101",
-      "5 | Amount : 100 000 000 motes"
+      "4 | Execution : by-hash",
+      "5 | Address [1/2] : 0101010101010101010101010101010101",
+      "5 | Address [2/2] : 010101010101010101010101010101",
+      "6 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 1e6fd6272a21bfb1379277e4f54c8e6e10",
       "0 | Txn hash [2/2] : 326c252be0b3b8a0a7246eca88a936",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -12327,10 +12360,12 @@
       "10 | Execution : by-hash",
       "11 | Address [1/2] : 0101010101010101010101010101010101",
       "11 | Address [2/2] : 010101010101010101010101010101",
-      "12 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "12 | Delegator [2/2] : 01010101010101010101010101010101",
+      "12 | Entry-point : delegate",
       "13 | Amount : 100 000 000 motes",
-      "14 | Approvals # : 1"
+      "14 | Arg-0-name : delegator",
+      "15 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "15 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "16 | Approvals # : 1"
     ]
   },
   {
@@ -12343,19 +12378,20 @@
     "output": [
       "0 | Txn hash [1/2] : a7acc66e505f12fad0ee75094020686aaf",
       "0 | Txn hash [2/2] : e6937112e6854346a39559757f28ee",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
       "4 | Fee : 1 000 000 000 motes",
-      "5 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "5 | Delegator [2/2] : 01010101010101010101010101010101",
-      "6 | Amount : 100 000 000 motes"
+      "5 | Execution : by-hash",
+      "6 | Address [1/2] : 0101010101010101010101010101010101",
+      "6 | Address [2/2] : 010101010101010101010101010101",
+      "7 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : a7acc66e505f12fad0ee75094020686aaf",
       "0 | Txn hash [2/2] : e6937112e6854346a39559757f28ee",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -12367,10 +12403,12 @@
       "9 | Execution : by-hash",
       "10 | Address [1/2] : 0101010101010101010101010101010101",
       "10 | Address [2/2] : 010101010101010101010101010101",
-      "11 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "11 | Delegator [2/2] : 01010101010101010101010101010101",
+      "11 | Entry-point : delegate",
       "12 | Amount : 100 000 000 motes",
-      "13 | Approvals # : 1"
+      "13 | Arg-0-name : delegator",
+      "14 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "14 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "15 | Approvals # : 1"
     ]
   },
   {
@@ -12383,18 +12421,18 @@
     "output": [
       "0 | Txn hash [1/2] : 6e9e25504cba768e66594e4b7267b79c5c",
       "0 | Txn hash [2/2] : 7493190c839486a72983ed2cc4092a",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 018139770ea87d175f56a35466c34c7ecc",
       "3 | Account [2/2] : cb8d8a91b4ee37a25df60f5b8fc9b394",
-      "4 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "4 | Delegator [2/2] : 01010101010101010101010101010101",
-      "5 | Amount : 100 000 000 motes"
+      "4 | Execution : by-name",
+      "5 | Name : delegate-contract",
+      "6 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 6e9e25504cba768e66594e4b7267b79c5c",
       "0 | Txn hash [2/2] : 7493190c839486a72983ed2cc4092a",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 018139770ea87d175f56a35466c34c7ecc",
       "3 | Account [2/2] : cb8d8a91b4ee37a25df60f5b8fc9b394",
@@ -12406,10 +12444,12 @@
       "9 | Arg-0-val : 1000000000",
       "10 | Execution : by-name",
       "11 | Name : delegate-contract",
-      "12 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "12 | Delegator [2/2] : 01010101010101010101010101010101",
+      "12 | Entry-point : delegate",
       "13 | Amount : 100 000 000 motes",
-      "14 | Approvals # : 10"
+      "14 | Arg-0-name : delegator",
+      "15 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "15 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "16 | Approvals # : 10"
     ]
   },
   {
@@ -12422,19 +12462,19 @@
     "output": [
       "0 | Txn hash [1/2] : e18ab548ed6c9b72ce7122d176bc0dc84e",
       "0 | Txn hash [2/2] : c69112cc1240f1cd0858b2c9d1c938",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
       "4 | Fee : 1 000 000 000 motes",
-      "5 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "5 | Delegator [2/2] : 01010101010101010101010101010101",
-      "6 | Amount : 100 000 000 motes"
+      "5 | Execution : by-name",
+      "6 | Name : delegate-contract",
+      "7 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : e18ab548ed6c9b72ce7122d176bc0dc84e",
       "0 | Txn hash [2/2] : c69112cc1240f1cd0858b2c9d1c938",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -12445,10 +12485,12 @@
       "8 | Fee : 1 000 000 000 motes",
       "9 | Execution : by-name",
       "10 | Name : delegate-contract",
-      "11 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "11 | Delegator [2/2] : 01010101010101010101010101010101",
+      "11 | Entry-point : delegate",
       "12 | Amount : 100 000 000 motes",
-      "13 | Approvals # : 1"
+      "13 | Arg-0-name : delegator",
+      "14 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "14 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "15 | Approvals # : 1"
     ]
   },
   {
@@ -12461,18 +12503,19 @@
     "output": [
       "0 | Txn hash [1/2] : b8f8745cfbe621497a25c3ef695d216076",
       "0 | Txn hash [2/2] : 370762c4dc4dc4469efeac709d12e2",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
-      "4 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "4 | Delegator [2/2] : 01010101010101010101010101010101",
-      "5 | Amount : 100 000 000 motes"
+      "4 | Execution : by-hash-versioned",
+      "5 | Address [1/2] : 0101010101010101010101010101010101",
+      "5 | Address [2/2] : 010101010101010101010101010101",
+      "6 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : b8f8745cfbe621497a25c3ef695d216076",
       "0 | Txn hash [2/2] : 370762c4dc4dc4469efeac709d12e2",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -12486,10 +12529,12 @@
       "11 | Address [1/2] : 0101010101010101010101010101010101",
       "11 | Address [2/2] : 010101010101010101010101010101",
       "12 | Version : 1",
-      "13 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "13 | Delegator [2/2] : 01010101010101010101010101010101",
+      "13 | Entry-point : delegate",
       "14 | Amount : 100 000 000 motes",
-      "15 | Approvals # : 3"
+      "15 | Arg-0-name : delegator",
+      "16 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "16 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "17 | Approvals # : 3"
     ]
   },
   {
@@ -12502,19 +12547,20 @@
     "output": [
       "0 | Txn hash [1/2] : 1ea68c44ff92b3a1a7c6e78cc23e642d3e",
       "0 | Txn hash [2/2] : 3d9d8910677b587856c81901b1f33d",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 02031b84c5567b126440995d3ed5aaba05",
       "3 | Account [2/2] : 65d71e1834604819ff9c17f5e9d5dd078f",
       "4 | Fee : 1 000 000 000 motes",
-      "5 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "5 | Delegator [2/2] : 01010101010101010101010101010101",
-      "6 | Amount : 100 000 000 motes"
+      "5 | Execution : by-hash-versioned",
+      "6 | Address [1/2] : 0101010101010101010101010101010101",
+      "6 | Address [2/2] : 010101010101010101010101010101",
+      "7 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 1ea68c44ff92b3a1a7c6e78cc23e642d3e",
       "0 | Txn hash [2/2] : 3d9d8910677b587856c81901b1f33d",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 02031b84c5567b126440995d3ed5aaba05",
       "3 | Account [2/2] : 65d71e1834604819ff9c17f5e9d5dd078f",
@@ -12527,10 +12573,12 @@
       "10 | Address [1/2] : 0101010101010101010101010101010101",
       "10 | Address [2/2] : 010101010101010101010101010101",
       "11 | Version : 1",
-      "12 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "12 | Delegator [2/2] : 01010101010101010101010101010101",
+      "12 | Entry-point : delegate",
       "13 | Amount : 100 000 000 motes",
-      "14 | Approvals # : 3"
+      "14 | Arg-0-name : delegator",
+      "15 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "15 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "16 | Approvals # : 3"
     ]
   },
   {
@@ -12543,18 +12591,18 @@
     "output": [
       "0 | Txn hash [1/2] : 56dd3b8d952d2c2c45a681186ff7b26237",
       "0 | Txn hash [2/2] : e440305a4a71718d0df109da649f26",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 018139770ea87d175f56a35466c34c7ecc",
       "3 | Account [2/2] : cb8d8a91b4ee37a25df60f5b8fc9b394",
-      "4 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "4 | Delegator [2/2] : 01010101010101010101010101010101",
-      "5 | Amount : 100 000 000 motes"
+      "4 | Execution : by-name-versioned",
+      "5 | Name : delegate-contract",
+      "6 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 56dd3b8d952d2c2c45a681186ff7b26237",
       "0 | Txn hash [2/2] : e440305a4a71718d0df109da649f26",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 018139770ea87d175f56a35466c34c7ecc",
       "3 | Account [2/2] : cb8d8a91b4ee37a25df60f5b8fc9b394",
@@ -12567,10 +12615,12 @@
       "10 | Execution : by-name-versioned",
       "11 | Name : delegate-contract",
       "12 | Version : 1",
-      "13 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "13 | Delegator [2/2] : 01010101010101010101010101010101",
+      "13 | Entry-point : delegate",
       "14 | Amount : 100 000 000 motes",
-      "15 | Approvals # : 3"
+      "15 | Arg-0-name : delegator",
+      "16 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "16 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "17 | Approvals # : 3"
     ]
   },
   {
@@ -12583,19 +12633,19 @@
     "output": [
       "0 | Txn hash [1/2] : af8ba829b4a3bfd636fbb458ec1285da24",
       "0 | Txn hash [2/2] : e00996d0a4364aa5de3d65d22bb19d",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
       "4 | Fee : 1 000 000 000 motes",
-      "5 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "5 | Delegator [2/2] : 01010101010101010101010101010101",
-      "6 | Amount : 100 000 000 motes"
+      "5 | Execution : by-name-versioned",
+      "6 | Name : delegate-contract",
+      "7 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : af8ba829b4a3bfd636fbb458ec1285da24",
       "0 | Txn hash [2/2] : e00996d0a4364aa5de3d65d22bb19d",
-      "1 | Type : Delegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -12607,10 +12657,12 @@
       "9 | Execution : by-name-versioned",
       "10 | Name : delegate-contract",
       "11 | Version : 1",
-      "12 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "12 | Delegator [2/2] : 01010101010101010101010101010101",
+      "12 | Entry-point : delegate",
       "13 | Amount : 100 000 000 motes",
-      "14 | Approvals # : 1"
+      "14 | Arg-0-name : delegator",
+      "15 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "15 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "16 | Approvals # : 1"
     ]
   },
   {
@@ -13703,19 +13755,18 @@
     "output": [
       "0 | Txn hash [1/2] : 1820f141546230b9ed1118ce4926e344fa",
       "0 | Txn hash [2/2] : 1a78fa1aa03b1b2837d3ebddb11ffb",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
-      "4 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "4 | Delegator [2/2] : 01010101010101010101010101010101",
-      "5 | Validator [1/2] : 0103030303030303030303030303030303",
-      "5 | Validator [2/2] : 03030303030303030303030303030303"
+      "4 | Execution : by-hash",
+      "5 | Address [1/2] : 0101010101010101010101010101010101",
+      "5 | Address [2/2] : 010101010101010101010101010101"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 1820f141546230b9ed1118ce4926e344fa",
       "0 | Txn hash [2/2] : 1a78fa1aa03b1b2837d3ebddb11ffb",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -13728,11 +13779,14 @@
       "10 | Execution : by-hash",
       "11 | Address [1/2] : 0101010101010101010101010101010101",
       "11 | Address [2/2] : 010101010101010101010101010101",
-      "12 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "12 | Delegator [2/2] : 01010101010101010101010101010101",
-      "13 | Validator [1/2] : 0103030303030303030303030303030303",
-      "13 | Validator [2/2] : 03030303030303030303030303030303",
-      "14 | Approvals # : 1"
+      "12 | Entry-point : undelegate",
+      "13 | Arg-0-name : delegator",
+      "14 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "14 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "15 | Arg-1-name : validator",
+      "16 | Arg-1-val [1/2] : 0103030303030303030303030303030303",
+      "16 | Arg-1-val [2/2] : 03030303030303030303030303030303",
+      "17 | Approvals # : 1"
     ]
   },
   {
@@ -13745,20 +13799,19 @@
     "output": [
       "0 | Txn hash [1/2] : 7560477cc7a6c90a202ef9f563fb7458fd",
       "0 | Txn hash [2/2] : d3eee59f869495897531142b037803",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 01ca93ac1705187071d67b83c7ff0efe81",
       "3 | Account [2/2] : 08e8ec4530575d7726879333dbdabe7c",
       "4 | Fee : 1 000 000 000 motes",
-      "5 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "5 | Delegator [2/2] : 01010101010101010101010101010101",
-      "6 | Validator [1/2] : 0103030303030303030303030303030303",
-      "6 | Validator [2/2] : 03030303030303030303030303030303"
+      "5 | Execution : by-hash",
+      "6 | Address [1/2] : 0101010101010101010101010101010101",
+      "6 | Address [2/2] : 010101010101010101010101010101"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 7560477cc7a6c90a202ef9f563fb7458fd",
       "0 | Txn hash [2/2] : d3eee59f869495897531142b037803",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 01ca93ac1705187071d67b83c7ff0efe81",
       "3 | Account [2/2] : 08e8ec4530575d7726879333dbdabe7c",
@@ -13770,11 +13823,14 @@
       "9 | Execution : by-hash",
       "10 | Address [1/2] : 0101010101010101010101010101010101",
       "10 | Address [2/2] : 010101010101010101010101010101",
-      "11 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "11 | Delegator [2/2] : 01010101010101010101010101010101",
-      "12 | Validator [1/2] : 0103030303030303030303030303030303",
-      "12 | Validator [2/2] : 03030303030303030303030303030303",
-      "13 | Approvals # : 10"
+      "11 | Entry-point : undelegate",
+      "12 | Arg-0-name : delegator",
+      "13 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "13 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "14 | Arg-1-name : validator",
+      "15 | Arg-1-val [1/2] : 0103030303030303030303030303030303",
+      "15 | Arg-1-val [2/2] : 03030303030303030303030303030303",
+      "16 | Approvals # : 10"
     ]
   },
   {
@@ -13787,19 +13843,17 @@
     "output": [
       "0 | Txn hash [1/2] : 13e1a8a8de5f08539cf11f1602dafe75c0",
       "0 | Txn hash [2/2] : 8a75e011f1fb9d9ee8f982d6ecdeee",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 018139770ea87d175f56a35466c34c7ecc",
       "3 | Account [2/2] : cb8d8a91b4ee37a25df60f5b8fc9b394",
-      "4 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "4 | Delegator [2/2] : 01010101010101010101010101010101",
-      "5 | Validator [1/2] : 0103030303030303030303030303030303",
-      "5 | Validator [2/2] : 03030303030303030303030303030303"
+      "4 | Execution : by-name",
+      "5 | Name : undelegate-contract"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 13e1a8a8de5f08539cf11f1602dafe75c0",
       "0 | Txn hash [2/2] : 8a75e011f1fb9d9ee8f982d6ecdeee",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 018139770ea87d175f56a35466c34c7ecc",
       "3 | Account [2/2] : cb8d8a91b4ee37a25df60f5b8fc9b394",
@@ -13811,11 +13865,14 @@
       "9 | Arg-0-val : 1000000000",
       "10 | Execution : by-name",
       "11 | Name : undelegate-contract",
-      "12 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "12 | Delegator [2/2] : 01010101010101010101010101010101",
-      "13 | Validator [1/2] : 0103030303030303030303030303030303",
-      "13 | Validator [2/2] : 03030303030303030303030303030303",
-      "14 | Approvals # : 3"
+      "12 | Entry-point : undelegate",
+      "13 | Arg-0-name : delegator",
+      "14 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "14 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "15 | Arg-1-name : validator",
+      "16 | Arg-1-val [1/2] : 0103030303030303030303030303030303",
+      "16 | Arg-1-val [2/2] : 03030303030303030303030303030303",
+      "17 | Approvals # : 3"
     ]
   },
   {
@@ -13828,20 +13885,18 @@
     "output": [
       "0 | Txn hash [1/2] : c1aa2f92d7601674abaf9beba726c0cdd4",
       "0 | Txn hash [2/2] : eeaa5c1f6d866a12736c61df304514",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 018139770ea87d175f56a35466c34c7ecc",
       "3 | Account [2/2] : cb8d8a91b4ee37a25df60f5b8fc9b394",
       "4 | Fee : 1 000 000 000 motes",
-      "5 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "5 | Delegator [2/2] : 01010101010101010101010101010101",
-      "6 | Validator [1/2] : 0103030303030303030303030303030303",
-      "6 | Validator [2/2] : 03030303030303030303030303030303"
+      "5 | Execution : by-name",
+      "6 | Name : undelegate-contract"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : c1aa2f92d7601674abaf9beba726c0cdd4",
       "0 | Txn hash [2/2] : eeaa5c1f6d866a12736c61df304514",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 018139770ea87d175f56a35466c34c7ecc",
       "3 | Account [2/2] : cb8d8a91b4ee37a25df60f5b8fc9b394",
@@ -13852,11 +13907,14 @@
       "8 | Fee : 1 000 000 000 motes",
       "9 | Execution : by-name",
       "10 | Name : undelegate-contract",
-      "11 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "11 | Delegator [2/2] : 01010101010101010101010101010101",
-      "12 | Validator [1/2] : 0103030303030303030303030303030303",
-      "12 | Validator [2/2] : 03030303030303030303030303030303",
-      "13 | Approvals # : 3"
+      "11 | Entry-point : undelegate",
+      "12 | Arg-0-name : delegator",
+      "13 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "13 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "14 | Arg-1-name : validator",
+      "15 | Arg-1-val [1/2] : 0103030303030303030303030303030303",
+      "15 | Arg-1-val [2/2] : 03030303030303030303030303030303",
+      "16 | Approvals # : 3"
     ]
   },
   {
@@ -13869,19 +13927,18 @@
     "output": [
       "0 | Txn hash [1/2] : ef0f71a5587e5f55f81a38526ff7af651d",
       "0 | Txn hash [2/2] : 3a0475691113f9861c523cd1d31d18",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 02031b84c5567b126440995d3ed5aaba05",
       "3 | Account [2/2] : 65d71e1834604819ff9c17f5e9d5dd078f",
-      "4 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "4 | Delegator [2/2] : 01010101010101010101010101010101",
-      "5 | Validator [1/2] : 0103030303030303030303030303030303",
-      "5 | Validator [2/2] : 03030303030303030303030303030303"
+      "4 | Execution : by-hash-versioned",
+      "5 | Address [1/2] : 0101010101010101010101010101010101",
+      "5 | Address [2/2] : 010101010101010101010101010101"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : ef0f71a5587e5f55f81a38526ff7af651d",
       "0 | Txn hash [2/2] : 3a0475691113f9861c523cd1d31d18",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 02031b84c5567b126440995d3ed5aaba05",
       "3 | Account [2/2] : 65d71e1834604819ff9c17f5e9d5dd078f",
@@ -13895,11 +13952,14 @@
       "11 | Address [1/2] : 0101010101010101010101010101010101",
       "11 | Address [2/2] : 010101010101010101010101010101",
       "12 | Version : 1",
-      "13 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "13 | Delegator [2/2] : 01010101010101010101010101010101",
-      "14 | Validator [1/2] : 0103030303030303030303030303030303",
-      "14 | Validator [2/2] : 03030303030303030303030303030303",
-      "15 | Approvals # : 10"
+      "13 | Entry-point : undelegate",
+      "14 | Arg-0-name : delegator",
+      "15 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "15 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "16 | Arg-1-name : validator",
+      "17 | Arg-1-val [1/2] : 0103030303030303030303030303030303",
+      "17 | Arg-1-val [2/2] : 03030303030303030303030303030303",
+      "18 | Approvals # : 10"
     ]
   },
   {
@@ -13912,20 +13972,19 @@
     "output": [
       "0 | Txn hash [1/2] : 78313201005d00a84a14b4480730f4af17",
       "0 | Txn hash [2/2] : a599965eeb05da04cb858b891d1aa7",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
       "4 | Fee : 1 000 000 000 motes",
-      "5 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "5 | Delegator [2/2] : 01010101010101010101010101010101",
-      "6 | Validator [1/2] : 0103030303030303030303030303030303",
-      "6 | Validator [2/2] : 03030303030303030303030303030303"
+      "5 | Execution : by-hash-versioned",
+      "6 | Address [1/2] : 0101010101010101010101010101010101",
+      "6 | Address [2/2] : 010101010101010101010101010101"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 78313201005d00a84a14b4480730f4af17",
       "0 | Txn hash [2/2] : a599965eeb05da04cb858b891d1aa7",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -13938,11 +13997,14 @@
       "10 | Address [1/2] : 0101010101010101010101010101010101",
       "10 | Address [2/2] : 010101010101010101010101010101",
       "11 | Version : 1",
-      "12 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "12 | Delegator [2/2] : 01010101010101010101010101010101",
-      "13 | Validator [1/2] : 0103030303030303030303030303030303",
-      "13 | Validator [2/2] : 03030303030303030303030303030303",
-      "14 | Approvals # : 1"
+      "12 | Entry-point : undelegate",
+      "13 | Arg-0-name : delegator",
+      "14 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "14 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "15 | Arg-1-name : validator",
+      "16 | Arg-1-val [1/2] : 0103030303030303030303030303030303",
+      "16 | Arg-1-val [2/2] : 03030303030303030303030303030303",
+      "17 | Approvals # : 1"
     ]
   },
   {
@@ -13955,19 +14017,17 @@
     "output": [
       "0 | Txn hash [1/2] : 0c73643684e5179d355b33ebea60a340da",
       "0 | Txn hash [2/2] : c5a1149a2c69ba4723a1ad7d686b4d",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
-      "4 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "4 | Delegator [2/2] : 01010101010101010101010101010101",
-      "5 | Validator [1/2] : 0103030303030303030303030303030303",
-      "5 | Validator [2/2] : 03030303030303030303030303030303"
+      "4 | Execution : by-name-versioned",
+      "5 | Name : undelegate-contract"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 0c73643684e5179d355b33ebea60a340da",
       "0 | Txn hash [2/2] : c5a1149a2c69ba4723a1ad7d686b4d",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -13980,11 +14040,14 @@
       "10 | Execution : by-name-versioned",
       "11 | Name : undelegate-contract",
       "12 | Version : 1",
-      "13 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "13 | Delegator [2/2] : 01010101010101010101010101010101",
-      "14 | Validator [1/2] : 0103030303030303030303030303030303",
-      "14 | Validator [2/2] : 03030303030303030303030303030303",
-      "15 | Approvals # : 1"
+      "13 | Entry-point : undelegate",
+      "14 | Arg-0-name : delegator",
+      "15 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "15 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "16 | Arg-1-name : validator",
+      "17 | Arg-1-val [1/2] : 0103030303030303030303030303030303",
+      "17 | Arg-1-val [2/2] : 03030303030303030303030303030303",
+      "18 | Approvals # : 1"
     ]
   },
   {
@@ -13997,20 +14060,18 @@
     "output": [
       "0 | Txn hash [1/2] : bb148d117caf6c2f6395e70f46b15e9946",
       "0 | Txn hash [2/2] : 61699f1ad94e3979d890408a356de0",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
       "4 | Fee : 1 000 000 000 motes",
-      "5 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "5 | Delegator [2/2] : 01010101010101010101010101010101",
-      "6 | Validator [1/2] : 0103030303030303030303030303030303",
-      "6 | Validator [2/2] : 03030303030303030303030303030303"
+      "5 | Execution : by-name-versioned",
+      "6 | Name : undelegate-contract"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : bb148d117caf6c2f6395e70f46b15e9946",
       "0 | Txn hash [2/2] : 61699f1ad94e3979d890408a356de0",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -14022,11 +14083,14 @@
       "9 | Execution : by-name-versioned",
       "10 | Name : undelegate-contract",
       "11 | Version : 1",
-      "12 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "12 | Delegator [2/2] : 01010101010101010101010101010101",
-      "13 | Validator [1/2] : 0103030303030303030303030303030303",
-      "13 | Validator [2/2] : 03030303030303030303030303030303",
-      "14 | Approvals # : 1"
+      "12 | Entry-point : undelegate",
+      "13 | Arg-0-name : delegator",
+      "14 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "14 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "15 | Arg-1-name : validator",
+      "16 | Arg-1-val [1/2] : 0103030303030303030303030303030303",
+      "16 | Arg-1-val [2/2] : 03030303030303030303030303030303",
+      "17 | Approvals # : 1"
     ]
   },
   {
@@ -14403,18 +14467,19 @@
     "output": [
       "0 | Txn hash [1/2] : 11cfe24fcd57124d3de72901c7f71d4728",
       "0 | Txn hash [2/2] : 8a16c6bc4adff73578413a4593516d",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
-      "4 | Validator [1/2] : 0103030303030303030303030303030303",
-      "4 | Validator [2/2] : 03030303030303030303030303030303",
-      "5 | Amount : 100 000 000 motes"
+      "4 | Execution : by-hash",
+      "5 | Address [1/2] : 0101010101010101010101010101010101",
+      "5 | Address [2/2] : 010101010101010101010101010101",
+      "6 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 11cfe24fcd57124d3de72901c7f71d4728",
       "0 | Txn hash [2/2] : 8a16c6bc4adff73578413a4593516d",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -14427,10 +14492,12 @@
       "10 | Execution : by-hash",
       "11 | Address [1/2] : 0101010101010101010101010101010101",
       "11 | Address [2/2] : 010101010101010101010101010101",
-      "12 | Validator [1/2] : 0103030303030303030303030303030303",
-      "12 | Validator [2/2] : 03030303030303030303030303030303",
+      "12 | Entry-point : undelegate",
       "13 | Amount : 100 000 000 motes",
-      "14 | Approvals # : 1"
+      "14 | Arg-0-name : validator",
+      "15 | Arg-0-val [1/2] : 0103030303030303030303030303030303",
+      "15 | Arg-0-val [2/2] : 03030303030303030303030303030303",
+      "16 | Approvals # : 1"
     ]
   },
   {
@@ -14443,19 +14510,20 @@
     "output": [
       "0 | Txn hash [1/2] : 035d2294a7b712deeae9afc7727d024ff4",
       "0 | Txn hash [2/2] : 846c5922e55e1124b97f7c695605ab",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 02031b84c5567b126440995d3ed5aaba05",
       "3 | Account [2/2] : 65d71e1834604819ff9c17f5e9d5dd078f",
       "4 | Fee : 1 000 000 000 motes",
-      "5 | Validator [1/2] : 0103030303030303030303030303030303",
-      "5 | Validator [2/2] : 03030303030303030303030303030303",
-      "6 | Amount : 100 000 000 motes"
+      "5 | Execution : by-hash",
+      "6 | Address [1/2] : 0101010101010101010101010101010101",
+      "6 | Address [2/2] : 010101010101010101010101010101",
+      "7 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 035d2294a7b712deeae9afc7727d024ff4",
       "0 | Txn hash [2/2] : 846c5922e55e1124b97f7c695605ab",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 02031b84c5567b126440995d3ed5aaba05",
       "3 | Account [2/2] : 65d71e1834604819ff9c17f5e9d5dd078f",
@@ -14467,10 +14535,12 @@
       "9 | Execution : by-hash",
       "10 | Address [1/2] : 0101010101010101010101010101010101",
       "10 | Address [2/2] : 010101010101010101010101010101",
-      "11 | Validator [1/2] : 0103030303030303030303030303030303",
-      "11 | Validator [2/2] : 03030303030303030303030303030303",
+      "11 | Entry-point : undelegate",
       "12 | Amount : 100 000 000 motes",
-      "13 | Approvals # : 3"
+      "13 | Arg-0-name : validator",
+      "14 | Arg-0-val [1/2] : 0103030303030303030303030303030303",
+      "14 | Arg-0-val [2/2] : 03030303030303030303030303030303",
+      "15 | Approvals # : 3"
     ]
   },
   {
@@ -14483,18 +14553,18 @@
     "output": [
       "0 | Txn hash [1/2] : d4aa2b12cafe68ada150cfc44e8fb370a6",
       "0 | Txn hash [2/2] : 2f8b20e0919fa6f6fd55cda54c9969",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
-      "4 | Validator [1/2] : 0103030303030303030303030303030303",
-      "4 | Validator [2/2] : 03030303030303030303030303030303",
-      "5 | Amount : 100 000 000 motes"
+      "4 | Execution : by-name",
+      "5 | Name : undelegate-contract",
+      "6 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : d4aa2b12cafe68ada150cfc44e8fb370a6",
       "0 | Txn hash [2/2] : 2f8b20e0919fa6f6fd55cda54c9969",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -14506,10 +14576,12 @@
       "9 | Arg-0-val : 1000000000",
       "10 | Execution : by-name",
       "11 | Name : undelegate-contract",
-      "12 | Validator [1/2] : 0103030303030303030303030303030303",
-      "12 | Validator [2/2] : 03030303030303030303030303030303",
+      "12 | Entry-point : undelegate",
       "13 | Amount : 100 000 000 motes",
-      "14 | Approvals # : 1"
+      "14 | Arg-0-name : validator",
+      "15 | Arg-0-val [1/2] : 0103030303030303030303030303030303",
+      "15 | Arg-0-val [2/2] : 03030303030303030303030303030303",
+      "16 | Approvals # : 1"
     ]
   },
   {
@@ -14522,19 +14594,19 @@
     "output": [
       "0 | Txn hash [1/2] : 60fdf59f82391668c933069f464a9c8004",
       "0 | Txn hash [2/2] : cba760f63906515cbcb3bd88610a72",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
       "4 | Fee : 1 000 000 000 motes",
-      "5 | Validator [1/2] : 0103030303030303030303030303030303",
-      "5 | Validator [2/2] : 03030303030303030303030303030303",
-      "6 | Amount : 100 000 000 motes"
+      "5 | Execution : by-name",
+      "6 | Name : undelegate-contract",
+      "7 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 60fdf59f82391668c933069f464a9c8004",
       "0 | Txn hash [2/2] : cba760f63906515cbcb3bd88610a72",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -14545,10 +14617,12 @@
       "8 | Fee : 1 000 000 000 motes",
       "9 | Execution : by-name",
       "10 | Name : undelegate-contract",
-      "11 | Validator [1/2] : 0103030303030303030303030303030303",
-      "11 | Validator [2/2] : 03030303030303030303030303030303",
+      "11 | Entry-point : undelegate",
       "12 | Amount : 100 000 000 motes",
-      "13 | Approvals # : 10"
+      "13 | Arg-0-name : validator",
+      "14 | Arg-0-val [1/2] : 0103030303030303030303030303030303",
+      "14 | Arg-0-val [2/2] : 03030303030303030303030303030303",
+      "15 | Approvals # : 10"
     ]
   },
   {
@@ -14561,18 +14635,19 @@
     "output": [
       "0 | Txn hash [1/2] : b699aef06949fefc81c03b1f161d107c88",
       "0 | Txn hash [2/2] : 98690c4bb32d9ae2571619db32fbfb",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 02031b84c5567b126440995d3ed5aaba05",
       "3 | Account [2/2] : 65d71e1834604819ff9c17f5e9d5dd078f",
-      "4 | Validator [1/2] : 0103030303030303030303030303030303",
-      "4 | Validator [2/2] : 03030303030303030303030303030303",
-      "5 | Amount : 100 000 000 motes"
+      "4 | Execution : by-hash-versioned",
+      "5 | Address [1/2] : 0101010101010101010101010101010101",
+      "5 | Address [2/2] : 010101010101010101010101010101",
+      "6 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : b699aef06949fefc81c03b1f161d107c88",
       "0 | Txn hash [2/2] : 98690c4bb32d9ae2571619db32fbfb",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 02031b84c5567b126440995d3ed5aaba05",
       "3 | Account [2/2] : 65d71e1834604819ff9c17f5e9d5dd078f",
@@ -14586,10 +14661,12 @@
       "11 | Address [1/2] : 0101010101010101010101010101010101",
       "11 | Address [2/2] : 010101010101010101010101010101",
       "12 | Version : 1",
-      "13 | Validator [1/2] : 0103030303030303030303030303030303",
-      "13 | Validator [2/2] : 03030303030303030303030303030303",
+      "13 | Entry-point : undelegate",
       "14 | Amount : 100 000 000 motes",
-      "15 | Approvals # : 10"
+      "15 | Arg-0-name : validator",
+      "16 | Arg-0-val [1/2] : 0103030303030303030303030303030303",
+      "16 | Arg-0-val [2/2] : 03030303030303030303030303030303",
+      "17 | Approvals # : 10"
     ]
   },
   {
@@ -14602,19 +14679,20 @@
     "output": [
       "0 | Txn hash [1/2] : ff6f1cda97a4360288e41e123a8e4ddf78",
       "0 | Txn hash [2/2] : b191966142960f9e2fb0793b55bded",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
       "4 | Fee : 1 000 000 000 motes",
-      "5 | Validator [1/2] : 0103030303030303030303030303030303",
-      "5 | Validator [2/2] : 03030303030303030303030303030303",
-      "6 | Amount : 100 000 000 motes"
+      "5 | Execution : by-hash-versioned",
+      "6 | Address [1/2] : 0101010101010101010101010101010101",
+      "6 | Address [2/2] : 010101010101010101010101010101",
+      "7 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : ff6f1cda97a4360288e41e123a8e4ddf78",
       "0 | Txn hash [2/2] : b191966142960f9e2fb0793b55bded",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -14627,10 +14705,12 @@
       "10 | Address [1/2] : 0101010101010101010101010101010101",
       "10 | Address [2/2] : 010101010101010101010101010101",
       "11 | Version : 1",
-      "12 | Validator [1/2] : 0103030303030303030303030303030303",
-      "12 | Validator [2/2] : 03030303030303030303030303030303",
+      "12 | Entry-point : undelegate",
       "13 | Amount : 100 000 000 motes",
-      "14 | Approvals # : 3"
+      "14 | Arg-0-name : validator",
+      "15 | Arg-0-val [1/2] : 0103030303030303030303030303030303",
+      "15 | Arg-0-val [2/2] : 03030303030303030303030303030303",
+      "16 | Approvals # : 3"
     ]
   },
   {
@@ -14643,18 +14723,18 @@
     "output": [
       "0 | Txn hash [1/2] : 27e02998f11a78fbb6870116b24789530b",
       "0 | Txn hash [2/2] : 716d69cc24971ce93b8e49bf05028a",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
-      "4 | Validator [1/2] : 0103030303030303030303030303030303",
-      "4 | Validator [2/2] : 03030303030303030303030303030303",
-      "5 | Amount : 100 000 000 motes"
+      "4 | Execution : by-name-versioned",
+      "5 | Name : undelegate-contract",
+      "6 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 27e02998f11a78fbb6870116b24789530b",
       "0 | Txn hash [2/2] : 716d69cc24971ce93b8e49bf05028a",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -14667,10 +14747,12 @@
       "10 | Execution : by-name-versioned",
       "11 | Name : undelegate-contract",
       "12 | Version : 1",
-      "13 | Validator [1/2] : 0103030303030303030303030303030303",
-      "13 | Validator [2/2] : 03030303030303030303030303030303",
+      "13 | Entry-point : undelegate",
       "14 | Amount : 100 000 000 motes",
-      "15 | Approvals # : 1"
+      "15 | Arg-0-name : validator",
+      "16 | Arg-0-val [1/2] : 0103030303030303030303030303030303",
+      "16 | Arg-0-val [2/2] : 03030303030303030303030303030303",
+      "17 | Approvals # : 1"
     ]
   },
   {
@@ -14683,19 +14765,19 @@
     "output": [
       "0 | Txn hash [1/2] : 3048c013b67ef3a5246e1e58df9f5158d6",
       "0 | Txn hash [2/2] : b9f5e63a30e7ac1ef1f8e5c60d671c",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
       "4 | Fee : 1 000 000 000 motes",
-      "5 | Validator [1/2] : 0103030303030303030303030303030303",
-      "5 | Validator [2/2] : 03030303030303030303030303030303",
-      "6 | Amount : 100 000 000 motes"
+      "5 | Execution : by-name-versioned",
+      "6 | Name : undelegate-contract",
+      "7 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 3048c013b67ef3a5246e1e58df9f5158d6",
       "0 | Txn hash [2/2] : b9f5e63a30e7ac1ef1f8e5c60d671c",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -14707,10 +14789,12 @@
       "9 | Execution : by-name-versioned",
       "10 | Name : undelegate-contract",
       "11 | Version : 1",
-      "12 | Validator [1/2] : 0103030303030303030303030303030303",
-      "12 | Validator [2/2] : 03030303030303030303030303030303",
+      "12 | Entry-point : undelegate",
       "13 | Amount : 100 000 000 motes",
-      "14 | Approvals # : 1"
+      "14 | Arg-0-name : validator",
+      "15 | Arg-0-val [1/2] : 0103030303030303030303030303030303",
+      "15 | Arg-0-val [2/2] : 03030303030303030303030303030303",
+      "16 | Approvals # : 1"
     ]
   },
   {
@@ -15087,18 +15171,19 @@
     "output": [
       "0 | Txn hash [1/2] : 863f500d0342ad4eb914d2a44e473be87c",
       "0 | Txn hash [2/2] : defe8354b65ed8ea255ac326a7a1de",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
-      "4 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "4 | Delegator [2/2] : 01010101010101010101010101010101",
-      "5 | Amount : 100 000 000 motes"
+      "4 | Execution : by-hash",
+      "5 | Address [1/2] : 0101010101010101010101010101010101",
+      "5 | Address [2/2] : 010101010101010101010101010101",
+      "6 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 863f500d0342ad4eb914d2a44e473be87c",
       "0 | Txn hash [2/2] : defe8354b65ed8ea255ac326a7a1de",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -15111,10 +15196,12 @@
       "10 | Execution : by-hash",
       "11 | Address [1/2] : 0101010101010101010101010101010101",
       "11 | Address [2/2] : 010101010101010101010101010101",
-      "12 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "12 | Delegator [2/2] : 01010101010101010101010101010101",
+      "12 | Entry-point : undelegate",
       "13 | Amount : 100 000 000 motes",
-      "14 | Approvals # : 3"
+      "14 | Arg-0-name : delegator",
+      "15 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "15 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "16 | Approvals # : 3"
     ]
   },
   {
@@ -15127,19 +15214,20 @@
     "output": [
       "0 | Txn hash [1/2] : de0cb52184ff27a06d1330199bbf111ab1",
       "0 | Txn hash [2/2] : f995533244c8232ae31b9b4d311718",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
       "4 | Fee : 1 000 000 000 motes",
-      "5 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "5 | Delegator [2/2] : 01010101010101010101010101010101",
-      "6 | Amount : 100 000 000 motes"
+      "5 | Execution : by-hash",
+      "6 | Address [1/2] : 0101010101010101010101010101010101",
+      "6 | Address [2/2] : 010101010101010101010101010101",
+      "7 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : de0cb52184ff27a06d1330199bbf111ab1",
       "0 | Txn hash [2/2] : f995533244c8232ae31b9b4d311718",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -15151,10 +15239,12 @@
       "9 | Execution : by-hash",
       "10 | Address [1/2] : 0101010101010101010101010101010101",
       "10 | Address [2/2] : 010101010101010101010101010101",
-      "11 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "11 | Delegator [2/2] : 01010101010101010101010101010101",
+      "11 | Entry-point : undelegate",
       "12 | Amount : 100 000 000 motes",
-      "13 | Approvals # : 1"
+      "13 | Arg-0-name : delegator",
+      "14 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "14 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "15 | Approvals # : 1"
     ]
   },
   {
@@ -15167,18 +15257,18 @@
     "output": [
       "0 | Txn hash [1/2] : 0a1b83cf41a90d06e00ab6d7494b0af3af",
       "0 | Txn hash [2/2] : 90a1c2cbf86eb9f75a8bc97eda8551",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 020256b328b30c8bf5839e240587478794",
       "3 | Account [2/2] : 08bdb36241dc9c2e7c619faa12b2920967",
-      "4 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "4 | Delegator [2/2] : 01010101010101010101010101010101",
-      "5 | Amount : 100 000 000 motes"
+      "4 | Execution : by-name",
+      "5 | Name : undelegate-contract",
+      "6 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 0a1b83cf41a90d06e00ab6d7494b0af3af",
       "0 | Txn hash [2/2] : 90a1c2cbf86eb9f75a8bc97eda8551",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 020256b328b30c8bf5839e240587478794",
       "3 | Account [2/2] : 08bdb36241dc9c2e7c619faa12b2920967",
@@ -15190,10 +15280,12 @@
       "9 | Arg-0-val : 1000000000",
       "10 | Execution : by-name",
       "11 | Name : undelegate-contract",
-      "12 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "12 | Delegator [2/2] : 01010101010101010101010101010101",
+      "12 | Entry-point : undelegate",
       "13 | Amount : 100 000 000 motes",
-      "14 | Approvals # : 10"
+      "14 | Arg-0-name : delegator",
+      "15 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "15 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "16 | Approvals # : 10"
     ]
   },
   {
@@ -15206,19 +15298,19 @@
     "output": [
       "0 | Txn hash [1/2] : 72c5892d6743463dad0d305528225ad677",
       "0 | Txn hash [2/2] : 4c9f4e652d0b381c04ba0e41a78e4d",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 0202531fe6068134503d2723133227c867",
       "3 | Account [2/2] : ac8fa6c83c537e9a44c3c5bdbdcb1fe337",
       "4 | Fee : 1 000 000 000 motes",
-      "5 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "5 | Delegator [2/2] : 01010101010101010101010101010101",
-      "6 | Amount : 100 000 000 motes"
+      "5 | Execution : by-name",
+      "6 | Name : undelegate-contract",
+      "7 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 72c5892d6743463dad0d305528225ad677",
       "0 | Txn hash [2/2] : 4c9f4e652d0b381c04ba0e41a78e4d",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 0202531fe6068134503d2723133227c867",
       "3 | Account [2/2] : ac8fa6c83c537e9a44c3c5bdbdcb1fe337",
@@ -15229,10 +15321,12 @@
       "8 | Fee : 1 000 000 000 motes",
       "9 | Execution : by-name",
       "10 | Name : undelegate-contract",
-      "11 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "11 | Delegator [2/2] : 01010101010101010101010101010101",
+      "11 | Entry-point : undelegate",
       "12 | Amount : 100 000 000 motes",
-      "13 | Approvals # : 10"
+      "13 | Arg-0-name : delegator",
+      "14 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "14 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "15 | Approvals # : 10"
     ]
   },
   {
@@ -15245,18 +15339,19 @@
     "output": [
       "0 | Txn hash [1/2] : 3fdd2f25912d5c69dba970ba01dd95a7d5",
       "0 | Txn hash [2/2] : 7b9fa53bea49c6d4a6b182d5d44cb6",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 02031b84c5567b126440995d3ed5aaba05",
       "3 | Account [2/2] : 65d71e1834604819ff9c17f5e9d5dd078f",
-      "4 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "4 | Delegator [2/2] : 01010101010101010101010101010101",
-      "5 | Amount : 100 000 000 motes"
+      "4 | Execution : by-hash-versioned",
+      "5 | Address [1/2] : 0101010101010101010101010101010101",
+      "5 | Address [2/2] : 010101010101010101010101010101",
+      "6 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 3fdd2f25912d5c69dba970ba01dd95a7d5",
       "0 | Txn hash [2/2] : 7b9fa53bea49c6d4a6b182d5d44cb6",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 02031b84c5567b126440995d3ed5aaba05",
       "3 | Account [2/2] : 65d71e1834604819ff9c17f5e9d5dd078f",
@@ -15270,10 +15365,12 @@
       "11 | Address [1/2] : 0101010101010101010101010101010101",
       "11 | Address [2/2] : 010101010101010101010101010101",
       "12 | Version : 1",
-      "13 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "13 | Delegator [2/2] : 01010101010101010101010101010101",
+      "13 | Entry-point : undelegate",
       "14 | Amount : 100 000 000 motes",
-      "15 | Approvals # : 3"
+      "15 | Arg-0-name : delegator",
+      "16 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "16 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "17 | Approvals # : 3"
     ]
   },
   {
@@ -15286,19 +15383,20 @@
     "output": [
       "0 | Txn hash [1/2] : c61d9785097d6a8672a90a058bb4483429",
       "0 | Txn hash [2/2] : fa4c2c4352e0437b1925598a549990",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
       "4 | Fee : 1 000 000 000 motes",
-      "5 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "5 | Delegator [2/2] : 01010101010101010101010101010101",
-      "6 | Amount : 100 000 000 motes"
+      "5 | Execution : by-hash-versioned",
+      "6 | Address [1/2] : 0101010101010101010101010101010101",
+      "6 | Address [2/2] : 010101010101010101010101010101",
+      "7 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : c61d9785097d6a8672a90a058bb4483429",
       "0 | Txn hash [2/2] : fa4c2c4352e0437b1925598a549990",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -15311,10 +15409,12 @@
       "10 | Address [1/2] : 0101010101010101010101010101010101",
       "10 | Address [2/2] : 010101010101010101010101010101",
       "11 | Version : 1",
-      "12 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "12 | Delegator [2/2] : 01010101010101010101010101010101",
+      "12 | Entry-point : undelegate",
       "13 | Amount : 100 000 000 motes",
-      "14 | Approvals # : 10"
+      "14 | Arg-0-name : delegator",
+      "15 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "15 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "16 | Approvals # : 10"
     ]
   },
   {
@@ -15327,18 +15427,18 @@
     "output": [
       "0 | Txn hash [1/2] : bd30e930d1768761a722a449dcb8019190",
       "0 | Txn hash [2/2] : 75a2c91ceaed22eef663d80cd6a23f",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
-      "4 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "4 | Delegator [2/2] : 01010101010101010101010101010101",
-      "5 | Amount : 100 000 000 motes"
+      "4 | Execution : by-name-versioned",
+      "5 | Name : undelegate-contract",
+      "6 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : bd30e930d1768761a722a449dcb8019190",
       "0 | Txn hash [2/2] : 75a2c91ceaed22eef663d80cd6a23f",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -15351,10 +15451,12 @@
       "10 | Execution : by-name-versioned",
       "11 | Name : undelegate-contract",
       "12 | Version : 1",
-      "13 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "13 | Delegator [2/2] : 01010101010101010101010101010101",
+      "13 | Entry-point : undelegate",
       "14 | Amount : 100 000 000 motes",
-      "15 | Approvals # : 1"
+      "15 | Arg-0-name : delegator",
+      "16 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "16 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "17 | Approvals # : 1"
     ]
   },
   {
@@ -15367,19 +15469,19 @@
     "output": [
       "0 | Txn hash [1/2] : f65992669d9a2b0bfd2e139147a49becd9",
       "0 | Txn hash [2/2] : fb9cdb99ebc76a5306ed146edb54f0",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
       "4 | Fee : 1 000 000 000 motes",
-      "5 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "5 | Delegator [2/2] : 01010101010101010101010101010101",
-      "6 | Amount : 100 000 000 motes"
+      "5 | Execution : by-name-versioned",
+      "6 | Name : undelegate-contract",
+      "7 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : f65992669d9a2b0bfd2e139147a49becd9",
       "0 | Txn hash [2/2] : fb9cdb99ebc76a5306ed146edb54f0",
-      "1 | Type : Undelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -15391,10 +15493,12 @@
       "9 | Execution : by-name-versioned",
       "10 | Name : undelegate-contract",
       "11 | Version : 1",
-      "12 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "12 | Delegator [2/2] : 01010101010101010101010101010101",
+      "12 | Entry-point : undelegate",
       "13 | Amount : 100 000 000 motes",
-      "14 | Approvals # : 1"
+      "14 | Arg-0-name : delegator",
+      "15 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "15 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "16 | Approvals # : 1"
     ]
   },
   {
@@ -17267,21 +17371,18 @@
     "output": [
       "0 | Txn hash [1/2] : f66155fe46629b3ea1494f74354a0e55e9",
       "0 | Txn hash [2/2] : a9266f476fe3f99ce0103b65a8aece",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
-      "4 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "4 | Delegator [2/2] : 01010101010101010101010101010101",
-      "5 | Old [1/2] : 0103030303030303030303030303030303",
-      "5 | Old [2/2] : 03030303030303030303030303030303",
-      "6 | New [1/2] : 0106060606060606060606060606060606",
-      "6 | New [2/2] : 06060606060606060606060606060606"
+      "4 | Execution : by-hash",
+      "5 | Address [1/2] : 0101010101010101010101010101010101",
+      "5 | Address [2/2] : 010101010101010101010101010101"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : f66155fe46629b3ea1494f74354a0e55e9",
       "0 | Txn hash [2/2] : a9266f476fe3f99ce0103b65a8aece",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -17294,13 +17395,17 @@
       "10 | Execution : by-hash",
       "11 | Address [1/2] : 0101010101010101010101010101010101",
       "11 | Address [2/2] : 010101010101010101010101010101",
-      "12 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "12 | Delegator [2/2] : 01010101010101010101010101010101",
-      "13 | Old [1/2] : 0103030303030303030303030303030303",
-      "13 | Old [2/2] : 03030303030303030303030303030303",
-      "14 | New [1/2] : 0106060606060606060606060606060606",
-      "14 | New [2/2] : 06060606060606060606060606060606",
-      "15 | Approvals # : 10"
+      "12 | Entry-point : redelegate",
+      "13 | Arg-0-name : delegator",
+      "14 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "14 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "15 | Arg-1-name : new_validator",
+      "16 | Arg-1-val [1/2] : 0106060606060606060606060606060606",
+      "16 | Arg-1-val [2/2] : 06060606060606060606060606060606",
+      "17 | Arg-2-name : validator",
+      "18 | Arg-2-val [1/2] : 0103030303030303030303030303030303",
+      "18 | Arg-2-val [2/2] : 03030303030303030303030303030303",
+      "19 | Approvals # : 10"
     ]
   },
   {
@@ -17313,22 +17418,19 @@
     "output": [
       "0 | Txn hash [1/2] : 8648701dc5c30069663350324ef4537557",
       "0 | Txn hash [2/2] : e3b0e89b05fa6d0ac0dd0da68515e6",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
       "4 | Fee : 1 000 000 000 motes",
-      "5 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "5 | Delegator [2/2] : 01010101010101010101010101010101",
-      "6 | Old [1/2] : 0103030303030303030303030303030303",
-      "6 | Old [2/2] : 03030303030303030303030303030303",
-      "7 | New [1/2] : 0106060606060606060606060606060606",
-      "7 | New [2/2] : 06060606060606060606060606060606"
+      "5 | Execution : by-hash",
+      "6 | Address [1/2] : 0101010101010101010101010101010101",
+      "6 | Address [2/2] : 010101010101010101010101010101"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 8648701dc5c30069663350324ef4537557",
       "0 | Txn hash [2/2] : e3b0e89b05fa6d0ac0dd0da68515e6",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -17340,13 +17442,17 @@
       "9 | Execution : by-hash",
       "10 | Address [1/2] : 0101010101010101010101010101010101",
       "10 | Address [2/2] : 010101010101010101010101010101",
-      "11 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "11 | Delegator [2/2] : 01010101010101010101010101010101",
-      "12 | Old [1/2] : 0103030303030303030303030303030303",
-      "12 | Old [2/2] : 03030303030303030303030303030303",
-      "13 | New [1/2] : 0106060606060606060606060606060606",
-      "13 | New [2/2] : 06060606060606060606060606060606",
-      "14 | Approvals # : 1"
+      "11 | Entry-point : redelegate",
+      "12 | Arg-0-name : delegator",
+      "13 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "13 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "14 | Arg-1-name : new_validator",
+      "15 | Arg-1-val [1/2] : 0106060606060606060606060606060606",
+      "15 | Arg-1-val [2/2] : 06060606060606060606060606060606",
+      "16 | Arg-2-name : validator",
+      "17 | Arg-2-val [1/2] : 0103030303030303030303030303030303",
+      "17 | Arg-2-val [2/2] : 03030303030303030303030303030303",
+      "18 | Approvals # : 1"
     ]
   },
   {
@@ -17359,21 +17465,17 @@
     "output": [
       "0 | Txn hash [1/2] : fdeb9ebd917c5f7c8ec07e3288e2c01b4b",
       "0 | Txn hash [2/2] : 8e1457847d8540f5ff07339f986091",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 02031b84c5567b126440995d3ed5aaba05",
       "3 | Account [2/2] : 65d71e1834604819ff9c17f5e9d5dd078f",
-      "4 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "4 | Delegator [2/2] : 01010101010101010101010101010101",
-      "5 | Old [1/2] : 0103030303030303030303030303030303",
-      "5 | Old [2/2] : 03030303030303030303030303030303",
-      "6 | New [1/2] : 0106060606060606060606060606060606",
-      "6 | New [2/2] : 06060606060606060606060606060606"
+      "4 | Execution : by-name",
+      "5 | Name : redelegate-contract"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : fdeb9ebd917c5f7c8ec07e3288e2c01b4b",
       "0 | Txn hash [2/2] : 8e1457847d8540f5ff07339f986091",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 02031b84c5567b126440995d3ed5aaba05",
       "3 | Account [2/2] : 65d71e1834604819ff9c17f5e9d5dd078f",
@@ -17385,13 +17487,17 @@
       "9 | Arg-0-val : 1000000000",
       "10 | Execution : by-name",
       "11 | Name : redelegate-contract",
-      "12 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "12 | Delegator [2/2] : 01010101010101010101010101010101",
-      "13 | Old [1/2] : 0103030303030303030303030303030303",
-      "13 | Old [2/2] : 03030303030303030303030303030303",
-      "14 | New [1/2] : 0106060606060606060606060606060606",
-      "14 | New [2/2] : 06060606060606060606060606060606",
-      "15 | Approvals # : 3"
+      "12 | Entry-point : redelegate",
+      "13 | Arg-0-name : delegator",
+      "14 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "14 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "15 | Arg-1-name : new_validator",
+      "16 | Arg-1-val [1/2] : 0106060606060606060606060606060606",
+      "16 | Arg-1-val [2/2] : 06060606060606060606060606060606",
+      "17 | Arg-2-name : validator",
+      "18 | Arg-2-val [1/2] : 0103030303030303030303030303030303",
+      "18 | Arg-2-val [2/2] : 03030303030303030303030303030303",
+      "19 | Approvals # : 3"
     ]
   },
   {
@@ -17404,22 +17510,18 @@
     "output": [
       "0 | Txn hash [1/2] : 0b4b35b0e710a8f00ca6e807a51e080a66",
       "0 | Txn hash [2/2] : 21e044ec481e250cb6ea2469f3ca7f",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 02031b84c5567b126440995d3ed5aaba05",
       "3 | Account [2/2] : 65d71e1834604819ff9c17f5e9d5dd078f",
       "4 | Fee : 1 000 000 000 motes",
-      "5 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "5 | Delegator [2/2] : 01010101010101010101010101010101",
-      "6 | Old [1/2] : 0103030303030303030303030303030303",
-      "6 | Old [2/2] : 03030303030303030303030303030303",
-      "7 | New [1/2] : 0106060606060606060606060606060606",
-      "7 | New [2/2] : 06060606060606060606060606060606"
+      "5 | Execution : by-name",
+      "6 | Name : redelegate-contract"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 0b4b35b0e710a8f00ca6e807a51e080a66",
       "0 | Txn hash [2/2] : 21e044ec481e250cb6ea2469f3ca7f",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 02031b84c5567b126440995d3ed5aaba05",
       "3 | Account [2/2] : 65d71e1834604819ff9c17f5e9d5dd078f",
@@ -17430,13 +17532,17 @@
       "8 | Fee : 1 000 000 000 motes",
       "9 | Execution : by-name",
       "10 | Name : redelegate-contract",
-      "11 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "11 | Delegator [2/2] : 01010101010101010101010101010101",
-      "12 | Old [1/2] : 0103030303030303030303030303030303",
-      "12 | Old [2/2] : 03030303030303030303030303030303",
-      "13 | New [1/2] : 0106060606060606060606060606060606",
-      "13 | New [2/2] : 06060606060606060606060606060606",
-      "14 | Approvals # : 3"
+      "11 | Entry-point : redelegate",
+      "12 | Arg-0-name : delegator",
+      "13 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "13 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "14 | Arg-1-name : new_validator",
+      "15 | Arg-1-val [1/2] : 0106060606060606060606060606060606",
+      "15 | Arg-1-val [2/2] : 06060606060606060606060606060606",
+      "16 | Arg-2-name : validator",
+      "17 | Arg-2-val [1/2] : 0103030303030303030303030303030303",
+      "17 | Arg-2-val [2/2] : 03030303030303030303030303030303",
+      "18 | Approvals # : 3"
     ]
   },
   {
@@ -17449,21 +17555,18 @@
     "output": [
       "0 | Txn hash [1/2] : 589d5d8fa166b7f362d9c0ef19eb22e2c9",
       "0 | Txn hash [2/2] : f995afdbc3481ff4b262d915031de5",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 02031b84c5567b126440995d3ed5aaba05",
       "3 | Account [2/2] : 65d71e1834604819ff9c17f5e9d5dd078f",
-      "4 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "4 | Delegator [2/2] : 01010101010101010101010101010101",
-      "5 | Old [1/2] : 0103030303030303030303030303030303",
-      "5 | Old [2/2] : 03030303030303030303030303030303",
-      "6 | New [1/2] : 0106060606060606060606060606060606",
-      "6 | New [2/2] : 06060606060606060606060606060606"
+      "4 | Execution : by-hash-versioned",
+      "5 | Address [1/2] : 0101010101010101010101010101010101",
+      "5 | Address [2/2] : 010101010101010101010101010101"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 589d5d8fa166b7f362d9c0ef19eb22e2c9",
       "0 | Txn hash [2/2] : f995afdbc3481ff4b262d915031de5",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 02031b84c5567b126440995d3ed5aaba05",
       "3 | Account [2/2] : 65d71e1834604819ff9c17f5e9d5dd078f",
@@ -17477,13 +17580,17 @@
       "11 | Address [1/2] : 0101010101010101010101010101010101",
       "11 | Address [2/2] : 010101010101010101010101010101",
       "12 | Version : 1",
-      "13 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "13 | Delegator [2/2] : 01010101010101010101010101010101",
-      "14 | Old [1/2] : 0103030303030303030303030303030303",
-      "14 | Old [2/2] : 03030303030303030303030303030303",
-      "15 | New [1/2] : 0106060606060606060606060606060606",
-      "15 | New [2/2] : 06060606060606060606060606060606",
-      "16 | Approvals # : 10"
+      "13 | Entry-point : redelegate",
+      "14 | Arg-0-name : delegator",
+      "15 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "15 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "16 | Arg-1-name : new_validator",
+      "17 | Arg-1-val [1/2] : 0106060606060606060606060606060606",
+      "17 | Arg-1-val [2/2] : 06060606060606060606060606060606",
+      "18 | Arg-2-name : validator",
+      "19 | Arg-2-val [1/2] : 0103030303030303030303030303030303",
+      "19 | Arg-2-val [2/2] : 03030303030303030303030303030303",
+      "20 | Approvals # : 10"
     ]
   },
   {
@@ -17496,22 +17603,19 @@
     "output": [
       "0 | Txn hash [1/2] : 41fc2357913bb902bd35c52b204494d393",
       "0 | Txn hash [2/2] : a68614ba710388c27a0f6297fb2b86",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
       "4 | Fee : 1 000 000 000 motes",
-      "5 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "5 | Delegator [2/2] : 01010101010101010101010101010101",
-      "6 | Old [1/2] : 0103030303030303030303030303030303",
-      "6 | Old [2/2] : 03030303030303030303030303030303",
-      "7 | New [1/2] : 0106060606060606060606060606060606",
-      "7 | New [2/2] : 06060606060606060606060606060606"
+      "5 | Execution : by-hash-versioned",
+      "6 | Address [1/2] : 0101010101010101010101010101010101",
+      "6 | Address [2/2] : 010101010101010101010101010101"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 41fc2357913bb902bd35c52b204494d393",
       "0 | Txn hash [2/2] : a68614ba710388c27a0f6297fb2b86",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -17524,13 +17628,17 @@
       "10 | Address [1/2] : 0101010101010101010101010101010101",
       "10 | Address [2/2] : 010101010101010101010101010101",
       "11 | Version : 1",
-      "12 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "12 | Delegator [2/2] : 01010101010101010101010101010101",
-      "13 | Old [1/2] : 0103030303030303030303030303030303",
-      "13 | Old [2/2] : 03030303030303030303030303030303",
-      "14 | New [1/2] : 0106060606060606060606060606060606",
-      "14 | New [2/2] : 06060606060606060606060606060606",
-      "15 | Approvals # : 1"
+      "12 | Entry-point : redelegate",
+      "13 | Arg-0-name : delegator",
+      "14 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "14 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "15 | Arg-1-name : new_validator",
+      "16 | Arg-1-val [1/2] : 0106060606060606060606060606060606",
+      "16 | Arg-1-val [2/2] : 06060606060606060606060606060606",
+      "17 | Arg-2-name : validator",
+      "18 | Arg-2-val [1/2] : 0103030303030303030303030303030303",
+      "18 | Arg-2-val [2/2] : 03030303030303030303030303030303",
+      "19 | Approvals # : 1"
     ]
   },
   {
@@ -17543,21 +17651,17 @@
     "output": [
       "0 | Txn hash [1/2] : d5a3265a90dc2171c24e63392338aca2f2",
       "0 | Txn hash [2/2] : b7d3ea48ee0f3d8b5538266a2e24a3",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
-      "4 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "4 | Delegator [2/2] : 01010101010101010101010101010101",
-      "5 | Old [1/2] : 0103030303030303030303030303030303",
-      "5 | Old [2/2] : 03030303030303030303030303030303",
-      "6 | New [1/2] : 0106060606060606060606060606060606",
-      "6 | New [2/2] : 06060606060606060606060606060606"
+      "4 | Execution : by-name-versioned",
+      "5 | Name : redelegate-contract"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : d5a3265a90dc2171c24e63392338aca2f2",
       "0 | Txn hash [2/2] : b7d3ea48ee0f3d8b5538266a2e24a3",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -17570,13 +17674,17 @@
       "10 | Execution : by-name-versioned",
       "11 | Name : redelegate-contract",
       "12 | Version : 1",
-      "13 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "13 | Delegator [2/2] : 01010101010101010101010101010101",
-      "14 | Old [1/2] : 0103030303030303030303030303030303",
-      "14 | Old [2/2] : 03030303030303030303030303030303",
-      "15 | New [1/2] : 0106060606060606060606060606060606",
-      "15 | New [2/2] : 06060606060606060606060606060606",
-      "16 | Approvals # : 3"
+      "13 | Entry-point : redelegate",
+      "14 | Arg-0-name : delegator",
+      "15 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "15 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "16 | Arg-1-name : new_validator",
+      "17 | Arg-1-val [1/2] : 0106060606060606060606060606060606",
+      "17 | Arg-1-val [2/2] : 06060606060606060606060606060606",
+      "18 | Arg-2-name : validator",
+      "19 | Arg-2-val [1/2] : 0103030303030303030303030303030303",
+      "19 | Arg-2-val [2/2] : 03030303030303030303030303030303",
+      "20 | Approvals # : 3"
     ]
   },
   {
@@ -17589,22 +17697,18 @@
     "output": [
       "0 | Txn hash [1/2] : 6ab6b84b91cda1073e0878da6670af660e",
       "0 | Txn hash [2/2] : 86b07cdb80bf5eeffc71e71ef8babe",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
       "4 | Fee : 1 000 000 000 motes",
-      "5 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "5 | Delegator [2/2] : 01010101010101010101010101010101",
-      "6 | Old [1/2] : 0103030303030303030303030303030303",
-      "6 | Old [2/2] : 03030303030303030303030303030303",
-      "7 | New [1/2] : 0106060606060606060606060606060606",
-      "7 | New [2/2] : 06060606060606060606060606060606"
+      "5 | Execution : by-name-versioned",
+      "6 | Name : redelegate-contract"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 6ab6b84b91cda1073e0878da6670af660e",
       "0 | Txn hash [2/2] : 86b07cdb80bf5eeffc71e71ef8babe",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -17616,13 +17720,17 @@
       "9 | Execution : by-name-versioned",
       "10 | Name : redelegate-contract",
       "11 | Version : 1",
-      "12 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "12 | Delegator [2/2] : 01010101010101010101010101010101",
-      "13 | Old [1/2] : 0103030303030303030303030303030303",
-      "13 | Old [2/2] : 03030303030303030303030303030303",
-      "14 | New [1/2] : 0106060606060606060606060606060606",
-      "14 | New [2/2] : 06060606060606060606060606060606",
-      "15 | Approvals # : 1"
+      "12 | Entry-point : redelegate",
+      "13 | Arg-0-name : delegator",
+      "14 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "14 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "15 | Arg-1-name : new_validator",
+      "16 | Arg-1-val [1/2] : 0106060606060606060606060606060606",
+      "16 | Arg-1-val [2/2] : 06060606060606060606060606060606",
+      "17 | Arg-2-name : validator",
+      "18 | Arg-2-val [1/2] : 0103030303030303030303030303030303",
+      "18 | Arg-2-val [2/2] : 03030303030303030303030303030303",
+      "19 | Approvals # : 1"
     ]
   },
   {
@@ -18023,20 +18131,19 @@
     "output": [
       "0 | Txn hash [1/2] : 5c758bafb73e24526fce2e60787d9439cd",
       "0 | Txn hash [2/2] : d836a27eda53a2fe7aade05fa7e3c9",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 020362c0a046dacce86ddd0343c6d3c7c7",
       "3 | Account [2/2] : 9c2208ba0d9c9cf24a6d046d21d21f90f7",
-      "4 | Old [1/2] : 0103030303030303030303030303030303",
-      "4 | Old [2/2] : 03030303030303030303030303030303",
-      "5 | New [1/2] : 0106060606060606060606060606060606",
-      "5 | New [2/2] : 06060606060606060606060606060606",
+      "4 | Execution : by-hash",
+      "5 | Address [1/2] : 0101010101010101010101010101010101",
+      "5 | Address [2/2] : 010101010101010101010101010101",
       "6 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 5c758bafb73e24526fce2e60787d9439cd",
       "0 | Txn hash [2/2] : d836a27eda53a2fe7aade05fa7e3c9",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 020362c0a046dacce86ddd0343c6d3c7c7",
       "3 | Account [2/2] : 9c2208ba0d9c9cf24a6d046d21d21f90f7",
@@ -18049,12 +18156,15 @@
       "10 | Execution : by-hash",
       "11 | Address [1/2] : 0101010101010101010101010101010101",
       "11 | Address [2/2] : 010101010101010101010101010101",
-      "12 | Old [1/2] : 0103030303030303030303030303030303",
-      "12 | Old [2/2] : 03030303030303030303030303030303",
-      "13 | New [1/2] : 0106060606060606060606060606060606",
-      "13 | New [2/2] : 06060606060606060606060606060606",
-      "14 | Amount : 100 000 000 motes",
-      "15 | Approvals # : 10"
+      "12 | Entry-point : redelegate",
+      "13 | Amount : 100 000 000 motes",
+      "14 | Arg-0-name : new_validator",
+      "15 | Arg-0-val [1/2] : 0106060606060606060606060606060606",
+      "15 | Arg-0-val [2/2] : 06060606060606060606060606060606",
+      "16 | Arg-1-name : validator",
+      "17 | Arg-1-val [1/2] : 0103030303030303030303030303030303",
+      "17 | Arg-1-val [2/2] : 03030303030303030303030303030303",
+      "18 | Approvals # : 10"
     ]
   },
   {
@@ -18067,21 +18177,20 @@
     "output": [
       "0 | Txn hash [1/2] : 7548f6a9aed82351549906e01bf339eaa8",
       "0 | Txn hash [2/2] : 1e92599b6d69c53669653df806f69a",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 020362c0a046dacce86ddd0343c6d3c7c7",
       "3 | Account [2/2] : 9c2208ba0d9c9cf24a6d046d21d21f90f7",
       "4 | Fee : 1 000 000 000 motes",
-      "5 | Old [1/2] : 0103030303030303030303030303030303",
-      "5 | Old [2/2] : 03030303030303030303030303030303",
-      "6 | New [1/2] : 0106060606060606060606060606060606",
-      "6 | New [2/2] : 06060606060606060606060606060606",
+      "5 | Execution : by-hash",
+      "6 | Address [1/2] : 0101010101010101010101010101010101",
+      "6 | Address [2/2] : 010101010101010101010101010101",
       "7 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 7548f6a9aed82351549906e01bf339eaa8",
       "0 | Txn hash [2/2] : 1e92599b6d69c53669653df806f69a",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 020362c0a046dacce86ddd0343c6d3c7c7",
       "3 | Account [2/2] : 9c2208ba0d9c9cf24a6d046d21d21f90f7",
@@ -18093,12 +18202,15 @@
       "9 | Execution : by-hash",
       "10 | Address [1/2] : 0101010101010101010101010101010101",
       "10 | Address [2/2] : 010101010101010101010101010101",
-      "11 | Old [1/2] : 0103030303030303030303030303030303",
-      "11 | Old [2/2] : 03030303030303030303030303030303",
-      "12 | New [1/2] : 0106060606060606060606060606060606",
-      "12 | New [2/2] : 06060606060606060606060606060606",
-      "13 | Amount : 100 000 000 motes",
-      "14 | Approvals # : 10"
+      "11 | Entry-point : redelegate",
+      "12 | Amount : 100 000 000 motes",
+      "13 | Arg-0-name : new_validator",
+      "14 | Arg-0-val [1/2] : 0106060606060606060606060606060606",
+      "14 | Arg-0-val [2/2] : 06060606060606060606060606060606",
+      "15 | Arg-1-name : validator",
+      "16 | Arg-1-val [1/2] : 0103030303030303030303030303030303",
+      "16 | Arg-1-val [2/2] : 03030303030303030303030303030303",
+      "17 | Approvals # : 10"
     ]
   },
   {
@@ -18111,20 +18223,18 @@
     "output": [
       "0 | Txn hash [1/2] : 930e76006435b1b2d1d09650141f31f1ab",
       "0 | Txn hash [2/2] : c8a943dc7d07479c73d010f5a4e5f1",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
-      "4 | Old [1/2] : 0103030303030303030303030303030303",
-      "4 | Old [2/2] : 03030303030303030303030303030303",
-      "5 | New [1/2] : 0106060606060606060606060606060606",
-      "5 | New [2/2] : 06060606060606060606060606060606",
+      "4 | Execution : by-name",
+      "5 | Name : redelegate-contract",
       "6 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 930e76006435b1b2d1d09650141f31f1ab",
       "0 | Txn hash [2/2] : c8a943dc7d07479c73d010f5a4e5f1",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -18136,12 +18246,15 @@
       "9 | Arg-0-val : 1000000000",
       "10 | Execution : by-name",
       "11 | Name : redelegate-contract",
-      "12 | Old [1/2] : 0103030303030303030303030303030303",
-      "12 | Old [2/2] : 03030303030303030303030303030303",
-      "13 | New [1/2] : 0106060606060606060606060606060606",
-      "13 | New [2/2] : 06060606060606060606060606060606",
-      "14 | Amount : 100 000 000 motes",
-      "15 | Approvals # : 3"
+      "12 | Entry-point : redelegate",
+      "13 | Amount : 100 000 000 motes",
+      "14 | Arg-0-name : new_validator",
+      "15 | Arg-0-val [1/2] : 0106060606060606060606060606060606",
+      "15 | Arg-0-val [2/2] : 06060606060606060606060606060606",
+      "16 | Arg-1-name : validator",
+      "17 | Arg-1-val [1/2] : 0103030303030303030303030303030303",
+      "17 | Arg-1-val [2/2] : 03030303030303030303030303030303",
+      "18 | Approvals # : 3"
     ]
   },
   {
@@ -18154,21 +18267,19 @@
     "output": [
       "0 | Txn hash [1/2] : 005522820daf3e289dc308a418a928266a",
       "0 | Txn hash [2/2] : e1dfdeab493811fe17bcd2706a84e1",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
       "4 | Fee : 1 000 000 000 motes",
-      "5 | Old [1/2] : 0103030303030303030303030303030303",
-      "5 | Old [2/2] : 03030303030303030303030303030303",
-      "6 | New [1/2] : 0106060606060606060606060606060606",
-      "6 | New [2/2] : 06060606060606060606060606060606",
+      "5 | Execution : by-name",
+      "6 | Name : redelegate-contract",
       "7 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 005522820daf3e289dc308a418a928266a",
       "0 | Txn hash [2/2] : e1dfdeab493811fe17bcd2706a84e1",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -18179,12 +18290,15 @@
       "8 | Fee : 1 000 000 000 motes",
       "9 | Execution : by-name",
       "10 | Name : redelegate-contract",
-      "11 | Old [1/2] : 0103030303030303030303030303030303",
-      "11 | Old [2/2] : 03030303030303030303030303030303",
-      "12 | New [1/2] : 0106060606060606060606060606060606",
-      "12 | New [2/2] : 06060606060606060606060606060606",
-      "13 | Amount : 100 000 000 motes",
-      "14 | Approvals # : 1"
+      "11 | Entry-point : redelegate",
+      "12 | Amount : 100 000 000 motes",
+      "13 | Arg-0-name : new_validator",
+      "14 | Arg-0-val [1/2] : 0106060606060606060606060606060606",
+      "14 | Arg-0-val [2/2] : 06060606060606060606060606060606",
+      "15 | Arg-1-name : validator",
+      "16 | Arg-1-val [1/2] : 0103030303030303030303030303030303",
+      "16 | Arg-1-val [2/2] : 03030303030303030303030303030303",
+      "17 | Approvals # : 1"
     ]
   },
   {
@@ -18197,20 +18311,19 @@
     "output": [
       "0 | Txn hash [1/2] : 880b1c908ab1618d2d527e0f057bd36747",
       "0 | Txn hash [2/2] : 2d11ee3020ad4a49c352f11400dd14",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
-      "4 | Old [1/2] : 0103030303030303030303030303030303",
-      "4 | Old [2/2] : 03030303030303030303030303030303",
-      "5 | New [1/2] : 0106060606060606060606060606060606",
-      "5 | New [2/2] : 06060606060606060606060606060606",
+      "4 | Execution : by-hash-versioned",
+      "5 | Address [1/2] : 0101010101010101010101010101010101",
+      "5 | Address [2/2] : 010101010101010101010101010101",
       "6 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 880b1c908ab1618d2d527e0f057bd36747",
       "0 | Txn hash [2/2] : 2d11ee3020ad4a49c352f11400dd14",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -18224,12 +18337,15 @@
       "11 | Address [1/2] : 0101010101010101010101010101010101",
       "11 | Address [2/2] : 010101010101010101010101010101",
       "12 | Version : 1",
-      "13 | Old [1/2] : 0103030303030303030303030303030303",
-      "13 | Old [2/2] : 03030303030303030303030303030303",
-      "14 | New [1/2] : 0106060606060606060606060606060606",
-      "14 | New [2/2] : 06060606060606060606060606060606",
-      "15 | Amount : 100 000 000 motes",
-      "16 | Approvals # : 3"
+      "13 | Entry-point : redelegate",
+      "14 | Amount : 100 000 000 motes",
+      "15 | Arg-0-name : new_validator",
+      "16 | Arg-0-val [1/2] : 0106060606060606060606060606060606",
+      "16 | Arg-0-val [2/2] : 06060606060606060606060606060606",
+      "17 | Arg-1-name : validator",
+      "18 | Arg-1-val [1/2] : 0103030303030303030303030303030303",
+      "18 | Arg-1-val [2/2] : 03030303030303030303030303030303",
+      "19 | Approvals # : 3"
     ]
   },
   {
@@ -18242,21 +18358,20 @@
     "output": [
       "0 | Txn hash [1/2] : a07054413d5875578d289127ecc2fcd10c",
       "0 | Txn hash [2/2] : a6d2ca0506928f0765a92977cb55a3",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 018139770ea87d175f56a35466c34c7ecc",
       "3 | Account [2/2] : cb8d8a91b4ee37a25df60f5b8fc9b394",
       "4 | Fee : 1 000 000 000 motes",
-      "5 | Old [1/2] : 0103030303030303030303030303030303",
-      "5 | Old [2/2] : 03030303030303030303030303030303",
-      "6 | New [1/2] : 0106060606060606060606060606060606",
-      "6 | New [2/2] : 06060606060606060606060606060606",
+      "5 | Execution : by-hash-versioned",
+      "6 | Address [1/2] : 0101010101010101010101010101010101",
+      "6 | Address [2/2] : 010101010101010101010101010101",
       "7 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : a07054413d5875578d289127ecc2fcd10c",
       "0 | Txn hash [2/2] : a6d2ca0506928f0765a92977cb55a3",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 018139770ea87d175f56a35466c34c7ecc",
       "3 | Account [2/2] : cb8d8a91b4ee37a25df60f5b8fc9b394",
@@ -18269,12 +18384,15 @@
       "10 | Address [1/2] : 0101010101010101010101010101010101",
       "10 | Address [2/2] : 010101010101010101010101010101",
       "11 | Version : 1",
-      "12 | Old [1/2] : 0103030303030303030303030303030303",
-      "12 | Old [2/2] : 03030303030303030303030303030303",
-      "13 | New [1/2] : 0106060606060606060606060606060606",
-      "13 | New [2/2] : 06060606060606060606060606060606",
-      "14 | Amount : 100 000 000 motes",
-      "15 | Approvals # : 3"
+      "12 | Entry-point : redelegate",
+      "13 | Amount : 100 000 000 motes",
+      "14 | Arg-0-name : new_validator",
+      "15 | Arg-0-val [1/2] : 0106060606060606060606060606060606",
+      "15 | Arg-0-val [2/2] : 06060606060606060606060606060606",
+      "16 | Arg-1-name : validator",
+      "17 | Arg-1-val [1/2] : 0103030303030303030303030303030303",
+      "17 | Arg-1-val [2/2] : 03030303030303030303030303030303",
+      "18 | Approvals # : 3"
     ]
   },
   {
@@ -18287,20 +18405,18 @@
     "output": [
       "0 | Txn hash [1/2] : d91c852813cb340249c6f1b120535b094c",
       "0 | Txn hash [2/2] : 303263d0348663082b5177bf6b3c4a",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 02031b84c5567b126440995d3ed5aaba05",
       "3 | Account [2/2] : 65d71e1834604819ff9c17f5e9d5dd078f",
-      "4 | Old [1/2] : 0103030303030303030303030303030303",
-      "4 | Old [2/2] : 03030303030303030303030303030303",
-      "5 | New [1/2] : 0106060606060606060606060606060606",
-      "5 | New [2/2] : 06060606060606060606060606060606",
+      "4 | Execution : by-name-versioned",
+      "5 | Name : redelegate-contract",
       "6 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : d91c852813cb340249c6f1b120535b094c",
       "0 | Txn hash [2/2] : 303263d0348663082b5177bf6b3c4a",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 02031b84c5567b126440995d3ed5aaba05",
       "3 | Account [2/2] : 65d71e1834604819ff9c17f5e9d5dd078f",
@@ -18313,12 +18429,15 @@
       "10 | Execution : by-name-versioned",
       "11 | Name : redelegate-contract",
       "12 | Version : 1",
-      "13 | Old [1/2] : 0103030303030303030303030303030303",
-      "13 | Old [2/2] : 03030303030303030303030303030303",
-      "14 | New [1/2] : 0106060606060606060606060606060606",
-      "14 | New [2/2] : 06060606060606060606060606060606",
-      "15 | Amount : 100 000 000 motes",
-      "16 | Approvals # : 3"
+      "13 | Entry-point : redelegate",
+      "14 | Amount : 100 000 000 motes",
+      "15 | Arg-0-name : new_validator",
+      "16 | Arg-0-val [1/2] : 0106060606060606060606060606060606",
+      "16 | Arg-0-val [2/2] : 06060606060606060606060606060606",
+      "17 | Arg-1-name : validator",
+      "18 | Arg-1-val [1/2] : 0103030303030303030303030303030303",
+      "18 | Arg-1-val [2/2] : 03030303030303030303030303030303",
+      "19 | Approvals # : 3"
     ]
   },
   {
@@ -18331,21 +18450,19 @@
     "output": [
       "0 | Txn hash [1/2] : ac0cb20a65a59b5aeedca94daf9d2aae63",
       "0 | Txn hash [2/2] : d00bb24817adaacf5210c9ddbe9065",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
       "4 | Fee : 1 000 000 000 motes",
-      "5 | Old [1/2] : 0103030303030303030303030303030303",
-      "5 | Old [2/2] : 03030303030303030303030303030303",
-      "6 | New [1/2] : 0106060606060606060606060606060606",
-      "6 | New [2/2] : 06060606060606060606060606060606",
+      "5 | Execution : by-name-versioned",
+      "6 | Name : redelegate-contract",
       "7 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : ac0cb20a65a59b5aeedca94daf9d2aae63",
       "0 | Txn hash [2/2] : d00bb24817adaacf5210c9ddbe9065",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -18357,12 +18474,15 @@
       "9 | Execution : by-name-versioned",
       "10 | Name : redelegate-contract",
       "11 | Version : 1",
-      "12 | Old [1/2] : 0103030303030303030303030303030303",
-      "12 | Old [2/2] : 03030303030303030303030303030303",
-      "13 | New [1/2] : 0106060606060606060606060606060606",
-      "13 | New [2/2] : 06060606060606060606060606060606",
-      "14 | Amount : 100 000 000 motes",
-      "15 | Approvals # : 3"
+      "12 | Entry-point : redelegate",
+      "13 | Amount : 100 000 000 motes",
+      "14 | Arg-0-name : new_validator",
+      "15 | Arg-0-val [1/2] : 0106060606060606060606060606060606",
+      "15 | Arg-0-val [2/2] : 06060606060606060606060606060606",
+      "16 | Arg-1-name : validator",
+      "17 | Arg-1-val [1/2] : 0103030303030303030303030303030303",
+      "17 | Arg-1-val [2/2] : 03030303030303030303030303030303",
+      "18 | Approvals # : 3"
     ]
   },
   {
@@ -18763,20 +18883,19 @@
     "output": [
       "0 | Txn hash [1/2] : 1622592028f4be9170f663f8466e218c8e",
       "0 | Txn hash [2/2] : 69f24b74243d306c85b7bd6b62f055",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 018139770ea87d175f56a35466c34c7ecc",
       "3 | Account [2/2] : cb8d8a91b4ee37a25df60f5b8fc9b394",
-      "4 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "4 | Delegator [2/2] : 01010101010101010101010101010101",
-      "5 | New [1/2] : 0106060606060606060606060606060606",
-      "5 | New [2/2] : 06060606060606060606060606060606",
+      "4 | Execution : by-hash",
+      "5 | Address [1/2] : 0101010101010101010101010101010101",
+      "5 | Address [2/2] : 010101010101010101010101010101",
       "6 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 1622592028f4be9170f663f8466e218c8e",
       "0 | Txn hash [2/2] : 69f24b74243d306c85b7bd6b62f055",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 018139770ea87d175f56a35466c34c7ecc",
       "3 | Account [2/2] : cb8d8a91b4ee37a25df60f5b8fc9b394",
@@ -18789,12 +18908,15 @@
       "10 | Execution : by-hash",
       "11 | Address [1/2] : 0101010101010101010101010101010101",
       "11 | Address [2/2] : 010101010101010101010101010101",
-      "12 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "12 | Delegator [2/2] : 01010101010101010101010101010101",
-      "13 | New [1/2] : 0106060606060606060606060606060606",
-      "13 | New [2/2] : 06060606060606060606060606060606",
-      "14 | Amount : 100 000 000 motes",
-      "15 | Approvals # : 3"
+      "12 | Entry-point : redelegate",
+      "13 | Amount : 100 000 000 motes",
+      "14 | Arg-0-name : delegator",
+      "15 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "15 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "16 | Arg-1-name : new_validator",
+      "17 | Arg-1-val [1/2] : 0106060606060606060606060606060606",
+      "17 | Arg-1-val [2/2] : 06060606060606060606060606060606",
+      "18 | Approvals # : 3"
     ]
   },
   {
@@ -18807,21 +18929,20 @@
     "output": [
       "0 | Txn hash [1/2] : b400060ee021d5c52ba22d5a45fc0cd050",
       "0 | Txn hash [2/2] : b98e0834c495c0a375a1bd6192f90b",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 01ca93ac1705187071d67b83c7ff0efe81",
       "3 | Account [2/2] : 08e8ec4530575d7726879333dbdabe7c",
       "4 | Fee : 1 000 000 000 motes",
-      "5 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "5 | Delegator [2/2] : 01010101010101010101010101010101",
-      "6 | New [1/2] : 0106060606060606060606060606060606",
-      "6 | New [2/2] : 06060606060606060606060606060606",
+      "5 | Execution : by-hash",
+      "6 | Address [1/2] : 0101010101010101010101010101010101",
+      "6 | Address [2/2] : 010101010101010101010101010101",
       "7 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : b400060ee021d5c52ba22d5a45fc0cd050",
       "0 | Txn hash [2/2] : b98e0834c495c0a375a1bd6192f90b",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 01ca93ac1705187071d67b83c7ff0efe81",
       "3 | Account [2/2] : 08e8ec4530575d7726879333dbdabe7c",
@@ -18833,12 +18954,15 @@
       "9 | Execution : by-hash",
       "10 | Address [1/2] : 0101010101010101010101010101010101",
       "10 | Address [2/2] : 010101010101010101010101010101",
-      "11 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "11 | Delegator [2/2] : 01010101010101010101010101010101",
-      "12 | New [1/2] : 0106060606060606060606060606060606",
-      "12 | New [2/2] : 06060606060606060606060606060606",
-      "13 | Amount : 100 000 000 motes",
-      "14 | Approvals # : 10"
+      "11 | Entry-point : redelegate",
+      "12 | Amount : 100 000 000 motes",
+      "13 | Arg-0-name : delegator",
+      "14 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "14 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "15 | Arg-1-name : new_validator",
+      "16 | Arg-1-val [1/2] : 0106060606060606060606060606060606",
+      "16 | Arg-1-val [2/2] : 06060606060606060606060606060606",
+      "17 | Approvals # : 10"
     ]
   },
   {
@@ -18851,20 +18975,18 @@
     "output": [
       "0 | Txn hash [1/2] : ccec2d4ef3f076f4942c321cd0f8ab13c8",
       "0 | Txn hash [2/2] : 83ea7c96b16cc24701e9af89c204c1",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 018a875fff1eb38451577acd5afee40545",
       "3 | Account [2/2] : 6568dd7c89e090863a0557bc7af49f17",
-      "4 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "4 | Delegator [2/2] : 01010101010101010101010101010101",
-      "5 | New [1/2] : 0106060606060606060606060606060606",
-      "5 | New [2/2] : 06060606060606060606060606060606",
+      "4 | Execution : by-name",
+      "5 | Name : redelegate-contract",
       "6 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : ccec2d4ef3f076f4942c321cd0f8ab13c8",
       "0 | Txn hash [2/2] : 83ea7c96b16cc24701e9af89c204c1",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 018a875fff1eb38451577acd5afee40545",
       "3 | Account [2/2] : 6568dd7c89e090863a0557bc7af49f17",
@@ -18876,12 +18998,15 @@
       "9 | Arg-0-val : 1000000000",
       "10 | Execution : by-name",
       "11 | Name : redelegate-contract",
-      "12 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "12 | Delegator [2/2] : 01010101010101010101010101010101",
-      "13 | New [1/2] : 0106060606060606060606060606060606",
-      "13 | New [2/2] : 06060606060606060606060606060606",
-      "14 | Amount : 100 000 000 motes",
-      "15 | Approvals # : 10"
+      "12 | Entry-point : redelegate",
+      "13 | Amount : 100 000 000 motes",
+      "14 | Arg-0-name : delegator",
+      "15 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "15 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "16 | Arg-1-name : new_validator",
+      "17 | Arg-1-val [1/2] : 0106060606060606060606060606060606",
+      "17 | Arg-1-val [2/2] : 06060606060606060606060606060606",
+      "18 | Approvals # : 10"
     ]
   },
   {
@@ -18894,21 +19019,19 @@
     "output": [
       "0 | Txn hash [1/2] : 9a9bbcf9f756b84917ba7f7fe2cf4a69b2",
       "0 | Txn hash [2/2] : c6d319c65d5139da2a980e367752bc",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
       "4 | Fee : 1 000 000 000 motes",
-      "5 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "5 | Delegator [2/2] : 01010101010101010101010101010101",
-      "6 | New [1/2] : 0106060606060606060606060606060606",
-      "6 | New [2/2] : 06060606060606060606060606060606",
+      "5 | Execution : by-name",
+      "6 | Name : redelegate-contract",
       "7 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 9a9bbcf9f756b84917ba7f7fe2cf4a69b2",
       "0 | Txn hash [2/2] : c6d319c65d5139da2a980e367752bc",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -18919,12 +19042,15 @@
       "8 | Fee : 1 000 000 000 motes",
       "9 | Execution : by-name",
       "10 | Name : redelegate-contract",
-      "11 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "11 | Delegator [2/2] : 01010101010101010101010101010101",
-      "12 | New [1/2] : 0106060606060606060606060606060606",
-      "12 | New [2/2] : 06060606060606060606060606060606",
-      "13 | Amount : 100 000 000 motes",
-      "14 | Approvals # : 1"
+      "11 | Entry-point : redelegate",
+      "12 | Amount : 100 000 000 motes",
+      "13 | Arg-0-name : delegator",
+      "14 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "14 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "15 | Arg-1-name : new_validator",
+      "16 | Arg-1-val [1/2] : 0106060606060606060606060606060606",
+      "16 | Arg-1-val [2/2] : 06060606060606060606060606060606",
+      "17 | Approvals # : 1"
     ]
   },
   {
@@ -18937,20 +19063,19 @@
     "output": [
       "0 | Txn hash [1/2] : 9a6a01f50d1d23d413c7cc2477b3688d97",
       "0 | Txn hash [2/2] : 5a826399f18d53d8772a97acd38293",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 018a875fff1eb38451577acd5afee40545",
       "3 | Account [2/2] : 6568dd7c89e090863a0557bc7af49f17",
-      "4 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "4 | Delegator [2/2] : 01010101010101010101010101010101",
-      "5 | New [1/2] : 0106060606060606060606060606060606",
-      "5 | New [2/2] : 06060606060606060606060606060606",
+      "4 | Execution : by-hash-versioned",
+      "5 | Address [1/2] : 0101010101010101010101010101010101",
+      "5 | Address [2/2] : 010101010101010101010101010101",
       "6 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 9a6a01f50d1d23d413c7cc2477b3688d97",
       "0 | Txn hash [2/2] : 5a826399f18d53d8772a97acd38293",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 018a875fff1eb38451577acd5afee40545",
       "3 | Account [2/2] : 6568dd7c89e090863a0557bc7af49f17",
@@ -18964,12 +19089,15 @@
       "11 | Address [1/2] : 0101010101010101010101010101010101",
       "11 | Address [2/2] : 010101010101010101010101010101",
       "12 | Version : 1",
-      "13 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "13 | Delegator [2/2] : 01010101010101010101010101010101",
-      "14 | New [1/2] : 0106060606060606060606060606060606",
-      "14 | New [2/2] : 06060606060606060606060606060606",
-      "15 | Amount : 100 000 000 motes",
-      "16 | Approvals # : 10"
+      "13 | Entry-point : redelegate",
+      "14 | Amount : 100 000 000 motes",
+      "15 | Arg-0-name : delegator",
+      "16 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "16 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "17 | Arg-1-name : new_validator",
+      "18 | Arg-1-val [1/2] : 0106060606060606060606060606060606",
+      "18 | Arg-1-val [2/2] : 06060606060606060606060606060606",
+      "19 | Approvals # : 10"
     ]
   },
   {
@@ -18982,21 +19110,20 @@
     "output": [
       "0 | Txn hash [1/2] : 4e5d348c646ad6c163908e02a2076f27db",
       "0 | Txn hash [2/2] : 83f7ebd4079aee35e1553bca2573c5",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 0202989c0b76cb563971fdc9bef31ec06c",
       "3 | Account [2/2] : 3560f3249d6ee9e5d83c57625596e05f6f",
       "4 | Fee : 1 000 000 000 motes",
-      "5 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "5 | Delegator [2/2] : 01010101010101010101010101010101",
-      "6 | New [1/2] : 0106060606060606060606060606060606",
-      "6 | New [2/2] : 06060606060606060606060606060606",
+      "5 | Execution : by-hash-versioned",
+      "6 | Address [1/2] : 0101010101010101010101010101010101",
+      "6 | Address [2/2] : 010101010101010101010101010101",
       "7 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 4e5d348c646ad6c163908e02a2076f27db",
       "0 | Txn hash [2/2] : 83f7ebd4079aee35e1553bca2573c5",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 0202989c0b76cb563971fdc9bef31ec06c",
       "3 | Account [2/2] : 3560f3249d6ee9e5d83c57625596e05f6f",
@@ -19009,12 +19136,15 @@
       "10 | Address [1/2] : 0101010101010101010101010101010101",
       "10 | Address [2/2] : 010101010101010101010101010101",
       "11 | Version : 1",
-      "12 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "12 | Delegator [2/2] : 01010101010101010101010101010101",
-      "13 | New [1/2] : 0106060606060606060606060606060606",
-      "13 | New [2/2] : 06060606060606060606060606060606",
-      "14 | Amount : 100 000 000 motes",
-      "15 | Approvals # : 10"
+      "12 | Entry-point : redelegate",
+      "13 | Amount : 100 000 000 motes",
+      "14 | Arg-0-name : delegator",
+      "15 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "15 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "16 | Arg-1-name : new_validator",
+      "17 | Arg-1-val [1/2] : 0106060606060606060606060606060606",
+      "17 | Arg-1-val [2/2] : 06060606060606060606060606060606",
+      "18 | Approvals # : 10"
     ]
   },
   {
@@ -19027,20 +19157,18 @@
     "output": [
       "0 | Txn hash [1/2] : db395cfd41288107a321313517b645fcb3",
       "0 | Txn hash [2/2] : f072aaec6569673cd7969aee239594",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
-      "4 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "4 | Delegator [2/2] : 01010101010101010101010101010101",
-      "5 | New [1/2] : 0106060606060606060606060606060606",
-      "5 | New [2/2] : 06060606060606060606060606060606",
+      "4 | Execution : by-name-versioned",
+      "5 | Name : redelegate-contract",
       "6 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : db395cfd41288107a321313517b645fcb3",
       "0 | Txn hash [2/2] : f072aaec6569673cd7969aee239594",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -19053,12 +19181,15 @@
       "10 | Execution : by-name-versioned",
       "11 | Name : redelegate-contract",
       "12 | Version : 1",
-      "13 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "13 | Delegator [2/2] : 01010101010101010101010101010101",
-      "14 | New [1/2] : 0106060606060606060606060606060606",
-      "14 | New [2/2] : 06060606060606060606060606060606",
-      "15 | Amount : 100 000 000 motes",
-      "16 | Approvals # : 3"
+      "13 | Entry-point : redelegate",
+      "14 | Amount : 100 000 000 motes",
+      "15 | Arg-0-name : delegator",
+      "16 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "16 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "17 | Arg-1-name : new_validator",
+      "18 | Arg-1-val [1/2] : 0106060606060606060606060606060606",
+      "18 | Arg-1-val [2/2] : 06060606060606060606060606060606",
+      "19 | Approvals # : 3"
     ]
   },
   {
@@ -19071,21 +19202,19 @@
     "output": [
       "0 | Txn hash [1/2] : 45a5871fb9e1400fbbebd36aeb9be534d0",
       "0 | Txn hash [2/2] : b031bcc304d3f708ed67ae07273d6b",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
       "4 | Fee : 1 000 000 000 motes",
-      "5 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "5 | Delegator [2/2] : 01010101010101010101010101010101",
-      "6 | New [1/2] : 0106060606060606060606060606060606",
-      "6 | New [2/2] : 06060606060606060606060606060606",
+      "5 | Execution : by-name-versioned",
+      "6 | Name : redelegate-contract",
       "7 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 45a5871fb9e1400fbbebd36aeb9be534d0",
       "0 | Txn hash [2/2] : b031bcc304d3f708ed67ae07273d6b",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -19097,12 +19226,15 @@
       "9 | Execution : by-name-versioned",
       "10 | Name : redelegate-contract",
       "11 | Version : 1",
-      "12 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "12 | Delegator [2/2] : 01010101010101010101010101010101",
-      "13 | New [1/2] : 0106060606060606060606060606060606",
-      "13 | New [2/2] : 06060606060606060606060606060606",
-      "14 | Amount : 100 000 000 motes",
-      "15 | Approvals # : 1"
+      "12 | Entry-point : redelegate",
+      "13 | Amount : 100 000 000 motes",
+      "14 | Arg-0-name : delegator",
+      "15 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "15 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "16 | Arg-1-name : new_validator",
+      "17 | Arg-1-val [1/2] : 0106060606060606060606060606060606",
+      "17 | Arg-1-val [2/2] : 06060606060606060606060606060606",
+      "18 | Approvals # : 1"
     ]
   },
   {
@@ -19503,20 +19635,19 @@
     "output": [
       "0 | Txn hash [1/2] : c7fe0b57a97a17901f0e16e20874f9aa4d",
       "0 | Txn hash [2/2] : 1f3ba24607a3ec2fa21e4ed27279a7",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
-      "4 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "4 | Delegator [2/2] : 01010101010101010101010101010101",
-      "5 | Old [1/2] : 0103030303030303030303030303030303",
-      "5 | Old [2/2] : 03030303030303030303030303030303",
+      "4 | Execution : by-hash",
+      "5 | Address [1/2] : 0101010101010101010101010101010101",
+      "5 | Address [2/2] : 010101010101010101010101010101",
       "6 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : c7fe0b57a97a17901f0e16e20874f9aa4d",
       "0 | Txn hash [2/2] : 1f3ba24607a3ec2fa21e4ed27279a7",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -19529,12 +19660,15 @@
       "10 | Execution : by-hash",
       "11 | Address [1/2] : 0101010101010101010101010101010101",
       "11 | Address [2/2] : 010101010101010101010101010101",
-      "12 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "12 | Delegator [2/2] : 01010101010101010101010101010101",
-      "13 | Old [1/2] : 0103030303030303030303030303030303",
-      "13 | Old [2/2] : 03030303030303030303030303030303",
-      "14 | Amount : 100 000 000 motes",
-      "15 | Approvals # : 1"
+      "12 | Entry-point : redelegate",
+      "13 | Amount : 100 000 000 motes",
+      "14 | Arg-0-name : delegator",
+      "15 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "15 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "16 | Arg-1-name : validator",
+      "17 | Arg-1-val [1/2] : 0103030303030303030303030303030303",
+      "17 | Arg-1-val [2/2] : 03030303030303030303030303030303",
+      "18 | Approvals # : 1"
     ]
   },
   {
@@ -19547,21 +19681,20 @@
     "output": [
       "0 | Txn hash [1/2] : 27cb5c3382df76f74baefe16e397c92172",
       "0 | Txn hash [2/2] : f3b08e4943ab62c4d2a9588179768c",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
       "4 | Fee : 1 000 000 000 motes",
-      "5 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "5 | Delegator [2/2] : 01010101010101010101010101010101",
-      "6 | Old [1/2] : 0103030303030303030303030303030303",
-      "6 | Old [2/2] : 03030303030303030303030303030303",
+      "5 | Execution : by-hash",
+      "6 | Address [1/2] : 0101010101010101010101010101010101",
+      "6 | Address [2/2] : 010101010101010101010101010101",
       "7 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 27cb5c3382df76f74baefe16e397c92172",
       "0 | Txn hash [2/2] : f3b08e4943ab62c4d2a9588179768c",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -19573,12 +19706,15 @@
       "9 | Execution : by-hash",
       "10 | Address [1/2] : 0101010101010101010101010101010101",
       "10 | Address [2/2] : 010101010101010101010101010101",
-      "11 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "11 | Delegator [2/2] : 01010101010101010101010101010101",
-      "12 | Old [1/2] : 0103030303030303030303030303030303",
-      "12 | Old [2/2] : 03030303030303030303030303030303",
-      "13 | Amount : 100 000 000 motes",
-      "14 | Approvals # : 1"
+      "11 | Entry-point : redelegate",
+      "12 | Amount : 100 000 000 motes",
+      "13 | Arg-0-name : delegator",
+      "14 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "14 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "15 | Arg-1-name : validator",
+      "16 | Arg-1-val [1/2] : 0103030303030303030303030303030303",
+      "16 | Arg-1-val [2/2] : 03030303030303030303030303030303",
+      "17 | Approvals # : 1"
     ]
   },
   {
@@ -19591,20 +19727,18 @@
     "output": [
       "0 | Txn hash [1/2] : 9fc032440975d51cd76596ece554e657c5",
       "0 | Txn hash [2/2] : 21a48053065c37ad54bd34046e2020",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
-      "4 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "4 | Delegator [2/2] : 01010101010101010101010101010101",
-      "5 | Old [1/2] : 0103030303030303030303030303030303",
-      "5 | Old [2/2] : 03030303030303030303030303030303",
+      "4 | Execution : by-name",
+      "5 | Name : redelegate-contract",
       "6 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 9fc032440975d51cd76596ece554e657c5",
       "0 | Txn hash [2/2] : 21a48053065c37ad54bd34046e2020",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -19616,12 +19750,15 @@
       "9 | Arg-0-val : 1000000000",
       "10 | Execution : by-name",
       "11 | Name : redelegate-contract",
-      "12 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "12 | Delegator [2/2] : 01010101010101010101010101010101",
-      "13 | Old [1/2] : 0103030303030303030303030303030303",
-      "13 | Old [2/2] : 03030303030303030303030303030303",
-      "14 | Amount : 100 000 000 motes",
-      "15 | Approvals # : 1"
+      "12 | Entry-point : redelegate",
+      "13 | Amount : 100 000 000 motes",
+      "14 | Arg-0-name : delegator",
+      "15 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "15 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "16 | Arg-1-name : validator",
+      "17 | Arg-1-val [1/2] : 0103030303030303030303030303030303",
+      "17 | Arg-1-val [2/2] : 03030303030303030303030303030303",
+      "18 | Approvals # : 1"
     ]
   },
   {
@@ -19634,21 +19771,19 @@
     "output": [
       "0 | Txn hash [1/2] : d0c9175ae71894d241e2506fbc45387db7",
       "0 | Txn hash [2/2] : 638da80266a40a7bb06a87077a79f5",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
       "4 | Fee : 1 000 000 000 motes",
-      "5 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "5 | Delegator [2/2] : 01010101010101010101010101010101",
-      "6 | Old [1/2] : 0103030303030303030303030303030303",
-      "6 | Old [2/2] : 03030303030303030303030303030303",
+      "5 | Execution : by-name",
+      "6 | Name : redelegate-contract",
       "7 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : d0c9175ae71894d241e2506fbc45387db7",
       "0 | Txn hash [2/2] : 638da80266a40a7bb06a87077a79f5",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -19659,12 +19794,15 @@
       "8 | Fee : 1 000 000 000 motes",
       "9 | Execution : by-name",
       "10 | Name : redelegate-contract",
-      "11 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "11 | Delegator [2/2] : 01010101010101010101010101010101",
-      "12 | Old [1/2] : 0103030303030303030303030303030303",
-      "12 | Old [2/2] : 03030303030303030303030303030303",
-      "13 | Amount : 100 000 000 motes",
-      "14 | Approvals # : 1"
+      "11 | Entry-point : redelegate",
+      "12 | Amount : 100 000 000 motes",
+      "13 | Arg-0-name : delegator",
+      "14 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "14 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "15 | Arg-1-name : validator",
+      "16 | Arg-1-val [1/2] : 0103030303030303030303030303030303",
+      "16 | Arg-1-val [2/2] : 03030303030303030303030303030303",
+      "17 | Approvals # : 1"
     ]
   },
   {
@@ -19677,20 +19815,19 @@
     "output": [
       "0 | Txn hash [1/2] : 1355a1a1027716c7f862e08196bad22ec8",
       "0 | Txn hash [2/2] : ae2d52eec74ca15464b1c92039ff1f",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 011398f62c6d1a457c51ba6a4b5f3dbd2f",
       "3 | Account [2/2] : 69fca93216218dc8997e416bd17d93ca",
-      "4 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "4 | Delegator [2/2] : 01010101010101010101010101010101",
-      "5 | Old [1/2] : 0103030303030303030303030303030303",
-      "5 | Old [2/2] : 03030303030303030303030303030303",
+      "4 | Execution : by-hash-versioned",
+      "5 | Address [1/2] : 0101010101010101010101010101010101",
+      "5 | Address [2/2] : 010101010101010101010101010101",
       "6 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 1355a1a1027716c7f862e08196bad22ec8",
       "0 | Txn hash [2/2] : ae2d52eec74ca15464b1c92039ff1f",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 011398f62c6d1a457c51ba6a4b5f3dbd2f",
       "3 | Account [2/2] : 69fca93216218dc8997e416bd17d93ca",
@@ -19704,12 +19841,15 @@
       "11 | Address [1/2] : 0101010101010101010101010101010101",
       "11 | Address [2/2] : 010101010101010101010101010101",
       "12 | Version : 1",
-      "13 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "13 | Delegator [2/2] : 01010101010101010101010101010101",
-      "14 | Old [1/2] : 0103030303030303030303030303030303",
-      "14 | Old [2/2] : 03030303030303030303030303030303",
-      "15 | Amount : 100 000 000 motes",
-      "16 | Approvals # : 10"
+      "13 | Entry-point : redelegate",
+      "14 | Amount : 100 000 000 motes",
+      "15 | Arg-0-name : delegator",
+      "16 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "16 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "17 | Arg-1-name : validator",
+      "18 | Arg-1-val [1/2] : 0103030303030303030303030303030303",
+      "18 | Arg-1-val [2/2] : 03030303030303030303030303030303",
+      "19 | Approvals # : 10"
     ]
   },
   {
@@ -19722,21 +19862,20 @@
     "output": [
       "0 | Txn hash [1/2] : 12375e30501f507473620e7b0d666f715e",
       "0 | Txn hash [2/2] : 5f0317c00bc57ee6e50ecfecc444fb",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 0202531fe6068134503d2723133227c867",
       "3 | Account [2/2] : ac8fa6c83c537e9a44c3c5bdbdcb1fe337",
       "4 | Fee : 1 000 000 000 motes",
-      "5 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "5 | Delegator [2/2] : 01010101010101010101010101010101",
-      "6 | Old [1/2] : 0103030303030303030303030303030303",
-      "6 | Old [2/2] : 03030303030303030303030303030303",
+      "5 | Execution : by-hash-versioned",
+      "6 | Address [1/2] : 0101010101010101010101010101010101",
+      "6 | Address [2/2] : 010101010101010101010101010101",
       "7 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 12375e30501f507473620e7b0d666f715e",
       "0 | Txn hash [2/2] : 5f0317c00bc57ee6e50ecfecc444fb",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 0202531fe6068134503d2723133227c867",
       "3 | Account [2/2] : ac8fa6c83c537e9a44c3c5bdbdcb1fe337",
@@ -19749,12 +19888,15 @@
       "10 | Address [1/2] : 0101010101010101010101010101010101",
       "10 | Address [2/2] : 010101010101010101010101010101",
       "11 | Version : 1",
-      "12 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "12 | Delegator [2/2] : 01010101010101010101010101010101",
-      "13 | Old [1/2] : 0103030303030303030303030303030303",
-      "13 | Old [2/2] : 03030303030303030303030303030303",
-      "14 | Amount : 100 000 000 motes",
-      "15 | Approvals # : 10"
+      "12 | Entry-point : redelegate",
+      "13 | Amount : 100 000 000 motes",
+      "14 | Arg-0-name : delegator",
+      "15 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "15 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "16 | Arg-1-name : validator",
+      "17 | Arg-1-val [1/2] : 0103030303030303030303030303030303",
+      "17 | Arg-1-val [2/2] : 03030303030303030303030303030303",
+      "18 | Approvals # : 10"
     ]
   },
   {
@@ -19767,20 +19909,18 @@
     "output": [
       "0 | Txn hash [1/2] : 67de20e27e8238f6228ff1f1f213cd93f2",
       "0 | Txn hash [2/2] : 0bfab6e8ae14e6b930ba401fbf7ea3",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 01ca93ac1705187071d67b83c7ff0efe81",
       "3 | Account [2/2] : 08e8ec4530575d7726879333dbdabe7c",
-      "4 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "4 | Delegator [2/2] : 01010101010101010101010101010101",
-      "5 | Old [1/2] : 0103030303030303030303030303030303",
-      "5 | Old [2/2] : 03030303030303030303030303030303",
+      "4 | Execution : by-name-versioned",
+      "5 | Name : redelegate-contract",
       "6 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 67de20e27e8238f6228ff1f1f213cd93f2",
       "0 | Txn hash [2/2] : 0bfab6e8ae14e6b930ba401fbf7ea3",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 01ca93ac1705187071d67b83c7ff0efe81",
       "3 | Account [2/2] : 08e8ec4530575d7726879333dbdabe7c",
@@ -19793,12 +19933,15 @@
       "10 | Execution : by-name-versioned",
       "11 | Name : redelegate-contract",
       "12 | Version : 1",
-      "13 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "13 | Delegator [2/2] : 01010101010101010101010101010101",
-      "14 | Old [1/2] : 0103030303030303030303030303030303",
-      "14 | Old [2/2] : 03030303030303030303030303030303",
-      "15 | Amount : 100 000 000 motes",
-      "16 | Approvals # : 10"
+      "13 | Entry-point : redelegate",
+      "14 | Amount : 100 000 000 motes",
+      "15 | Arg-0-name : delegator",
+      "16 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "16 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "17 | Arg-1-name : validator",
+      "18 | Arg-1-val [1/2] : 0103030303030303030303030303030303",
+      "18 | Arg-1-val [2/2] : 03030303030303030303030303030303",
+      "19 | Approvals # : 10"
     ]
   },
   {
@@ -19811,21 +19954,19 @@
     "output": [
       "0 | Txn hash [1/2] : 4634ac5fe729dcbc03d9d3fb5a48bdae86",
       "0 | Txn hash [2/2] : d8c4484a0e8b89bfe3ffb2466f14dc",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
       "4 | Fee : 1 000 000 000 motes",
-      "5 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "5 | Delegator [2/2] : 01010101010101010101010101010101",
-      "6 | Old [1/2] : 0103030303030303030303030303030303",
-      "6 | Old [2/2] : 03030303030303030303030303030303",
+      "5 | Execution : by-name-versioned",
+      "6 | Name : redelegate-contract",
       "7 | Amount : 100 000 000 motes"
     ],
     "output_expert": [
       "0 | Txn hash [1/2] : 4634ac5fe729dcbc03d9d3fb5a48bdae86",
       "0 | Txn hash [2/2] : d8c4484a0e8b89bfe3ffb2466f14dc",
-      "1 | Type : Redelegate",
+      "1 | Type : Contract execution",
       "2 | Chain ID : mainnet",
       "3 | Account [1/2] : 013b6a27bcceb6a42d62a3a8d02a6f0d73",
       "3 | Account [2/2] : 653215771de243a63ac048a18b59da29",
@@ -19837,12 +19978,15 @@
       "9 | Execution : by-name-versioned",
       "10 | Name : redelegate-contract",
       "11 | Version : 1",
-      "12 | Delegator [1/2] : 0101010101010101010101010101010101",
-      "12 | Delegator [2/2] : 01010101010101010101010101010101",
-      "13 | Old [1/2] : 0103030303030303030303030303030303",
-      "13 | Old [2/2] : 03030303030303030303030303030303",
-      "14 | Amount : 100 000 000 motes",
-      "15 | Approvals # : 1"
+      "12 | Entry-point : redelegate",
+      "13 | Amount : 100 000 000 motes",
+      "14 | Arg-0-name : delegator",
+      "15 | Arg-0-val [1/2] : 0101010101010101010101010101010101",
+      "15 | Arg-0-val [2/2] : 01010101010101010101010101010101",
+      "16 | Arg-1-name : validator",
+      "17 | Arg-1-val [1/2] : 0103030303030303030303030303030303",
+      "17 | Arg-1-val [2/2] : 03030303030303030303030303030303",
+      "18 | Approvals # : 1"
     ]
   },
   {

@@ -185,18 +185,6 @@ fn is_system_payment(phase: TxnPhase, module_bytes: &Bytes) -> bool {
     phase.is_payment() && module_bytes.inner_bytes().is_empty()
 }
 
-pub(crate) fn is_entrypoint(item: &ExecutableDeployItem, expected: &str) -> bool {
-    match item {
-        ExecutableDeployItem::ModuleBytes { .. } | ExecutableDeployItem::Transfer { .. } => false,
-        ExecutableDeployItem::StoredContractByHash { entry_point, .. }
-        | ExecutableDeployItem::StoredContractByName { entry_point, .. }
-        | ExecutableDeployItem::StoredVersionedContractByHash { entry_point, .. }
-        | ExecutableDeployItem::StoredVersionedContractByName { entry_point, .. } => {
-            entry_point == expected
-        }
-    }
-}
-
 fn remove_amount_arg(args: RuntimeArgs) -> RuntimeArgs {
     let mut tree: BTreeMap<String, CLValue> = args.into();
     tree.remove(mint::ARG_AMOUNT);
@@ -224,22 +212,6 @@ pub(crate) fn parse_fee(args: &RuntimeArgs) -> Option<Element> {
 
 pub(crate) fn parse_amount(args: &RuntimeArgs) -> Option<Element> {
     parse_motes(args, "amount")
-}
-
-pub(crate) fn parse_delegator(args: &RuntimeArgs) -> Option<Element> {
-    parse_optional_arg(args, "delegator", "delegator", false, identity)
-}
-
-pub(crate) fn parse_validator(args: &RuntimeArgs) -> Option<Element> {
-    parse_optional_arg(args, "validator", "validator", false, identity)
-}
-
-pub(crate) fn parse_old_validator(args: &RuntimeArgs) -> Option<Element> {
-    parse_optional_arg(args, "validator", "old", false, identity)
-}
-
-pub(crate) fn parse_new_validator(args: &RuntimeArgs) -> Option<Element> {
-    parse_optional_arg(args, "new_validator", "new", false, identity)
 }
 
 fn parse_motes(args: &RuntimeArgs, ledger_label: &str) -> Option<Element> {

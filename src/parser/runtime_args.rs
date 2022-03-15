@@ -21,6 +21,14 @@ pub(crate) fn parse_runtime_args(phase: &TxnPhase, ra: &RuntimeArgs) -> Vec<Elem
             format!("{}-{}", phase.to_string().to_lowercase(), args_hash),
         ));
     }
+
+    // NOTE: The code that follows would iterate over all args and parse them
+    // for Ledger presentation in a following format:
+    // Arg-n-name: <name>
+    // Arg-n-val: <value>
+    // But this could lead to very long confirmation screens in Ledger,
+    // so we opted for shorter form above: display just hash of the runtime args.
+    // If we ever decide to bring back the more elaborate version, this code would do it.
     // let named_args: BTreeMap<String, CLValue> = ra.clone().into();
     // for (idx, (name, value)) in named_args.iter().enumerate() {
     //     let name_label = format!("arg-{}-name", idx);

@@ -24,6 +24,9 @@ pub(crate) fn valid<R: Rng>(
     output
 }
 
+/// Constructs transactions that are invalid (un)delegate deploys
+/// but are valid "generic" deploys - i.e. they will still be processed by a node
+/// but will not be recognized as auction commands.
 pub(crate) fn invalid_delegation<R: Rng>(
     rng: &mut R,
     entry_point: &str,
@@ -59,25 +62,28 @@ pub(crate) fn invalid_delegation<R: Rng>(
         "amount" => 100000u32
     };
 
+    // We're setting the "validity bit" to `true`, otherwise such transaction would
+    // be rejected by the Ledger Hardware and we don't want that. dApps could be written
+    // in such a way that they use similar arguments.
     let invalid_args = vec![
-        Sample::new("missing:amount", missing_required_amount, false),
-        Sample::new("missing:delegator", missing_required_delegator, false),
-        Sample::new("missing:validator", missing_required_validator, false),
-        Sample::new("invalid_type:amount", invalid_amount_type, false),
+        Sample::new("missing:amount", missing_required_amount, true),
+        Sample::new("missing:delegator", missing_required_delegator, true),
+        Sample::new("missing:validator", missing_required_validator, true),
+        Sample::new("invalid_type:amount", invalid_amount_type, true),
     ];
 
     invalid_args
         .into_iter()
         .flat_map(|sample_ra| {
-            let (label, ra, _valid) = sample_ra.destructure();
+            let (label, ra, valid) = sample_ra.destructure();
             let mut invalid_args_executables =
-                sample_executables(rng, entry_point, ra, Some(label), false);
+                sample_executables(rng, entry_point, ra, Some(label), valid);
             invalid_args_executables.extend(sample_executables(
                 rng,
                 "invalid",
                 valid_args.clone(),
                 Some("invalid:entrypoint".to_string()),
-                false,
+                true,
             ));
             invalid_args_executables
                 .into_iter()

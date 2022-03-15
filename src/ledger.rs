@@ -72,6 +72,7 @@ impl Element {
 }
 
 #[derive(Clone)]
+#[allow(unused)]
 struct Ledger {
     deploy: Deploy,
     ledger_elements: Vec<Element>,
@@ -231,6 +232,7 @@ impl LedgerView {
 }
 
 #[derive(Clone)]
+#[allow(unused)]
 
 pub(crate) struct LimitedLedgerConfig {
     page_limit: u8,

@@ -2,8 +2,7 @@ use crate::ledger::{Element, TxnPhase};
 use crate::utils::cl_value_to_string;
 use casper_types::bytesrepr::ToBytes;
 use casper_types::system::mint::{ARG_ID, ARG_SOURCE, ARG_TARGET, ARG_TO};
-use casper_types::{CLValue, RuntimeArgs};
-use std::collections::BTreeMap;
+use casper_types::RuntimeArgs;
 
 use super::deploy::{identity, parse_amount};
 

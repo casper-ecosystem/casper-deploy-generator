@@ -50,52 +50,57 @@ pub(crate) fn parse_phase(item: &ExecutableDeployItem, phase: TxnPhase) -> Vec<E
     } else {
         let mut elements: Vec<Element> = deploy_type(phase, item);
         match item {
-            ExecutableDeployItem::ModuleBytes { module_bytes, args } => {
-                if is_system_payment(phase, module_bytes) {
-                    // The only required argument for the system payment is `amount`.
-                    elements.extend(parse_fee(args).into_iter());
-                } else {
-                    elements.extend(parse_amount(args));
-                }
+            ExecutableDeployItem::ModuleBytes { module_bytes, args }
+                if is_system_payment(phase, module_bytes) =>
+            {
+                // The only required argument for the system payment is `amount`.
+                elements.extend(parse_fee(args).into_iter());
                 let args_sans_amount = remove_amount_arg(args.clone());
-                elements.extend(parse_runtime_args(&phase, &args_sans_amount));
+                if !args_sans_amount.is_empty() {
+                    // If system payment had more args than the required `amount` then they should be parsed.
+                    elements.extend(parse_runtime_args(&phase, &args));
+                }
+            }
+            ExecutableDeployItem::ModuleBytes { module_bytes, args } => {
+                elements.extend(parse_amount(args));
+                elements.extend(parse_runtime_args(&phase, &args));
             }
             ExecutableDeployItem::StoredContractByHash {
                 entry_point, args, ..
             } => {
                 elements.push(entrypoint(entry_point));
                 elements.extend(parse_amount(args));
-                let args_sans_amount = remove_amount_arg(args.clone());
-                elements.extend(parse_runtime_args(&phase, &args_sans_amount));
+                elements.extend(parse_runtime_args(&phase, &args));
             }
             ExecutableDeployItem::StoredContractByName {
                 entry_point, args, ..
             } => {
                 elements.push(entrypoint(entry_point));
                 elements.extend(parse_amount(args));
-                let args_sans_amount = remove_amount_arg(args.clone());
-                elements.extend(parse_runtime_args(&phase, &args_sans_amount));
+                elements.extend(parse_runtime_args(&phase, &args));
             }
             ExecutableDeployItem::StoredVersionedContractByHash {
                 entry_point, args, ..
             } => {
                 elements.push(entrypoint(entry_point));
                 elements.extend(parse_amount(args));
-                let args_sans_amount = remove_amount_arg(args.clone());
-                elements.extend(parse_runtime_args(&phase, &args_sans_amount));
+                elements.extend(parse_runtime_args(&phase, &args));
             }
             ExecutableDeployItem::StoredVersionedContractByName {
                 entry_point, args, ..
             } => {
                 elements.push(entrypoint(entry_point));
                 elements.extend(parse_amount(args));
-                let args_sans_amount = remove_amount_arg(args.clone());
-                elements.extend(parse_runtime_args(&phase, &args_sans_amount));
+                elements.extend(parse_runtime_args(&phase, &args));
             }
             ExecutableDeployItem::Transfer { args } => {
                 elements.extend(parse_transfer_args(args));
                 let args_sans_transfer = remove_transfer_args(args.clone());
-                elements.extend(parse_runtime_args(&phase, &args_sans_transfer));
+                if !args_sans_transfer.is_empty() {
+                    println!("{:?}", args_sans_transfer);
+                    // If there are more arguments left that were not used, display digest of args.
+                    elements.extend(parse_runtime_args(&phase, &args));
+                }
             }
         }
         elements

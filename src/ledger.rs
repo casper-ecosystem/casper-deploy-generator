@@ -72,11 +72,22 @@ impl Element {
 }
 
 #[derive(Clone)]
-struct Ledger(Vec<Element>);
+#[allow(unused)]
+struct Ledger {
+    deploy: Deploy,
+    ledger_elements: Vec<Element>,
+}
 
 impl Ledger {
     fn from_deploy(deploy: Deploy) -> Self {
-        Ledger(parser::parse_deploy(deploy))
+        Ledger {
+            deploy: deploy.clone(),
+            ledger_elements: parser::parse_deploy(deploy),
+        }
+    }
+
+    pub(crate) fn into_ledger_elements(self) -> impl Iterator<Item = Element> {
+        self.ledger_elements.into_iter()
     }
 }
 
@@ -188,8 +199,7 @@ struct LedgerView {
 impl LedgerView {
     fn from_ledger(ledger: Ledger) -> Self {
         let pages = ledger
-            .0
-            .into_iter()
+            .into_ledger_elements()
             .map(LedgerPageView::from_element)
             .collect();
         LedgerView { pages }
@@ -222,6 +232,7 @@ impl LedgerView {
 }
 
 #[derive(Clone)]
+#[allow(unused)]
 
 pub(crate) struct LimitedLedgerConfig {
     page_limit: u8,

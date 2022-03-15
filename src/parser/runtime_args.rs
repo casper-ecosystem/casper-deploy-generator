@@ -1,8 +1,8 @@
-use crate::ledger::Element;
+use crate::ledger::{Element, TxnPhase};
 use crate::utils::cl_value_to_string;
+use casper_types::bytesrepr::ToBytes;
 use casper_types::system::mint::{ARG_ID, ARG_SOURCE, ARG_TARGET, ARG_TO};
-use casper_types::{CLValue, RuntimeArgs};
-use std::collections::BTreeMap;
+use casper_types::RuntimeArgs;
 
 use super::deploy::{identity, parse_amount};
 
@@ -10,16 +10,33 @@ use super::deploy::{identity, parse_amount};
 /// arg-n-name: <name>
 /// arg-n-val: <val>
 /// where n is the ordinal number of the argument.
-pub(crate) fn parse_runtime_args(ra: &RuntimeArgs) -> Vec<Element> {
+pub(crate) fn parse_runtime_args(phase: &TxnPhase, ra: &RuntimeArgs) -> Vec<Element> {
     let mut elements: Vec<Element> = vec![];
-    let named_args: BTreeMap<String, CLValue> = ra.clone().into();
-    for (idx, (name, value)) in named_args.iter().enumerate() {
-        let name_label = format!("arg-{}-name", idx);
-        elements.push(Element::expert(&name_label, name.to_string()));
-        let value_label = format!("arg-{}-val", idx);
-        let value_str = cl_value_to_string(value);
-        elements.push(Element::expert(&value_label, value_str));
+    if !ra.is_empty() {
+        let args_digest =
+            casper_hashing::Digest::hash(ToBytes::to_bytes(ra).expect("ToBytes to work."));
+        let args_hash = base16::encode_lower(&args_digest);
+        elements.push(Element::regular(
+            "args hash",
+            format!("{}-{}", phase.to_string().to_lowercase(), args_hash),
+        ));
     }
+
+    // NOTE: The code that follows would iterate over all args and parse them
+    // for Ledger presentation in a following format:
+    // Arg-n-name: <name>
+    // Arg-n-val: <value>
+    // But this could lead to very long confirmation screens in Ledger,
+    // so we opted for shorter form above: display just hash of the runtime args.
+    // If we ever decide to bring back the more elaborate version, this code would do it.
+    // let named_args: BTreeMap<String, CLValue> = ra.clone().into();
+    // for (idx, (name, value)) in named_args.iter().enumerate() {
+    //     let name_label = format!("arg-{}-name", idx);
+    //     elements.push(Element::expert(&name_label, name.to_string()));
+    //     let value_label = format!("arg-{}-val", idx);
+    //     let value_str = cl_value_to_string(value);
+    //     elements.push(Element::expert(&value_label, value_str));
+    // }
     elements
 }
 

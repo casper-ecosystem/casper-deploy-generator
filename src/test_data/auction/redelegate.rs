@@ -13,11 +13,10 @@
 
 use crate::sample::Sample;
 use crate::test_data::auction::commons::{self};
+use crate::test_data::commons::{prepend_label, sample_executables};
 use casper_execution_engine::core::engine_state::ExecutableDeployItem;
 use casper_types::{runtime_args, AsymmetricType, PublicKey, RuntimeArgs, U512};
 use rand::Rng;
-
-use super::commons::{prepend_label, sample_executables};
 
 const ENTRY_POINT_NAME: &str = "redelegate";
 
@@ -100,30 +99,35 @@ fn invalid_redelegation<R: Rng>(rng: &mut R) -> Vec<Sample<ExecutableDeployItem>
         "new_validator" => new_validator,
     };
 
+    // We're setting the "validity bit" to `true`, otherwise such transaction would
+    // be rejected by the Ledger Hardware and we don't want that. dApps could be written
+    // in such a way that they use similar arguments.
     let invalid_args = vec![
-        Sample::new("missing:amount", missing_required_amount, false),
-        Sample::new("missing:delegator", missing_required_delegator, false),
-        Sample::new("missing:validator", missing_required_validator, false),
+        Sample::new("missing:amount", missing_required_amount, true),
+        Sample::new("missing:delegator", missing_required_delegator, true),
+        Sample::new("missing:validator", missing_required_validator, true),
         Sample::new(
             "missing:new_validator",
             missing_required_new_validator,
             false,
         ),
-        Sample::new("invalid_type:amount", invalid_amount_type, false),
+        Sample::new("invalid_type:amount", invalid_amount_type, true),
     ];
 
     invalid_args
         .into_iter()
         .flat_map(|sample_ra| {
-            let (label, ra, _valid) = sample_ra.destructure();
+            let (label, ra, valid) = sample_ra.destructure();
             let mut invalid_args_executables =
-                sample_executables(rng, ENTRY_POINT_NAME, ra, Some(label), false);
+                sample_executables(rng, ENTRY_POINT_NAME, ra, Some(label), valid);
+            // Transaction with valid args but invalid entrypoint won't be recognized
+            // as proper auction deploy.
             invalid_args_executables.extend(sample_executables(
                 rng,
                 "invalid",
                 valid_args.clone(),
                 Some("invalid:entrypoint".to_string()),
-                false,
+                valid,
             ));
             invalid_args_executables
                 .into_iter()

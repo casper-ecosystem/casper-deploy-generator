@@ -3,7 +3,7 @@ use casper_types::{runtime_args, AccessRights, RuntimeArgs, URef, U512};
 
 use crate::{sample::Sample, test_data::TransferTarget};
 
-use super::{NativeTransfer, TransferSource};
+use super::{commons::UREF_ADDR, NativeTransfer, TransferSource};
 
 fn native_transfer_samples(
     amounts: &[U512],
@@ -56,7 +56,7 @@ pub(super) fn valid() -> Vec<Sample<ExecutableDeployItem>> {
 
     let sources: Vec<TransferSource> = access_rights
         .into_iter()
-        .map(|ar| TransferSource::uref(URef::new([2u8; 32], ar)))
+        .map(|ar| TransferSource::uref(URef::new(UREF_ADDR, ar)))
         .chain(vec![TransferSource::none()])
         .collect();
 
@@ -72,11 +72,11 @@ pub(super) fn valid() -> Vec<Sample<ExecutableDeployItem>> {
 pub(super) fn invalid() -> Vec<Sample<ExecutableDeployItem>> {
     let missing_required_amount: RuntimeArgs = runtime_args! {
         "id" => 1u64,
-        "target" => URef::new([1u8; 32], AccessRights::READ),
+        "target" => URef::new(UREF_ADDR, AccessRights::READ),
     };
     let missing_required_id: RuntimeArgs = runtime_args! {
         "amount" => U512::from(100000000u64),
-        "target" => URef::new([1u8; 32], AccessRights::READ),
+        "target" => URef::new(UREF_ADDR, AccessRights::READ),
     };
     let missing_required_target: RuntimeArgs = runtime_args! {
         "amount" => U512::from(100000000u64),
@@ -84,7 +84,7 @@ pub(super) fn invalid() -> Vec<Sample<ExecutableDeployItem>> {
     };
     let invalid_amount_type: RuntimeArgs = runtime_args! {
         "amount" => 10000u64,
-        "target" => URef::new([1u8; 32], AccessRights::READ),
+        "target" => URef::new(UREF_ADDR, AccessRights::READ),
         "id" => 1u64,
     };
 

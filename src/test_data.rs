@@ -12,7 +12,7 @@ use auction::{delegate, undelegate};
 
 use crate::sample::Sample;
 
-use self::auction::redelegate;
+use self::{auction::redelegate, commons::UREF_ADDR};
 
 mod auction;
 mod commons;
@@ -119,17 +119,26 @@ impl TransferTarget {
     }
 
     fn uref() -> TransferTarget {
-        let uref = URef::new([0u8; 32], AccessRights::READ_ADD_WRITE);
+        let uref = URef::new(UREF_ADDR, AccessRights::READ_ADD_WRITE);
         TransferTarget::URef(uref)
     }
 
     fn key() -> TransferTarget {
-        let account_key = Key::Account(AccountHash::new([33u8; 32]));
+        let account_key = Key::Account(
+            AccountHash::from_formatted_str(
+                "account-hash-45f3aa6ce2a450dd5a4f2cc4cc9054aded66de6b6cfc4ad977e7251cf94b649b",
+            )
+            .unwrap(),
+        );
         TransferTarget::Key(account_key)
     }
 
     fn public_key_ed25519() -> TransferTarget {
-        let public_key = PublicKey::ed25519_from_bytes([1u8; 32]).unwrap();
+        let public_key = PublicKey::ed25519_from_bytes(
+            hex::decode(b"2bac1d0ff9240ff0b7b06d555815640497861619ca12583ddef434885416e69b")
+                .unwrap(),
+        )
+        .unwrap();
         TransferTarget::PublicKey(public_key)
     }
 

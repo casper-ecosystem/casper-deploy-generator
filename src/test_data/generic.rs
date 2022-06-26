@@ -12,6 +12,8 @@ use rand::{prelude::SliceRandom, Rng};
 
 use crate::{sample::Sample, test_data::commons::sample_executables};
 
+use super::commons::UREF_ADDR;
+
 pub(crate) fn valid<R: Rng>(rng: &mut R) -> Vec<Sample<ExecutableDeployItem>> {
     const ENTRYPOINT: &str = "generic-txn-entrypoint";
     let rargs: Vec<RuntimeArgs> = sample_args(rng);
@@ -135,16 +137,15 @@ fn sample_args<R: Rng>(rng: &mut R) -> Vec<RuntimeArgs> {
 }
 
 fn sample_urefs() -> Vec<URef> {
-    let uref_addr = [1u8; UREF_ADDR_LENGTH];
     vec![
-        URef::new(uref_addr, AccessRights::NONE),
-        URef::new(uref_addr, AccessRights::READ),
-        URef::new(uref_addr, AccessRights::ADD),
-        URef::new(uref_addr, AccessRights::WRITE),
-        URef::new(uref_addr, AccessRights::READ_ADD),
-        URef::new(uref_addr, AccessRights::READ_ADD_WRITE),
-        URef::new(uref_addr, AccessRights::READ_WRITE),
-        URef::new(uref_addr, AccessRights::ADD_WRITE),
+        URef::new(UREF_ADDR, AccessRights::NONE),
+        URef::new(UREF_ADDR, AccessRights::READ),
+        URef::new(UREF_ADDR, AccessRights::ADD),
+        URef::new(UREF_ADDR, AccessRights::WRITE),
+        URef::new(UREF_ADDR, AccessRights::READ_ADD),
+        URef::new(UREF_ADDR, AccessRights::READ_ADD_WRITE),
+        URef::new(UREF_ADDR, AccessRights::READ_WRITE),
+        URef::new(UREF_ADDR, AccessRights::ADD_WRITE),
     ]
 }
 

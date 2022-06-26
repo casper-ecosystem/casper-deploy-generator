@@ -52,3 +52,16 @@ fn encode_iter<'a, T: 'a + AsRef<[u8]>>(input: &'a T) -> impl Iterator<Item = ch
         HEX_CHARS[nibble as usize]
     })
 }
+
+#[cfg(test)]
+mod tests {
+    use casper_hashing::Digest;
+
+    #[test]
+    fn tmp() {
+        let bytes =
+            Digest::from_hex(b"4acfcf6c684c58caf6b3296e3a97c4a04afaf77bb875ca9a40a45db254e94a75")
+                .unwrap();
+        println!("{:?}", &bytes.into_vec())
+    }
+}

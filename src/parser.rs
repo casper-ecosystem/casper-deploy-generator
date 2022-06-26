@@ -6,6 +6,7 @@ mod utils;
 use casper_node::types::Deploy;
 
 use crate::{
+    checksummed_hex,
     ledger::{Element, TxnPhase},
     parser::deploy::{parse_approvals, parse_deploy_header, parse_phase},
 };
@@ -14,7 +15,7 @@ pub(crate) fn parse_deploy(d: Deploy) -> Vec<Element> {
     let mut elements = vec![];
     elements.push(Element::regular(
         "Txn hash",
-        format!("{:?}", d.id().inner()),
+        format!("{}", checksummed_hex::encode(d.id().inner())),
     ));
     elements.push(deploy_type(&d));
     elements.extend(parse_deploy_header(d.header()));

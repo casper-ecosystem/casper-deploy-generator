@@ -4,6 +4,7 @@ use test_rng::TestRng;
 
 use crate::{ledger::LimitedLedgerConfig, test_data::redelegate_samples};
 
+pub mod checksummed_hex;
 mod ledger;
 mod parser;
 mod sample;

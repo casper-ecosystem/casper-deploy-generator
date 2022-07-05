@@ -61,7 +61,10 @@ pub(crate) fn parse_phase(item: &ExecutableDeployItem, phase: TxnPhase) -> Vec<E
                     elements.extend(parse_runtime_args(&phase, &args));
                 }
             }
-            ExecutableDeployItem::ModuleBytes { module_bytes, args } => {
+            ExecutableDeployItem::ModuleBytes {
+                module_bytes: _,
+                args,
+            } => {
                 elements.extend(parse_amount(args));
                 elements.extend(parse_runtime_args(&phase, &args));
             }

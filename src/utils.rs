@@ -1,5 +1,9 @@
-use casper_types::{CLValue, Key, PublicKey, ED25519_TAG, SECP256K1_TAG};
+use casper_types::{
+    bytesrepr::FromBytes, CLType, CLValue, Key, PublicKey, URef, ED25519_TAG, SECP256K1_TAG,
+};
 use itertools::Itertools;
+
+use crate::checksummed_hex;
 
 /// Turn JSON representation into a string.
 fn serde_value_to_str(value: &serde_json::Value) -> String {
@@ -54,7 +58,49 @@ fn drop_key_type_prefix(cl_in: String) -> String {
 /// (which is a pair of type identifier and raw bytes).
 /// It should be human-readable.
 pub(crate) fn cl_value_to_string(cl_in: &CLValue) -> String {
-    match serde_json::to_value(&cl_in) {
+    match cl_in.cl_type() {
+        CLType::Key => {
+            let account: Key = FromBytes::from_bytes(cl_in.inner_bytes())
+                .expect("key account to be deserialized with FromBytes")
+                .0;
+
+            match account {
+                Key::URef(uref) => checksummed_hex::encode(uref.addr()),
+                Key::Hash(addr) => checksummed_hex::encode(addr),
+                Key::Transfer(addr) => checksummed_hex::encode(addr.value()),
+                Key::DeployInfo(deploy_hash) => checksummed_hex::encode(deploy_hash.as_bytes()),
+                Key::Balance(uref_addr) => checksummed_hex::encode(uref_addr),
+                Key::Dictionary(dict_addr) => checksummed_hex::encode(dict_addr),
+                Key::Account(account_hash)
+                | Key::Unbond(account_hash)
+                | Key::Withdraw(account_hash)
+                | Key::Bid(account_hash) => checksummed_hex::encode(&account_hash),
+                _ => parse_as_default_json(cl_in),
+            }
+        }
+        CLType::URef => {
+            let uref: URef = FromBytes::from_bytes(cl_in.inner_bytes())
+                .expect("uref to be deserialized with FromBytes")
+                .0;
+            checksummed_hex::encode(uref.addr())
+        }
+        CLType::PublicKey => {
+            let public_key: PublicKey = FromBytes::from_bytes(cl_in.inner_bytes())
+                .expect("public key to be deserialized with FromBytes")
+                .0;
+            parse_public_key(&public_key)
+        }
+        CLType::ByteArray(length) => {
+            let (bytes, _remainder) = cl_in.inner_bytes().split_at(*length as usize);
+
+            checksummed_hex::encode(&bytes)
+        }
+        _ => parse_as_default_json(&cl_in),
+    }
+}
+
+fn parse_as_default_json(input: &CLValue) -> String {
+    match serde_json::to_value(&input) {
         Ok(value) => {
             let parsed = value.get("parsed").unwrap();
             serde_value_to_str(parsed)
@@ -75,18 +121,6 @@ pub(crate) fn parse_public_key(key: &PublicKey) -> String {
         PublicKey::Secp256k1(_) => format!("0{}", SECP256K1_TAG),
     };
 
-    let variant = match key {
-        PublicKey::System => todo!(),
-        PublicKey::Ed25519(_) => "Ed25519",
-        PublicKey::Secp256k1(_) => "Secp256k1",
-    };
-    let prefix = format!("PublicKey::{}(", variant);
-    let str = format!("{:?}", key);
-    let key_str: String = str
-        .chars()
-        .skip(prefix.len())
-        .take_while(|c| *c != ')')
-        .collect();
-
-    format!("{}{}", key_tag, key_str)
+    let checksummed_key = checksummed_hex::encode(Into::<Vec<u8>>::into(key));
+    format!("{}{}", key_tag, checksummed_key)
 }

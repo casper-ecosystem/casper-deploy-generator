@@ -168,16 +168,17 @@ impl TransferTarget {
     }
 }
 
-fn make_deploy(
+fn make_deploy_sample(
     session: Sample<ExecutableDeployItem>,
-    payment: ExecutableDeployItem,
+    payment: Sample<ExecutableDeployItem>,
     ttl: TimeDiff,
     dependencies: Vec<DeployHash>,
     signing_keys: &[SecretKey],
 ) -> Sample<Deploy> {
     let (main_key, secondary_keys) = signing_keys.split_at(1);
+    let (payment_label, payment, payment_validity) = payment.destructure();
 
-    let deploy = |session| {
+    let make_deploy = |session| {
         Deploy::new(
             Timestamp::from_str("2021-05-04T14:20:35.104Z").unwrap(),
             ttl,
@@ -192,13 +193,16 @@ fn make_deploy(
     };
 
     // Sign deploy with possibly multiple keys.
-    let mut sample_deploy = session.map_sample(deploy);
+    let mut sample_session = session.map_sample(make_deploy);
     for key in secondary_keys {
-        let (label, mut deploy, valid) = sample_deploy.destructure();
+        let (label, mut deploy, session_validity) = sample_session.destructure();
         deploy.sign(key);
-        sample_deploy = Sample::new(label, deploy, valid);
+        // Sample is valid iff both session part and payment parts are valid.
+        sample_session = Sample::new(label, deploy, session_validity && payment_validity);
     }
-    sample_deploy
+    sample_session.add_label(payment_label);
+
+    sample_session
 }
 
 fn make_dependencies(count: u8) -> Vec<DeployHash> {
@@ -240,8 +244,6 @@ fn construct_samples<R: Rng>(
 
     for session in session_samples {
         for payment in &payment_samples {
-            let (payment_label, payment, _valid) = payment.clone().destructure();
-
             // Random number of keys.
             key_count.shuffle(rng);
             // Random signing keys count.
@@ -257,9 +259,8 @@ fn construct_samples<R: Rng>(
             ttls.shuffle(rng);
             let ttl = ttls.first().cloned().unwrap();
 
-            let mut sample_deploy =
-                make_deploy(session.clone(), payment.clone(), ttl, dependencies, &keys);
-            sample_deploy.add_label(payment_label.clone());
+            let sample_deploy =
+                make_deploy_sample(session.clone(), payment.clone(), ttl, dependencies, &keys);
             samples.push(sample_deploy);
         }
     }

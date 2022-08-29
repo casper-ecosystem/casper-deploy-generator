@@ -63,8 +63,14 @@ pub(super) fn valid() -> Vec<Sample<ExecutableDeployItem>> {
     native_transfer_samples(&amounts, &ids, &targets, &sources)
         .into_iter()
         .map(|s| {
-            let f = |nt: NativeTransfer| ExecutableDeployItem::Transfer { args: nt.into() };
-            s.map_sample(f)
+            let (label, sample, validity) = s.destructure();
+            Sample::new(
+                label,
+                ExecutableDeployItem::Transfer {
+                    args: sample.into(),
+                },
+                validity,
+            )
         })
         .collect()
 }

@@ -103,15 +103,15 @@ fn invalid_redelegation<R: Rng>(rng: &mut R) -> Vec<Sample<ExecutableDeployItem>
     // be rejected by the Ledger Hardware and we don't want that. dApps could be written
     // in such a way that they use similar arguments.
     let invalid_args = vec![
-        Sample::new("missing:amount", missing_required_amount, true),
-        Sample::new("missing:delegator", missing_required_delegator, true),
-        Sample::new("missing:validator", missing_required_validator, true),
+        Sample::new("missing_amount", missing_required_amount, true),
+        Sample::new("missing_delegator", missing_required_delegator, true),
+        Sample::new("missing_validator", missing_required_validator, true),
         Sample::new(
-            "missing:new_validator",
+            "missing_new_validator",
             missing_required_new_validator,
             false,
         ),
-        Sample::new("invalid_type:amount", invalid_amount_type, true),
+        Sample::new("invalid_type_amount", invalid_amount_type, true),
     ];
 
     invalid_args
@@ -126,7 +126,7 @@ fn invalid_redelegation<R: Rng>(rng: &mut R) -> Vec<Sample<ExecutableDeployItem>
                 rng,
                 "invalid",
                 valid_args.clone(),
-                Some("invalid:entrypoint".to_string()),
+                Some("invalid_entrypoint".to_string()),
                 true, // Even though entrypoint is invalid, it's possible that generic transaction (non-native auction) uses similar set of arguments but changes the entrypoint. In that case, transaction MUSTN'T be invalid b/c it will get rejected by the Ledger.
             ));
             invalid_args_executables

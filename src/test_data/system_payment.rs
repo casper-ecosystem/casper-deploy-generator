@@ -11,7 +11,7 @@ pub(super) fn valid() -> Sample<ExecutableDeployItem> {
         },
     };
 
-    Sample::new("payment:system", payment, true)
+    Sample::new("payment_system", payment, true)
 }
 
 pub(super) fn invalid() -> Sample<ExecutableDeployItem> {
@@ -22,5 +22,5 @@ pub(super) fn invalid() -> Sample<ExecutableDeployItem> {
         },
     };
 
-    Sample::new("payment:system-missing:amount", payment, false)
+    Sample::new("payment_system_missing_amount", payment, false)
 }

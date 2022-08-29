@@ -85,8 +85,8 @@ impl TransferSource {
 
     pub fn label(&self) -> &str {
         match self {
-            TransferSource::None => "source:none",
-            TransferSource::URef(_) => "source:uref",
+            TransferSource::None => "source_none",
+            TransferSource::URef(_) => "source_uref",
         }
     }
 }
@@ -153,16 +153,16 @@ impl TransferTarget {
 
     fn label(&self) -> String {
         match self {
-            TransferTarget::Bytes(_) => "target:bytes".to_string(),
-            TransferTarget::URef(_) => "target:uref".to_string(),
-            TransferTarget::Key(_) => "target:key_account".to_string(),
+            TransferTarget::Bytes(_) => "target_bytes".to_string(),
+            TransferTarget::URef(_) => "target_uref".to_string(),
+            TransferTarget::Key(_) => "target_key_account".to_string(),
             TransferTarget::PublicKey(pk) => {
                 let variant = match pk {
                     PublicKey::Ed25519(_) => "ed25519",
                     PublicKey::Secp256k1(_) => "secp256k1",
                     PublicKey::System => panic!("unexpected key type variant"),
                 };
-                format!("target:{}_public_key", variant)
+                format!("target_{}_public_key", variant)
             }
         }
     }

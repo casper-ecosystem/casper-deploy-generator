@@ -304,5 +304,12 @@ pub(crate) fn generic_samples<R: Rng>(rng: &mut R) -> Vec<Sample<Deploy>> {
     let valid_samples = generic::valid(rng);
     let valid_payment_samples = vec![system_payment::valid()];
 
-    construct_samples(rng, valid_samples, valid_payment_samples)
+    let mut samples = construct_samples(rng, valid_samples.clone(), valid_payment_samples);
+
+    samples.extend(construct_samples(
+        rng,
+        valid_samples,
+        vec![system_payment::invalid()],
+    ));
+    samples
 }

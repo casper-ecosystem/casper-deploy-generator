@@ -83,7 +83,7 @@ pub(crate) fn invalid_delegation<R: Rng>(
                 "invalid",
                 valid_args.clone(),
                 Some("invalid:entrypoint".to_string()),
-                true,
+                true, // Even though entrypoint is invalid, it's possible that generic transaction (non-native auction) uses similar set of arguments but changes the entrypoint. In that case, transaction MUSTN'T be invalid b/c it will get rejected by the Ledger.
             ));
             invalid_args_executables
                 .into_iter()

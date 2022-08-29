@@ -177,32 +177,30 @@ fn make_deploy_sample(
 ) -> Sample<Deploy> {
     let (main_key, secondary_keys) = signing_keys.split_at(1);
     let (payment_label, payment, payment_validity) = payment.destructure();
+    let (session_label, session, session_validity) = session.destructure();
 
-    let make_deploy = |session| {
-        Deploy::new(
-            Timestamp::from_str("2021-05-04T14:20:35.104Z").unwrap(),
-            ttl,
-            2,
-            dependencies,
-            String::from("mainnet"),
-            payment,
-            session,
-            &main_key[0],
-            None,
-        )
-    };
+    let deploy = Deploy::new(
+        Timestamp::from_str("2021-05-04T14:20:35.104Z").unwrap(),
+        ttl,
+        2,
+        dependencies,
+        String::from("mainnet"),
+        payment,
+        session,
+        &main_key[0],
+        None,
+    );
+
+    let mut sample = Sample::new(session_label, deploy, session_validity && payment_validity);
+    sample.add_label(payment_label);
 
     // Sign deploy with possibly multiple keys.
-    let mut sample_session = session.map_sample(make_deploy);
     for key in secondary_keys {
-        let (label, mut deploy, session_validity) = sample_session.destructure();
+        let (label, mut deploy, validity) = sample.destructure();
         deploy.sign(key);
-        // Sample is valid iff both session part and payment parts are valid.
-        sample_session = Sample::new(label, deploy, session_validity && payment_validity);
+        sample = Sample::new(label, deploy, validity);
     }
-    sample_session.add_label(payment_label);
-
-    sample_session
+    sample
 }
 
 fn make_dependencies(count: u8) -> Vec<DeployHash> {

@@ -17,7 +17,7 @@ fn native_transfer_samples(
         for id in ids {
             for target in targets {
                 for source in sources {
-                    let label = format!("native_transfer-{}-{}", target.label(), source.label());
+                    let label = format!("native_transfer_{}_{}", target.label(), source.label());
                     let nt = NativeTransfer::new(target.clone(), *amount, *id, source.clone());
                     let sample = Sample::new(label, nt, true);
                     samples.push(sample);
@@ -95,10 +95,10 @@ pub(super) fn invalid() -> Vec<Sample<ExecutableDeployItem>> {
     };
 
     let invalid_transfer_args: Vec<Sample<RuntimeArgs>> = vec![
-        Sample::new("missing:amount", missing_required_amount, false),
-        Sample::new("missing:id", missing_required_id, false),
-        Sample::new("missing:target", missing_required_target, false),
-        Sample::new("invalid_type:amount", invalid_amount_type, false),
+        Sample::new("missing_amount", missing_required_amount, false),
+        Sample::new("missing_id", missing_required_id, false),
+        Sample::new("missing_target", missing_required_target, false),
+        Sample::new("invalid_type_amount", invalid_amount_type, false),
     ];
 
     invalid_transfer_args
@@ -106,7 +106,7 @@ pub(super) fn invalid() -> Vec<Sample<ExecutableDeployItem>> {
         .map(|sample_ra| {
             let (label, ra, _valid) = sample_ra.destructure();
             let sample_invalid_transfer = ExecutableDeployItem::Transfer { args: ra };
-            let new_label = format!("native_transfer-{}", label);
+            let new_label = format!("native_transfer_{}", label);
             Sample::new(new_label, sample_invalid_transfer, false)
         })
         .collect()

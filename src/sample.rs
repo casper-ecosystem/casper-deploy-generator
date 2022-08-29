@@ -27,6 +27,6 @@ impl<V> Sample<V> {
     }
 
     pub(crate) fn add_label(&mut self, label: String) {
-        self.label = format!("{}_{}", self.label, label);
+        self.label = format!("{}__{}", self.label, label);
     }
 }

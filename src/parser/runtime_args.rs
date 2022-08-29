@@ -18,7 +18,7 @@ pub(crate) fn parse_runtime_args(phase: &TxnPhase, ra: &RuntimeArgs) -> Vec<Elem
         let args_hash = base16::encode_lower(&args_digest);
         elements.push(Element::regular(
             "args hash",
-            format!("{}-{}", phase.to_string().to_lowercase(), args_hash),
+            format!("{}_{}", phase.to_string().to_lowercase(), args_hash),
         ));
     }
 

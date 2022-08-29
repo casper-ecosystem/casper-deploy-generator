@@ -23,10 +23,10 @@ pub(crate) fn sample_executables<R: Rng>(
     let contract_hash = ContractHash::new([1u8; 32]);
     let contract_package_hash = ContractPackageHash::new([1u8; 32]);
     let contract_version: ContractVersion = 1;
-    let contract_name = format!("{}-contract", entry_point);
+    let contract_name = format!("{}_contract", entry_point);
     let deploy_items = vec![
         Sample::new(
-            "type:by-hash",
+            "type_by_hash",
             StoredContractByHash {
                 hash: contract_hash,
                 entry_point: entry_point.to_string(),
@@ -35,7 +35,7 @@ pub(crate) fn sample_executables<R: Rng>(
             valid,
         ),
         Sample::new(
-            "type:by-name",
+            "type_by_name",
             StoredContractByName {
                 name: contract_name.to_string(),
                 entry_point: entry_point.to_string(),
@@ -44,7 +44,7 @@ pub(crate) fn sample_executables<R: Rng>(
             valid,
         ),
         Sample::new(
-            "type:versioned-by-hash",
+            "type_versioned_by_hash",
             StoredVersionedContractByHash {
                 hash: contract_package_hash,
                 version: Some(contract_version),
@@ -54,7 +54,7 @@ pub(crate) fn sample_executables<R: Rng>(
             valid,
         ),
         Sample::new(
-            "type:versioned-by-name",
+            "type_versioned_by_name",
             StoredVersionedContractByName {
                 name: contract_name,
                 version: Some(contract_version),
@@ -79,7 +79,7 @@ pub(crate) fn sample_executables<R: Rng>(
 // ModuleBytes action calls are too different from other deploy variants to be included in the same generic logic.
 pub(crate) fn sample_module_bytes(ra: RuntimeArgs) -> Sample<ExecutableDeployItem> {
     Sample::new(
-        "type:module-bytes",
+        "type_module_bytes",
         ModuleBytes {
             module_bytes: Bytes::new(),
             args: ra,
@@ -94,7 +94,7 @@ pub(crate) fn prepend_label(
     entrypoint: &str,
 ) -> Sample<ExecutableDeployItem> {
     let (executable_label, executable, valid) = sample.destructure();
-    let label = format!("{}-{}", entrypoint, executable_label);
+    let label = format!("{}__{}", entrypoint, executable_label);
     Sample::new(label, executable, valid)
 }
 

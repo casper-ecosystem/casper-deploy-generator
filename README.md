@@ -4,7 +4,7 @@ This script prints example Deploys in JSON and Bytes representation.
 
 ## Run
 ```bash
-cargo run
+make test-vectors
 ```
 
 Output of the execution is included in `output.txt` file.

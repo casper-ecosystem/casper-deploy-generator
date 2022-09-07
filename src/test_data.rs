@@ -36,6 +36,7 @@ const MAX_DEPS_COUNT: u8 = 10;
 const MIN_APPROVALS_COUNT: u8 = 1;
 const MAX_APPROVALS_COUNT: u8 = 10;
 
+/// Represents native transfer sample.
 #[derive(Clone, Debug)]
 struct NativeTransfer {
     target: TransferTarget,
@@ -70,7 +71,9 @@ impl From<NativeTransfer> for RuntimeArgs {
 
 #[derive(Clone, Debug)]
 enum TransferSource {
+    // Transfer source is account's main purse.
     None,
+    // Transfer source is a defined purse.
     URef(URef),
 }
 
@@ -168,6 +171,7 @@ impl TransferTarget {
     }
 }
 
+/// Returns a sample `Deploy`, given the input data.
 fn make_deploy_sample(
     session: Sample<ExecutableDeployItem>,
     payment: Sample<ExecutableDeployItem>,
@@ -228,6 +232,9 @@ fn random_keys(key_count: u8) -> Vec<SecretKey> {
     out
 }
 
+// Given input collections for session samples and payment samples,
+// returns a combination of all - every session samples is matched with every payment sample,
+// creating n^2 deploy samples.
 fn construct_samples<R: Rng>(
     rng: &mut R,
     session_samples: Vec<Sample<ExecutableDeployItem>>,
@@ -304,6 +311,9 @@ pub(crate) fn generic_samples<R: Rng>(rng: &mut R) -> Vec<Sample<Deploy>> {
 
     let mut samples = construct_samples(rng, valid_samples.clone(), valid_payment_samples);
 
+    // Generic transactions are invalid only if their payment contract is invalid.
+    // Otherwise there are no rules that could be violated and make txn invalid -
+    // if it has correct structure it's valid b/c we don't know what the contracts expect.
     samples.extend(construct_samples(
         rng,
         valid_samples,

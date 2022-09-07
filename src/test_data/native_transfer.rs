@@ -5,16 +5,18 @@ use crate::{sample::Sample, test_data::TransferTarget};
 
 use super::{commons::UREF_ADDR, NativeTransfer, TransferSource};
 
+/// Given collection of native target inputs,
+/// for every combination of them creates a `NativeTransfer` sample.
 fn native_transfer_samples(
     amounts: &[U512],
-    ids: &[u64],
+    transfer_id: &[u64],
     targets: &[TransferTarget],
     sources: &[TransferSource],
 ) -> Vec<Sample<NativeTransfer>> {
     let mut samples: Vec<Sample<NativeTransfer>> = vec![];
 
     for amount in amounts {
-        for id in ids {
+        for id in transfer_id {
             for target in targets {
                 for source in sources {
                     let label = format!("native_transfer_{}_{}", target.label(), source.label());
@@ -29,6 +31,7 @@ fn native_transfer_samples(
     samples
 }
 
+/// Returns valid native transfer samples.
 pub(super) fn valid() -> Vec<Sample<ExecutableDeployItem>> {
     let amount_min = U512::from(0u8);
     let amount_mid = U512::from(100000000);
@@ -36,7 +39,7 @@ pub(super) fn valid() -> Vec<Sample<ExecutableDeployItem>> {
     let amounts = vec![amount_min, amount_mid, amount_max];
     let id_min = u64::MIN;
     let id_max = u64::MAX;
-    let ids = vec![id_min, id_max];
+    let transfer_id = vec![id_min, id_max];
     let targets = vec![
         TransferTarget::bytes(),
         TransferTarget::uref(),
@@ -60,7 +63,7 @@ pub(super) fn valid() -> Vec<Sample<ExecutableDeployItem>> {
         .chain(vec![TransferSource::none()])
         .collect();
 
-    native_transfer_samples(&amounts, &ids, &targets, &sources)
+    native_transfer_samples(&amounts, &transfer_id, &targets, &sources)
         .into_iter()
         .map(|s| {
             let (label, sample, validity) = s.destructure();
@@ -75,6 +78,7 @@ pub(super) fn valid() -> Vec<Sample<ExecutableDeployItem>> {
         .collect()
 }
 
+/// Returns invalid native transfer samples.
 pub(super) fn invalid() -> Vec<Sample<ExecutableDeployItem>> {
     let missing_required_amount: RuntimeArgs = runtime_args! {
         "id" => 1u64,

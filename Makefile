@@ -12,7 +12,7 @@ CARGO := $(CARGO) $(CARGO_OPTS)
 # Since we're reusing it, and it's D=Deterministic, we are guaranteed to always generate the same "random" data for the vectors,
 # meaning, no mather how many times we re-generate it we will keep getting the same data in `output.txt` == no diff.
 test-vectors:
-	CL_TEST_SEED=c954046e102bdfb7c954046e102bdfb7 $(CARGO) run > output.txt
+	CL_TEST_SEED=c954046e102bdfb7c954046e102bdfb7 $(CARGO) run > manual.json
 
 check: 
 	$(CARGO) check

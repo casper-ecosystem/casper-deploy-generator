@@ -1,8 +1,9 @@
-use ledger::JsonRepr;
-use test_data::{generic_samples, invalid_samples, valid_samples};
+use ledger::{LimitedLedgerConfig, ZondaxRepr};
+use test_data::{
+    delegate_samples, generic_samples, native_transfer_samples, redelegate_samples,
+    undelegate_samples,
+};
 use test_rng::TestRng;
-
-use crate::{ledger::LimitedLedgerConfig, test_data::redelegate_samples};
 
 pub mod checksummed_hex;
 mod ledger;
@@ -19,13 +20,16 @@ fn main() {
 
     let limited_ledger_config = LimitedLedgerConfig::new(page_limit);
 
-    let data: Vec<JsonRepr> = valid_samples(&mut rng)
+    let data: Vec<ZondaxRepr> = undelegate_samples(&mut rng)
         .into_iter()
-        .chain(invalid_samples(&mut rng).into_iter())
-        .chain(redelegate_samples(&mut rng).into_iter())
-        .chain(generic_samples(&mut rng).into_iter())
+        .chain(delegate_samples(&mut rng))
+        .chain(native_transfer_samples(&mut rng))
+        .chain(redelegate_samples(&mut rng))
+        .chain(generic_samples(&mut rng))
         .enumerate()
-        .map(|(id, sample_deploy)| ledger::from_deploy(id, sample_deploy, &limited_ledger_config))
+        .map(|(id, sample_deploy)| {
+            ledger::deploy_to_json(id, sample_deploy, &limited_ledger_config)
+        })
         .collect();
 
     println!("{}", serde_json::to_string_pretty(&data).unwrap());

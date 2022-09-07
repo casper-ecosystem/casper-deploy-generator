@@ -13,7 +13,6 @@
 use crate::sample::Sample;
 use casper_execution_engine::core::engine_state::ExecutableDeployItem;
 use casper_types::{AsymmetricType, PublicKey, RuntimeArgs, U512};
-use rand::Rng;
 
 use super::commons::invalid_delegation;
 
@@ -46,7 +45,7 @@ impl From<Undelegate> for RuntimeArgs {
     }
 }
 
-fn sample_undelegations<R: Rng>(_rng: &mut R) -> Vec<Undelegate> {
+fn sample_undelegations() -> Vec<Undelegate> {
     let amount_min = U512::from(0u8);
     let amount_mid = U512::from(100000000);
     let amount_max = U512::MAX;
@@ -61,15 +60,12 @@ fn sample_undelegations<R: Rng>(_rng: &mut R) -> Vec<Undelegate> {
         .collect()
 }
 
-pub(crate) fn valid<R: Rng>(rng: &mut R) -> Vec<Sample<ExecutableDeployItem>> {
-    let delegate_rargs = sample_undelegations(rng)
-        .into_iter()
-        .map(Into::into)
-        .collect();
+pub(crate) fn valid() -> Vec<Sample<ExecutableDeployItem>> {
+    let delegate_rargs = sample_undelegations().into_iter().map(Into::into).collect();
 
-    super::commons::valid(rng, ENTRY_POINT_NAME, delegate_rargs)
+    super::commons::valid(ENTRY_POINT_NAME, delegate_rargs)
 }
 
-pub(crate) fn invalid<R: Rng>(rng: &mut R) -> Vec<Sample<ExecutableDeployItem>> {
-    invalid_delegation(rng, ENTRY_POINT_NAME)
+pub(crate) fn invalid() -> Vec<Sample<ExecutableDeployItem>> {
+    invalid_delegation(ENTRY_POINT_NAME)
 }

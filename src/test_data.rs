@@ -36,6 +36,7 @@ const MAX_DEPS_COUNT: u8 = 10;
 const MIN_APPROVALS_COUNT: u8 = 1;
 const MAX_APPROVALS_COUNT: u8 = 10;
 
+/// Represents native transfer sample.
 #[derive(Clone, Debug)]
 struct NativeTransfer {
     target: TransferTarget,
@@ -70,7 +71,9 @@ impl From<NativeTransfer> for RuntimeArgs {
 
 #[derive(Clone, Debug)]
 enum TransferSource {
+    // Transfer source is account's main purse.
     None,
+    // Transfer source is a defined purse.
     URef(URef),
 }
 
@@ -168,6 +171,7 @@ impl TransferTarget {
     }
 }
 
+/// Returns a sample `Deploy`, given the input data.
 fn make_deploy_sample(
     session: Sample<ExecutableDeployItem>,
     payment: Sample<ExecutableDeployItem>,
@@ -228,6 +232,9 @@ fn random_keys(key_count: u8) -> Vec<SecretKey> {
     out
 }
 
+// Given input collections for session samples and payment samples,
+// returns a combination of all - every session samples is matched with every payment sample,
+// creating n^2 deploy samples.
 fn construct_samples<R: Rng>(
     rng: &mut R,
     session_samples: Vec<Sample<ExecutableDeployItem>>,
@@ -265,30 +272,12 @@ fn construct_samples<R: Rng>(
     samples
 }
 
-pub(crate) fn valid_samples<R: Rng>(rng: &mut R) -> Vec<Sample<Deploy>> {
-    let mut session_samples = native_transfer::valid();
-    session_samples.extend(delegate::valid(rng));
-    session_samples.extend(undelegate::valid(rng));
-    let payment_samples = vec![system_payment::valid()];
-
-    construct_samples(rng, session_samples, payment_samples)
-}
-
-pub(crate) fn invalid_samples<R: Rng>(rng: &mut R) -> Vec<Sample<Deploy>> {
-    let mut session_samples = native_transfer::invalid();
-    session_samples.extend(delegate::invalid(rng));
-    session_samples.extend(undelegate::invalid(rng));
-    let payment_samples = vec![system_payment::invalid(), system_payment::valid()];
-
-    construct_samples(rng, session_samples, payment_samples)
-}
-
 pub(crate) fn redelegate_samples<R: Rng>(rng: &mut R) -> Vec<Sample<Deploy>> {
-    let valid_samples = redelegate::valid(rng);
+    let valid_samples = redelegate::valid();
     let valid_payment_samples = vec![system_payment::valid()];
 
     let mut samples = construct_samples(rng, valid_samples, valid_payment_samples);
-    let invalid_samples = redelegate::invalid(rng);
+    let invalid_samples = redelegate::invalid();
     let invalid_payment_samples = vec![system_payment::invalid(), system_payment::valid()];
     samples.extend(construct_samples(
         rng,
@@ -304,10 +293,51 @@ pub(crate) fn generic_samples<R: Rng>(rng: &mut R) -> Vec<Sample<Deploy>> {
 
     let mut samples = construct_samples(rng, valid_samples.clone(), valid_payment_samples);
 
+    // Generic transactions are invalid only if their payment contract is invalid.
+    // Otherwise there are no rules that could be violated and make txn invalid -
+    // if it has correct structure it's valid b/c we don't know what the contracts expect.
     samples.extend(construct_samples(
         rng,
         valid_samples,
         vec![system_payment::invalid()],
     ));
     samples
+}
+
+pub(crate) fn native_transfer_samples<R: Rng>(rng: &mut R) -> Vec<Sample<Deploy>> {
+    let mut native_transfer_samples =
+        construct_samples(rng, native_transfer::valid(), vec![system_payment::valid()]);
+
+    native_transfer_samples.extend(construct_samples(
+        rng,
+        native_transfer::invalid(),
+        vec![system_payment::invalid(), system_payment::valid()],
+    ));
+    native_transfer_samples
+}
+
+pub(crate) fn delegate_samples<R: Rng>(rng: &mut R) -> Vec<Sample<Deploy>> {
+    let mut delegate_samples =
+        construct_samples(rng, delegate::valid(), vec![system_payment::valid()]);
+
+    delegate_samples.extend(construct_samples(
+        rng,
+        delegate::invalid(),
+        vec![system_payment::invalid(), system_payment::valid()],
+    ));
+
+    delegate_samples
+}
+
+pub(crate) fn undelegate_samples<R: Rng>(rng: &mut R) -> Vec<Sample<Deploy>> {
+    let mut undelegate_samples =
+        construct_samples(rng, undelegate::valid(), vec![system_payment::valid()]);
+
+    undelegate_samples.extend(construct_samples(
+        rng,
+        undelegate::invalid(),
+        vec![system_payment::invalid(), system_payment::valid()],
+    ));
+
+    undelegate_samples
 }

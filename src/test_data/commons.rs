@@ -7,14 +7,12 @@ use casper_types::bytesrepr::Bytes;
 use casper_types::{
     ContractHash, ContractPackageHash, ContractVersion, RuntimeArgs, UREF_ADDR_LENGTH,
 };
-use rand::Rng;
 
 use crate::sample::Sample;
 
 // Using provided `entry_point` and arguments, returns a vector of samples
 // for each of the existing `ExecutableDeployItem` variant.
-pub(crate) fn sample_executables<R: Rng>(
-    _rng: &mut R,
+pub(crate) fn sample_executables(
     entry_point: &str,
     ra: RuntimeArgs,
     base_label: Option<String>,

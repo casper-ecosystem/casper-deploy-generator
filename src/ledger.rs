@@ -7,9 +7,12 @@ use serde::{Deserialize, Serialize};
 
 use crate::{parser, sample::Sample};
 
-const LEDGER_VIEW_NAME_COUNT: usize = 11;
-const LEDGER_VIEW_TOP_COUNT: usize = 17;
-const LEDGER_VIEW_BOTTOM_COUNT: usize = 17;
+// Character limit for Ledger's "label" row.
+const LEDGER_VIEW_NAME_CHAR_COUNT: usize = 11;
+// Character limit for Ledger's value top row.
+const LEDGER_VIEW_TOP_ROW_CHAR_COUNT: usize = 17;
+// Character limit for Ledger's value bottom row.
+const LEDGER_VIEW_BOTTOM_CHAR_COUNT: usize = 17;
 
 #[derive(Clone, Copy)]
 pub(crate) enum TxnPhase {
@@ -32,9 +35,12 @@ impl Display for TxnPhase {
     }
 }
 
+/// A single element of the transaction to be displayed in Ledger.
 #[derive(Debug, Clone)]
 pub(crate) struct Element {
+    /// Label of the element to display - like `from`, `to`, `amount`.
     name: String,
+    /// Value of the element.
     value: String,
     // Whether to display in expert mode only.
     expert: bool,
@@ -50,6 +56,7 @@ fn capitalize_first(s: &str) -> String {
 }
 
 impl Element {
+    /// Creates an instance of the element, marking it as to be displayed in expert-only mode.
     pub(crate) fn expert(name: &str, value: String) -> Element {
         Element {
             name: capitalize_first(name),
@@ -58,6 +65,7 @@ impl Element {
         }
     }
 
+    /// Creates an instance of the element, marking it as to be displayed in regular mode.
     pub(crate) fn regular(name: &str, value: String) -> Self {
         Element {
             name: capitalize_first(name),
@@ -66,6 +74,7 @@ impl Element {
         }
     }
 
+    /// Flips the "expert" bit to `true`.
     pub(crate) fn as_expert(&mut self) {
         self.expert = true;
     }
@@ -103,11 +112,11 @@ impl LedgerValue {
     // printed on one ledger view: 34 char total in two lines.
     // Returns whether adding char was successful.
     fn add_char(&mut self, c: char) -> bool {
-        if self.top.chars().count() < LEDGER_VIEW_TOP_COUNT {
+        if self.top.chars().count() < LEDGER_VIEW_TOP_ROW_CHAR_COUNT {
             self.top = format!("{}{}", self.top, c);
             return true;
         }
-        if self.bottom.chars().count() < LEDGER_VIEW_BOTTOM_COUNT {
+        if self.bottom.chars().count() < LEDGER_VIEW_BOTTOM_CHAR_COUNT {
             self.bottom = format!("{}{}", self.bottom, c);
             return true;
         }
@@ -121,7 +130,7 @@ impl std::fmt::Display for LedgerValue {
     }
 }
 
-// Single page view representation.
+// Single Ledger page view representation.
 // Example:
 // Hash [1/2]
 // 01001010101…
@@ -141,10 +150,10 @@ impl LedgerPageView {
     /// Parses an `Element` object (which represents a single piece of a transaction) into a Ledger representation -
     /// including chopping up the string representation of the `Element` so that they can fit on a single Ledger screen.
     fn from_element(element: Element) -> Self {
-        if element.name.chars().count() > LEDGER_VIEW_NAME_COUNT {
+        if element.name.chars().count() > LEDGER_VIEW_NAME_CHAR_COUNT {
             panic!(
                 "Name tag can only be {} elements. Tag: {}",
-                LEDGER_VIEW_NAME_COUNT, element.name
+                LEDGER_VIEW_NAME_CHAR_COUNT, element.name
             )
         }
         let mut values = vec![];
@@ -280,8 +289,9 @@ impl<'a> LimitedLedgerView<'a> {
     }
 }
 
+/// Representation of a test vector that is structures in the way that Zondax's pipelines expect it.
 #[derive(Serialize, Deserialize)]
-pub(super) struct JsonRepr {
+pub(super) struct ZondaxRepr {
     index: usize,
     name: String,
     valid_regular: bool,
@@ -292,18 +302,19 @@ pub(super) struct JsonRepr {
     output_expert: Vec<String>,
 }
 
-pub(super) fn from_deploy(
+/// Maps `Deploy` structure to the expected JSON representation.
+pub(super) fn deploy_to_json(
     index: usize,
     sample_deploy: Sample<Deploy>,
     config: &LimitedLedgerConfig,
-) -> JsonRepr {
+) -> ZondaxRepr {
     let (name, deploy, valid) = sample_deploy.destructure();
     let blob = hex::encode(&deploy.to_bytes().unwrap());
     let ledger = Ledger::from_deploy(deploy);
     let ledger_view = LimitedLedgerView::new(config, ledger);
     let output = ledger_view.regular();
     let output_expert = ledger_view.expert();
-    JsonRepr {
+    ZondaxRepr {
         index,
         name,
         valid_regular: valid,

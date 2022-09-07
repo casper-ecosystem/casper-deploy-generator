@@ -18,14 +18,6 @@ impl<V> Sample<V> {
         (self.label, self.sample, self.valid)
     }
 
-    pub(crate) fn map_sample<VV, F: FnOnce(V) -> VV>(self, f: F) -> Sample<VV> {
-        Sample {
-            label: self.label,
-            sample: f(self.sample),
-            valid: self.valid,
-        }
-    }
-
     pub(crate) fn add_label(&mut self, label: String) {
         self.label = format!("{}__{}", self.label, label);
     }

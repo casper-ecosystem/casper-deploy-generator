@@ -119,22 +119,19 @@ fn invalid_redelegation() -> Vec<Sample<ExecutableDeployItem>> {
         .into_iter()
         .flat_map(|sample_ra| {
             let (label, ra, valid) = sample_ra.destructure();
-            let mut invalid_args_executables =
-                sample_executables(ENTRY_POINT_NAME, ra, Some(label), valid);
+            sample_executables(ENTRY_POINT_NAME, ra, Some(label), valid)
+        })
+        .chain(
             // Transaction with valid args but invalid entrypoint won't be recognized
             // as proper auction deploy.
-            invalid_args_executables.extend(sample_executables(
+            sample_executables(
                 "invalid",
                 valid_args.clone(),
                 Some("invalid_entrypoint".to_string()),
                 true, // Even though entrypoint is invalid, it's possible that generic transaction (non-native auction) uses similar set of arguments but changes the entrypoint. In that case, transaction MUSTN'T be invalid b/c it will get rejected by the Ledger.
-            ));
-            invalid_args_executables
-                .into_iter()
-                .map(|sample_invalid_executable| {
-                    prepend_label(sample_invalid_executable, ENTRY_POINT_NAME)
-                })
-        })
+            ),
+        )
+        .map(|sample_invalid_executable| prepend_label(sample_invalid_executable, ENTRY_POINT_NAME))
         .collect()
 }
 

@@ -273,16 +273,14 @@ fn construct_samples<R: Rng>(
 }
 
 pub(crate) fn valid_samples<R: Rng>(rng: &mut R) -> Vec<Sample<Deploy>> {
-    let mut session_samples = delegate::valid();
-    session_samples.extend(undelegate::valid());
+    let session_samples = undelegate::valid();
     let payment_samples = vec![system_payment::valid()];
 
     construct_samples(rng, session_samples, payment_samples)
 }
 
 pub(crate) fn invalid_samples<R: Rng>(rng: &mut R) -> Vec<Sample<Deploy>> {
-    let mut session_samples = delegate::invalid();
-    session_samples.extend(undelegate::invalid());
+    let session_samples = undelegate::invalid();
     let payment_samples = vec![system_payment::invalid(), system_payment::valid()];
 
     construct_samples(rng, session_samples, payment_samples)
@@ -330,4 +328,17 @@ pub(crate) fn native_transfer_samples<R: Rng>(rng: &mut R) -> Vec<Sample<Deploy>
         vec![system_payment::invalid(), system_payment::valid()],
     ));
     native_transfer_samples
+}
+
+pub(crate) fn delegate_samples<R: Rng>(rng: &mut R) -> Vec<Sample<Deploy>> {
+    let mut delegate_samples =
+        construct_samples(rng, delegate::valid(), vec![system_payment::valid()]);
+
+    delegate_samples.extend(construct_samples(
+        rng,
+        delegate::invalid(),
+        vec![system_payment::invalid(), system_payment::valid()],
+    ));
+
+    delegate_samples
 }

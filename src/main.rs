@@ -1,6 +1,7 @@
 use ledger::{LimitedLedgerConfig, ZondaxRepr};
 use test_data::{
-    generic_samples, invalid_samples, native_transfer_samples, redelegate_samples, valid_samples,
+    delegate_samples, generic_samples, invalid_samples, native_transfer_samples,
+    redelegate_samples, valid_samples,
 };
 use test_rng::TestRng;
 
@@ -22,6 +23,7 @@ fn main() {
     let data: Vec<ZondaxRepr> = valid_samples(&mut rng)
         .into_iter()
         .chain(invalid_samples(&mut rng).into_iter())
+        .chain(delegate_samples(&mut rng).into_iter())
         .chain(native_transfer_samples(&mut rng).into_iter())
         .chain(redelegate_samples(&mut rng).into_iter())
         .chain(generic_samples(&mut rng).into_iter())

@@ -67,53 +67,55 @@ fn invalid_redelegation() -> Vec<Sample<ExecutableDeployItem>> {
         "amount" => amount,
     };
 
-    let missing_required_amount = runtime_args! {
-        "delegator" => delegator.clone(),
-        "validator" => old_validator.clone(),
-        "new_validator" => new_validator.clone(),
+    let invalid_args_samples = {
+        let missing_required_amount = runtime_args! {
+            "delegator" => delegator.clone(),
+            "validator" => old_validator.clone(),
+            "new_validator" => new_validator.clone(),
+        };
+
+        let missing_required_delegator = runtime_args! {
+            "validator" => old_validator.clone(),
+            "new_validator" => new_validator.clone(),
+            "amount" => amount,
+        };
+
+        let missing_required_validator = runtime_args! {
+            "delegator" => delegator.clone(),
+            "new_validator" => new_validator.clone(),
+            "amount" => amount
+        };
+
+        let missing_required_new_validator = runtime_args! {
+            "delegator" => delegator.clone(),
+            "validator" => old_validator.clone(),
+            "amount" => amount,
+        };
+
+        let invalid_amount_type = runtime_args! {
+            "validator" => old_validator,
+            "delegator" => delegator,
+            "amount" => 100000u32,
+            "new_validator" => new_validator,
+        };
+
+        // We're setting the "validity bit" to `true`, otherwise such transaction would
+        // be rejected by the Ledger Hardware and we don't want that. dApps could be written
+        // in such a way that they use similar arguments.
+        vec![
+            Sample::new("missing_amount", missing_required_amount, true),
+            Sample::new("missing_delegator", missing_required_delegator, true),
+            Sample::new("missing_validator", missing_required_validator, true),
+            Sample::new(
+                "missing_new_validator",
+                missing_required_new_validator,
+                false,
+            ),
+            Sample::new("invalid_type_amount", invalid_amount_type, true),
+        ]
     };
 
-    let missing_required_delegator = runtime_args! {
-        "validator" => old_validator.clone(),
-        "new_validator" => new_validator.clone(),
-        "amount" => amount,
-    };
-
-    let missing_required_validator = runtime_args! {
-        "delegator" => delegator.clone(),
-        "new_validator" => new_validator.clone(),
-        "amount" => amount
-    };
-
-    let missing_required_new_validator = runtime_args! {
-        "delegator" => delegator.clone(),
-        "validator" => old_validator.clone(),
-        "amount" => amount,
-    };
-
-    let invalid_amount_type = runtime_args! {
-        "validator" => old_validator,
-        "delegator" => delegator,
-        "amount" => 100000u32,
-        "new_validator" => new_validator,
-    };
-
-    // We're setting the "validity bit" to `true`, otherwise such transaction would
-    // be rejected by the Ledger Hardware and we don't want that. dApps could be written
-    // in such a way that they use similar arguments.
-    let invalid_args = vec![
-        Sample::new("missing_amount", missing_required_amount, true),
-        Sample::new("missing_delegator", missing_required_delegator, true),
-        Sample::new("missing_validator", missing_required_validator, true),
-        Sample::new(
-            "missing_new_validator",
-            missing_required_new_validator,
-            false,
-        ),
-        Sample::new("invalid_type_amount", invalid_amount_type, true),
-    ];
-
-    invalid_args
+    invalid_args_samples
         .into_iter()
         .flat_map(|sample_ra| {
             let (label, ra, valid) = sample_ra.destructure();

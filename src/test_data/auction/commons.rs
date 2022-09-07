@@ -2,17 +2,12 @@ use crate::sample::Sample;
 use crate::test_data::commons::{prepend_label, sample_executables, sample_module_bytes};
 use casper_execution_engine::core::engine_state::ExecutableDeployItem;
 use casper_types::{runtime_args, AsymmetricType, PublicKey, RuntimeArgs, U512};
-use rand::Rng;
 
-pub(crate) fn valid<R: Rng>(
-    rng: &mut R,
-    entrypoint: &str,
-    ra: Vec<RuntimeArgs>,
-) -> Vec<Sample<ExecutableDeployItem>> {
+pub(crate) fn valid(entrypoint: &str, ra: Vec<RuntimeArgs>) -> Vec<Sample<ExecutableDeployItem>> {
     let mut output = vec![];
 
     for args in ra {
-        for sample in sample_executables(rng, entrypoint, args.clone(), None, true) {
+        for sample in sample_executables(entrypoint, args.clone(), None, true) {
             output.push(prepend_label(sample, entrypoint));
         }
 
@@ -27,13 +22,10 @@ pub(crate) fn valid<R: Rng>(
 /// Constructs transactions that are invalid (un)delegate deploys
 /// but are valid "generic" deploys - i.e. they will still be processed by a node
 /// but will not be recognized as auction commands.
-pub(crate) fn invalid_delegation<R: Rng>(
-    rng: &mut R,
-    entry_point: &str,
-) -> Vec<Sample<ExecutableDeployItem>> {
+pub(crate) fn invalid_delegation(entry_point: &str) -> Vec<Sample<ExecutableDeployItem>> {
     let delegator: PublicKey = PublicKey::ed25519_from_bytes([1u8; 32]).unwrap();
     let validator: PublicKey = PublicKey::ed25519_from_bytes([3u8; 32]).unwrap();
-    let amount = U512::from(100000000);
+    let amount = U512::from(100000000u32);
 
     let valid_args = runtime_args! {
         "delegator" => delegator.clone(),
@@ -77,9 +69,8 @@ pub(crate) fn invalid_delegation<R: Rng>(
         .flat_map(|sample_ra| {
             let (label, ra, valid) = sample_ra.destructure();
             let mut invalid_args_executables =
-                sample_executables(rng, entry_point, ra, Some(label), valid);
+                sample_executables(entry_point, ra, Some(label), valid);
             invalid_args_executables.extend(sample_executables(
-                rng,
                 "invalid",
                 valid_args.clone(),
                 Some("invalid_entrypoint".to_string()),

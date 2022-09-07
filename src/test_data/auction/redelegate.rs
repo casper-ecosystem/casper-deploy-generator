@@ -16,7 +16,6 @@ use crate::test_data::auction::commons::{self};
 use crate::test_data::commons::{prepend_label, sample_executables};
 use casper_execution_engine::core::engine_state::ExecutableDeployItem;
 use casper_types::{runtime_args, AsymmetricType, PublicKey, RuntimeArgs, U512};
-use rand::Rng;
 
 const ENTRY_POINT_NAME: &str = "redelegate";
 
@@ -55,11 +54,11 @@ impl From<Redelegate> for RuntimeArgs {
     }
 }
 
-fn invalid_redelegation<R: Rng>(rng: &mut R) -> Vec<Sample<ExecutableDeployItem>> {
+fn invalid_redelegation() -> Vec<Sample<ExecutableDeployItem>> {
     let delegator: PublicKey = PublicKey::ed25519_from_bytes([1u8; 32]).unwrap();
     let old_validator: PublicKey = PublicKey::ed25519_from_bytes([3u8; 32]).unwrap();
     let new_validator: PublicKey = PublicKey::ed25519_from_bytes([6u8; 32]).unwrap();
-    let amount = U512::from(100000000);
+    let amount = U512::from(100000000u64);
 
     let valid_args = runtime_args! {
         "delegator" => delegator.clone(),
@@ -119,11 +118,10 @@ fn invalid_redelegation<R: Rng>(rng: &mut R) -> Vec<Sample<ExecutableDeployItem>
         .flat_map(|sample_ra| {
             let (label, ra, valid) = sample_ra.destructure();
             let mut invalid_args_executables =
-                sample_executables(rng, ENTRY_POINT_NAME, ra, Some(label), valid);
+                sample_executables(ENTRY_POINT_NAME, ra, Some(label), valid);
             // Transaction with valid args but invalid entrypoint won't be recognized
             // as proper auction deploy.
             invalid_args_executables.extend(sample_executables(
-                rng,
                 "invalid",
                 valid_args.clone(),
                 Some("invalid_entrypoint".to_string()),
@@ -141,7 +139,7 @@ fn invalid_redelegation<R: Rng>(rng: &mut R) -> Vec<Sample<ExecutableDeployItem>
 // Creates vector of sample `Redelegate` objects.
 // Each object in the output vector will have slightly different `amount` field
 // so that we cover all edge cases of the `U512` type.
-fn sample_redelegations<R: Rng>(_rng: &mut R) -> Vec<Redelegate> {
+fn sample_redelegations() -> Vec<Redelegate> {
     let amount_min = U512::from(0u8);
     let amount_mid = U512::from(100000000);
     let amount_max = U512::MAX;
@@ -164,17 +162,14 @@ fn sample_redelegations<R: Rng>(_rng: &mut R) -> Vec<Redelegate> {
         .collect()
 }
 
-pub(crate) fn valid<R: Rng>(rng: &mut R) -> Vec<Sample<ExecutableDeployItem>> {
-    let delegate_rargs = sample_redelegations(rng)
-        .into_iter()
-        .map(Into::into)
-        .collect();
+pub(crate) fn valid() -> Vec<Sample<ExecutableDeployItem>> {
+    let delegate_rargs = sample_redelegations().into_iter().map(Into::into).collect();
 
-    commons::valid(rng, ENTRY_POINT_NAME, delegate_rargs)
+    commons::valid(ENTRY_POINT_NAME, delegate_rargs)
 }
 
-pub(crate) fn invalid<R: Rng>(rng: &mut R) -> Vec<Sample<ExecutableDeployItem>> {
-    invalid_redelegation(rng)
+pub(crate) fn invalid() -> Vec<Sample<ExecutableDeployItem>> {
+    invalid_redelegation()
 }
 
 mod tests {
@@ -182,7 +177,7 @@ mod tests {
     fn redelegate_expected_args() {
         let mut rng = crate::TestRng::new();
 
-        let valid_sample = super::valid(&mut rng);
+        let valid_sample = super::valid();
 
         fn assertion(args: &casper_types::RuntimeArgs) -> bool {
             args.get("amount").is_some()

@@ -21,7 +21,7 @@ pub(crate) fn valid<R: Rng>(rng: &mut R) -> Vec<Sample<ExecutableDeployItem>> {
     let mut output = Vec::with_capacity(rargs.len());
 
     for args in rargs {
-        for sample in sample_executables(rng, ENTRYPOINT, args, None, true) {
+        for sample in sample_executables(ENTRYPOINT, args, None, true) {
             output.push(sample)
         }
     }

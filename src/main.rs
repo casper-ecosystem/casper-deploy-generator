@@ -1,8 +1,8 @@
-use ledger::ZondaxRepr;
-use test_data::{generic_samples, invalid_samples, valid_samples};
+use ledger::{LimitedLedgerConfig, ZondaxRepr};
+use test_data::{
+    generic_samples, invalid_samples, native_transfer_samples, redelegate_samples, valid_samples,
+};
 use test_rng::TestRng;
-
-use crate::{ledger::LimitedLedgerConfig, test_data::redelegate_samples};
 
 pub mod checksummed_hex;
 mod ledger;
@@ -22,6 +22,7 @@ fn main() {
     let data: Vec<ZondaxRepr> = valid_samples(&mut rng)
         .into_iter()
         .chain(invalid_samples(&mut rng).into_iter())
+        .chain(native_transfer_samples(&mut rng).into_iter())
         .chain(redelegate_samples(&mut rng).into_iter())
         .chain(generic_samples(&mut rng).into_iter())
         .enumerate()

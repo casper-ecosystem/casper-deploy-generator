@@ -1,3 +1,6 @@
+/// A generic wrapper around any type `T` that can be considered as being a sample test vector.
+/// It has associated `label` that described the sample and validity flag (`valid`)
+/// indicating whether the sample is correct - i.e. whether it is a valid CasperNetwork transaction.
 #[derive(Debug, Clone)]
 pub(crate) struct Sample<V> {
     label: String,

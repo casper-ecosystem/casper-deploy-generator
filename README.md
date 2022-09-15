@@ -166,3 +166,11 @@ make test-vectors
 ```
 
 Output of the execution is included in `manual.json` file.
+
+## How to test for backwards compatibility
+
+To make sure that our new changes didn't break backwards compatibility (that is none of the previously generated test vectors changed), run:
+```bash
+make check-against-old
+```
+If there is a difference between new test vectors and the old ones, it will print a warning message.

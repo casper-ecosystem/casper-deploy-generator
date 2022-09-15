@@ -1,3 +1,5 @@
 /target
 Cargo.lock
+test_vectors_diff.txt
 .lh/*
+old_manual.json

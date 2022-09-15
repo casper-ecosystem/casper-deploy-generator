@@ -5,7 +5,10 @@ PINNED_NIGHTLY := $(shell cat rust-toolchain)
 
 CARGO_OPTS := --locked
 CARGO_PINNED_NIGHTLY := $(CARGO) +$(PINNED_NIGHTLY) $(CARGO_OPTS)
-CARGO := $(CARGO) $(CARGO_OPTS)
+CARGO := $(CARGO) $(CARGO_OPTS) --quiet
+
+# Do not echo commands
+$(V).SILENT:
 
 # !!!!!!! DO NOT CHANGE THE TEST SEED UNLESS YOU KNOW WHAT YOU'RE DOING !!!!!!!
 # The test seed below is used to feed the PRNG that later is responsible for generating random data for the test vectors.

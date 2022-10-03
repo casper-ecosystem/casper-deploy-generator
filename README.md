@@ -109,14 +109,14 @@ If you dig into the code deeper, you may find [`LimitedLedgerView`](./src/ledger
 ## Data schema
 
 `manual.json` file contains test vectors in the format that is expected by the Zondax tools. It is a collection of individual test vector with the following schema (example):
-```
+```json
 {
     "index": 0,
     "name": "undelegate__type_by_hash__payment_system",
     "valid_regular": true,
     "valid_expert": true,
     "testnet": true,
-    "blob": <<redacted for readability. contains serialized representation of the transaction>>,
+    "blob": "<<redacted for readability. contains serialized representation of the transaction>>",
     "output": [
       "0 | Txn hash [1/2] : 871193cE8e7392578c4455f350Decf9a1a",
       "0 | Txn hash [2/2] : 55d63ee6e62Bce367c12799d344D58",

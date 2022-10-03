@@ -110,6 +110,8 @@ impl LedgerValue {
     // Adds a char to the ledger value.
     // Single value is limited by the number of chars that can be
     // printed on one ledger view: 34 char total in two lines.
+    // Function first tries to add a new char to the top row, if that is full
+    // then tries to add it to the bottom row.
     // Returns whether adding char was successful.
     fn add_char(&mut self, c: char) -> bool {
         if self.top.chars().count() < LEDGER_VIEW_TOP_ROW_CHAR_COUNT {
@@ -121,6 +123,11 @@ impl LedgerValue {
             return true;
         }
         false
+    }
+
+    // Concatenates both rows into single `String`.
+    fn into_str(&self) -> String {
+        format!("{}{}", self.top, self.bottom)
     }
 }
 
@@ -163,6 +170,7 @@ impl LedgerPageView {
             if !added {
                 // Single ledger page can't contain more characters.
                 values.push(curr_value.clone());
+                // Create new Ledger page for that element.
                 curr_value = LedgerValue::default();
                 assert!(curr_value.add_char(c));
             }
@@ -191,9 +199,9 @@ impl LedgerPageView {
             output.push(format!(
                 "{} [{}/{}] : {}",
                 self.name,
-                idx + 1,
+                idx + 1, // Start with 1, not 0.
                 total_count,
-                value
+                value.into_str()
             ));
         }
         output
@@ -323,13 +331,5 @@ pub(super) fn deploy_to_json(
         blob,
         output,
         output_expert,
-    }
-}
-
-#[cfg(test)]
-mod ledger_tests {
-    #[test]
-    fn limit_ledger_pages() {
-        assert!(true)
     }
 }

@@ -46,6 +46,7 @@ where
     value.into_iter().map(to_clvalue_labeled).collect()
 }
 
+#[allow(unused_parens)]
 fn sample_args<R: Rng>(rng: &mut R) -> Vec<RuntimeArgs> {
     let mut named_args: Vec<NamedArg> = vec![
         vec_to_clvalues(vec![true, false]),

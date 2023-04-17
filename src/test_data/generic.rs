@@ -10,7 +10,10 @@ use casper_types::{
 };
 use rand::{prelude::SliceRandom, Rng};
 
-use crate::{sample::Sample, test_data::commons::sample_executables};
+use crate::{
+    sample::Sample,
+    test_data::commons::{sample_executables, sample_module_bytes},
+};
 
 use super::commons::UREF_ADDR;
 
@@ -20,8 +23,10 @@ pub(crate) fn valid<R: Rng>(rng: &mut R) -> Vec<Sample<ExecutableDeployItem>> {
 
     let mut output = Vec::with_capacity(rargs.len());
 
+    output.push(sample_module_bytes(rargs.first().cloned().unwrap()));
+
     for args in rargs {
-        for sample in sample_executables(ENTRYPOINT, args, None, true) {
+        for sample in sample_executables(ENTRYPOINT, args.clone(), None, true) {
             output.push(sample)
         }
     }

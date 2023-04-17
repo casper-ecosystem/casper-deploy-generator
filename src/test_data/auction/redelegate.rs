@@ -174,8 +174,6 @@ pub(crate) fn invalid() -> Vec<Sample<ExecutableDeployItem>> {
 mod tests {
     #[test]
     fn redelegate_expected_args() {
-        let mut rng = crate::TestRng::new();
-
         let valid_sample = super::valid();
 
         fn assertion(args: &casper_types::RuntimeArgs) -> bool {

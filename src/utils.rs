@@ -44,6 +44,8 @@ fn drop_key_type_prefix(cl_in: String) -> String {
                 Key::Dictionary(_) => "dictionary-",
                 Key::SystemContractRegistry => "system-contract-registry-",
                 Key::Unbond(_) => "ubond-",
+                Key::ChainspecRegistry => "chainspec-registry",
+                Key::ChecksumRegistry => "checksum-registry",
             };
             cl_in.chars().skip(prefix.len()).collect()
         }
@@ -75,7 +77,10 @@ pub(crate) fn cl_value_to_string(cl_in: &CLValue) -> String {
                 | Key::Unbond(account_hash)
                 | Key::Withdraw(account_hash)
                 | Key::Bid(account_hash) => checksummed_hex::encode(&account_hash),
-                _ => parse_as_default_json(cl_in),
+                Key::EraInfo(_)
+                | Key::SystemContractRegistry
+                | Key::ChainspecRegistry
+                | Key::ChecksumRegistry => parse_as_default_json(cl_in),
             }
         }
         CLType::URef => {
@@ -119,6 +124,7 @@ pub(crate) fn parse_public_key(key: &PublicKey) -> String {
         PublicKey::System => panic!("Did not expect system key"),
         PublicKey::Ed25519(_) => format!("0{}", ED25519_TAG),
         PublicKey::Secp256k1(_) => format!("0{}", SECP256K1_TAG),
+        _ => panic!("Should not happen - all key variants are covered at the time of writing"),
     };
 
     let checksummed_key = checksummed_hex::encode(Into::<Vec<u8>>::into(key));

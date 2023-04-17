@@ -1,4 +1,4 @@
-use casper_node::types::Timestamp;
+use casper_types::Timestamp;
 use std::time::{Duration, SystemTime};
 
 // Ledger/Zondax supports timestamps only up to seconds resolution.
@@ -13,7 +13,7 @@ pub(crate) fn timestamp_to_seconds_res(timestamp: Timestamp) -> String {
 
 #[cfg(test)]
 mod parse_tests {
-    use casper_node::types::TimeDiff;
+    use casper_types::TimeDiff;
 
     fn assert_equality(expected: &str, time_diff: TimeDiff) {
         assert_eq!(expected, &format!("{}", time_diff))

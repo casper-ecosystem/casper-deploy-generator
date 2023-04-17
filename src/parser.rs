@@ -15,7 +15,7 @@ pub(crate) fn parse_deploy(d: Deploy) -> Vec<Element> {
     let mut elements = vec![];
     elements.push(Element::regular(
         "Txn hash",
-        format!("{}", checksummed_hex::encode(d.id().inner())),
+        format!("{}", checksummed_hex::encode(d.hash().inner())),
     ));
     elements.push(deploy_type(&d));
     elements.extend(parse_deploy_header(d.header()));

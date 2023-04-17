@@ -1,10 +1,10 @@
 use std::str::FromStr;
 
 use casper_execution_engine::core::engine_state::ExecutableDeployItem;
-use casper_node::types::{Deploy, DeployHash, TimeDiff, Timestamp};
+use casper_node::types::{Deploy, DeployHash};
 use casper_types::{
     account::AccountHash, AccessRights, AsymmetricType, CLValue, Key, PublicKey, RuntimeArgs,
-    SecretKey, URef, U512,
+    SecretKey, TimeDiff, Timestamp, URef, U512,
 };
 use rand::{prelude::*, Rng};
 
@@ -164,6 +164,7 @@ impl TransferTarget {
                     PublicKey::Ed25519(_) => "ed25519",
                     PublicKey::Secp256k1(_) => "secp256k1",
                     PublicKey::System => panic!("unexpected key type variant"),
+                    _ => panic!("Should not happen"),
                 };
                 format!("target_{}_public_key", variant)
             }

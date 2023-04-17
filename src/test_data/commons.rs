@@ -1,7 +1,3 @@
-use casper_execution_engine::core::engine_state::executable_deploy_item::ExecutableDeployItem::{
-    ModuleBytes, StoredContractByHash, StoredContractByName, StoredVersionedContractByHash,
-    StoredVersionedContractByName,
-};
 use casper_execution_engine::core::engine_state::ExecutableDeployItem;
 use casper_types::bytesrepr::Bytes;
 use casper_types::{
@@ -25,7 +21,7 @@ pub(crate) fn sample_executables(
     let deploy_items = vec![
         Sample::new(
             "type_by_hash",
-            StoredContractByHash {
+            ExecutableDeployItem::StoredContractByHash {
                 hash: contract_hash,
                 entry_point: entry_point.to_string(),
                 args: ra.clone(),
@@ -34,7 +30,7 @@ pub(crate) fn sample_executables(
         ),
         Sample::new(
             "type_by_name",
-            StoredContractByName {
+            ExecutableDeployItem::StoredContractByName {
                 name: contract_name.to_string(),
                 entry_point: entry_point.to_string(),
                 args: ra.clone(),
@@ -43,7 +39,7 @@ pub(crate) fn sample_executables(
         ),
         Sample::new(
             "type_versioned_by_hash",
-            StoredVersionedContractByHash {
+            ExecutableDeployItem::StoredVersionedContractByHash {
                 hash: contract_package_hash,
                 version: Some(contract_version),
                 entry_point: entry_point.to_string(),
@@ -53,7 +49,7 @@ pub(crate) fn sample_executables(
         ),
         Sample::new(
             "type_versioned_by_name",
-            StoredVersionedContractByName {
+            ExecutableDeployItem::StoredVersionedContractByName {
                 name: contract_name,
                 version: Some(contract_version),
                 entry_point: entry_point.to_string(),
@@ -78,7 +74,7 @@ pub(crate) fn sample_executables(
 pub(crate) fn sample_module_bytes(ra: RuntimeArgs) -> Sample<ExecutableDeployItem> {
     Sample::new(
         "type_module_bytes",
-        ModuleBytes {
+        ExecutableDeployItem::ModuleBytes {
             module_bytes: Bytes::new(),
             args: ra,
         },

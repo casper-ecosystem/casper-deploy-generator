@@ -164,6 +164,9 @@ fn sample_keys() -> Vec<Key> {
         AccessRights::READ_ADD_WRITE,
     ));
     let withdraw_key = casper_types::Key::Withdraw(AccountHash::new([1u8; ACCOUNT_HASH_LENGTH]));
+    let system_registry_key = casper_types::Key::SystemContractRegistry;
+    let chainspec_registry_key = casper_types::Key::ChainspecRegistry;
+    let checksum_registry_key = casper_types::Key::ChainspecRegistry;
 
     vec![
         account_key,
@@ -176,5 +179,8 @@ fn sample_keys() -> Vec<Key> {
         transfer_key,
         uref_key,
         withdraw_key,
+        system_registry_key,
+        chainspec_registry_key,
+        checksum_registry_key,
     ]
 }

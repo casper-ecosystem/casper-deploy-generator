@@ -83,14 +83,12 @@ impl Element {
 #[derive(Clone)]
 #[allow(unused)]
 struct Ledger {
-    deploy: Deploy,
     ledger_elements: Vec<Element>,
 }
 
 impl Ledger {
     fn from_deploy(deploy: Deploy) -> Self {
         Ledger {
-            deploy: deploy.clone(),
             ledger_elements: parser::parse_deploy(deploy),
         }
     }

@@ -5,8 +5,11 @@ use test_data::{
 };
 use test_rng::TestRng;
 
+use crate::test_data::sign_message::{invalid_casper_message_sample, valid_casper_message_sample};
+
 pub mod checksummed_hex;
 mod ledger;
+mod message;
 mod parser;
 mod sample;
 mod test_data;
@@ -33,6 +36,18 @@ fn main() {
         data.push(ledger::deploy_to_json(
             id,
             sample_deploy,
+            &limited_ledger_config,
+        ));
+        id += 1;
+    }
+
+    for sample_casper_message in valid_casper_message_sample()
+        .into_iter()
+        .chain(invalid_casper_message_sample())
+    {
+        data.push(ledger::message_to_json(
+            id,
+            sample_casper_message,
             &limited_ledger_config,
         ));
         id += 1;

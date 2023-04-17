@@ -8,8 +8,13 @@ use casper_node::types::Deploy;
 use crate::{
     checksummed_hex,
     ledger::{Element, TxnPhase},
+    message::CasperMessage,
     parser::deploy::{parse_approvals, parse_deploy_header, parse_phase},
 };
+
+pub(crate) fn parse_message(m: CasperMessage) -> Vec<Element> {
+    vec![Element::regular("Sign msg", hex::encode(m.inner()))]
+}
 
 pub(crate) fn parse_deploy(d: Deploy) -> Vec<Element> {
     let mut elements = vec![];

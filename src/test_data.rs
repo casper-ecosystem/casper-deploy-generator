@@ -18,6 +18,7 @@ mod auction;
 mod commons;
 mod generic;
 mod native_transfer;
+pub(crate) mod sign_message;
 mod system_payment;
 
 // From the chainspec.

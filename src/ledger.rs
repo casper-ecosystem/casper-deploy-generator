@@ -5,7 +5,7 @@ use casper_types::bytesrepr::ToBytes;
 
 use serde::{Deserialize, Serialize};
 
-use crate::{parser, sample::Sample};
+use crate::{message::CasperMessage, parser, sample::Sample};
 
 // Character limit for Ledger's "label" row.
 const LEDGER_VIEW_NAME_CHAR_COUNT: usize = 11;
@@ -90,6 +90,12 @@ impl Ledger {
     fn from_deploy(deploy: Deploy) -> Self {
         Ledger {
             ledger_elements: parser::parse_deploy(deploy),
+        }
+    }
+
+    fn from_message(casper_message: CasperMessage) -> Self {
+        Ledger {
+            ledger_elements: parser::parse_message(casper_message),
         }
     }
 
@@ -320,6 +326,32 @@ pub(super) fn deploy_to_json(
     let ledger_view = LimitedLedgerView::new(config, ledger);
     let output = ledger_view.regular();
     let output_expert = ledger_view.expert();
+    ZondaxRepr {
+        index,
+        name,
+        valid_regular: valid,
+        valid_expert: valid,
+        testnet: true,
+        blob,
+        output,
+        output_expert,
+    }
+}
+
+pub(super) fn message_to_json(
+    index: usize,
+    sample_msg: Sample<CasperMessage>,
+    config: &LimitedLedgerConfig,
+) -> ZondaxRepr {
+    let (name, message, valid) = sample_msg.destructure();
+
+    let blob = hex::encode(message.inner());
+
+    let ledger = Ledger::from_message(message);
+    let ledger_view = LimitedLedgerView::new(config, ledger);
+    let output = ledger_view.regular();
+    let output_expert = ledger_view.expert();
+
     ZondaxRepr {
         index,
         name,

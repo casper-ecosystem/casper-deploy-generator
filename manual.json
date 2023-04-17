@@ -23282,5 +23282,119 @@
       "13 | Args hash [3/3] : fb6d32",
       "14 | Approvals # : 3"
     ]
+  },
+  {
+    "index": 513,
+    "name": "valid-casper-message",
+    "valid_regular": true,
+    "valid_expert": true,
+    "testnet": true,
+    "blob": "436173706572204d6573736167653a0a506c65617365207369676e2074686973204353505220746f6b656e20646f6e6174696f6e",
+    "output": [
+      "0 | Sign msg [1/4] : 436173706572204d6573736167653a0a50",
+      "0 | Sign msg [2/4] : 6c65617365207369676e20746869732043",
+      "0 | Sign msg [3/4] : 53505220746f6b656e20646f6e6174696f",
+      "0 | Sign msg [4/4] : 6e"
+    ],
+    "output_expert": [
+      "0 | Sign msg [1/4] : 436173706572204d6573736167653a0a50",
+      "0 | Sign msg [2/4] : 6c65617365207369676e20746869732043",
+      "0 | Sign msg [3/4] : 53505220746f6b656e20646f6e6174696f",
+      "0 | Sign msg [4/4] : 6e"
+    ]
+  },
+  {
+    "index": 514,
+    "name": "invalid-casper-message",
+    "valid_regular": false,
+    "valid_expert": false,
+    "testnet": true,
+    "blob": "4361737065723a506c65617365207369676e2074686973204353505220746f6b656e20646f6e6174696f6e",
+    "output": [
+      "0 | Sign msg [1/3] : 4361737065723a506c6561736520736967",
+      "0 | Sign msg [2/3] : 6e2074686973204353505220746f6b656e",
+      "0 | Sign msg [3/3] : 20646f6e6174696f6e"
+    ],
+    "output_expert": [
+      "0 | Sign msg [1/3] : 4361737065723a506c6561736520736967",
+      "0 | Sign msg [2/3] : 6e2074686973204353505220746f6b656e",
+      "0 | Sign msg [3/3] : 20646f6e6174696f6e"
+    ]
+  },
+  {
+    "index": 515,
+    "name": "invalid-casper-message",
+    "valid_regular": false,
+    "valid_expert": false,
+    "testnet": true,
+    "blob": "4361737065724d6573736167653a506c65617365207369676e2074686973204353505220746f6b656e20646f6e6174696f6e",
+    "output": [
+      "0 | Sign msg [1/3] : 4361737065724d6573736167653a506c65",
+      "0 | Sign msg [2/3] : 617365207369676e207468697320435350",
+      "0 | Sign msg [3/3] : 5220746f6b656e20646f6e6174696f6e"
+    ],
+    "output_expert": [
+      "0 | Sign msg [1/3] : 4361737065724d6573736167653a506c65",
+      "0 | Sign msg [2/3] : 617365207369676e207468697320435350",
+      "0 | Sign msg [3/3] : 5220746f6b656e20646f6e6174696f6e"
+    ]
+  },
+  {
+    "index": 516,
+    "name": "invalid-casper-message",
+    "valid_regular": false,
+    "valid_expert": false,
+    "testnet": true,
+    "blob": "4361737065723a0a506c65617365207369676e2074686973204353505220746f6b656e20646f6e6174696f6e",
+    "output": [
+      "0 | Sign msg [1/3] : 4361737065723a0a506c65617365207369",
+      "0 | Sign msg [2/3] : 676e2074686973204353505220746f6b65",
+      "0 | Sign msg [3/3] : 6e20646f6e6174696f6e"
+    ],
+    "output_expert": [
+      "0 | Sign msg [1/3] : 4361737065723a0a506c65617365207369",
+      "0 | Sign msg [2/3] : 676e2074686973204353505220746f6b65",
+      "0 | Sign msg [3/3] : 6e20646f6e6174696f6e"
+    ]
+  },
+  {
+    "index": 517,
+    "name": "invalid-casper-message",
+    "valid_regular": false,
+    "valid_expert": false,
+    "testnet": true,
+    "blob": "636173706572206d6573736167653a0a506c65617365207369676e2074686973204353505220746f6b656e20646f6e6174696f6e",
+    "output": [
+      "0 | Sign msg [1/4] : 636173706572206d6573736167653a0a50",
+      "0 | Sign msg [2/4] : 6c65617365207369676e20746869732043",
+      "0 | Sign msg [3/4] : 53505220746f6b656e20646f6e6174696f",
+      "0 | Sign msg [4/4] : 6e"
+    ],
+    "output_expert": [
+      "0 | Sign msg [1/4] : 636173706572206d6573736167653a0a50",
+      "0 | Sign msg [2/4] : 6c65617365207369676e20746869732043",
+      "0 | Sign msg [3/4] : 53505220746f6b656e20646f6e6174696f",
+      "0 | Sign msg [4/4] : 6e"
+    ]
+  },
+  {
+    "index": 518,
+    "name": "invalid-casper-message",
+    "valid_regular": false,
+    "valid_expert": false,
+    "testnet": true,
+    "blob": "436173706572206d6573736167653a0a506c65617365207369676e2074686973204353505220746f6b656e20646f6e6174696f6e",
+    "output": [
+      "0 | Sign msg [1/4] : 436173706572206d6573736167653a0a50",
+      "0 | Sign msg [2/4] : 6c65617365207369676e20746869732043",
+      "0 | Sign msg [3/4] : 53505220746f6b656e20646f6e6174696f",
+      "0 | Sign msg [4/4] : 6e"
+    ],
+    "output_expert": [
+      "0 | Sign msg [1/4] : 436173706572206d6573736167653a0a50",
+      "0 | Sign msg [2/4] : 6c65617365207369676e20746869732043",
+      "0 | Sign msg [3/4] : 53505220746f6b656e20646f6e6174696f",
+      "0 | Sign msg [4/4] : 6e"
+    ]
   }
 ]

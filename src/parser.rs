@@ -13,7 +13,7 @@ use crate::{
 };
 
 pub(crate) fn parse_message(m: CasperMessage) -> Vec<Element> {
-    vec![Element::regular("Sign msg", hex::encode(m.inner()))]
+    vec![Element::regular("Msg hash", hex::encode(m.hashed()))]
 }
 
 pub(crate) fn parse_deploy(d: Deploy) -> Vec<Element> {

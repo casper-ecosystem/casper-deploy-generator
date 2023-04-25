@@ -5,7 +5,7 @@ const SAMPLE_MESSAGE: &str = "Please sign this CSPR token donation";
 /// Returns sample with valid CasperMessage for signing.
 pub(crate) fn valid_casper_message_sample() -> Vec<Sample<CasperMessage>> {
     vec![Sample::new(
-        "valid-casper-message",
+        "valid_casper_message",
         CasperMessage::new(SAMPLE_MESSAGE.as_bytes().to_vec()),
         true,
     )]
@@ -30,7 +30,7 @@ pub(crate) fn invalid_casper_message_sample() -> Vec<Sample<CasperMessage>> {
             let mut output: Vec<u8> = prefix;
             output.extend(msg.clone());
             let message = CasperMessage::raw(output);
-            Sample::new("invalid-casper-message", message, false)
+            Sample::new("invalid_casper_message", message, false)
         })
         .collect()
 }

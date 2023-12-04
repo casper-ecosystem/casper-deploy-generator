@@ -28,7 +28,7 @@ pub(crate) fn invalid_casper_message_sample() -> Vec<Sample<CasperMessage>> {
     invalid_header
         .map(|prefix| {
             let mut output: Vec<u8> = prefix;
-            output.extend(msg.clone());
+            output.extend(msg);
             let message = CasperMessage::raw(output);
             Sample::new("invalid_casper_message", message, false)
         })

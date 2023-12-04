@@ -130,7 +130,7 @@ impl LedgerValue {
     }
 
     // Concatenates both rows into single `String`.
-    fn into_str(&self) -> String {
+    fn as_concatenated_string(&self) -> String {
         format!("{}{}", self.top, self.bottom)
     }
 }
@@ -205,7 +205,7 @@ impl LedgerPageView {
                 self.name,
                 idx + 1, // Start with 1, not 0.
                 total_count,
-                value.into_str()
+                value.as_concatenated_string()
             ));
         }
         output
@@ -252,13 +252,15 @@ impl LedgerView {
     }
 }
 
+type LedgerCallback = Rc<dyn Fn(&Ledger) -> Vec<String>>;
+
 #[derive(Clone)]
 #[allow(unused)]
 
 pub(crate) struct LimitedLedgerConfig {
     page_limit: u8,
-    on_regular: Rc<dyn Fn(&Ledger) -> Vec<String>>,
-    on_expert: Rc<dyn Fn(&Ledger) -> Vec<String>>,
+    on_regular: LedgerCallback,
+    on_expert: LedgerCallback,
 }
 
 impl LimitedLedgerConfig {
@@ -321,7 +323,7 @@ pub(super) fn deploy_to_json(
     config: &LimitedLedgerConfig,
 ) -> ZondaxRepr {
     let (name, deploy, valid) = sample_deploy.destructure();
-    let blob = hex::encode(&deploy.to_bytes().unwrap());
+    let blob = hex::encode(deploy.to_bytes().unwrap());
     let ledger = Ledger::from_deploy(deploy);
     let ledger_view = LimitedLedgerView::new(config, ledger);
     let output = ledger_view.regular();

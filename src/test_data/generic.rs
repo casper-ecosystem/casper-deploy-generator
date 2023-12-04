@@ -112,7 +112,7 @@ fn sample_args<R: Rng>(rng: &mut R) -> Vec<RuntimeArgs> {
             ),
         ],
         vec_to_clvalues(vec![Ok(false), Err(-10i32)]),
-        vec![to_clvalue_labeled((11u8))],
+        vec![to_clvalue_labeled((11u8,))],
         vec![to_clvalue_labeled((11u8, 1111u64))],
         vec![to_clvalue_labeled((0u8, true, "tuple3"))],
         // ("map".to_string(), todo!())

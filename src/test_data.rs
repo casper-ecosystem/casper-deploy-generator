@@ -225,9 +225,9 @@ fn random_keys(key_count: u8) -> Vec<SecretKey> {
     let mut out = vec![];
     for i in 0..key_count {
         let key = if i % 2 == 0 {
-            SecretKey::ed25519_from_bytes(&[i; 32]).expect("successful key construction")
+            SecretKey::ed25519_from_bytes([i; 32]).expect("successful key construction")
         } else {
-            SecretKey::secp256k1_from_bytes(&[i; 32]).expect("successful key construction")
+            SecretKey::secp256k1_from_bytes([i; 32]).expect("successful key construction")
         };
         out.push(key);
     }
@@ -245,9 +245,9 @@ fn construct_samples<R: Rng>(
     let mut samples = vec![];
 
     // These params do not change validity of a sample.
-    let mut ttls = vec![MIN_TTL, TTL_HOUR, MAX_TTL];
-    let mut deps_count = vec![MIN_DEPS_COUNT, 3, MAX_DEPS_COUNT];
-    let mut key_count = vec![MIN_APPROVALS_COUNT, 3, MAX_APPROVALS_COUNT];
+    let mut ttls = [MIN_TTL, TTL_HOUR, MAX_TTL];
+    let mut deps_count = [MIN_DEPS_COUNT, 3, MAX_DEPS_COUNT];
+    let mut key_count = [MIN_APPROVALS_COUNT, 3, MAX_APPROVALS_COUNT];
 
     for session in session_samples {
         for payment in &payment_samples {

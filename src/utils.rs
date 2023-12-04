@@ -46,8 +46,15 @@ fn drop_key_type_prefix(cl_in: String) -> String {
                 Key::Unbond(_) => "ubond-",
                 Key::ChainspecRegistry => "chainspec-registry",
                 Key::ChecksumRegistry => "checksum-registry",
+                Key::EraSummary => "era-summary-",
             };
-            cl_in.chars().skip(prefix.len()).collect()
+
+            let stripped_prefix = cl_in.chars().skip(prefix.len()).collect();
+            debug_assert_eq!(
+                Key::from_formatted_str(&format!("{prefix}{stripped_prefix}")).unwrap(),
+                key
+            );
+            stripped_prefix
         }
         Err(_) => {
             // No idea how to handle that. Return raw.
@@ -80,7 +87,8 @@ pub(crate) fn cl_value_to_string(cl_in: &CLValue) -> String {
                 Key::EraInfo(_)
                 | Key::SystemContractRegistry
                 | Key::ChainspecRegistry
-                | Key::ChecksumRegistry => parse_as_default_json(cl_in),
+                | Key::ChecksumRegistry
+                | Key::EraSummary => parse_as_default_json(cl_in),
             }
         }
         CLType::URef => {

@@ -45,11 +45,11 @@ pub(crate) fn parse_delegation(item: &ExecutableDeployItem) -> Vec<Element> {
     let arg_parser = |args| {
         let mut elements = vec![];
         // Public key of the account we're delegating from.
-        elements.extend(parse_delegator(args).into_iter());
+        elements.extend(parse_delegator(args));
         // Public key of the validator we're delegating to.
-        elements.extend(parse_validator(args).into_iter());
+        elements.extend(parse_validator(args));
         // Amount we're delegating.
-        elements.extend(parse_amount(args).into_iter());
+        elements.extend(parse_amount(args));
         elements
     };
     parse_auction_item("delegate", item, arg_parser)
@@ -59,11 +59,11 @@ pub(crate) fn parse_undelegation(item: &ExecutableDeployItem) -> Vec<Element> {
     let arg_parser = |args| {
         let mut elements = vec![];
         // Public key of the account we're delegating from.
-        elements.extend(parse_delegator(args).into_iter());
+        elements.extend(parse_delegator(args));
         // Public key of the validator we're delegating to.
-        elements.extend(parse_validator(args).into_iter());
+        elements.extend(parse_validator(args));
         // Amount we're delegating.
-        elements.extend(parse_amount(args).into_iter());
+        elements.extend(parse_amount(args));
         elements
     };
     parse_auction_item("undelegate", item, arg_parser)
@@ -73,13 +73,13 @@ pub(crate) fn parse_redelegation(item: &ExecutableDeployItem) -> Vec<Element> {
     let arg_parser = |args| {
         let mut elements = vec![];
         // Public key of the account we're delegating from.
-        elements.extend(parse_delegator(args).into_iter());
+        elements.extend(parse_delegator(args));
         // Public key of the current validator we have been redelagating to so far.
-        elements.extend(parse_old_validator(args).into_iter());
+        elements.extend(parse_old_validator(args));
         // New validator we're redelegating to.
-        elements.extend(parse_new_validator(args).into_iter());
+        elements.extend(parse_new_validator(args));
         // Amount we're delegating.
-        elements.extend(parse_amount(args).into_iter());
+        elements.extend(parse_amount(args));
         elements
     };
     parse_auction_item("redelegate", item, arg_parser)

@@ -71,11 +71,11 @@ pub(crate) fn parse_transfer_args(args: &RuntimeArgs) -> Vec<Element> {
     let mut elements: Vec<Element> = parse_optional_arg(args, ARG_TO, "recipient", false, identity)
         .into_iter()
         .collect();
-    elements.extend(parse_optional_arg(args, ARG_SOURCE, "from", true, identity).into_iter());
+    elements.extend(parse_optional_arg(args, ARG_SOURCE, "from", true, identity));
     elements.extend(parse_optional_arg(
         args, ARG_TARGET, "target", false, identity,
     ));
-    elements.extend(parse_amount(args).into_iter());
-    elements.extend(parse_optional_arg(args, ARG_ID, "ID", true, identity).into_iter());
+    elements.extend(parse_amount(args));
+    elements.extend(parse_optional_arg(args, ARG_ID, "ID", true, identity));
     elements
 }

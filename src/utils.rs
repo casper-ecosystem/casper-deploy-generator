@@ -83,7 +83,7 @@ pub(crate) fn cl_value_to_string(cl_in: &CLValue) -> String {
                 Key::Account(account_hash)
                 | Key::Unbond(account_hash)
                 | Key::Withdraw(account_hash)
-                | Key::Bid(account_hash) => checksummed_hex::encode(&account_hash),
+                | Key::Bid(account_hash) => checksummed_hex::encode(account_hash),
                 Key::EraInfo(_)
                 | Key::SystemContractRegistry
                 | Key::ChainspecRegistry
@@ -106,14 +106,14 @@ pub(crate) fn cl_value_to_string(cl_in: &CLValue) -> String {
         CLType::ByteArray(length) => {
             let (bytes, _remainder) = cl_in.inner_bytes().split_at(*length as usize);
 
-            checksummed_hex::encode(&bytes)
+            checksummed_hex::encode(bytes)
         }
-        _ => parse_as_default_json(&cl_in),
+        _ => parse_as_default_json(cl_in),
     }
 }
 
 fn parse_as_default_json(input: &CLValue) -> String {
-    match serde_json::to_value(&input) {
+    match serde_json::to_value(input) {
         Ok(value) => {
             let parsed = value.get("parsed").unwrap();
             serde_value_to_str(parsed)

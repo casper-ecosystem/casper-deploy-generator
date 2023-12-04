@@ -1,10 +1,7 @@
 # This supports environments where $HOME/.cargo/env has not been sourced (CI, CLion Makefile runner)
 CARGO  = $(or $(shell which cargo),  $(HOME)/.cargo/bin/cargo)
 
-PINNED_NIGHTLY := $(shell cat rust-toolchain)
-
 CARGO_OPTS := --locked
-CARGO_PINNED_NIGHTLY := $(CARGO) +$(PINNED_NIGHTLY) $(CARGO_OPTS)
 CARGO := $(CARGO) $(CARGO_OPTS) --quiet
 
 # Do not echo commands
@@ -26,7 +23,7 @@ check-against-old: test-vectors
 	RESULT=$(![ -s test_vectors_diff.txt ]) || echo "WARNING: diff file is non-empty. Check test_vectors_diff.txt file." && \
 	rm old_manual.json
 
-check: 
+check:
 	$(CARGO) check
 
 format:

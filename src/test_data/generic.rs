@@ -1,4 +1,4 @@
-use std::fmt::Debug;
+use std::{collections::BTreeMap, fmt::Debug};
 
 use casper_execution_engine::core::engine_state::ExecutableDeployItem;
 use casper_types::{
@@ -112,10 +112,46 @@ fn sample_args<R: Rng>(rng: &mut R) -> Vec<RuntimeArgs> {
             ),
         ],
         vec_to_clvalues(vec![Ok(false), Err(-10i32)]),
-        vec![to_clvalue_labeled(11u8,)],
+        vec![to_clvalue_labeled(11u8)],
         vec![to_clvalue_labeled((11u8, 1111u64))],
         vec![to_clvalue_labeled((0u8, true, "tuple3"))],
-        // ("map".to_string(), todo!())
+        vec![
+            (
+                "map".to_string(),
+                CLValue::from_t(BTreeMap::<String, String>::new()).unwrap(),
+            ),
+            (
+                "map".to_string(),
+                CLValue::from_t({
+                    let mut map = BTreeMap::<String, Bytes>::new();
+                    map.insert("key".to_string(), b"value".to_vec().into());
+                    map
+                })
+                .unwrap(),
+            ),
+            (
+                "map".to_string(),
+                CLValue::from_t({
+                    let mut map = BTreeMap::<String, String>::new();
+                    map.insert("key1".to_string(), "value1".to_string());
+                    map.insert("key2".to_string(), "value2".to_string());
+                    map.insert("key3".to_string(), "value3".to_string());
+                    map
+                })
+                .unwrap(),
+            ),
+            (
+                "map".to_string(),
+                CLValue::from_t({
+                    let mut map = BTreeMap::<String, U512>::new();
+                    map.insert("foo".to_string(), U512::one());
+                    map.insert("bar".to_string(), U512::zero());
+                    map.insert("baz".to_string(), U512::MAX);
+                    map
+                })
+                .unwrap(),
+            ),
+        ],
     ]
     .into_iter()
     .flatten()

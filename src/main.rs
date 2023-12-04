@@ -1,9 +1,9 @@
+use casper_types::testing::TestRng;
 use ledger::{LimitedLedgerConfig, ZondaxRepr};
 use test_data::{
     delegate_samples, generic_samples, native_transfer_samples, redelegate_samples,
     undelegate_samples,
 };
-use test_rng::TestRng;
 
 use crate::test_data::sign_message::{invalid_casper_message_sample, valid_casper_message_sample};
 
@@ -13,7 +13,6 @@ mod message;
 mod parser;
 mod sample;
 mod test_data;
-mod test_rng;
 mod utils;
 
 fn main() {

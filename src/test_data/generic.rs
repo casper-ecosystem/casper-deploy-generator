@@ -1,14 +1,18 @@
-use std::fmt::Debug;
+use std::{
+    collections::{BTreeMap, BTreeSet},
+    fmt::Debug,
+};
 
 use casper_execution_engine::core::engine_state::ExecutableDeployItem;
 use casper_types::{
     account::{AccountHash, ACCOUNT_HASH_LENGTH},
-    bytesrepr::{Bytes, ToBytes},
-    AccessRights, AsymmetricType, CLTyped, CLValue, DeployHash, EraId, Key, NamedArg, PublicKey,
-    RuntimeArgs, TransferAddr, URef, DEPLOY_HASH_LENGTH, KEY_DICTIONARY_LENGTH, KEY_HASH_LENGTH,
-    TRANSFER_ADDR_LENGTH, U128, U256, U512, UREF_ADDR_LENGTH,
+    bytesrepr::{self, Bytes, ToBytes},
+    AccessRights, AsymmetricType, CLType, CLTyped, CLValue, DeployHash, EraId, Key, NamedArg,
+    PublicKey, RuntimeArgs, TransferAddr, URef, DEPLOY_HASH_LENGTH, KEY_DICTIONARY_LENGTH,
+    KEY_HASH_LENGTH, TRANSFER_ADDR_LENGTH, U128, U256, U512, UREF_ADDR_LENGTH,
 };
 use rand::{prelude::SliceRandom, Rng};
+use strum::{EnumIter, IntoEnumIterator};
 
 use crate::{
     sample::Sample,
@@ -51,8 +55,172 @@ where
     value.into_iter().map(to_clvalue_labeled).collect()
 }
 
+#[derive(EnumIter, Debug, Copy, Clone, PartialEq, Eq, PartialOrd, Ord)]
+enum CLTypeVariant {
+    /// `bool` primitive.
+    Bool,
+    /// `i32` primitive.
+    I32,
+    /// `i64` primitive.
+    I64,
+    /// `u8` primitive.
+    U8,
+    /// `u32` primitive.
+    U32,
+    /// `u64` primitive.
+    U64,
+    /// [`U128`] large unsigned integer type.
+    U128,
+    /// [`U256`] large unsigned integer type.
+    U256,
+    /// [`U512`] large unsigned integer type.
+    U512,
+    /// `()` primitive.
+    Unit,
+    /// `String` primitive.
+    String,
+    /// [`Key`] system type.
+    Key,
+    /// [`URef`] system type.
+    URef,
+    /// [`PublicKey`](crate::PublicKey) system type.
+    PublicKey,
+    /// `Option` of a `CLType`.
+    Option,
+    /// Variable-length list of a single `CLType` (comparable to a `Vec`).
+    List,
+    /// Fixed-length list of a single `CLType` (comparable to a Rust array).
+    ByteArray,
+    /// `Result` with `Ok` and `Err` variants of `CLType`s.
+    Result,
+    /// Map with keys of a single `CLType` and values of a single `CLType`.
+    Map,
+    /// 1-ary tuple of a `CLType`.
+    Tuple1,
+    /// 2-ary tuple of `CLType`s.
+    Tuple2,
+    /// 3-ary tuple of `CLType`s.
+    Tuple3,
+    /// Unspecified type.
+    Any,
+}
+
+impl From<&CLType> for CLTypeVariant {
+    fn from(value: &CLType) -> Self {
+        match value {
+            CLType::Bool => CLTypeVariant::Bool,
+            CLType::I32 => CLTypeVariant::I32,
+            CLType::I64 => CLTypeVariant::I64,
+            CLType::U8 => CLTypeVariant::U8,
+            CLType::U32 => CLTypeVariant::U32,
+            CLType::U64 => CLTypeVariant::U64,
+            CLType::U128 => CLTypeVariant::U128,
+            CLType::U256 => CLTypeVariant::U256,
+            CLType::U512 => CLTypeVariant::U512,
+            CLType::Unit => CLTypeVariant::Unit,
+            CLType::String => CLTypeVariant::String,
+            CLType::Key => CLTypeVariant::Key,
+            CLType::URef => CLTypeVariant::URef,
+            CLType::PublicKey => CLTypeVariant::PublicKey,
+            CLType::Option(_) => CLTypeVariant::Option,
+            CLType::List(_) => CLTypeVariant::List,
+            CLType::ByteArray(_) => CLTypeVariant::ByteArray,
+            CLType::Result { .. } => CLTypeVariant::Result,
+            CLType::Map { .. } => CLTypeVariant::Map,
+            CLType::Tuple1([_]) => CLTypeVariant::Tuple1,
+            CLType::Tuple2([_, _]) => CLTypeVariant::Tuple2,
+            CLType::Tuple3([_, _, _]) => CLTypeVariant::Tuple3,
+            CLType::Any => CLTypeVariant::Any,
+        }
+    }
+}
+
+fn for_all_cl_type_variants(args: &RuntimeArgs) -> impl Iterator<Item = CLTypeVariant> + '_ {
+    args.named_args()
+        .flat_map(|named_arg| match named_arg.cl_value().cl_type() {
+            CLType::Tuple1([t1]) => {
+                vec![CLTypeVariant::Tuple1, t1.as_ref().into()]
+            }
+            CLType::Tuple2([t1, t2]) => {
+                vec![
+                    CLTypeVariant::Tuple2,
+                    t1.as_ref().into(),
+                    t2.as_ref().into(),
+                ]
+            }
+            CLType::Tuple3([t1, t2, t3]) => {
+                vec![
+                    CLTypeVariant::Tuple3,
+                    t1.as_ref().into(),
+                    t2.as_ref().into(),
+                    t3.as_ref().into(),
+                ]
+            }
+            CLType::Result { ok, err } => {
+                vec![
+                    CLTypeVariant::Result,
+                    ok.as_ref().into(),
+                    err.as_ref().into(),
+                ]
+            }
+            CLType::Option(t) => {
+                vec![CLTypeVariant::Option, t.as_ref().into()]
+            }
+            CLType::List(t) => {
+                vec![CLTypeVariant::List, t.as_ref().into()]
+            }
+            CLType::Map { key, value } => {
+                vec![
+                    CLTypeVariant::Map,
+                    key.as_ref().into(),
+                    value.as_ref().into(),
+                ]
+            }
+            primitive_type => {
+                vec![CLTypeVariant::from(primitive_type)]
+            }
+        })
+}
+
+struct CustomStruct {
+    value1: U512,
+    value2: String,
+    value3: u64,
+}
+
+impl ToBytes for CustomStruct {
+    fn to_bytes(&self) -> Result<Vec<u8>, casper_types::bytesrepr::Error> {
+        let Self {
+            value1,
+            value2,
+            value3,
+        } = self;
+        let mut result = bytesrepr::allocate_buffer(self)?;
+        result.extend_from_slice(&value1.to_bytes()?);
+        result.extend_from_slice(&value2.to_bytes()?);
+        result.extend_from_slice(&value3.to_bytes()?);
+        Ok(result)
+    }
+
+    fn serialized_length(&self) -> usize {
+        let Self {
+            value1,
+            value2,
+            value3,
+        } = self;
+        value1.serialized_length() + value2.serialized_length() + value3.serialized_length()
+    }
+}
+
+impl CLTyped for CustomStruct {
+    fn cl_type() -> CLType {
+        CLType::Any
+    }
+}
 #[allow(unused_parens)]
 fn sample_args<R: Rng>(rng: &mut R) -> Vec<RuntimeArgs> {
+    let mut all_variants = CLTypeVariant::iter().collect::<BTreeSet<_>>();
+
     let mut named_args: Vec<NamedArg> = vec![
         vec_to_clvalues(vec![true, false]),
         vec_to_clvalues(vec![i32::MIN, 0, i32::MAX]),
@@ -115,7 +283,64 @@ fn sample_args<R: Rng>(rng: &mut R) -> Vec<RuntimeArgs> {
         vec![to_clvalue_labeled((11u8,))],
         vec![to_clvalue_labeled((11u8, 1111u64))],
         vec![to_clvalue_labeled((0u8, true, "tuple3"))],
-        // ("map".to_string(), todo!())
+        vec![
+            (
+                "map".to_string(),
+                CLValue::from_t(BTreeMap::<String, String>::new()).unwrap(),
+            ),
+            (
+                "map".to_string(),
+                CLValue::from_t({
+                    let mut map = BTreeMap::<String, Bytes>::new();
+                    map.insert("key".to_string(), b"value".to_vec().into());
+                    map
+                })
+                .unwrap(),
+            ),
+            (
+                "map".to_string(),
+                CLValue::from_t({
+                    let mut map = BTreeMap::<String, String>::new();
+                    map.insert("key1".to_string(), "value1".to_string());
+                    map.insert("key2".to_string(), "value2".to_string());
+                    map.insert("key3".to_string(), "value3".to_string());
+                    map
+                })
+                .unwrap(),
+            ),
+            (
+                "map".to_string(),
+                CLValue::from_t({
+                    let mut map = BTreeMap::<String, U512>::new();
+                    map.insert("foo".to_string(), U512::one());
+                    map.insert("bar".to_string(), U512::zero());
+                    map.insert("baz".to_string(), U512::MAX);
+                    map
+                })
+                .unwrap(),
+            ),
+            (
+                "bytearray".to_string(),
+                CLValue::from_t({
+                    let mut bytearray = [0u8; 32];
+                    for (i, byte) in bytearray.iter_mut().enumerate() {
+                        debug_assert!(i <= 255);
+                        *byte = i as u8;
+                    }
+                    bytearray
+                })
+                .unwrap(),
+            ),
+            (
+                "any".to_string(),
+                CLValue::from_t(CustomStruct {
+                    value1: U512::one(),
+                    value2: "hello".to_string(),
+                    value3: 42,
+                })
+                .unwrap(),
+            ),
+        ],
     ]
     .into_iter()
     .flatten()
@@ -138,6 +363,19 @@ fn sample_args<R: Rng>(rng: &mut R) -> Vec<RuntimeArgs> {
                 .into(),
         );
     }
+
+    // Ensure all CLType variants are used at least once.
+    for runtime_args in &out {
+        for variant in for_all_cl_type_variants(runtime_args) {
+            let _ = all_variants.remove(&variant);
+        }
+    }
+
+    assert_eq!(
+        all_variants,
+        BTreeSet::new(),
+        "all variants must be visited"
+    );
 
     out
 }
